@@ -63,9 +63,6 @@ nav h1 {
 
 .logo {
   float:left;
-  background:#55acee;
-  width:40px;
-  height:40px;
   border-radius:10px;
   padding-left:40px
 }
@@ -149,9 +146,7 @@ nav h1 {
 }
 
 .main-nav .minilogo {
-  background:#55acee;
-  width:40px;
-  height:40px;
+ 
   position:relative;
   position:absolute;
   top:5px;
