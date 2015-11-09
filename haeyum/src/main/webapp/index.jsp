@@ -213,9 +213,11 @@
 					</ul>
 				</div>
 			</section>
+		<div style="border:1px solid black;width: 1339px;height: 500px;">video</div>
 		</div>
+		<div style="border:1px solid black;width: 1339px;height: 500px;">intro</div>
 	</div>
-		
+
 	</section>
 
 </body>
