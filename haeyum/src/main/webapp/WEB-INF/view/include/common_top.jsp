@@ -4,5 +4,8 @@
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style1.css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/topMenu.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoStyle.css" type="text/css" />
+
 <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script> 
 <script src="${pageContext.request.contextPath}/js/topMenu.js"></script>
+<script src="${pageContext.request.contextPath}/js/videoStyle.js"></script>
