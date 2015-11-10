@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <%@include file="WEB-INF/view/include/common_top.jsp" %>
 </head>
-<body>
+<body style="background-color: #F6F6F6">
 	<%@include file="WEB-INF/view/include/topMenu.jsp" %>
 	<br />
 	<br />
@@ -32,15 +32,15 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/beauty.png" alt="" /></span>
-										<span>Beauty / Fashion</span>
+										<span>뷰티 & 패션</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
-									<span class="courses">첫번째 뒷면 
-										<span>중간</span>
+									<span class="courses">22
+										<span>강의 개수</span>
 									</span> 
-									<span class="videos">세번째
-										<span>네번째</span>
+									<span class="videos">60
+										<span>총 동영상 개수</span>
 									</span>
 								</span>
 							</a>
@@ -51,7 +51,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/study.png" alt="" /></span>
-										<span>Education</span>
+										<span>교과목</span>
 									</i> 
 								</span> 
 								<span class="flipper-back"> 
@@ -68,7 +68,7 @@
 						<li><a
 							href="#"
 							class="subject_toggle flip-container flipper block teal"> <span
-								class="flipper-front"> <i class="icon"><span><img src="images/music.png" alt="" /></span><span>Music / Performance</span></i> <span
+								class="flipper-front"> <i class="icon"><span><img src="images/music.png" alt="" /></span><span>음악 & 공연</span></i> <span
 									class="title">Music / Performance</span>
 							</span> <span class="flipper-back"> <span class="courses">1,220
 										<span>Courses</span>
@@ -101,7 +101,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/art.png" alt="" /></span>
-										<span>Art / Crafts</span>
+										<span>미술 & 공예</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
@@ -120,7 +120,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/sports.png" alt="" /></span>
-										<span>Sports</span>
+										<span>스포츠</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
@@ -139,7 +139,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/cook.png" alt="" /></span>
-										<span>Cook</span>
+										<span>요리</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
@@ -158,7 +158,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/foreign.png" alt="" /></span>
-										<span>Foreign languages</span>
+										<span>외국어</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
@@ -177,7 +177,7 @@
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/game.png" alt="" /></span>
-										<span>Games</span>
+										<span>게임</span>
 									</i> 
 								</span>
 								<span class="flipper-back"> 
@@ -213,10 +213,24 @@
 					</ul>
 				</div>
 			</section>
-		<div style="border:1px solid black;width: 1339px;height: 500px;">video</div>
 		</div>
-		<div style="border:1px solid black;width: 1339px;height: 500px;">intro</div>
 	</div>
+			<h2>인기영상</h2>
+			<div id=carousel>
+		<figure id=spinner>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+		</figure>
+	</div>
+	
+	<span style="float: left" class=ss-icon onclick="galleryspin('-')">&lt;</span>
+	<span style="float: right" class=ss-icon onclick="galleryspin('')">&gt;</span>
+			
+		<div style="border:1px solid black;height: 500px;">intro</div>
 
 	</section>
 
