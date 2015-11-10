@@ -7,7 +7,7 @@
 			<div class="container">
 				<div class="nav-top clearfix">
 					<div class="logo">
-						<img src="${pageContext.request.contextPath}/images/logo.png" style="width: 155px; height: 65px"/>
+						<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" style="width: 155px; height: 65px"/></a>
 					</div>
 					<div class="search hidden-xs">
 						<form action="#" method="GET">
@@ -28,7 +28,9 @@
 			<div class="main-nav navbar-collapse collapse">
 				<div class="container">
 					<div class="minilogo">
+					<a href="${pageContext.request.contextPath}/index.jsp">
 						<img src="${pageContext.request.contextPath}/images/logo.png" style="width: 105px; height: 45px"/>
+						</a>
 					</div>
 					<ul class="nav nav-justified">
 						<li><a class="active" href="#">Home</a></li>
