@@ -167,7 +167,7 @@ abbr, acronym {
 }
 
 a {
-	color: #009;
+	color: #fff;
 	text-decoration: none
 }
 
@@ -181,7 +181,7 @@ blockquote {
 }
 
 dfn {
-	font-style: italic;
+	
 	font-weight: 700
 }
 
@@ -3769,7 +3769,7 @@ p.nohistory {
 	top: 45%;
 	line-height: 35px;
 	font-weight: 700;
-	font-style: italic;
+	
 	color: #666;
 	display: block;
 	width: 70px;
@@ -6316,7 +6316,7 @@ p.justifyText {
 }
 
 span.italicText {
-	font-style: italic
+	
 }
 
 .tnc ul {
@@ -8782,7 +8782,7 @@ div#homegift p {
 	color: #B3B3B3;
 	font-family: Helvetica, Arial;
 	font-size: 12px;
-	font-style: italic
+	
 }
 
 .default_input {
@@ -8909,47 +8909,6 @@ ul.privacy-policy li {
 	margin-left: 40px
 }
 
-#login_div .private_msg {
-	background: #f5f5f5;
-	border: solid 1px #ccc;
-	border-radius: 5px;
-	clear: left;
-	float: left;
-	margin-top: 15px;
-	padding: 15px;
-	width: 710px;
-	z-index: 9999
-}
-
-#login_div .private_msg.lcle_privacy_tagalong {
-	width: 315px
-}
-
-#login_div .private_msg.lcle_privacy_tagalong p {
-	width: 225px
-}
-
-#login_div .private_msg.lcle_privacy_tagalong button {
-	margin-top: 17px
-}
-
-#login_div .private_msg p {
-	float: left;
-	font: 400 16px Helvetica, sans-serif;
-	margin: 0 15px 0 0;
-	text-align: left
-}
-
-#login_div .private_msg p a {
-	font-weight: 700;
-	font-size: 17px
-}
-
-#login_div .private_msg button {
-	float: none;
-	font: 400 17px Helvetica, sans-serif;
-	margin: 3px 0 0
-}
 
 #privacy_banner, #website_banner {
 	background: #fff;
@@ -9241,7 +9200,7 @@ right
 
 .capture-field .placeholder {
 	color: #585858;
-	font: italic 12px Verdana, sans-serif
+	
 }
 
 .emailCaptureParentDiv.overlay_content, .thank-you.overlay_content {
@@ -9758,7 +9717,7 @@ div.breadcrumbs a:only-child>span {
 	text-align: left;
 	margin: 1.667em 0;
 	padding: 0 6.667em;
-	font-style: italic;
+	
 	font: 200 1em/1.25em 'Helvetica Neue', Helvetica, Arial, sans-serif
 }
 
@@ -9768,7 +9727,7 @@ div.breadcrumbs a:only-child>span {
 }
 
 .upsell_overlay .upsell_content p span {
-	font-style: italic
+	
 }
 
 #fancybox-loading {
