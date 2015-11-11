@@ -1,25 +1,29 @@
 div#carousel {
 	perspective: 1200px;
 	background: #F6F6F6;
-	padding-top: 20%;
 	font-size: 0;
 	margin-bottom: 3rem;
 	overflow: hidden;
 }
 
+div#carousel h2{
+	font-size: 35px;
+}
+
 figure#spinner {
 	transform-style: preserve-3d;
 	height: 450px;
-	transform-origin: 50% 50% -500px;
+	transform-origin: 50% 50% -600px;
 	transition: 1s;
 }
 
 figure#spinner video {
 	width: 500%;
-	max-width: 500px;
+	max-width: 600px;
+	max-height: 400px;
 	position: absolute;
 	left: 30%;
-	transform-origin: 50% 50% -500px;
+	transform-origin: 50% 50% -600px;
 	outline: 1px solid transparent;
 }
 
