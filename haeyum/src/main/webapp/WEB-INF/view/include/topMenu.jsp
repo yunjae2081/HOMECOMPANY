@@ -10,7 +10,7 @@
 						<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" style="width: 155px; height: 65px"/></a>
 					</div>
 					<div class="search hidden-xs">
-						<form action="#" method="GET">
+						<form action="${pageContext.request.contextPath}/search/video.do" method="GET">
 							<input name="query" placeholder="Search" type="text">
 							<button class="search-submit" type="submit">
 								<i class="fa fa-search"></i>
