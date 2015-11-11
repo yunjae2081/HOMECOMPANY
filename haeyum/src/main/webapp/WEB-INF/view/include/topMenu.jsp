@@ -33,13 +33,11 @@
 						</a>
 					</div>
 					<ul class="nav nav-justified">
-						<li><a class="active" href="#">Home</a></li>
-						<li><a href="#">News</a></li>
-						<li><a href="#">Politics</a></li>
-						<li><a href="#">Opinion</a></li>
-						<li><a href="#">Sports</a></li>
-						<li><a href="#">Local</a></li>
-						<li><a href="#">Tech</a></li>
+						<li><a class="active" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
+						<li><a href="#">Search</a></li>
+						<li><a href="#">Store</a></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="#">Join</a></li>
 					</ul>
 				</div>
 			</div>
