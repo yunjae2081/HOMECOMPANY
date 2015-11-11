@@ -9,7 +9,6 @@
 <%@include file="WEB-INF/view/include/common_top.jsp" %>
 </head>
 <body style="background-color: #F6F6F6">
-	<%@include file="WEB-INF/view/include/topMenu.jsp" %>
 	<br />
 	<br />
 	<br />
@@ -217,6 +216,7 @@
 	</div>
 			<div id=carousel>
 			<h2>인기영상</h2>
+			<div id="container">
 		<figure id=spinner>
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
@@ -225,6 +225,9 @@
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 		</figure>
+	</div>
+	
+	<div id="pager"></div>
 	</div>
 	
 	<span style="float: left" class=ss-icon onclick="galleryspin('-')">&lt;</span>
