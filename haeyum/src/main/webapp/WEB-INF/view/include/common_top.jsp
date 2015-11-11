@@ -7,5 +7,9 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoStyle.css" type="text/css" />
 
 <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script> 
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/20140216/jquery.cycle2.min.js"></script>
+<script src="http://cdn.jsdelivr.net/jquery.hammerjs/1.1.2/jquery.hammer-full.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/topMenu.js"></script>
 <script src="${pageContext.request.contextPath}/js/videoStyle.js"></script>
+
+<%@include file="../include/topMenu.jsp" %>
