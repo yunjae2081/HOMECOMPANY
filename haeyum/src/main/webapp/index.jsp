@@ -215,8 +215,8 @@
 			</section>
 		</div>
 	</div>
-			<h2>인기영상</h2>
 			<div id=carousel>
+			<h2>인기영상</h2>
 		<figure id=spinner>
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
