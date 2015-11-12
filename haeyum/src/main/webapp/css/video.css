@@ -1,0 +1,70 @@
+@CHARSET "UTF-8";
+
+.vView {
+	border: 1px solid black;
+	position: relative;
+	width: 1200px;
+	height: 600px;
+	margin: 0 auto;
+	overflow: hidden;
+}
+
+.vCanvas{
+		overflow: hidden;
+		position: absolute;
+	
+}
+
+.vDiv {
+	overflow: hidden;
+	position: absolute;
+	width: 730px;
+	height: 445px;
+	background-color: black;
+	border: 1px solid black;
+	z-index : -1;
+}
+
+.videobottom{
+	height: 40px;
+	z-index: 999px;
+	width: 700px;
+	margin-left: 15px;
+	margin-top: 405px;
+}
+
+.progress{
+	height: 3px;
+/* 	background-color: #c9c9c9; */
+}
+
+.pCanvas{
+		overflow: hidden;
+		position: absolute;
+		margin-left: 15px;
+		margin-top: 405px;
+		background-color: #c9c9c9;
+/* 		width: 700px; */
+/* 		height: 6px; */
+}
+
+
+/* .controls { */
+/* 	border: 1px solid black; */
+/* 	position: relative; */
+/* 	float: left; */
+/* 	clear: both; */
+/* 	padding-top: 30px; */
+/* 	z-index: 1; */
+/* } */
+
+/* .rail { */
+/* 	float: right; */
+/* 	width: 360px; */
+/* 	border-top: 1px solid black; */
+/* } */
+
+/* .rail div { */
+/* 	border-bottom: 1px solid black; */
+/* 	height: 60px; */
+/* } */
