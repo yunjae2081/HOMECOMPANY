@@ -76,3 +76,43 @@ div#carousel ~ span:hover {
 	color: #8000ff;
 	cursor: pointer;
 }
+
+@-webkit-keyframes slide {
+  0% {
+    -webkit-transform: translateX(0px);
+  }
+  100% {
+    -webkit-transform: translateX(120px);
+  }
+}
+#container {
+  height: 100%;
+  width: 100%;
+  background: #444;
+}
+
+.item {
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+#pager {
+  z-index: 9990;
+  position: fixed;
+  left: 0;
+  width: 100%;
+  top: 50px;
+  display: inline-block;
+  font-size: 5em;
+  background: rgba(0, 0, 0, 0.5);
+}
+#pager span {
+  color: #95A5A6;
+  cursor: pointer;
+  margin: 5px;
+}
+#pager .cycle-pager-active {
+  color: #EEEEEE;
+}
