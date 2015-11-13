@@ -1,0 +1,120 @@
+@CHARSET "UTF-8";
+
+.bookmark-box
+{
+	position:absolute;
+	background:#625b79;
+	width:15.588%;
+	height:auto;
+	padding:15px 15px 15px 25px;
+	display:none;
+	margin:25px 50px 0 0;
+	color: white;
+	z-index: 2;
+}
+.bookmark-box p
+{
+	color:#f8f8f8;
+	font-size:78%;
+	font-weight:200
+}
+.bookmark-title
+{
+	position:relative;
+	width:80%;
+	background:#a39db5;
+	padding:5px 10px 5px 10px;
+	margin:0 0 20px -36px;
+}
+.bookmark-title h3
+{
+	color:#f8f8f8;
+	font-family:'Oswald',sans-serif
+}
+.bookmark-title:before
+{
+	content:' ';
+	position:absolute;
+	height:0;
+	width:0;
+	border:10px solid;
+	z-index:-1;
+	left:4px;
+	top:16px;
+	border-color:#a39db5 transparent;
+	-webkit-transform:rotate(45deg);
+	-moz-transform:rotate(45deg);
+	-ms-transform:rotate(45deg);
+	-o-transform:rotate(45deg);
+	transform:rotate(45deg)
+}
+.gotolink
+{
+	background:#9daf25;
+	position:relative;
+	padding:5px 8px 5px 10px;
+	width:60%;
+	margin:40px 0 0 75px
+}
+.gotolink h4
+{
+	color:#f8f8f8;
+	font-weight:bold
+}
+.gotolink a
+{
+	color:#f8f8f8;
+	transition:color .25s ease-in-out;
+	-webkit-transition:color .25s ease-in-out;
+	-moz-transition:color .25s ease-in-out;
+	-ms-transition:color .25s ease-in-out;
+	-o-transition:color .25s ease-in-out
+}
+.gotolink a:hover
+{
+	color:#6e7c26
+}
+.gotolink:before
+{
+	content:' ';
+	position:absolute;
+	height:0;
+	width:0;
+	border:10px solid;
+	left:110px;
+	top:20px;
+	z-index:-1;
+	border-color:#6e7c26 transparent transparent;
+	-webkit-transform:rotate(-90deg);
+	-moz-transform:rotate(-90deg);
+	-ms-transform:rotate(-90deg);
+	-o-transform:rotate(-90deg);
+	transform:rotate(-90deg)
+}
+	a.boxclose
+{
+	color:#f8f8f8;
+	float:right;
+	margin:-10px -2px 0 0;
+	cursor:pointer;
+	font-weight:bold;
+	transition:color .25s ease-in-out;
+	-webkit-transition:color .25s ease-in-out;
+	-moz-transition:color .25s ease-in-out;
+	-ms-transition:color .25s ease-in-out;
+	-o-transition:color .25s ease-in-out
+}
+	a.boxclose:before
+{
+	content:'x'
+}
+	a.boxclose:hover
+{
+	color:#6e7c26
+}
+
+.description {
+	width: 300px;
+	height: 70px;
+	overflow: auto;
+}
