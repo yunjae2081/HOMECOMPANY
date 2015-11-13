@@ -6,9 +6,9 @@
 
 <select id="selectlectureList" parameterType="int" resultType="lecturevo">
 
-select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'yy-mm-dd')as lRegDate
+select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i:%s')as lRegDate
 from haeyum.tbl_lecture
-where L_NO=#{no}
+where M_NO=#{no}
 
 
 </select>
