@@ -10,12 +10,18 @@
 <%@include file="../include/common_top.jsp"%>
 <style>
 
+
+
+
+
+
+
 #item-list ul {
   padding: 0;
-  padding-top:50px;
+  padding-top:0px;
   margin:0 auto;
   width:1000px;
-
+  background-color:#ffffff;
   font-family: Arial, sans serif;
   color: #555;
 }
@@ -33,7 +39,7 @@
 }
 
 #item-list ul > li:hover {
-  background: #efefef;
+  background: #F6F6F6;
 }
 
 .button {
@@ -65,6 +71,7 @@ span {
 
 .detail {
   margin: 20px 0 0 0;
+  padding-left:100px;
   display: none;
   line-height: 22px;
 }
@@ -106,8 +113,10 @@ $(function() {
 </head>
 <body>
 <%@include file="../include/topMenu.jsp"%>
-
-<h2 style="padding-top: 200px;">등록한 강좌 list</h2>
+<section class="stretch">
+<center>
+<h2 style="padding-top: 200px;padding-bottom: 50px;">등록한 강좌 list</h2>
+</center>
 
 <c:forEach var="list" items="${list}">
 <div id="item-list">
@@ -116,14 +125,17 @@ $(function() {
     <a class="expand">
     <div class="right-arrow">+</div>
     <div class="icon london"></div>
-    <h2>${list.lTitle}</h2>
-    <span>${list.lCategory}</span>
+    <h2>${list.lNo} ${list.lTitle}</h2>
+    <span>${list.lCategory} 카테고리</span>
     </a>
-    
     <div class="detail">
-      <div><span></span></div><br/>
+      <div><span>${list.lContent}</span>
+      		<span>${list.lRegDate}</span>
+      </div><br/>
       
       <span class="button">이동</span>
+      <span class="button">수정</span>
+      <span class="button">삭제</span>
     </div>
   </li>
   
@@ -134,7 +146,7 @@ $(function() {
 
 
 
-
+</section>
 
 </body>
 </html>
