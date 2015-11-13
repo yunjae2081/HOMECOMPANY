@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/style2.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/topMenu.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoStyle.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/storeSideMenu.css" type="text/css" />
 
 <script src='https://code.jquery.com/jquery-1.11.3.min.js'></script> 
 <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery.cycle2/20140216/jquery.cycle2.min.js"></script>
