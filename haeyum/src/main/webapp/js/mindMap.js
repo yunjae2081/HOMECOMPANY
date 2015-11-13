@@ -293,9 +293,10 @@ $(document).on("mouseup" ,"div[id^='fNode']", function () {
         drawLine();
         $("#sDiv" + sNodeNumTemp).css("left", $("#" + sNodeIdTemp).position().left - 125);
         $("#sDiv" + sNodeNumTemp).css("top", $("#" + sNodeIdTemp).position().top - 200);
-        if (i == sNodeArrayTemp.length - 1) {
-        }
-      }})
+      }}).promise().done(function() { 
+        fMenuOut();
+        sMenuOut();
+      })
     }
   }
   drag = false;
