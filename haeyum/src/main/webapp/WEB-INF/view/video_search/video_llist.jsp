@@ -7,10 +7,53 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/searchVideo1.css" type="text/css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/searchVideo2.css" type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/searchVideo1.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/searchVideo2.css"
+	type="text/css" />
 
+<!-- <script src='http://cdn.jsdelivr.net/jquery.mixitup/latest/jquery.mixitup.min.js'></script> -->
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
+
+
+<script>
+  $(function() {
+    $('#Container').mixItUp();
+    alert("5");
+  });
+    
+  $(document).on("click","button", function() {
+	  if (this.value == '1') {
+	        alert("3");
+	    $.ajax({
+	      url: "${pageContext.request.contextPath}/list/bestVideo.json",
+	      type: "POST",
+	      datatype: "JSON",
+	      success: function (data, status) {
+	        alert(data);
+	       	bestVideo();
+	      },
+	      fail:function(){
+	      }
+	    })
+	  } else if (this.value == '2') {
+	    alert("2");
+	  }
+	})
+	
+	function bestVideo(){
+    $('#Container').mixItUp();
+    alert("4");
+    var html ="";
+    
+    html += "<ul><li class='mix newyork'><img border='0' src='${pageContext.request.contextPath}/images/back.jpg' /></li></ul>";
+    
+    $(".container-inner").html(html);
+  }
+// 	$("#1").removeClass().addClass("mix 1");
+</script>
 
 </head>
 <body class="test">
@@ -30,24 +73,12 @@
 					<div class="row">
 						<!-- filter buttons -->
 						<div class="small-8 columns" id="controlsfilter">
-							<label>Filter:</label>
-							<button class="filter tiny round active" data-filter="all">All</button>
-							<button class="filter tiny round" data-filter=".newyork">New
-								York</button>
-							<button class="filter tiny round" data-filter=".california">California</button>
-							<button class="filter tiny round" data-filter=".texas">Texas</button>
+<!-- 							<label>Filter:</label> -->
+							<button class="filter tiny round active" data-filter="all" value="1">최신순</button>
+							<button class="filter tiny round" data-filter=".newyork" value="2">인기순</button>
 						</div>
-						<!-- layout buttons -->
-						<div class="small-4 columns" id="controlslayout">
-							<label>Layout:</label>
-							<div class="controlslayout">
-								<input type="radio" class="grid" checked="checked" name="layout"
-									id="grid"><label id="labelgrid" for="grid"><i
-									class="fa fa-th"></i></label></input><input type="radio" class="list"
-									name="layout" id="list"><label id="labellist"
-									for="list"><i class="fa fa-bars"></i></label></input>
-							</div>
-						</div>
+
+
 					</div>
 				</fieldset>
 			</div>
@@ -56,49 +87,34 @@
 			<!-- container for images -->
 			<div class="small-12 columns small-centered">
 				<div class="container" id="Container">
-					<div class="container-inner">
+					<div class="container-inner">						
 						<ul
-						class="line-new small-block-grid-3 medium-block-grid-4 large-block-grid-5">
-						<li class="mix newyork"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix newyork"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix california"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix newyork"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix texas"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix newyork"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix newyork"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix california"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="mix california"><img border="0"
-							src="http://placehold.it/1000x800" /></li>
-						<li class="gap" />
-						<li class="gap" />
-					</ul>
+							class="line-new small-block-grid-3 medium-block-grid-4 large-block-grid-5">
+							<li class="mix newyork"><img border="0" src="${pageContext.request.contextPath}/images/back.jpg" /></li>
+							<li class="mix newyork"><img border="0"
+								src="${pageContext.request.contextPath}/images/back02.jpg" /></li>
+							<li class="mix california"><img border="0"
+								src="${pageContext.request.contextPath}/images/biglogo.png" /></li>
+							<li class="mix newyork"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix texas"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix newyork"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix newyork"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix california"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix california"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="gap" />
+							<li class="gap" />
+						</ul>
 					</div>
 				</div>
 			</div>
 		</div>
 
 	</section>
-<script>
-$(function(){
-  $('#Container').mixItUp();
-});
-
-$('input').on('click',function() {
-    if ($(this).hasClass('grid')) {
-        $('#Container ul').removeClass('small-block-grid-1').addClass('small-block-grid-3 medium-block-grid-4 large-block-grid-5');
-    }
-    else if($(this).hasClass('list')) {
-        $('#Container ul').removeClass('small-block-grid-3 medium-block-grid-4 large-block-grid-5').addClass('small-block-grid-1');
-    }
-});
-</script>
 </body>
 </html>
