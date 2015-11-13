@@ -35,7 +35,7 @@
 					<ul class="nav nav-justified">
 						<li><a class="active" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
 						<li><a href="#">Search</a></li>
-						<li><a href="#">Store</a></li>
+						<li><a href="${pageContext.request.contextPath}/store/storeList.do">Store</a></li>
 						<li><a href="#">Login</a></li>
 						<li><a href="#">Join</a></li>
 					</ul>
