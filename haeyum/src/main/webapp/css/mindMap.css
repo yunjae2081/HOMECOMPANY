@@ -1,0 +1,80 @@
+@CHARSET "UTF-8";
+
+/* canvas View 영역*/
+.mView {
+	border: 1px solid black;
+	position: relative;
+	width: 1200px;
+	height: 600px;
+	margin: 0px auto;
+	overflow: hidden;
+}
+
+/* FIRST NODE 설정 */
+.fNode {
+	position: absolute;
+	top: 200px;
+	left: 200px;
+	width: 100px;
+	height: 100px;
+	border-radius: 50px;
+	text-align: center;
+	background-color: #5ba9b7;
+	z-index: 1;
+}
+
+/* SECOND NODE 설정 */
+.sNode {
+	position: absolute;
+	width: 80px;
+	height: 80px;
+	border-radius: 40px;
+	text-align: center;
+	background-color: #466973;
+	z-index: 1;
+}
+
+/* FIRST NODE HOVER */
+.fNode:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 2px #3664b8, 0 0 25px #3664b8, 0 0 5px darkblue;
+}
+
+/* FIRST NODE HOVER */
+.sNode:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 2px #3664b8, 0 0 25px #3664b8, 0 0 5px darkblue;
+}
+
+/* Menu 설정 */
+.menu {
+	position: absolute;
+	width: 40px;
+	height: 40px;
+	border-radius: 20px;
+	background-color: #625b79;
+	color: white;
+	text-align: center;
+	font-size: 30px;
+	z-index: 0;
+	transition: .5s;
+	padding-top: 5px;
+	}
+
+/* MENU HOVER 설정 */
+.menu:hover {
+	cursor: pointer;
+}
+
+/* MENU DIV 설정*/
+.menuDiv {
+	position:absolute;
+	width: 100px;
+	height: 25px;
+	padding-top: 5px;
+	text-align:center;
+	color: white;
+	background-color: #a39db5;
+	display: none;
+	z-index: 2;
+}
