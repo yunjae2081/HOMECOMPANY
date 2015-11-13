@@ -4,9 +4,20 @@
   "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 	<typeAliases>
-		<!-- <typeAlias alias="fileTestVO" type="kr.co.filetest.vo.FileTestVO"/> -->
+		
+		<typeAlias alias="membervo" type="kr.co.haeyum.member.vo.MemberVO"/>
+		<typeAlias alias="lecturevo" type="kr.co.haeyum.lecture.vo.LectureVO"/>
+
 	</typeAliases>
 </configuration>
+
+
+
+
+
+
+
+
 
 
 
