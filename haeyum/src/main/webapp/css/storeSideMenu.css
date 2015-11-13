@@ -95,6 +95,7 @@ html, body {
 }
 #menu-fixed .mLogo {
   width: 100%;
+  margin-top: 50px;
   height: 70px;
   position: relative;
   cursor: pointer;
@@ -168,6 +169,7 @@ html, body {
 #menu-fixed .menu li {
   padding: 15px;
   width: 40%;
+  padding-left: 7px;
   margin: auto;
   border-bottom: 1px solid rgba(255, 255, 255, 0.1);
   border-bottom-style: dotted;
