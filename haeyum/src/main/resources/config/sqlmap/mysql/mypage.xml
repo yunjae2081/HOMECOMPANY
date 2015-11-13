@@ -2,11 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 	
-<mapper namespace="kr.co.myapge">
+<mapper namespace="kr.co.mypage">
 
-<select id="selectMember" resultType="membervo">
-select id,name,password
-from haeyum.tbl_member
+<select id="selectlectureList" parameterType="int" resultType="lecturevo">
+
+select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'yy-mm-dd')as lRegDate
+from haeyum.tbl_lecture
+where L_NO=#{no}
 
 
 </select>
