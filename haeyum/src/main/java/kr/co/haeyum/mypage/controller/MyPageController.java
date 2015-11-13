@@ -37,7 +37,7 @@ public class MyPageController {
 		MemberVO member = (MemberVO) session.getAttribute("user");
 		System.out.println(member.getNo());
 		List<LectureVO> list = service.selectlectureList(member.getNo());
-		System.out.println(list.size());
+
 		ModelAndView mav = new ModelAndView("/mypage/lectureList");
 		mav.addObject("list", list);
 		return mav;
