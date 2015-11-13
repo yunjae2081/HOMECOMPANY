@@ -9,6 +9,7 @@
 	-moz-border-radius: 0;
 }
 
+/* 버튼 배경 */
 .filter, .controlslayout label {
 	background: #33cccc;
 }
