@@ -21,37 +21,39 @@
 <script>
   $(function() {
     $('#Container').mixItUp();
-    alert("5");
+//     alert("5");
   });
     
   $(document).on("click","button", function() {
 	  if (this.value == '1') {
-	        alert("3");
+// 	        alert("3");
 	    $.ajax({
 	      url: "${pageContext.request.contextPath}/list/bestVideo.json",
 	      type: "POST",
 	      datatype: "JSON",
 	      success: function (data, status) {
-	        alert(data);
+// 	        alert(data);
 	       	bestVideo();
 	      },
 	      fail:function(){
 	      }
 	    })
 	  } else if (this.value == '2') {
-	    alert("2");
+// 	    alert("2");
 	  }
 	})
-	
+	var ch = true;
 	function bestVideo(){
+//     alert("4");
+		if(ch){
+		    var html ="";
+		    html = "<li class='mix newyork'><img border='0' src='${pageContext.request.contextPath}/images/back.jpg' />";
+		    $("#test").html(html);
+		  ch = false;
+		}
     $('#Container').mixItUp();
-    alert("4");
-    var html ="";
-    
-    html += "<ul><li class='mix newyork'><img border='0' src='${pageContext.request.contextPath}/images/back.jpg' /></li></ul>";
-    
-    $(".container-inner").html(html);
   }
+
 // 	$("#1").removeClass().addClass("mix 1");
 </script>
 
@@ -93,22 +95,20 @@
 							<li class="mix newyork"><img border="0" src="${pageContext.request.contextPath}/images/back.jpg" /></li>
 							<li class="mix newyork"><img border="0"
 								src="${pageContext.request.contextPath}/images/back02.jpg" /></li>
-							<li class="mix california"><img border="0"
+							<li class="mix newyork"><img border="0"
 								src="${pageContext.request.contextPath}/images/biglogo.png" /></li>
 							<li class="mix newyork"><img border="0"
 								src="http://placehold.it/1000x800" /></li>
-							<li class="mix texas"><img border="0"
+							<li class="mix newyork"><img border="0"
+								src="http://placehold.it/1000x800" /></li>
+							<li class="mix newyork"><img border="0"
 								src="http://placehold.it/1000x800" /></li>
 							<li class="mix newyork"><img border="0"
 								src="http://placehold.it/1000x800" /></li>
 							<li class="mix newyork"><img border="0"
 								src="http://placehold.it/1000x800" /></li>
-							<li class="mix california"><img border="0"
-								src="http://placehold.it/1000x800" /></li>
-							<li class="mix california"><img border="0"
-								src="http://placehold.it/1000x800" /></li>
-							<li class="gap" />
-							<li class="gap" />
+							<li class="mix newyork"><img border="0"
+								src="http://placehold.it/1000x800" /></li>	
 						</ul>
 					</div>
 				</div>
