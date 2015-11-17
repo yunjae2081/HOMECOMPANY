@@ -2,6 +2,7 @@
 
 html,body {
   width:100%
+  
 }
 
 body {
@@ -9,7 +10,8 @@ body {
   color:#000;
   background-color:#fff;
   font-size:15px;
-  padding-bottom:50px
+  padding-bottom:50px;
+  z-index: 1;
 }
 
 h1 {

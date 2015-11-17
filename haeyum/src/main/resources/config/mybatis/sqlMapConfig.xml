@@ -7,6 +7,7 @@
 		
 		<typeAlias alias="membervo" type="kr.co.haeyum.member.vo.MemberVO"/>
 		<typeAlias alias="lecturevo" type="kr.co.haeyum.lecture.vo.LectureVO"/>
+		<typeAlias alias="mainVO" type="kr.co.haeyum.main.vo.MainVO"/>
 
 	</typeAliases>
 </configuration>

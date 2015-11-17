@@ -26,13 +26,12 @@ html, body {
 #menu-fixed {
   width: 100px;
   height: 100%;
-  background: #0F0F0F;
+  background: #F1F1F1;
   position: fixed;
   transition: all 0.3s;
   box-shadow: 10px 0px 10px rgba(0, 0, 0, 0.19), 8px 0px 10px rgba(0, 0, 0, 0.23);
   text-align: center;
   overflow: auto;
-  z-index: 999;
 }
 #menu-fixed .material-icons.back {
   display: none;
@@ -45,12 +44,12 @@ html, body {
   transition: color 0.3s;
 }
 #menu-fixed .material-icons.back:hover {
-  color: #009688;
+  color: #F1F1F1;
   transition: color 0.3s;
 }
 #menu-fixed.target {
   width: 220px;
-  background: #000;
+  background: #F1F1F1;
   transition: all 0.3s ease-out;
 }
 #menu-fixed.target > .notes {
@@ -60,11 +59,20 @@ html, body {
 }
 #menu-fixed.target > a .material-icons.back {
   display: block;
+  width:100%;
+  margin-top:70px;
+  height:70px;
+  position:relative;
+  cursor:pointer;
 }
+#menu-fixed.target > a .material-icons.back > div {
+	margin:0;
+} 
 #menu-fixed.target > a > .mLogo {
   width: 60%;
   height: 47px;
   margin: auto;
+  margin-top: 95px
 }
 #menu-fixed.target > a > .mLogo > span {
   display: none;
@@ -95,7 +103,7 @@ html, body {
 }
 #menu-fixed .mLogo {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 70px;
   height: 70px;
   position: relative;
   cursor: pointer;
@@ -118,17 +126,17 @@ html, body {
   top: 25px;
   transform: rotateZ(45deg);
   -webkit-transform: rotateZ(45deg);
-  border: 8px solid white;
+  border: 8px solid #271559;
   transition: all 0.2s;
 }
 #menu-fixed .mLogo:hover ~ p {
-  color: white;
+  color: #271559;
   transition: all 0.3s;
 }
 #menu-fixed .mLogo:hover > span {
   width: 0;
   height: 0;
-  border-left: 15px solid white;
+  border-left: 15px solid #271559;
   border-right: 15px solid transparent;
   border-top: 15px solid transparent;
   border-bottom: 15px solid transparent;
@@ -152,13 +160,14 @@ html, body {
 #menu-fixed .pmenu {
   margin: 0;
   text-align: center;
-  color: rgba(255, 255, 255, 0.4);
+  color: #271559;
   font-size: 14px;
   font-weight: 300;
+  margin-top: 20px
 }
 #menu-fixed hr {
   width: 75%;
-  border: 1px solid rgba(255, 255, 255, 0.2);
+  border: 1px solid #271559;
 }
 #menu-fixed .menu {
   list-style: none;
@@ -167,7 +176,7 @@ html, body {
   width: 100%;
 }
 #menu-fixed .menu li {
-  padding: 15px;
+  padding: 10px;
   width: 40%;
   padding-left: 7px;
   margin: auto;
@@ -182,7 +191,7 @@ html, body {
   border: none;
 }
 #menu-fixed .menu li:hover {
-  background: #000;
+  background: rgba(38, 166, 154, 0.1);
   transition: all 0.3s;
 }
 #menu-fixed .menu li:hover > .material-icons {

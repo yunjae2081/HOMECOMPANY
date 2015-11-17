@@ -10,8 +10,7 @@
 <body>
 	<%@include file="../include/storeSideMenu.jsp" %>
 	<%@include file="../include/topMenu.jsp" %>
-	
-	
+	<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
 	
 </body>
 </html>
