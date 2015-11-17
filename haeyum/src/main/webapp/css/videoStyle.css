@@ -88,7 +88,7 @@ div#carousel ~ span:hover {
 #container {
   height: 100%;
   width: 100%;
-  background: #444;
+  background: #F6F6F6;
 }
 
 .item {
@@ -106,7 +106,7 @@ div#carousel ~ span:hover {
   top: 50px;
   display: inline-block;
   font-size: 5em;
-  background: rgba(0, 0, 0, 0.5);
+  background: #F6F6F6;
 }
 #pager span {
   color: #95A5A6;

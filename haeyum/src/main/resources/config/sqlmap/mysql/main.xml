@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.main">
+	<select id="selectMainCurriCount" parameterType="int" resultType="mainVO">
+		select count(l_no) as cntCurri
+		from tbl_lecture
+		where l_category=#{i}
+	</select>
+	
+	<select id="selectMainVideoCount" parameterType="int" resultType="mainVO">
+		select count(lec.l_no) as cntVideo
+		from tbl_lecture as lec, tbl_s_node as s
+		where lec.l_no = s.l_no and lec.l_category=#{i}
+	</select>
+</mapper>

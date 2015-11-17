@@ -13,4 +13,3 @@
 <script src="${pageContext.request.contextPath}/js/topMenu.js"></script>
 <script src="${pageContext.request.contextPath}/js/videoStyle.js"></script>
 
-<%@include file="../include/topMenu.jsp" %>
