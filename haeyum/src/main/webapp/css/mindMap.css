@@ -34,14 +34,34 @@
 	z-index: 1;
 }
 
+/* THIRD NODE 설정 */
+.tNode {
+	position: absolute;
+	width: 60px;
+	height: 60px;
+	border-radius: 30px;
+	text-align: center;
+	color: white;
+	background-color: #466973;
+	padding-top:20px;
+	vertical-align:middle;
+	z-index: 1;
+}
+
 /* FIRST NODE HOVER */
 .fNode:hover {
 	cursor: pointer;
 	box-shadow: 1px 1px 2px #3664b8, 0 0 25px #3664b8, 0 0 5px darkblue;
 }
 
-/* FIRST NODE HOVER */
+/* SECOND NODE HOVER */
 .sNode:hover {
+	cursor: pointer;
+	box-shadow: 1px 1px 2px #3664b8, 0 0 25px #3664b8, 0 0 5px darkblue;
+}
+
+/* THIRD NODE HOVER */
+.tNode:hover {
 	cursor: pointer;
 	box-shadow: 1px 1px 2px #3664b8, 0 0 25px #3664b8, 0 0 5px darkblue;
 }
@@ -78,3 +98,14 @@
 	display: none;
 	z-index: 2;
 }
+
+
+
+
+
+
+
+
+
+
+
