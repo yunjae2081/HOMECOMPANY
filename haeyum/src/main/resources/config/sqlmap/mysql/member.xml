@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.member">
+
+<select id="selectlogin" parameterType="membervo" resultType="int">
+
+select count(*)
+from haeyum.tbl_member
+where id = #{id}
+and password =#{password}
+
+</select>
+
+
+<insert id="insertJoin" parameterType="membervo">
+insert into haeyum.tbl_member(NAME,ID,PASSWORD)
+		values(#{name},#{id},#{password})
+
+</insert>
+
+</mapper>
