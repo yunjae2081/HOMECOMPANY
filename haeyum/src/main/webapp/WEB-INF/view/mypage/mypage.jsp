@@ -7,105 +7,136 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mypageMain.css" />
 <title>Insert title here</title>
+
 <%@include file="../include/common_top.jsp"%>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script
-	src="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.min.js"></script>
+
 <script>
+
+	function lectureList() {
+		location.href = "lectureList.do";
+	}
+	function storeList() {
+		location.href = "storeList.do";
+	}
+
+	jQuery(function() {
+
+		$(window).load(function() {
+
+			$('.wrapper').removeClass('preload');
+
+		});
+
+	});
+
 	$(document).ready(function(){
-		$("#lectureList").click(function(){
-			location.href="lectureList.do";
+		
+		var mdfFlag = false;
+		
+		$("#mdfBtn").click(function(){
+			if(!mdfFlag){
+
+				$("#modifyDiv").css("display", "block");
+				mdfFlag = true;
+			} else {
+				$("#modifyDiv").css("display", "none");
+				mdfFlag = false;	
+			}
+		})
+		$("#chk").click(function(){
+			if($("#mPass").val() == $("#mPassChk").val()){
+			$.ajax({
+				url:"${pageContext.request.contextPath}/mypage/modify.json",
+				type:"POST",
+				datatype:"json",
+				data: {pPass: $("#pPass").val(),mPass:$("#mPass").val()}
+					
+			}).done(function(response){
+					alert("등록");
+					})
+			}else{
+				alert("안돼");
+			}
 			
 		})
+		
+			
 	})
+
+	
+
+	
 </script>
-<link rel="stylesheet"
-	href="https://storage.googleapis.com/code.getmdl.io/1.0.2/material.blue-orange.min.css">
-<!-- Material Design icon font -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
 </head>
 <body>
 	<%@include file="../include/topMenu.jsp"%>
 
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+
 	<section class="stretch">
 
-	<div class="mainDiv" style="margin: 0 auto;">
-		<div class="mdl-card mdl-shadow--2dp demo-card-square">
-			<div class="mdl-card__title mdl-card__accent mdl-card--expand">
-				<div style="margin: 0 auto;text-align: center;">
-					${user.id}<br /> <br /> 
-					${user.name}<br /> <br />
+	
+	
+	<div class="wrapper preload" style="position: absolute;">
+		<center>
+			<h2 style="font-size: 50px; padding-bottom: 30px;">MY PAGE</h2>
+		</center>
 
-					<form name="mdfForm" action="" method="POST" onsubmit="">
-					<div>
-					<ul>
-						<li class="block">
-						<input type="checkbox" name="item"id="item1" />
-						<label for="item1"><i aria-hidden="true"></i>비밀번호 변경</label>
-							<ul class="options">
-								<li><i aria-hidden="true"></i><input type="password" size="20" placeholder="현재 비밀번호"></li>
-								<li><i aria-hidden="true"></i><input type="password" size="20"placeholder="새 비밀번호"></li>
-								<li><i aria-hidden="true"></i><input type="password" size="20"placeholder="새 비밀번호 재입력"></li>
-							
-							<button class="btn btn-default" type="submit">확인</button>
-							<button class="btn btn-default" type="reset" >취소</button>
-							</ul></li>
-					</ul>
-					</div>
-		
-					</form>					
+		<section class="grid-unit top-left">
+			<div class="swing-panel">
+				<span class="desc">${user.id}<br /><br/>
+			<button id="mdfBtn" type="button" class="btn btn-link btn-lg btn-step2">비밀번호 변경</button></span>
+			<div id="modifyDiv" style="display: none;">
+							<div class='modify col-xs-6 form-group' style='width:320px;margin-top:10px;'>
+							<label for='pPass'>현재 비밀번호</label>
+							<input id='pPass' type='password' class='form-control' size='20'/>
+							<label for='mPass'>새로운 비밀번호</label>
+							<input id='mPass' type='password' class='form-control' size='20' />
+							<label for='mPassChk'>새로운 비밀번호 확인</label>
+							<input id='mPassChk' type='password' class='form-control' size='20'/>
+							<button type='button' id='chk' value='확인' class='btn btn-default btn-sm'>확인</button>
+							<button type='reset' value='취소' class='btn btn-default btn-sm'>취소</button>
+							</div>
+			
+			</div>
+			
+			</div>
+			<div class="sphere"></div>
+			<span class="entypo-vcard icon fa fa-user"></span>
+			<span class="label">아이디<br/> <br/>${user.id}<br /></span>
+		</section>
 
-				</div>
-			</div>
-		</div>
 
-		<!-- Square card -->
-		<div class="mdl-card mdl-shadow--2dp demo-card-square">
-			<div class="mdl-card__title mdl-card--expand">
-				<h2 class="mdl-card__title-text">강의 등록&시청 list</h2>
-			</div>
-			<div class="mdl-card__supporting-text">두번째</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<a id="lectureList" class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-					click </a>
-			</div>
+		<section class="grid-unit top-right" onclick="lectureList();">
+		<div class="swing-panel">
+			<span class="desc">강좌 등록/시청 list</span>
 		</div>
-		<!-- Square card -->
-		<div class="mdl-card mdl-shadow--2dp demo-card-square">
-			<div class="mdl-card__title mdl-card--expand">
-				<h2 class="mdl-card__title-text">물품 구매&판매 list</h2>
-			</div>
-			<div class="mdl-card__supporting-text">세번째</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<a
-					class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-					click </a>
-			</div>
+		<div class="sphere"></div>
+		<span class="entypo-tools icon fa  fa-desktop"></span> <span
+			class="label">강좌 등록/시청 list</span> \ </section>
+
+
+
+		<section class="grid-unit bottom-left" onclick="storeList();">
+		<div class="swing-panel">
+			<span class="desc">물품 구매/판매 List</span>
 		</div>
-		<!-- Square card -->
-		<div class="mdl-card mdl-shadow--2dp demo-card-square">
-			<div class="mdl-card__title mdl-card--expand">
-				<h2 class="mdl-card__title-text">즐겨찾기</h2>
-			</div>
-			<div class="mdl-card__supporting-text">네번째</div>
-			<div class="mdl-card__actions mdl-card--border">
-				<a
-					class="mdl-button mdl-button--accent mdl-js-button mdl-js-ripple-effect">
-					click </a>
-			</div>
+		<div class="sphere"></div>
+		<span class="entypo-tools icon fa fa-shopping-cart"></span> <span
+			class="label">물품 구매/판매 List</span> </section>
+
+
+		<section class="grid-unit bottom-right">
+		<div class="swing-panel">
+			<span class="desc">즐겨찾기</span>
 		</div>
+		<div class="sphere"></div>
+		<span class="entypo-tools icon fa fa-star"></span> <span class="label">즐겨찾기</span>
+		</section>
 	</div>
+	
 
-
-	</section>
-
+	<!-- end wrapper --> </section>
 
 
 
