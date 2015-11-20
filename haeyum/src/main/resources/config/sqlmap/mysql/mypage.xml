@@ -4,15 +4,74 @@
 	
 <mapper namespace="kr.co.mypage">
 
-<select id="selectlectureList" parameterType="int" resultType="lecturevo">
 
-select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i:%s')as lRegDate
-from haeyum.tbl_lecture
-where M_NO=#{no}
 
+<!-- 비밀번호 변경 -->
+<select id="selectPass" parameterType="string" resultType="string">
+select PASSWORD
+from  haeyum.tbl_member
+where id=#{id}
 
 </select>
 
+<!-- 비밀번호 변경 -->
+<update id="updatePass" parameterType="membervo">
+		update haeyum.tbl_member
+		set password=#{password}
+		where ID=#{id}
+
+</update>
+
+
+<!-- lecture 게시물 수 -->
+<select id="selectlectureCount" resultType="int" parameterType="string">
+select count(*)
+from haeyum.tbl_lecture
+where L_ID=#{id}
+</select>
+
+<!-- lecture 강좌 list -->
+<select id="selectlectureList" parameterType="searchvo" resultType="lecturevo">
+
+select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i')as lRegDate
+from haeyum.tbl_lecture
+where L_ID=#{id}
+order by L_NO desc
+limit #{start},#{end}
+
+</select>
+
+
+<!-- studied 강좌 List -->
+<select id="selectStudiedList" parameterType="String" resultType="watchvo">
+select W_NO wNo,V_NO vNo,W_ID wId,DATE_FORMAT(W_START_DATE,'%Y-%m-%d %H:%i')as wStartDate
+from haeyum.tbl_watch_list
+where W_ID=#{id}
+order by W_NO desc
+limit #{start},#{end}
+
+</select>
+
+<!-- product 게시물 수 -->
+<select id="selectProductCount" resultType="int" parameterType="string">
+select count(*)
+from haeyum.tbl_product
+where P_ID=#{id}
+</select>
+
+
+<!-- product 물품 list -->
+<select id="selectProductList" parameterType="searchvo" resultType="productvo">
+
+select p.L_NO lNo,p.V_NO vNo,p.P_ID pId,p.P_NAME pName,p.P_PRICE pPrice,p.P_COUNT pCount,p.P_CONTENT pContent,
+s.SELL_COUNT sellCount,s.SELL_NO sellNo,s.SELL_ID sellId,
+DATE_FORMAT(P_REG_DATE,'%Y-%m-%d %H:%i')as pRegDate
+from haeyum.tbl_product p,haeyum.tbl_sell s
+where p.P_NO =s.P_NO 
+and s.SELL_ID=#{id}
+order by sellNo desc
+limit #{start},#{end}
+</select>
 
 
 </mapper>
