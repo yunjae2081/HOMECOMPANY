@@ -30,21 +30,85 @@
 	<br/>
 	<br/>
 	<div class = "vView">
-		<canvas class="vCanvas" id="vCanvas" width = "730" height = "445">
-		</canvas>
-		<div class="vDiv">
-			<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445" >
-				<source src="${pageContext.request.contextPath}/images/standing.mp4" />
-			</video>
-		</div>
-		<canvas class="pCanvas" id="pCanvas" width="700" height="3">
-		</canvas>
-		<div class="videobottom">
-			<div class="progress">
+		<div class="file-upload">
+			<div class="file-select">
+				<div class="file-select-button" id="fileName">Choose File</div>
+				<div class="file-select-name" id="noFile">No file chosen...</div>
+				<input id="chooseFile"type="file" name="chooseFile" accept="vdeio/*">
 			</div>
 		</div>
-		<div>
-			<input id="progress" type="range" min="0" max="100" step="1" style="width: 740px;" />
+		
+		
+		<div class="vTool" id="vTool">
+	
+			<div class="vDiv">
+				<svg id="vSVG" class="vCanvas" width = "730" height = "445" xmlns="http://www.w3.org/2000/svg">
+				</svg>
+<!-- 				<canvas class="vCanvas" id="vCanvas" width = "730" height = "445"></canvas> -->
+				
+				<div class="lessonArea" id="lessonArea">
+				</div>
+				
+				<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445" >
+					<source src="${pageContext.request.contextPath}/images/standing.mp4" />
+				</video>
+				<div class="control-bar">
+					<div class="control-bar-in">
+						<canvas class="pCanvas" id="pCanvas" width="700" height="3"></canvas>
+					</div>
+					
+					<div class="videobottom">
+						
+						<div class="controls">
+						
+							<div class="control-play-button" id="control-play-button">
+								<div class="play-button" id="play-button">
+									<img alt="" src="${pageContext.request.contextPath}/images/pause.png" style="width: 20px; height:20px; ">
+								</div>
+							</div>
+							
+							<div class="control-vol-button">
+								<div class="vol-button">
+									<img src="${pageContext.request.contextPath}/images/speaker100.png" style="width: 20px; height:20px;" />
+								</div>
+							</div>
+							
+							<div class="control-playTime-div">
+								<div class="playTime-div">
+									<span id="playTime-span" style="color: white;"></span>
+								</div>
+							</div>
+							
+							<div>
+								<div class="control-full-button">
+									<div class="full-button">
+										<img src="${pageContext.request.contextPath}/images/switch27.png" style="width: 25px; height:20px;" />
+									</div>
+								</div>
+							</div>
+							
+						</div>
+					</div>
+				</div>
+			</div>
+			
+			<div class="lessonDiv">
+				<article>
+					<ul id="l_ul">
+						<li id="li_1">
+    							<div id="round-add-button" class="round-add-button">+</div>
+						</li>
+						
+					</ul>
+				</article>
+			</div>
+		
+		</div>
+
+		<div class="v-buttons">
+  		<div id="v-comment" class="v-btn v-comment">One Point Lesson</div>
+  		<div id="v-view" class="v-btn v-preview">Preview</div>
+  		<div id="v-regist" class="v-btn v-regist">Registration</div>
 		</div>
 	</div>
 	</section>
