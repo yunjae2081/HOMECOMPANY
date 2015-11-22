@@ -630,6 +630,11 @@ $(document).on("click", "div[id^='remove']", function () {
     }
   }
   
+  // FIRST NODE 마지막 노드의 ADD 메뉴 추가
+  if($("#addFNode" + fNode).attr("id") == null) {
+    $(".mView").append("<div class = 'menu' id = 'addFNode" + fNode + "' >+</div>");
+  }
+  
   drawLine();
 })
 
@@ -845,7 +850,6 @@ function fNodeWriteForm(id) {
    var html = "";
    $("#fWrite" + formNum).append("<h3>" + $("#fTitle" + formNum).val() + "</h3>");
    $("#fTitle" + formNum).removeAttr("type").attr("type", "hidden");
-   alert($("#fTitle" + formNum).val());
    html += "<input type = 'hidden' id = 'fContent" + formNum +"' value = '" + $("#fText" + formNum).val() + "' />";
    html += $("#fText" + formNum).val().replace(/\n/gi, "<br/>");
    
@@ -1045,6 +1049,7 @@ function tNodeSort() {
         $("#tAsmtContent" + tNodeNumTemp).attr("id", "tAsmtContent" + tNum);
         $("#tAsmtFile" + tNodeNumTemp).attr("id", "tAsmtFile" + tNum);
       }
+
       
       $("#" + tNodeIdTemp).removeAttr("id").attr("id", "tNode" + tNum);
       tNodeArrTemp[j] = "tNode" + tNum;
@@ -1073,7 +1078,7 @@ function upload() {
       var sNodeNum = Number(sNodeArrTemp[j].replace("sNode", ""));
       var fName = "fNode" + (i + 1);
       html += "<input type='hidden' name = 'sPname" + sNodeNum + "' value = '" + fName + "' />";
-      html += "<input type='hidden' name = 'sName" + sNodeNum + "' value ='sNode" + sNodeNum + "' />";
+      html += "<input type='hidden' name  = 'sName" + sNodeNum + "' value ='sNode" + sNodeNum + "' />";
       html += "<input type='hidden' name = 'sX" + sNodeNum + "' value ='" + $("#sNode" + sNodeNum).position().left + "' />";
       html += "<input type='hidden' name = 'sY" + sNodeNum + "' value ='" + $("#sNode" + sNodeNum).position().top + "' />";
       html += "<input type='hidden' name = 'sTitle" + sNodeNum + "' value ='" + $("#sTitle" + sNodeNum).val() + "' />";
@@ -1102,6 +1107,11 @@ function upload() {
     }
   }
   
+  // INDEX DATA
+  html += "<input type='hidden' name = 'fNodeIndex' value = "+ fNode +" />";
+  html += "<input type='hidden' name = 'sNodeIndex' value = "+ sNode +" />";
+  html += "<input type='hidden' name = 'tNodeIndex' value = "+ tNode +" />";
+  
   $("#dataDiv").html(html);
-  return false;
+  return true;
 }
