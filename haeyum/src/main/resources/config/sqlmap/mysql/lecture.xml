@@ -23,7 +23,7 @@
 							)
 </insert>
 
-<insert id="insertfNode" parameterType="lecturevo">
+<insert id="insertfNode" parameterType="fnodevo">
 insert into tbl_f_node(
 						l_no,
 						f_x,
@@ -42,7 +42,7 @@ insert into tbl_f_node(
 						)
 </insert>
 
-<insert id="insertsNode">
+<insert id="insertsNode" parameterType="snodevo" >
 insert into tbl_s_node(
 						f_no,
 						l_no,
@@ -62,9 +62,57 @@ insert into tbl_s_node(
 						#{sName}
 					)
 </insert>
-<insert id="inserttNode">
-insert into tbl_tNode(
+<insert id="inserttNode" parameterType="tnodevo">
+insert into tbl_t_Node(
+						s_no,
+						l_no,
+						t_x,
+						t_y,
+						t_name
+						)
+		values (
+						(select s_no from tbl_s_node where l_no = #{lNo} and s_name = #{sName}),
+						#{lNo},
+						#{tX},
+						#{tY},
+						#{tName}
+						)
 						
-)
+</insert>
+
+<insert id="insertLink" parameterType="tlinkvo">
+insert into tbl_link(
+						t_no,
+						l_no,
+						l_url,
+						link_title,
+						link_content
+						)
+		values (
+						(select t_no from tbl_t_node where l_no = #{lNo} and t_name = #{tName}),
+						#{lNo},
+						#{lUrl},
+						#{linkTitle},
+						#{linkContent}
+						)
+</insert>
+
+<insert id="insertFile" parameterType="tfilevo">
+insert into tbl_assignment(
+						t_no,
+						l_no,
+						a_title,
+						a_content,
+						org_file_name,
+						real_file_name
+						)
+		values (
+						(select t_no from tbl_t_node where l_no = #{lNo} and t_name = #{tName}),
+						#{lNo},
+						#{aTitle},
+						#{aContent},
+						#{orgFileName},
+						#{realFileName}
+						)
 </insert>
 </mapper>
