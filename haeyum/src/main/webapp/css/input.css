@@ -83,7 +83,7 @@ form {
   margin: 0 auto;
   padding: 0;
   width: 1200px;
-  text-align: center;
+/*   text-align: center; */
 }
 form fieldset {
   border: 0;
