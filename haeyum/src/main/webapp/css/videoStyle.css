@@ -25,6 +25,9 @@ figure#spinner video {
 	left: 30%;
 	transform-origin: 50% 50% -600px;
 	outline: 1px solid transparent;
+	-webkit-box-shadow: 0 15px 10px #777;
+    -moz-box-shadow: 0 15px 10px #777;
+	box-shadow: 0 10px 5px #777;
 }
 
 figure#spinner video:nth-child(1) {
