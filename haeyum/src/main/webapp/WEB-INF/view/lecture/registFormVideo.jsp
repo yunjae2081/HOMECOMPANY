@@ -50,7 +50,7 @@
 				</div>
 				
 				<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445" >
-					<source src="${pageContext.request.contextPath}/images/standing.mp4" />
+<%-- 					<source src="${pageContext.request.contextPath}/images/standing.mp4" /> --%>
 				</video>
 				<div class="control-bar">
 					<div class="control-bar-in">
@@ -103,14 +103,28 @@
 				</article>
 			</div>
 		
+			<div class="itemsDiv">
+				<article>
+					<ul id="i_ul">
+						<li id="i_li_1">
+    							<div id="i_round-add-button" class="round-add-button">+</div>
+						</li>
+						
+					</ul>
+				</article>
+			</div>
+			
 		</div>
 
 		<div class="v-buttons">
   		<div id="v-comment" class="v-btn v-comment">One Point Lesson</div>
+  		<div id="v-items" class="v-btn v-items">Add Items</div>
   		<div id="v-view" class="v-btn v-preview">Preview</div>
   		<div id="v-regist" class="v-btn v-regist">Registration</div>
 		</div>
 	</div>
+	
+	
 	</section>
 </body>
 </html>
