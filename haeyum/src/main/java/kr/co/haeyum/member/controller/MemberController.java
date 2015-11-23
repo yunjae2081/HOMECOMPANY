@@ -17,42 +17,39 @@ public class MemberController {
 
 	@Autowired
 	private MemberService service;
-	
+
 	@RequestMapping("/login.json")
 	@ResponseBody
-	public boolean login(MemberVO member,HttpServletRequest req)throws Exception{
+	public boolean login(MemberVO member, HttpServletRequest req) throws Exception {
 		System.out.println(member.getId());
 		System.out.println(member.getPassword());
-		
+
 		int cnt = service.selectlogin(member);
-		if(cnt==1){
-		HttpSession session = req.getSession();
+		if (cnt == 1) {
+			HttpSession session = req.getSession();
 			session.setAttribute("user", member);
 			System.out.println(cnt);
 			return true;
-		}else{
+		} else {
 			return false;
 		}
 	}
-	
+
 	@RequestMapping("/logout.json")
 	@ResponseBody
-	public void logout(HttpServletRequest req)throws Exception{
-		
-		HttpSession session  =req.getSession();
+	public void logout(HttpServletRequest req) throws Exception {
+		System.out.println("뿅");
+		HttpSession session = req.getSession();
 		session.removeAttribute("user");
+		System.out.println("세션종료");
 	}
-	
+
 	@RequestMapping("/join.json")
 	@ResponseBody
-	public boolean insertJoin(MemberVO member)throws Exception{
+	public void insertJoin(MemberVO member) throws Exception {
 		service.insertJoin(member);
-		return true;
-		
+		System.out.println("가입!");
+
 	}
-	
-	
-	
-	
-	
+
 }
