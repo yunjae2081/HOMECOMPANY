@@ -2,20 +2,45 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="videolistvo.dao.VideoListDAO">	
-	<select id="selectNo" resultType="videolistvo">
-		<![CDATA[ 
-		select no as vNo 
-		  from tbl_test3
-		 limit 0, 16;		
-		]]> 
+	
+	<select id="selectBestExtend" resultType="videobestlistvo">
+		<![CDATA[
+		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
+      from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
+  																											from tbl_video v, tbl_lecture l
+												   														 where v.L_NO = l.L_NO
+												   														 group by v.L_NO
+												  														having min(S_NO)
+											       													 order by hits desc, no) as t
+			limit #{no}, 8;											       												
+		]]>
 	</select>
 	
-	<select id="selectExtend" resultType="videolistvo">
-		<![CDATA[ 
-		select no as vNo 
-		  from tbl_test3
-		 limit #{no}, 8;		
-		]]> 
+	<select id="selectBestList" resultType="videobestlistvo">
+		<![CDATA[
+		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
+      from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
+  																											from tbl_video v, tbl_lecture l
+												   														 where v.L_NO = l.L_NO
+												   														 group by v.L_NO
+												  														having min(S_NO)
+											       													 order by hits desc, no) as t
+			limit 0, 16;											       												
+		]]>
+	</select>
+	
+	<select id="selectNormalList" resultType="videobestlistvo" parameterType="String">
+		<![CDATA[
+		select ta.listNo as listNo, ta.bestNo as bestNo, ta.fileName as fileName, ta.content as content, ta.title as title         
+			from (select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
+     				  from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
+  																															from tbl_video v, tbl_lecture l
+												   														 				 where v.L_NO = l.L_NO
+												   														 				 group by v.L_NO
+												  																		having min(S_NO)
+											       													 				 order by hits desc, no) as t) ta
+     where ta.title like CONCAT('%', #{title}, '%')										       												
+		]]>
 	</select>
 
 </mapper>
