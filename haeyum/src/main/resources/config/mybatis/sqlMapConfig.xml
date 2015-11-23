@@ -8,8 +8,7 @@
 		<typeAlias alias="membervo" type="kr.co.haeyum.member.vo.MemberVO"/>
 		<typeAlias alias="lecturevo" type="kr.co.haeyum.lecture.vo.LectureVO"/>
 		<typeAlias alias="mainVO" type="kr.co.haeyum.main.vo.MainVO"/>
-		<typeAlias alias="videolistvo" type="kr.co.haeyum.search.vo.VideoListVO" />
-
+		<typeAlias alias="videobestlistvo" type="kr.co.haeyum.search.vo.VideoBestListVO" />
 	</typeAliases>
 </configuration>
 
