@@ -183,12 +183,19 @@ section.stretch p {
   margin-top:320px
 }
 
+section.box-slide p {
+   position:static;
+   margin:0;
+   text-align:left;
+}
+
 section.stretch p.bottom {
   top:100%
 }
 
 nav.small {
-  height:51px
+  height:50px;
+  background-color: #F6F6F6
 }
 
 nav.small .nav-top {
@@ -196,7 +203,8 @@ nav.small .nav-top {
 }
 
 nav.small .main-nav {
-  box-shadow:none
+  box-shadow:none;
+  background-color: white;
 }
 
 nav.small ul.nav {
