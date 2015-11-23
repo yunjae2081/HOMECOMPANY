@@ -78,6 +78,17 @@ $(document).ready(function(){
  			location.href="${pageContext.request.contextPath}/index.jsp";
 	})
 	}
+	
+function nullCheck(){
+    if($("#title").val()  == ""){
+      console.log("false");
+      return false;
+    }
+    else{
+      console.log("true");
+      return true;
+    }
+  }
 
 
 
@@ -92,7 +103,7 @@ $(document).ready(function(){
 						<a href="${pageContext.request.contextPath}/index.jsp"><img src="${pageContext.request.contextPath}/images/logo.png" style="width: 155px; height: 65px"/></a>
 					</div>
 					<div class="search hidden-xs">
-						<form action="${pageContext.request.contextPath}/search/video.do" method="GET">
+						<form action="${pageContext.request.contextPath}/search/video.do" method="GET" onsubmit="return nullCheck()" >
 		                     <input name="title" placeholder="Search" type="text">
 							<button class="search-submit" type="submit">
 								<i class="fa fa-search"></i>
