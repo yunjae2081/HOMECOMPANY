@@ -7,6 +7,24 @@ public class TnodeVO {
 	private int lNo;
 	private int tX;
 	private int tY;
+	private String sName;
+	private String tName;
+
+	public String gettName() {
+		return tName;
+	}
+
+	public void settName(String tName) {
+		this.tName = tName;
+	}
+
+	public String getsName() {
+		return sName;
+	}
+
+	public void setsName(String sName) {
+		this.sName = sName;
+	}
 
 	public int gettNo() {
 		return tNo;

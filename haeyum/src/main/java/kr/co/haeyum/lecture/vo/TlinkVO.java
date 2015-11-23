@@ -8,6 +8,15 @@ public class TlinkVO {
 	private String lUrl;
 	private String linkTitle;
 	private String linkContent;
+	private String tName;
+
+	public String gettName() {
+		return tName;
+	}
+
+	public void settName(String tName) {
+		this.tName = tName;
+	}
 
 	public int getLkNo() {
 		return lkNo;

@@ -7,6 +7,8 @@ import kr.co.haeyum.lecture.dao.LectureDAO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.lecture.vo.SnodeVO;
+import kr.co.haeyum.lecture.vo.TfileVO;
+import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 
 @Service
@@ -33,6 +35,16 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public void inserttNode(TnodeVO tVO) throws Exception {
 		dao.inserttNode(tVO);
+	}
+
+	@Override
+	public void insertLink(TlinkVO linkVO) throws Exception {
+		dao.insertLink(linkVO);
+	}
+
+	@Override
+	public void insertFile(TfileVO fileVO) throws Exception {
+		dao.insertFile(fileVO);
 	}
 
 }
