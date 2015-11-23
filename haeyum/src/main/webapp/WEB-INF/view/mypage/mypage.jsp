@@ -7,7 +7,22 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mypageMain.css" />
 <title>Insert title here</title>
+<style>
+.hit-the-floor {
+color: #fff;
+font-size: 80px;
+font-weight: bold;
+font-family: Helvetica;
+text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px 0 #aaa, 0 6px 1px rgba(0,0,0,.1), 0 0 5px rgba(0,0,0,.1), 0 1px 3px rgba(0,0,0,.3), 0 3px 5px rgba(0,0,0,.2), 0 5px 10px rgba(0,0,0,.25), 0 10px 10px rgba(0,0,0,.2), 0 20px 20px rgba(0,0,0,.15);
+}
 
+.hit-the-floor {
+  text-align: center;
+}
+
+
+
+</style>
 <%@include file="../include/common_top.jsp"%>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 
@@ -35,6 +50,7 @@
 		var mdfFlag = false;
 		
 		$("#mdfBtn").click(function(){
+			$("#modifyDiv").toggle("slow");
 			if(!mdfFlag){
 
 				$("#modifyDiv").css("display", "block");
@@ -79,21 +95,22 @@
 	
 	<div class="wrapper preload" style="position: absolute;">
 		<center>
-			<h2 style="font-size: 50px; padding-bottom: 30px;">MY PAGE</h2>
+			<div class="hit-the-floor" style="padding-bottom: 30px;">
+			[ 'ㅅ']치킨 맛있따
+			</div>
+
 		</center>
 
 		<section class="grid-unit top-left">
 			<div class="swing-panel">
-				<span class="desc">${user.id}<br /><br/>
-			<button id="mdfBtn" type="button" class="btn btn-link btn-lg btn-step2">비밀번호 변경</button></span>
+				<span class="desc">&nbsp;&nbsp;${user.id}&nbsp;&nbsp;
+			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2"></button></span>
+			<br/>
 			<div id="modifyDiv" style="display: none;">
-							<div class='modify col-xs-6 form-group' style='width:320px;margin-top:10px;'>
-							<label for='pPass'>현재 비밀번호</label>
-							<input id='pPass' type='password' class='form-control' size='20'/>
-							<label for='mPass'>새로운 비밀번호</label>
-							<input id='mPass' type='password' class='form-control' size='20' />
-							<label for='mPassChk'>새로운 비밀번호 확인</label>
-							<input id='mPassChk' type='password' class='form-control' size='20'/>
+							<div class='modify col-xs-6 form-group' style='margin-left:20px; width:400px;margin-top:10px;'>
+							<input id='pPass' type='password' class='form-control' size='20' placeholder="현재 비밀번호" style="margin-bottom: 10px; height: 40px;"/>
+							<input id='mPass' type='password' class='form-control' size='20' placeholder="새로운 비밀번호"style="margin-bottom: 10px;height: 40px;"/>
+							<input id='mPassChk' type='password' class='form-control' size='20'placeholder="새로운 비밀번호 확인"style="margin-bottom: 10px;height: 40px;"/>
 							<button type='button' id='chk' value='확인' class='btn btn-default btn-sm'>확인</button>
 							<button type='reset' value='취소' class='btn btn-default btn-sm'>취소</button>
 							</div>
@@ -103,7 +120,7 @@
 			</div>
 			<div class="sphere"></div>
 			<span class="entypo-vcard icon fa fa-user"></span>
-			<span class="label">아이디<br/> <br/>${user.id}<br /></span>
+			<span class="label">아이디<br/><br/>${user.id}<br /></span>
 		</section>
 
 

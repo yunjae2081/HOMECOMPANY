@@ -40,9 +40,11 @@
     
      <span class="product-price list-only" style="font-style: italic; ">${list.sellNo}</span>
     <span class="product-name">${list.pName}</span>
-    <span class="product-price grid-only">${list.pPrice}</span>
+    <span class="product-price grid-only">판매 가격 :${list.pPrice} 원</span>
+    <br/>
     <span class="grid-only">판매수량 :${list.sellCount}</span>
-	<span class="grid-only">${list.pContent}</span>
+	<br/>
+	<span class="grid-only">제품 내용 :<br/>${list.pContent}</span>
 	
 	
 
