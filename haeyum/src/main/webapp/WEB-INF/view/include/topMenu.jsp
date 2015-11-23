@@ -65,27 +65,23 @@ $(document).ready(function(){
 	
 	
 	$("#signBtn").click(function(){
-	/*
+		
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
-		if($("#jName").val==""){
-			
-			
-		}else if($("#jPassword").val==""){
-				
-			
-		}else($("#jPassword").val!=$("#jPasswordChk").val){
-			
-		}
-	*/
-		if($("#jId").val()==""){
+		if($("#jName").val()==""){
+			alert("이름을 입력해주세요.");
+			return false;
+		}else if($("#jId").val==""){
 			alert("이메일을 입력해주세요.");
 			return false;
-		}else{
-			if(!regEmail.test($("#id").val())){
+		}else if(!regEmail.test($("#jId").val())){
 			alert("이메일 형식이 맞지 않습니다.");
-			$("#id").focus();
 			return false;
-			}
+		}else if($("#jPassword").val==""){
+			alert("패스워드 입력");
+			return false;		
+		}else if($("#jPassword").val!=$("#jPasswordChk").val){
+			alert("비밀번호가 맞지않다.");
+			return false;
 		}
 		
 		$.ajax({
@@ -116,7 +112,7 @@ $(document).ready(function(){
 	}
 	
 function nullCheck(){
-    if($("#title").val()  == null){
+    if($("#title").val()  == ""){
       return false;
     }
     else{
@@ -138,7 +134,7 @@ function nullCheck(){
 					</div>
 					<div class="search hidden-xs">
 						<form action="${pageContext.request.contextPath}/search/video.do" method="GET" onsubmit="return nullCheck()" >
-		                     <input name="title" placeholder="Search" type="text">
+		                   <input id="title" name="title" placeholder="Search" type="text">
 							<button class="search-submit" type="submit">
 								<i class="fa fa-search"></i>
 							</button>
