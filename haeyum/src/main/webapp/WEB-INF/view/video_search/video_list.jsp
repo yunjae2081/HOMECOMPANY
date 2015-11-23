@@ -121,7 +121,7 @@ function bestVideo(data){
 		<c:forEach var="video" items="${list }">
 			<li>
 				<a class='normal' href='#'>
-					<img src="${pageContext.request.contextPath}/images/" + ${video.fileName } />
+					<img src="${pageContext.request.contextPath}/images/${video.fileName }" />
 				</a>
 				<div class='info'>
 					<h3>${video.title }</h3>
