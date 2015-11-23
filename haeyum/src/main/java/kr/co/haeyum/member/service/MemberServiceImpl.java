@@ -17,9 +17,11 @@ public class MemberServiceImpl implements MemberService {
 		return dao.selectlogin(member);
 	}
 
+	
 	@Override
 	public void insertJoin(MemberVO member) throws Exception {
-		 dao.insertJoin(member);
+		  dao.insertJoin(member);
 	}
-	
+
+
 }
