@@ -4,6 +4,7 @@
 
 <mapper namespace="kr.co.member">
 
+<!-- 로그인 -->
 <select id="selectlogin" parameterType="membervo" resultType="int">
 
 select count(*)
@@ -13,7 +14,7 @@ and password =#{password}
 
 </select>
 
-
+<!-- 회원가입 -->
 <insert id="insertJoin" parameterType="membervo">
 insert into haeyum.tbl_member(NAME,ID,PASSWORD)
 		values(#{name},#{id},#{password})
