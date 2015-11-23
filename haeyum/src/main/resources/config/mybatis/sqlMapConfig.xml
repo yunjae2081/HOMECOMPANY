@@ -17,6 +17,7 @@
     <typeAlias alias="snodevo" type="kr.co.haeyum.lecture.vo.SnodeVO"/>
     <typeAlias alias="tnodevo" type="kr.co.haeyum.lecture.vo.TnodeVO"/>
     <typeAlias alias="tlinkvo" type="kr.co.haeyum.lecture.vo.TlinkVO"/>
+    <typeAlias alias="tfilevo" type="kr.co.haeyum.lecture.vo.TfileVO"/>
 	</typeAliases>
 </configuration>
 
