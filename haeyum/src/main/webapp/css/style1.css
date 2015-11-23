@@ -691,7 +691,6 @@ a:focus {
 }
 
 input:focus, button:focus, textarea:focus {
-	box-shadow: 0 0 0 3px rgba(201, 217, 232, 1)
 }
 
 #changeMembershipPlan.overlay {
