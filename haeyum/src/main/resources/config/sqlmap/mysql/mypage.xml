@@ -13,7 +13,6 @@ from  haeyum.tbl_member
 where id=#{id}
 
 </select>
-
 <!-- 비밀번호 변경 -->
 <update id="updatePass" parameterType="membervo">
 		update haeyum.tbl_member
@@ -21,7 +20,6 @@ where id=#{id}
 		where ID=#{id}
 
 </update>
-
 
 <!-- lecture 게시물 수 -->
 <select id="selectlectureCount" resultType="int" parameterType="string">
@@ -41,16 +39,27 @@ limit #{start},#{end}
 
 </select>
 
-
-<!-- studied 강좌 List -->
-<select id="selectStudiedList" parameterType="String" resultType="watchvo">
-select W_NO wNo,V_NO vNo,W_ID wId,DATE_FORMAT(W_START_DATE,'%Y-%m-%d %H:%i')as wStartDate
+<!-- watch 게시물 수 
+<select id="selectWatchCount" resultType="int" parameterType="string">
+select count(*)
 from haeyum.tbl_watch_list
 where W_ID=#{id}
-order by W_NO desc
-limit #{start},#{end}
-
 </select>
+-->
+
+<!-- watch 강좌 List 
+<select id="selectWatch" parameterType="String" resultType="watchvo">
+select w.W_NO wNo,DATE_FORMAT(W_START_DATE,'%Y-%m-%d %H:%i')as wStartDate,l.L_TITLE lTitle,l.L_CATEGORY lCategory
+from haeyum.tbl_watch_list w,haeyum.tbl_video v,haeyum.tbl_lecture l
+where w.V_NO=v.V_NO 
+and w.W_ID=#{id}
+order by wNo desc
+</select>
+
+-->
+
+
+
 
 <!-- product 게시물 수 -->
 <select id="selectProductCount" resultType="int" parameterType="string">
