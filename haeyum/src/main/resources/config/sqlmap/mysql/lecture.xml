@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.lecture">
+<insert id="insertLecutre" parameterType="lecturevo">
+  <selectKey resultType="int" keyProperty="lNo" order="AFTER">
+    SELECT LAST_INSERT_ID() 
+  </selectKey>
+	insert into tbl_lecture(
+							m_no, 
+							l_category, 
+							l_title, 
+							l_content, 
+							l_id
+							)
+			values (
+								1, 
+								#{lCategory}, 
+								#{lTitle}, 
+								#{lContent}, 
+								'yun'
+							)
+</insert>
+
+<insert id="insertfNode" parameterType="lecturevo">
+insert into tbl_f_node(
+						l_no,
+						f_x,
+						f_y,
+						f_title,
+						f_content,
+						f_name
+						)
+		values (
+						#{lNo},
+						#{fX},
+						#{fY},
+						#{fTitle},
+						#{fContent},
+						#{fName}
+						)
+</insert>
+
+<insert id="insertsNode">
+insert into tbl_s_node(
+						f_no,
+						l_no,
+						s_x,
+						s_y,
+						s_title,
+						s_content,
+						s_name
+						)
+		values (
+						(select f_no from tbl_f_node where l_no = #{lNo} and f_name = #{fName}),
+						#{lNo},
+						#{sX},
+						#{sY},
+						#{sTitle},
+						#{sContent},
+						#{sName}
+					)
+</insert>
+<insert id="inserttNode">
+insert into tbl_tNode(
+						
+)
+</insert>
+</mapper>
