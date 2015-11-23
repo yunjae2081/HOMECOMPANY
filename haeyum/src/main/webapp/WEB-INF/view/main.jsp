@@ -6,6 +6,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="include/common_top.jsp" %>
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoMain.css" type="text/css" />
 </head>
 
 <body style="background-color: #F6F6F6">
@@ -218,25 +219,60 @@
 			</section>
 		</div>
 	</div>
-			<div id=carousel>
-			<h2>인기영상</h2>
-			<div id="container">
-		<figure id=spinner>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-			<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-		</figure>
-	</div>
-	
-	<div id="pager"></div>
-	</div>
-	
-	<span style="float: left" id="spinL" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
-	<span style="float: right" id="spinR" class="ss-icon" onclick="galleryspin('')">&gt;</span>
+		<div class="pc-tab" style="max-width:90%">
+			<input checked="checked" id="tab1" type="radio" name="pct" />
+			<input id="tab2" type="radio" name="pct" />
+			  <nav style="position:static;">
+			    <ul>
+			      <li class="tab-menu tab1">
+			        <label for="tab1">인기영상</label>
+			      </li>
+			      <li class="tab-menu tab2">
+			        <label for="tab2">최신영상</label>
+			      </li>
+			    </ul>
+			  </nav>
+			  <section>
+			    <div class="tab1">
+			    	<div id=carousel>
+					<div id="container" class="container">
+						<figure id=spinner>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						</figure>
+					</div>
+				<div id="pager"></div>
+				</div>
+
+			<span style="float: left" id="spinL" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
+			<span style="float: right" id="spinR" class="ss-icon" onclick="galleryspin('')">&gt;</span>
 			
+			</div>
+			    <div class="tab2">
+			    	<div id=carousel>
+					<div id="container" class="container">
+						<figure id=spinner>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						</figure>
+					</div>
+				<div id="pager"></div>
+				</div>
+
+			<span style="float: left" class="ss-icon spinL" onclick="galleryspin('-')">&lt;</span>
+			<span style="float: right" class="ss-icon spinR" onclick="galleryspin('')">&gt;</span>
+			
+			</div>
+			</section>
+			</div>
 		<div style="border:1px solid black;height: 500px;">intro</div>
 
 	</section>
