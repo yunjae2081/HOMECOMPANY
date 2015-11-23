@@ -73,5 +73,7 @@
 	<mvc:view-resolvers>
 		<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp" />
 	</mvc:view-resolvers>
+	
+	<mvc:view-controller path="/lecture/registForm.do" view-name="lecture/registForm"/>
 
 </beans>
