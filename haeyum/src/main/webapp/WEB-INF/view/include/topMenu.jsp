@@ -38,6 +38,19 @@ $(document).ready(function(){
 
 
 	$("#loginBtn").click(function(){
+		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		if($("#id").val()==""){
+			alert("이메일을 입력해주세요.");
+			return false;
+		}else{
+			if(!regEmail.test($("#id").val())){
+				
+			alert("이메일 형식이 맞지 않습니다.");
+			$("#id").focus();
+			return false;
+			
+			}
+		}
 		$.ajax({
 			url:"${pageContext.request.contextPath}/member/login.json",
 			type:"POST",
@@ -52,6 +65,29 @@ $(document).ready(function(){
 	
 	
 	$("#signBtn").click(function(){
+	/*
+		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
+		if($("#jName").val==""){
+			
+			
+		}else if($("#jPassword").val==""){
+				
+			
+		}else($("#jPassword").val!=$("#jPasswordChk").val){
+			
+		}
+	*/
+		if($("#jId").val()==""){
+			alert("이메일을 입력해주세요.");
+			return false;
+		}else{
+			if(!regEmail.test($("#id").val())){
+			alert("이메일 형식이 맞지 않습니다.");
+			$("#id").focus();
+			return false;
+			}
+		}
+		
 		$.ajax({
 			url:"${pageContext.request.contextPath}/member/join.json",
 			type:"POST",
@@ -80,12 +116,10 @@ $(document).ready(function(){
 	}
 	
 function nullCheck(){
-    if($("#title").val()  == ""){
-      console.log("false");
+    if($("#title").val()  == null){
       return false;
     }
     else{
-      console.log("true");
       return true;
     }
   }
