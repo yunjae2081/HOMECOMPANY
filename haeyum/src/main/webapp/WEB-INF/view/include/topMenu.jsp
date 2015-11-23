@@ -49,15 +49,7 @@ $(document).ready(function(){
 
 			
 	})
-	$("#logout").click(function(){
-		$.ajax({
-			url:"${pageContext.request.contextPath}/member/logout.json",
-			type:"POST",
-			datatype:"json"
-		}).done(function(response){
-			location.reload();
-		})
-	})
+	
 	
 	$("#signBtn").click(function(){
 		$.ajax({
@@ -75,6 +67,18 @@ $(document).ready(function(){
 	
 	
 })
+	//이상하다..
+	function outclick(){
+		console.log("logout");
+		$.ajax({
+			url:"${pageContext.request.contextPath}/member/logout.json",
+			type:"POST",
+			datatype:"json"
+		}).done(function(response){
+ 			location.href="${pageContext.request.contextPath}/index.jsp";
+	})
+	}
+
 
 
 </script>
@@ -89,7 +93,7 @@ $(document).ready(function(){
 					</div>
 					<div class="search hidden-xs">
 						<form action="${pageContext.request.contextPath}/search/video.do" method="GET">
-							<input name="query" placeholder="Search" type="text">
+		                     <input name="title" placeholder="Search" type="text">
 							<button class="search-submit" type="submit">
 								<i class="fa fa-search"></i>
 							</button>
@@ -173,7 +177,7 @@ $(document).ready(function(){
 						<c:otherwise>
 						
 						<li><a href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
-						<li><a id="logout">Logout</a></li>															
+						<li><a onclick="outclick();">Logout</a></li>															
 						</c:otherwise>
 						</c:choose>				
 					</ul>
