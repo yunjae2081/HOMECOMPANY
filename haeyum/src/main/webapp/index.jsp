@@ -14,5 +14,6 @@
 </head>
 <body>
 	<% response.sendRedirect("/haeyum/main.do"); %>
+
 </body>
 </html>
