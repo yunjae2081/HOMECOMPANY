@@ -9,19 +9,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VideoListServiceImpl implements VideoListService{
-	
+public class VideoSearchServiceImpl implements VideoSearchService{
+
 	@Autowired
 	private VideoListDAO dao;
 
 	@Override
-	public List<VideoBestListVO> selectBestExtend(int no) throws Exception {
-		return dao.selectBestExtend(no);
-	}
-
-	@Override
-	public List<VideoBestListVO> selectBestList() throws Exception {
-		return dao.selectBestList();
+	public List<VideoBestListVO> selectNormalList(String title) throws Exception {
+		return dao.selectNormalList(title);
 	}
 
 }
