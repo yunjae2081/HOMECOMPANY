@@ -7,6 +7,8 @@ import org.springframework.stereotype.Repository;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.lecture.vo.SnodeVO;
+import kr.co.haeyum.lecture.vo.TfileVO;
+import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 
 @Repository
@@ -30,6 +32,14 @@ public class LectureDAO {
 
 	public void inserttNode(TnodeVO tVO) throws Exception{
 		sqlSession.insert("kr.co.lecture.inserttNode", tVO);
+	}
+
+	public void insertLink(TlinkVO linkVO) {
+		sqlSession.insert("kr.co.lecture.insertLink", linkVO);
+	}
+
+	public void insertFile(TfileVO fileVO) {
+		sqlSession.insert("kr.co.lecture.insertFile", fileVO);
 	}
 	
 }
