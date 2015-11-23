@@ -3,7 +3,7 @@ package kr.co.haeyum.search.controller;
 import java.util.List;
 
 import kr.co.haeyum.search.service.VideoListService;
-import kr.co.haeyum.search.vo.VideoListVO;
+import kr.co.haeyum.search.vo.VideoBestListVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,19 +19,16 @@ public class VideoListController {
 	
 	@RequestMapping("/bestVideo.json")
 	@ResponseBody
-	public List<VideoListVO> list() throws Exception{		
-		List<VideoListVO> vVo = service.selectVideoNo();
+	public List<VideoBestListVO> list() throws Exception{		
+		List<VideoBestListVO> vVo = service.selectBestList();
 		
 		return vVo;
 	}
 	
 	@RequestMapping("/bestVideoExtend.json")
 	@ResponseBody
-	public List<VideoListVO> extend(int no) throws Exception{	
-		List<VideoListVO> vVo = service.selectVideoExtend(no);
-		for(VideoListVO vo : vVo) {
-			System.out.println(vo.getvNo());
-		}
+	public List<VideoBestListVO> extend(int no) throws Exception{	
+		List<VideoBestListVO> vVo = service.selectBestExtend(no);
 		
 		return vVo;
 	}
