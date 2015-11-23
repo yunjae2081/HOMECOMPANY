@@ -18,6 +18,7 @@
     <typeAlias alias="tnodevo" type="kr.co.haeyum.lecture.vo.TnodeVO"/>
     <typeAlias alias="tlinkvo" type="kr.co.haeyum.lecture.vo.TlinkVO"/>
     <typeAlias alias="tfilevo" type="kr.co.haeyum.lecture.vo.TfileVO"/>
+    <typeAlias alias="videolatestlistvo" type="kr.co.haeyum.search.vo.VideoLatestListVO" />
 	</typeAliases>
 </configuration>
 
