@@ -66,7 +66,4 @@ $(document).ready(function(){
 			</ul>
 		</div>
 	</div>
-
-	<div id="page">
-		<div></div>
 	</div>

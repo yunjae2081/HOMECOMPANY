@@ -1,5 +1,6 @@
 var angle = 0;
 function galleryspin(sign) {
+	
 	spinner = document.querySelector("#spinner");
 	if (!sign) {
 		angle = angle + 60;
@@ -10,13 +11,12 @@ function galleryspin(sign) {
 			+ "deg); -moz-transform: rotateY(" + angle
 			+ "deg); transform: rotateY(" + angle + "deg);");
 }
-
-$(document).ready(function(){
+function videoSlide() {
 	var offset, spot,
 	cnt = 150;
 	isRight = false;
 	isLeft = false;
-	$("#container").on("mousedown", function(event){
+	$(".container").on("mousedown", function(event){
 		offset = $(this).offset();
 		spot =  event.pageX - offset.left;
 		isRight = false;
@@ -32,14 +32,27 @@ $(document).ready(function(){
 				isLeft = true;
 				//$("#spinL").click();
 			}
-	
+
 		} 
 	}).on("mouseup", function(){
 		if (isLeft == true) {
-			$("#spinL").click();	
+			$(".spinL").click();	
 		} else if (isRight == true) {
-			$("#spinR").click();	
+			$(".spinR").click();	
 		}
 		
 	});
+}
+
+$(document).ready(function(){
+	videoSlide();
+	$("li.tab-menu").on("click", function(){
+		if ($(this).hasClass('tab1')) {
+			$('div.tab1').show().siblings().hide();
+		} else if ($(this).hasClass('tab2')) {
+			$('div.tab2').show().siblings().hide();
+		}
+		videoSlide();
+	});
+	
 });
