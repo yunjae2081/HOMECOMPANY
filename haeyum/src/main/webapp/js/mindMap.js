@@ -139,7 +139,7 @@ $(document).on("click", "div[id^='addLinkS']", function () {
   html += "</div>";
   html += "<div id = 'tLinkUrlForm" + tNode + "' >";
   html += "<a id = 'tUrl" + tNode + "' style = 'color: white;'>링크</a>";
-  html += "<input type = 'hidden' id = 'tLinkUrl" + tNode + "' style='color:black; width:100%;' />";
+  html += "<input type = 'hidden' id = 'tLinkUrl" + tNode + "' name = 'tLinkUrl" + tNode + "' style='color:black; width:100%;' />";
   html += "</div>";
   html += "</div>";
 
@@ -174,7 +174,7 @@ $(document).on("click", "div[id^='addSubjectS']", function () {
   html += "<input type = 'hidden' id = 'tAsmtContent" + tNode + "' value = 'Third Content'/>Third Content";
   html += "</div>";
   html += "<div id = 'tAsmtForm" + tNode + "' >";
-  html += "<input type = 'file' id = 'tAsmtFile" + tNode + "' style='color:black; width:100%;' />";
+  html += "<input type = 'file' id = 'tAsmtFile" + tNode + "' name = 'tAsmtFile" + tNode + "' style='color:black; width:100%;' />";
   html += "</div>";
   html += "</div>";
   
