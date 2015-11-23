@@ -14,6 +14,8 @@ function Lesson (l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
   this.l_sTime = l_sTime;
 }
 
+
+
 var lessonArray = new Array();
 
 function LessonCount (sName, totalCount) {
@@ -204,8 +206,18 @@ $(document).ready(function(){
   $("#v-comment").click(function(){
     $(".vTool").css("width", "1037");
     $(this).css("display", "none");
+    $("#v-items").css("display", "block");
 //    $(".v-preview").css("display", "block");
     $(".lessonDiv").css("display", "block");
+    $(".itemsDiv").css("display", "none");
+  });
+  
+  $("#v-items").click(function() {
+    $(".vTool").css("width", "1037");
+    $(this).css("display", "none");
+    $("#v-comment").css("display", "block");
+    $(".itemsDiv").css("display", "block");
+    $(".lessonDiv").css("display", "none");
   });
   
   var lessonCount = 0;
