@@ -1,8 +1,10 @@
 package kr.co.haeyum.search.service;
 
-import org.springframework.stereotype.Service;
+import java.util.List;
 
-@Service
-public class VideoSearchService {
+import kr.co.haeyum.search.vo.VideoBestListVO;
+
+public interface VideoSearchService {
+	List<VideoBestListVO> selectNormalList(String title) throws Exception;
 	
 }
