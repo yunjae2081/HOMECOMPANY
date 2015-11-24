@@ -14,6 +14,7 @@
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
 <script>
+var title = "${title}";
 
 var flag = 0; // 인기순 0, 최신순 1 구분
 
@@ -29,12 +30,14 @@ $(document).on("click","button", function() {
   if (this.value == '1') { // 인기순의 버튼을 눌렀음
     flag = 0;
     b_scroll_no = 16; // 인기순의 버튼을 눌렀으니 다시 비디오 갯수 초기화
+    n_scroll_block = 0; // 검색 무한 스크롤 방지 해제
     b_scroll_block = 0; // 인기순의 버튼을 눌렀으니 무한 스크롤 방지 해제
     l_scroll_block = 0; // 최신순의 버튼을 눌렀으니 무한 스크롤 방지 해제
     $.ajax({
-      url: "${pageContext.request.contextPath}/list/bestVideo.json",
+      url: "${pageContext.request.contextPath}/search/bestVideo.json",
       type: "POST",
       datatype: "JSON",
+      data: {title:title},
       success: function (data, status) {
         b_scroll = 0;
         bestVideo(data);
@@ -46,12 +49,14 @@ $(document).on("click","button", function() {
   } else if (this.value == '2') { // 최신순의 버튼을 눌렀음
     flag = 1;
     l_scroll_no = 16; // 최신순의 버튼을 눌렀으니 다시 비디오 갯수 초기화
+    n_scroll_block = 0; // 검색 무한 스크롤 방지 해제
     b_scroll_block = 0; // 인기순의 버튼을 눌렀으니 무한 스크롤 방지 해제
     l_scroll_block = 0; // 최신순의 버튼을 눌렀으니 무한 스크롤 방지 해제
     $.ajax({
-      url: "${pageContext.request.contextPath}/list/latestVideo.json",
+      url: "${pageContext.request.contextPath}/search/latestVideo.json",
       type: "POST",
       datatype: "JSON",
+      data: {title:title},
       success: function (data, status) {
         l_scroll = 0;
         latestVideo(data);
@@ -74,10 +79,10 @@ $(document).ready(function(){
 		if(scrollHeight >= documentHeight){
 		  if(flag == 0){
 		    $.ajax({
-		      url: "${pageContext.request.contextPath}/list//bestVideoExtend.json",
+		      url: "${pageContext.request.contextPath}/search//bestVideoExtend.json",
 		      type: "POST",
 		      datatype: "JSON",
-		      data: {no:b_scroll_no},
+		      data: {title:title, no:b_scroll_no},
 		      success: function (data, status) {
 		        b_scroll = 1;
 		        
@@ -95,10 +100,10 @@ $(document).ready(function(){
 		  }
 		  else if(flag == 1){
 		    $.ajax({
-		      url: "${pageContext.request.contextPath}/list//latestVideoExtend.json",
+		      url: "${pageContext.request.contextPath}/search//latestVideoExtend.json",
 		      type: "POST",
 		      datatype: "JSON",
-		      data: {no:l_scroll_no},
+		      data: {title:title, no:l_scroll_no},
 		      success: function (data, status) {
 		        l_scroll = 1;
 		        
@@ -169,6 +174,7 @@ function latestVideo(data){ // 최신순 비디오 정렬
 
 </head>
 <body class="background-white">
+
 <%@include file="../include/topMenu.jsp" %>
 
 <section class="stretch box-slide" style="margin-top:200px; height:auto;">  
