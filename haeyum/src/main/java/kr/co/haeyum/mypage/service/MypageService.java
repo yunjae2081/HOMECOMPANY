@@ -1,5 +1,6 @@
 package kr.co.haeyum.mypage.service;
 
+import java.util.List;
 import java.util.Map;
 
 import kr.co.haeyum.member.vo.MemberVO;
@@ -15,7 +16,10 @@ public interface MypageService {
 
 	public Map<String, Object> selectProductList(SearchVO param) throws Exception;
 
-	public Map<String, Object> selectWatchList(SearchVO param2)throws Exception;
+	//즐겨찾기
+	public Map<String, Object> selectFavoriteList(SearchVO param)throws Exception;
+
+
 
 
 
