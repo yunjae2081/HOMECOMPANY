@@ -2,7 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="styleSheet"href="${pageContext.request.contextPath}/css/login.css" />
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script>
 
 
@@ -38,6 +37,7 @@ $(document).ready(function(){
 
 
 	$("#loginBtn").click(function(){
+		/*
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#id").val()==""){
 			alert("이메일을 입력해주세요.");
@@ -51,6 +51,7 @@ $(document).ready(function(){
 			
 			}
 		}
+		*/
 		$.ajax({
 			url:"${pageContext.request.contextPath}/member/login.json",
 			type:"POST",
@@ -69,19 +70,29 @@ $(document).ready(function(){
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#jName").val()==""){
 			alert("이름을 입력해주세요.");
-			return false;
-		}else if($("#jId").val==""){
-			alert("이메일을 입력해주세요.");
-			return false;
-		}else if(!regEmail.test($("#jId").val())){
-			alert("이메일 형식이 맞지 않습니다.");
+			$("#jName").focus();
 			return false;
 		}else if($("#jPassword").val==""){
 			alert("패스워드 입력");
+			$("#jPassword").focus();
 			return false;		
-		}else if($("#jPassword").val!=$("#jPasswordChk").val){
+		}else if($("#jPassword").val()!=$("#jPasswordChk").val()){
 			alert("비밀번호가 맞지않다.");
+			$("#jPasswordChk").focus();
 			return false;
+		}
+		if($("#jId").val()==""){
+			alert("이메일을 입력해주세요.");
+			$("jId").focus();
+			return false;
+		}else{
+			if(!regEmail.test($("#jId").val())){
+				
+			alert("이메일 형식이 맞지 않습니다.");
+			$("jId").focus();
+			return false;
+			
+			}
 		}
 		
 		$.ajax({
@@ -157,7 +168,7 @@ function nullCheck(){
 					</div>
 					<ul class="nav nav-justified">
 						<li><a class="active" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
-						<li><a href="#">Search</a></li>
+						<li><a href="${pageContext.request.contextPath}/list/listVideo.do">Search</a></li>
 						<li><a href="#">Lecture</a></li>
 						<li><a href="${pageContext.request.contextPath}/store/storeList.do">Store</a></li>
 						<c:choose>
@@ -175,8 +186,7 @@ function nullCheck(){
 							    <div class="email-login">
 							    <div class="social-login">
 							      <a href="#">
-							        <i class="fa fa-facebook fa-lg"></i>
-							        Login in with facebook
+							      	로그인 연동
 							      </a>
 							    </div>
 							      <div class="u-form-group">
@@ -200,13 +210,13 @@ function nullCheck(){
 							        <input id="jName"type="text" placeholder="Name"/>
 							      </div>
 							      <div class="u-form-group">
-							        <input id="jId" type="email" placeholder="Email"/>
+							        <input id="jId" type="email" placeholder="Email" maxlength="12"/>
 							      </div>
 							      <div class="u-form-group">
-							        <input id="jPassword" type="password" placeholder="Password"/>
+							        <input id="jPassword" type="password" placeholder="Password" maxlength="12"/>
 							      </div>
 							      <div class="u-form-group">
-							        <input id="jPasswordChk" type="password" placeholder="Confirm Password"/>
+							        <input id="jPasswordChk" type="password" placeholder="Confirm Password" maxlength="12"/>
 							      </div>
 							      <div class="u-form-group">
 							        <button id="signBtn">Sign Up</button>
