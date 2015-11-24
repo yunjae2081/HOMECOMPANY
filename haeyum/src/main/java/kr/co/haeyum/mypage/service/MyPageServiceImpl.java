@@ -16,6 +16,7 @@ public class MyPageServiceImpl implements MypageService {
 	@Autowired
 	private MypageDAO dao;
 
+	
 
 	//비밀번호 변경
 	@Override
@@ -50,14 +51,16 @@ public class MyPageServiceImpl implements MypageService {
 		result.put("count", dao.selectProductCount(param.getId()));
 		return result;
 	}
-	
 	@Override
-	public Map<String, Object> selectWatchList(SearchVO param2) throws Exception {
+	public Map<String, Object> selectFavoriteList(SearchVO param) throws Exception {
 		Map<String,Object> result = new HashMap<>();
-		result.put("wlist",dao.selectWatchList(param2));
-		result.put("count",dao.selectWatchListCount(param2.getId()));
+		result.put("list", dao.selectFavoriteList(param));
+		result.put("count", dao.selectFavoriteCount(param.getId()));
 		return result;
 	}
+	
+	
+	
 	
 
 

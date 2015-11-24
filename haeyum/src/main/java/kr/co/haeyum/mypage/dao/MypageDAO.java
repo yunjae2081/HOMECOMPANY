@@ -32,21 +32,12 @@ public class MypageDAO {
 		return session.selectList("kr.co.mypage.selectlectureList",param);
 	}
 	
-	// 페이징 관련 추가 - 전체 게시물의 개수 가져오기
 	public int selectlectureCount(String id)throws Exception {
 		return session.selectOne("kr.co.mypage.selectlectureCount", id);
-	}
-
-	public List<WatchVO> selectWatchList(SearchVO param2)throws Exception {
-		return session.selectList("kr.co.mypage.selectWatchList",param2);
-	}
-	public int selectWatchListCount(String id)throws Exception {
-		return session.selectOne("kr.co.mypage.selectWatchListCount",id);
-	}
+	}	
+	//////////
 	
-	//
-	
-	
+	//판매
 	public List<ProductVO> selectProductList(SearchVO param)throws Exception {
 		return session.selectList("kr.co.mypage.selectProductList",param);
 	}
@@ -54,6 +45,15 @@ public class MypageDAO {
 	public int selectProductCount(String id)throws Exception{
 		return session.selectOne("kr.co.mypage.selectProductCount",id);
 	}
+	
+	//즐겨찾기
+	public List<WatchVO> selectFavoriteList(SearchVO param)throws Exception{
+		return session.selectList("kr.co.mypage.selectFavoriteList",param);
+	}
+	public int selectFavoriteCount(String id)throws Exception{
+		return session.selectOne("kr.co.mypage.selectFavoriteCount",id);
+	}
+	/////////////
 	
 
 
