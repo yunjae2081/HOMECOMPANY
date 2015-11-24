@@ -34,6 +34,9 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 	function storeList() {
 		location.href = "storeList.do";
 	}
+	function favoriteList(){
+		location.href = "favoriteList.do";
+	}
 
 	jQuery(function() {
 
@@ -81,6 +84,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 	})
 
 	
+	
 
 	
 </script>
@@ -96,7 +100,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 	<div class="wrapper preload" style="position: absolute;">
 		<center>
 			<div class="hit-the-floor" style="padding-bottom: 30px;">
-			[ 'ㅅ']치킨 맛있따
+			${user.id}님 MyPage
 			</div>
 
 		</center>
@@ -104,7 +108,8 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 		<section class="grid-unit top-left">
 			<div class="swing-panel">
 				<span class="desc">&nbsp;&nbsp;${user.id}&nbsp;&nbsp;
-			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2"></button></span>
+			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2"></button>
+				</span>
 			<br/>
 			<div id="modifyDiv" style="display: none;">
 							<div class='modify col-xs-6 form-group' style='margin-left:20px; width:400px;margin-top:10px;'>
@@ -143,7 +148,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 			class="label">물품 구매/판매 List</span> </section>
 
 
-		<section class="grid-unit bottom-right">
+		<section class="grid-unit bottom-right" onclick="favoriteList();">
 		<div class="swing-panel">
 			<span class="desc">즐겨찾기</span>
 		</div>
