@@ -14,7 +14,7 @@
 <script src="${pageContext.request.contextPath}/js/mindMap.js"></script>
 <script src="${pageContext.request.contextPath}/js/input.js"></script>
 </head>
-<body>
+<body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
 <br />
 <br />
@@ -43,18 +43,24 @@
   </div>
 </fieldset>
 
-  <select name="lCategory" id="sources">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-    <option value="4">4</option>
-    <option value="5">5</option>
-    <option value="6">6</option>
-    <option value="7">7</option>
-    <option value="8">8</option>
-    <option value="9">9</option>
-    <option value="10">10</option>
-  </select>
+<div class="dropp">
+  <div class="dropp-header">
+    <span class="dropp-header__title js-value" style="margin-left:10px;margin-top:5px;">category</span>
+    <a href="#" class="dropp-header__btn js-dropp-action"><i class="icon"></i></a>
+  </div>
+  <div class="dropp-body">
+    <label for="optA">&nbsp;&nbsp;뷰티 & 패션<input type="radio" id="optA" name="lCategory" value="1"/></label>
+    <label for="optB">&nbsp;&nbsp;교과목<input type="radio" id="optB" name="lCategory" value="2"/></label>
+    <label for="optC">&nbsp;&nbsp;음악 & 공연<input type="radio" id="optC" name="lCategory" value="3"/></label>
+    <label for="optD">&nbsp;&nbsp;IT<input type="radio" id="optD" name="lCategory" value="4"/></label>
+    <label for="optE">&nbsp;&nbsp;미술 & 공예<input type="radio" id="optE" name="lCategory" value="5"/></label>
+    <label for="optF">&nbsp;&nbsp;스포츠<input type="radio" id="optF" name="lCategory" value="6"/></label>
+    <label for="optG">&nbsp;&nbsp;요리<input type="radio" id="optG" name="lCategory" value="7"/></label>
+    <label for="optH">&nbsp;&nbsp;외국어<input type="radio" id="optH" name="lCategory" value="8"/></label>
+    <label for="optI">&nbsp;&nbsp;게임<input type="radio" id="optI" name="lCategory" value="9"/></label>
+    <label for="optJ">&nbsp;&nbsp;Etc<input type="radio" id="optJ" name="lCategory" value="10"/></label>
+  </div>
+</div>
   
 <fieldset class="span12 reset">
     <div class="form_row">
