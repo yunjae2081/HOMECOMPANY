@@ -85,12 +85,13 @@ $(function() {
     <a class="expand">
     <div class="right-arrow">+</div>
     <div><img class="icon"src="../images/videoImg.png"></div>
-    <h2>${list.lNo} ${list.lTitle}</h2>
+    <h2>${list.lNo}&nbsp;&nbsp;${list.lCategory}&nbsp;&nbsp;${list.lTitle}</h2>
     <span>${list.lRegDate}</span>
     </a>
     <div class="detail">
-      <div><span>${list.lContent}</span>
-      		<span>${list.lCategory} 카테고리</span>
+      <div>
+      	
+      		<span>${list.lContent}</span>
       </div><br/>
       
       <span class="btn btn-default">이동</span>
