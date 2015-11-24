@@ -1,6 +1,7 @@
 var video
 var p_context;
 var lCount = 1;
+var icount = 1;
 
 function Lesson (l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
   
@@ -210,6 +211,7 @@ $(document).ready(function(){
 //    $(".v-preview").css("display", "block");
     $(".lessonDiv").css("display", "block");
     $(".itemsDiv").css("display", "none");
+    $(".l-pointer").css("display", "block");
   });
   
   $("#v-items").click(function() {
@@ -218,6 +220,7 @@ $(document).ready(function(){
     $("#v-comment").css("display", "block");
     $(".itemsDiv").css("display", "block");
     $(".lessonDiv").css("display", "none");
+    $(".l-pointer").css("display", "none");
   });
   
   var lessonCount = 0;
@@ -325,6 +328,122 @@ $(document).ready(function(){
     
   };  //addBtn()
   
+  iAddBtn();
+  
+  function iAddBtn() {
+    
+    $("#i_round-add-button").click(function(e) {
+      console.log("popup");
+      e.preventDefault();
+      var scrTop = $(window).scrollTop();
+      $(".backDrop").animate({"opacity":"0.7" +
+      		""}, 500);
+      $(".box").animate({"opacity":"1.0"}, 500);
+      var top = 120;
+  //    $(".box").css({"top":top+scrTop});
+      //$(".backDrop").css("top",top+scrTop+"px");
+      
+      $("html, body").css("overflow-y","hidden");
+      $(".backDrop, .box").css("display","block");
+      $(".box").css("top",top+scrTop+"px");
+      $(".lessonArea").css("display", "none");
+    });
+    
+  } //iAddBtn() 
+  
+  
+  $(".mat-input").focus(function(){
+    $(this).parent().addClass("is-active is-completed");
+  });
+
+  $(".mat-input").focusout(function(){
+    if($(this).val() === "")
+      $(this).parent().removeClass("is-completed");
+    $(this).parent().removeClass("is-active");
+  });
+  
+  $(document).on("click", ".backDrop, .close", function() {
+    closeBox();
+  });
+  
+  var v_s_count = 0;
+  
+  // 스토어 에 들어갈 이미지와 옵션 체크
+  // 강의등록할때 메인 이미지 캡쳐 처리 ...
+  // 컨트롤러로 널어갈때 이미지와 비디오 파일을 어떻게 넘여줄것인지 체크 (히든으로 넘겨주는 경우 체크)
+  // 컨트롤러로 넘어가서 처리
+  // 강의 보여주기
+  
+  
+    
+  $("#store_save").click(function() {
+    var pac = $("#v_store_pac").val();
+    var strpac = pac.split('/');
+    
+    if(!strpac[0] || !strpac[1]){
+      alert("가격과 개수를 '/'로 구분해주세요  popup창으로 변경할 예정입니다.");
+    } else {
+    
+        if(confirm("등록할거니")) {
+          
+          var title = $("#v_store_title").val();
+          var content = $("#v_store_content").val();
+          var price = $.trim($.trim(strpac[0]).slice(0,-1));
+          var count = $.trim($.trim(strpac[1]).slice(0,-1));
+          
+          for(var i = 1 ; i < 5; i++) {
+            var preview = document.getElementById("store_img_"+i);
+            if(preview.src != "http://localhost/haeyum/images/png12.png") {
+              preview.src = "http://localhost/haeyum/images/png12.png";
+            }
+            else {
+              break;
+            }
+          }
+          
+          $("#i_li_" + icount).html("<div class='addLesson'>" +
+                                           "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + title + "</p>" +
+                                           "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 83px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 16px;'>" + price + "원</p>" +
+                                           "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 85px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 9px;'>" + count + "개</p>" +
+                                         "</div>" +
+                                         "<div class='round-del-button id='i_del_" + icount + "' '>del</div>");
+          closeBox();
+  
+          $("#i_del_" + icount).click(function() {
+            if(confirm("삭제할거니")) {
+              
+              $(this).parent().remove();
+              //        var del_index = lessonArray.indexOf("l_count", $(this).attr("id").substring(6).trim());
+              //        console.log(del_index);
+              //        console.log(lessonArray[del_index]);
+              //        lessonArray.splice(del_index, 1);  //삭제시 앞으로 index 이동
+            }
+          });
+          
+          $("#i_ul").prepend("<li id='i_li_" + ++icount + "'>" +
+              "<div id='i_round-add-button' class='round-add-button'>+</div>" +
+          "</li>");
+  
+          iAddBtn();
+  
+          $("#v_store_title").val("");
+          $("#v_store_content").val("");
+          $("#v_store_pac").val("");
+          
+        } //내부if조건 (확인을 눌렀을 경우)
+      } //else 조건
+    });  //스토어 저장 버튼
+  
+  
+  function closeBox () {
+    $(".lessonArea").css("display", "block");
+    $(".backDrop, .box").animate({"opacity":"0"}, 500, function () {
+      $(".backDrop, .box").css({"display":"none"});
+      $("html, body").css("overflow-y","auto");
+      $("body").css("overflow-y","auto");
+    });
+  }
+  
   $("#v-view").click(function() {
     video.currentTime = 0;
     console.log("미리보기");
@@ -344,4 +463,29 @@ Array.prototype.indexOf = function objectIndexOf(property, value) {
       if(this[i][property] == value) return i;
   }
   return -1;
+}
+
+
+function selectImage(imgNum) {
+  var preview = document.getElementById("store_img_"+imgNum);
+  var file = document.getElementById("store_file_"+imgNum).files[0];
+  var reader = new FileReader();
+  
+  reader.onloadend = function (){
+    preview.src = reader.result;
+  }
+  
+  if(file) {
+    console.log("성공");
+    reader.readAsDataURL(file);
+    if(imgNum < 4){
+      $("#store_file_"+imgNum).css("display", "none");
+      $("#store_file_"+ ++imgNum).css("display", "block");
+    }
+  } else {
+    console.log("실패");
+    preview.src = "http://localhost/haeyum/images/png12.png";
+  }
+  
+  
 }

@@ -75,5 +75,7 @@
 	</mvc:view-resolvers>
 	
 	<mvc:view-controller path="/lecture/registForm.do" view-name="lecture/registForm"/>
+	
+	<mvc:view-controller path="/registTest.do" view-name="lecture/registFormVideo"/>
 
 </beans>
