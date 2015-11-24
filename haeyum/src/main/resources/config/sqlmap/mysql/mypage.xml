@@ -4,8 +4,6 @@
 	
 <mapper namespace="kr.co.mypage">
 
-
-
 <!-- 비밀번호 변경 -->
 <select id="selectPass" parameterType="string" resultType="string">
 select PASSWORD
@@ -81,6 +79,34 @@ and s.SELL_ID=#{id}
 order by sellNo desc
 limit #{start},#{end}
 </select>
+
+
+
+
+<!--즐겨찾기 게시물 수 -->
+<select id="selectFavoriteCount" resultType="int" parameterType="string">
+select count(*)
+from haeyum.tbl_fav_video f,haeyum.tbl_video v,haeyum.tbl_lecture l
+where v.V_NO=f.V_NO 
+and v.L_NO =l.L_NO  
+and FAV_ID=#{id}
+</select>
+
+
+<!-- 즐겨찾기 물품 list -->
+<select id="selectFavoriteList" parameterType="searchvo" resultType="favoritevo">
+
+select l.l_NO lNo,l.L_TITLE lTitle,l.L_CONTENT lContent,l.L_CATEGORY lCategory
+from haeyum.tbl_fav_video f,haeyum.tbl_video v,haeyum.tbl_lecture l
+where v.V_NO=f.V_NO 
+and v.L_NO =l.L_NO  
+and FAV_ID=#{id}
+order by lNo desc
+limit #{start},#{end}
+</select>
+
+
+
 
 
 </mapper>
