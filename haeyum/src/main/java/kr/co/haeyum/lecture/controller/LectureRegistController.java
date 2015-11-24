@@ -29,7 +29,7 @@ public class LectureRegistController {
 	
 	@Autowired
 	private ServletContext servletContext;
-
+	
 	@RequestMapping("/regist.do")
 	public String regist(MultipartHttpServletRequest req, NodeIndexVO nodeVO, LectureVO lVO) throws Exception {
 
@@ -73,7 +73,6 @@ public class LectureRegistController {
 				TlinkVO linkVO = new TlinkVO();
 				linkVO.setlNo(lNo);
 				linkVO.settName(req.getParameter("tName" + i));
-				System.out.println(linkVO.gettName());
 				linkVO.setLinkTitle(req.getParameter("tLinkTitle" + i));
 				linkVO.setLinkContent(req.getParameter("tLinkContent" + i));
 				linkVO.setlUrl(req.getParameter("tLinkUrl" + i));
@@ -92,9 +91,7 @@ public class LectureRegistController {
 					}
 					
 					String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-					
-					mFile.transferTo(new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\assignment\\" + saveFileName));
-					
+					mFile.transferTo(new File(servletContext.getRealPath("/assignment/") + "/" + saveFileName));
 					TfileVO fileVO = new TfileVO();
 					
 					fileVO.setlNo(lNo);
@@ -105,7 +102,6 @@ public class LectureRegistController {
 					fileVO.settName(req.getParameter("tName" + i));
 					
 					service.insertFile(fileVO);
-					
 				}
 			}
 		}
