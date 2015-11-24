@@ -7,6 +7,22 @@ private int vNo;
 private String wId;
 private String wStartDate;
 
+private String lTitle;
+private String lCategory;
+
+
+public String getlTitle() {
+	return lTitle;
+}
+public void setlTitle(String lTitle) {
+	this.lTitle = lTitle;
+}
+public String getlCategory() {
+	return lCategory;
+}
+public void setlCategory(String lCategory) {
+	this.lCategory = lCategory;
+}
 public int getwNo() {
 	return wNo;
 }
