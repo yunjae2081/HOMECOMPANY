@@ -33,7 +33,7 @@
 <br/>
 <br/>
 <h1>LECTURE REGIST</h1>
-<form action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return upload();">
+<form id = "mapForm" action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return upload();">
 <fieldset class="span6 reset">
   <div class="form_row">
     <div class="input" id = "title"> 
