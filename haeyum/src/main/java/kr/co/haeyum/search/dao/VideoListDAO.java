@@ -3,6 +3,7 @@ package kr.co.haeyum.search.dao;
 import java.util.List;
 
 import kr.co.haeyum.search.vo.VideoBestListVO;
+import kr.co.haeyum.search.vo.VideoLatestListVO;
 
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,8 +23,12 @@ public class VideoListDAO {
 		return sqlSession.selectList("videolistvo.dao.VideoListDAO.selectBestList");
 	}
 
-	public List<VideoBestListVO> selectNormalList(String title) {
-		return sqlSession.selectList("videolistvo.dao.VideoListDAO.selectNormalList", title);
+	public List<VideoLatestListVO> selectLatestList() {
+		return sqlSession.selectList("videolistvo.dao.VideoListDAO.selectLatestList");
+	}
+
+	public List<VideoLatestListVO> selectLatestExtend(int no) {
+		return sqlSession.selectList("videolistvo.dao.VideoListDAO.selectLatestExtend", no);
 	}
 
 }

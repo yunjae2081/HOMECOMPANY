@@ -4,6 +4,7 @@ import java.util.List;
 
 import kr.co.haeyum.search.dao.VideoListDAO;
 import kr.co.haeyum.search.vo.VideoBestListVO;
+import kr.co.haeyum.search.vo.VideoLatestListVO;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -24,4 +25,13 @@ public class VideoListServiceImpl implements VideoListService{
 		return dao.selectBestList();
 	}
 
+	@Override
+	public List<VideoLatestListVO> selectLatestList() throws Exception {
+		return dao.selectLatestList();
+	}
+
+	@Override
+	public List<VideoLatestListVO> selectLatestExtend(int no) throws Exception {
+		return dao.selectLatestExtend(no);
+	}
 }
