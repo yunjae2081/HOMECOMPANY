@@ -29,7 +29,47 @@
 	<br/>
 	<br/>
 	<br/>
+	<div class = "backDrop">	</div>
+	<div class = "box">
+		<div class="largeImage" >
+		
+			<div class="popup-div">
+			
+  			<div class="mat-div">
+		   	 	<label for="first-name" class="mat-label">Title</label>
+   				<input type="text" id="v_store_title" class="mat-input" id="first-name">
+  			</div>
+  
+ 			  <div class="mat-div">
+ 	 			  <label for="first-name" class="mat-label">Content</label>
+ 	 		 		<textarea rows="2" id="v_store_content" class="mat-input" id="last-name"></textarea>
+ 		 		</div>
+
+  		  <div class="mat-div">
+  		 	  <label for="address" class="mat-label">price/count (원 "/" 개)</label>
+ 	 	 		 	<input type="text" class="mat-input" id="v_store_pac" >
+	 		  </div>
+	  
+  			<div class="img-div"><img id="store_img_1" src="${pageContext.request.contextPath}/images/png12.png" style="width: 90px; height: 90px;"></div>
+ 			  <div class="img-div"><img id="store_img_2" src="${pageContext.request.contextPath}/images/png12.png" style="width: 90px; height: 90px;"></div>
+		 	  <div class="img-div"><img id="store_img_3" src="${pageContext.request.contextPath}/images/png12.png" style="width: 90px; height: 90px;"></div>
+		 	  <div class="img-div"><img id="store_img_4" src="${pageContext.request.contextPath}/images/png12.png" style="width: 90px; height: 90px;"></div>
+				
+				<div class="store_image_hidden">
+	  			<input type="file" id = "store_file_1" style="display: block;" onchange="selectImage(1)"/>
+	  			<input type="file" id = "store_file_2" style="display: none;" onchange="selectImage(2)"/>
+	  			<input type="file" id = "store_file_3" style="display: none;" onchange="selectImage(3)"/>
+	  			<input type="file" id = "store_file_4" style="display: none;" onchange="selectImage(4)"/>
+				</div>
+				
+				<div id='store_save' class='round-save-button' style="margin-right: 185px;">ok</div>
+			</div>
+		</div>
+	<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
+	</div>
+	
 	<div class = "vView">
+		
 		<div class="file-upload">
 			<div class="file-select">
 				<div class="file-select-button" id="fileName">Choose File</div>
@@ -37,7 +77,6 @@
 				<input id="chooseFile"type="file" name="chooseFile" accept="vdeio/*">
 			</div>
 		</div>
-		
 		
 		<div class="vTool" id="vTool">
 	
@@ -107,9 +146,8 @@
 				<article>
 					<ul id="i_ul">
 						<li id="i_li_1">
-    							<div id="i_round-add-button" class="round-add-button">+</div>
+    						<div id="i_round-add-button" class="round-add-button">+</div>
 						</li>
-						
 					</ul>
 				</article>
 			</div>
