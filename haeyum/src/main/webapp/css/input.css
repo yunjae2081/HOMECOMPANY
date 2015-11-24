@@ -79,22 +79,22 @@ h1, h2 {
   padding-right: 25px !important;
 }
 
-form {
+#mapForm {
   margin: 0 auto;
   padding: 0;
   width: 1200px;
 /*   text-align: center; */
 }
-form fieldset {
+#mapForm fieldset {
   border: 0;
   margin: 0;
   padding: 0;
 }
-form .form_row {
+#mapForm .form_row {
   margin: 0 0 10px 0;
   position: relative;
 }
-form .input input{
+#mapForm .input input{
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
   border-radius: 14px;
@@ -115,7 +115,7 @@ form .input input{
   padding: 10px 20px 10px 100px;
   width: 900px;
 }
-form .input textarea {
+#mapForm .input textarea {
   -moz-border-radius: 14px;
   -webkit-border-radius: 14px;
   border-radius: 14px;
@@ -137,10 +137,10 @@ form .input textarea {
   width: 1200px;
 }
 
-form .input textarea {
+#mapForm .input textarea {
   height: 250px;
 }
-form .input label {
+#mapForm .input label {
   -moz-transition: all 0.2s linear;
   -o-transition: all 0.2s linear;
   -webkit-transition: all 0.2s linear;
@@ -154,29 +154,29 @@ form .input label {
   left: 15px;
 }
 
-form .input.active {
+#mapForm .input.active {
   overflow: hidden;
   width: 100%;
 }
-form .input.active input{
+#mapForm .input.active input{
   padding-left: 155px;
   width: 900px;
 }
-form .input.active textarea {
+#mapForm .input.active textarea {
   padding-left: 155px;
   width: 1200px;
 }
-form .input.active input:required:invalid, form .input.active textarea:required:invalid {
+#mapForm .input.active input:required:invalid, #mapForm .input.active textarea:required:invalid {
   border: 1px solid #e9322d;
   color: #e9322d;
 }
-form .input.active input:required:invalid + label, form .input.active textarea:required:invalid + label {
+#mapForm .input.active input:required:invalid + label, form .input.active textarea:required:invalid + label {
   background: #e9322d;
 }
-form .input.active input:required:invalid:focus + label, form .input.active textarea:required:invalid:focus + label {
+#mapForm .input.active input:required:invalid:focus + label, #mapForm .input.active textarea:required:invalid:focus + label {
   background: #e9322d;
 }
-form .input.active label {
+#mapForm .input.active label {
   -moz-border-radius: 14px 0 0 14px;
   -webkit-border-radius: 14px;
   border-radius: 14px 0 0 14px;
@@ -189,21 +189,21 @@ form .input.active label {
   width: 150px;
   font-size:1.1em;
 }
-form .input.active label span {
+#mapForm .input.active label span {
   color: #fff !important;
 }
-form .input.active textarea + label {
+#mapForm .input.active textarea + label {
   -moz-border-radius: 14px 0;
   -webkit-border-radius: 14px;
   border-radius: 14px 0;
 }
-form :-moz-placeholder {
+#mapForm :-moz-placeholder {
   color: #777;
 }
-form :-ms-input-placeholder {
+#mapForm :-ms-input-placeholder {
   color: #777;
 }
-form ::-webkit-input-placeholder {
+#mapForm ::-webkit-input-placeholder {
   color: #777;
 }
 
