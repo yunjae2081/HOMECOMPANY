@@ -115,4 +115,69 @@ insert into tbl_assignment(
 						#{realFileName}
 						)
 </insert>
+
+
+<select id="selectfNode" parameterType="int" resultType="fnodevo">
+select f_no as fNo,
+			 l_no as lNo,
+			 f_x as fX,
+			 f_Y as fY,
+			 f_title as fTitle,
+			 f_content as fContent,
+			 f_name as fName
+  from tbl_f_node
+ where l_no = #{lNo}
+</select>
+
+<select id="selectsNode" parameterType="int" resultType="snodevo">
+select s.s_no as sNo,
+			 s.f_no as fNo,
+			 s.l_no as lNo,
+			 s.s_x as sX,
+			 s.s_y as sY,
+			 s.s_title as sTitle,
+			 s.s_content as sContent,
+			 f.f_name as fName,
+			 s.s_name as sName
+	from tbl_s_node s, tbl_f_node f
+ where s.l_no = #{lNo} and s.l_no = f.l_no and s.f_no = f.f_no
+</select>
+
+<select id="selecttNode" parameterType="int" resultType="tnodevo" >
+select t.t_no as tNo,
+			 t.s_no as sNo,
+			 t.l_no as lNo,
+			 t.t_x as tX,
+			 t.t_y as tY,
+			 t.t_name as tName,
+			 s.s_name as sName
+	from tbl_t_node t, tbl_s_node s
+ where t.l_no = #{lNo} and t.l_no = s.l_no and t.s_no = s.s_no
+</select>
+
+<select id="selecttLink" parameterType="int"  resultType="tlinkvo">
+select l.lk_no as lkNo,
+			 l.t_no as tNo,
+			 l.l_no as lNo,
+			 l.l_url as lUrl,
+			 l.link_title as linkTitle,
+			 l.link_content as linkContent,
+			 t.t_name as tName
+	from tbl_link l, tbl_t_node t
+ where l.l_no = #{lNo} and l.l_no = l.l_no and l.t_no = t.t_no
+</select>
+
+<select id="selecttFile" parameterType="int" resultType="tfilevo" >
+select a.a_no as aNo,
+			 a.t_no as tNo,
+			 a.l_no as lNo,
+			 a.a_title as aTitle,
+			 a.a_content as aContent,
+			 a.a_reg_date as aRegDate,
+			 a.org_file_name as orgFileName,
+			 a.real_file_name as realFileName,
+			 t.t_name as tName
+	from tbl_assignment a, tbl_t_node t
+ where a.l_no = #{lNo} and a.l_no = a.l_no and a.t_no = t.t_no
+</select>
 </mapper>
