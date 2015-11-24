@@ -11,6 +11,35 @@ public class ProductVO {
 	private int pPrice;
 	private int pCount;
 	private String pRegDate;
+	private String sellNo;
+	private String sellId;
+	
+	public String getSellId() {
+		return sellId;
+	}
+
+	public void setSellId(String sellId) {
+		this.sellId = sellId;
+	}
+
+	private String sellCount;
+
+	
+	public String getSellCount() {
+		return sellCount;
+	}
+
+	public void setSellCount(String sellCount) {
+		this.sellCount = sellCount;
+	}
+
+	public String getSellNo() {
+		return sellNo;
+	}
+
+	public void setSellNo(String sellNo) {
+		this.sellNo = sellNo;
+	}
 
 	public int getpNo() {
 		return pNo;
