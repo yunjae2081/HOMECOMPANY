@@ -1,5 +1,7 @@
 package kr.co.haeyum.lecture.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -45,6 +47,31 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public void insertFile(TfileVO fileVO) throws Exception {
 		dao.insertFile(fileVO);
+	}
+
+	@Override
+	public List<FnodeVO> selectfNode(int lNo) throws Exception {
+		return dao.selectfNode(lNo);
+	}
+
+	@Override
+	public List<SnodeVO> selectsNode(int lNo) throws Exception {
+		return dao.selectsNode(lNo);
+	}
+
+	@Override
+	public List<TnodeVO> selecttNode(int lNo) throws Exception {
+		return dao.selecttNode(lNo);
+	}
+
+	@Override
+	public List<TlinkVO> selecttLink(int lNo) throws Exception {
+		return dao.selecttLink(lNo);
+	}
+
+	@Override
+	public List<TfileVO> selecttFile(int lNo) throws Exception {
+		return dao.selecttFile(lNo);
 	}
 
 }
