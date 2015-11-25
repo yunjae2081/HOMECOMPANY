@@ -1123,6 +1123,21 @@ function upload() {
   html += "<input type='hidden' name = 'sNodeIndex' value = "+ sNode +" />";
   html += "<input type='hidden' name = 'tNodeIndex' value = "+ tNode +" />";
   
+  //// 수정이부분
+  // LESSON DATA
+  for(var i = 0; i < lessonArray.length; i++) {
+    
+  }
+  // ITEM DATA
+  for(var i = 0; i < itemsArray.length; i++) {
+    
+  }
+  // V_INDEX DATA
+  for(var i = 0; i < liCount.length; i++) {
+    
+  }
+  ////
+  
   
   
   $("#dataDiv").html(html);
