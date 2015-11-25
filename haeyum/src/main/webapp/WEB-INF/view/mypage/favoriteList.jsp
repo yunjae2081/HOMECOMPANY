@@ -43,9 +43,9 @@ Lecture favorites
 			<a href="#">
 				<figure>
 					<img style="height: 250px;" src="${pageContext.request.contextPath}/images/${list.lRealFileName}"/>
-					<h1 class="title">${list.lNo}.&nbsp;${list.lTitle}</h1>
+					<h1 class="title">2.&nbsp;타이틀</h1>
 					<div class="description contentClass">
-					강의내용${list.lContent}
+					강의내용2
 					</div>
 				</figure>
 			</a>
@@ -54,9 +54,9 @@ Lecture favorites
 			<a href="#">
 				<figure>
 					<img style="height: 250px;" src="${pageContext.request.contextPath}/images/${list.lRealFileName}"/>
-					<h1 class="title">${list.lNo}.&nbsp;${list.lTitle}</h1>
+					<h1 class="title">3.&nbsp;타이틀</h1>
 					<div class="description contentClass">
-					강의내용${list.lContent}
+					강의내용3
 					</div>
 				</figure>
 			</a>
