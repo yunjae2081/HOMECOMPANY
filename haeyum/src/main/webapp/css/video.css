@@ -8,6 +8,7 @@
 	margin: 0 auto;
 	overflow: hidden;
 	text-align:center;
+	display: none;
 }
 
 .vCanvas{
@@ -181,10 +182,19 @@
 	text-align: center;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 12px;
-	width: 500px;
-	margin: 0 auto;
-	padding-bottom: 30px;
+	width: 290px;
+	margin-top: 6px;
 }
+
+/* .file-upload { */
+/* 	display: block; */
+/* 	text-align: center; */
+/* 	font-family: Helvetica, Arial, sans-serif; */
+/* 	font-size: 12px; */
+/* 	width: 500px; */
+/* 	margin: 0 auto; */
+/* 	padding-bottom: 30px; */
+/* } */
 
 .file-upload .file-select {
 	display: block;
@@ -297,6 +307,7 @@
   padding-top: 35px;
   text-align: center;
   margin: 0 auto;
+  display: none;
 }
 
 .v-btn {
@@ -321,7 +332,6 @@
 .v-comment {
   background-color: #2ecc71;
   box-shadow: 0px 5px 0px 0px #15B358;
-  width: 221.781px;
   float: left;
 }
 

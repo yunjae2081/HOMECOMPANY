@@ -1,11 +1,15 @@
 var video
 var p_context;
 var lCount = 1;
-var icount = 1;
+var iCount = 1;
+var iImgCount = 0;
+var sNum;
+var totalLesson;
+var totalItem;
 
-function Lesson (l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
+function Lesson (s_num, l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
   
-  this.sName = '1';
+  this.s_num = s_num;
   this.l_count = l_count;
   this.l_playTime = l_playTime;
   this.l_text = l_text;
@@ -15,14 +19,30 @@ function Lesson (l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
   this.l_sTime = l_sTime;
 }
 
+function VItems (s_num, i_count, i_title, i_content, i_price, i_number) {
+  this.s_num = s_num;
+  this.i_count = i_count;
+  this.i_title = i_title;
+  this.i_content = i_content;
+  this.i_price = i_price;
+  this.i_number = i_number;
+}
 
+function LessonItemCount (s_num, totalLCount, totalICount) {
+  this.s_num = s_num;
+  this.totalLCount = totalLCount;
+  this.totalICount = totalICount;
+}
+
+function ItemImgCount (s_num, i_count, totalImgCount){
+  this.s_num = s_num;
+  this.i_count = i_count;
+  this.totalImgCount = totalImgCount;
+}
 
 var lessonArray = new Array();
-
-function LessonCount (sName, totalCount) {
-  this.sName = sName;
-  this.totalCount = totalCount;
-}
+var itemsArray = new Array();
+var liCount = new Array();
 
 var canvasLessonArray = new Array();
 //showLesson(currL.l_count , currL.l_playTime, currL.l_text, currL.l_left, currL.l_top, currL.l_color, currL.l_sTime);
@@ -81,16 +101,25 @@ $(document).ready(function(){
   
   (function localFileVideoPlayerInit(win) {
     
-    var URL = win.URL || win.webkitURL, displayMessage = (function displayMessageInit() {
-      
-    var node = document.getElementById('myVideo');  
-    return function displayMessage(message, isError) {
-      node.innerHTML = message;
-      node.className = isError ? 'error' : 'info';
-    };
-   }()), inputNode = document.getElementById('chooseFile');
+    var URL = win.URL || win.webkitURL;
+    var node = document.getElementById('myVideo'); 
+
+//    var displayMessage = (function displayMessageInit() {
+//      console.log("적용되는 시점2");
+//      
+//    return function displayMessage(message, isError) {
+//      node.innerHTML = message;
+//      node.className = isError ? 'error' : 'info';
+//    };
+//   }())
+   
     
     playSelectedFile = function playSelectedFileInit(event) {
+      sNum = event;
+      totalLesson = 0;   //한 비디오당 전체 레슨 개수
+      totalItem = 0;  //한 비디오당 전체 아이템 개수
+      
+      var inputNode = document.getElementById("chooseFile" + event);
       var file = inputNode.files[0];
       var type = file.type;
       var videoNode = document.getElementById('myVideo');
@@ -98,22 +127,22 @@ $(document).ready(function(){
       canPlay = (canPlay === '' ? 'no' : canPlay);
       var fileURL = URL.createObjectURL(file);
       videoNode.src = fileURL;
+      timeFlag = false;
+      var filename = $("#chooseFile" + event).val();
+      if (/^\s*$/.test(filename)) {
+        $(".file-upload").removeClass('active');
+        $("#noFile" + event).text("No file chosen...");
+      } else {
+        console.log("성공");
+        $(".file-upload").addClass('active');
+        $("#noFile" + event).text(filename.replace("C:\\fakepath\\", ""));
+        $(".vView").css("display", "block");
+        $(".v-buttons").css("display", "block");
+      }
+      
     }
     
-    inputNode.addEventListener('change', playSelectedFile, false);
   }(window));
-  
-  $('#chooseFile').bind('change', function() {
-    timeFlag = false;
-    var filename = $("#chooseFile").val();
-    if (/^\s*$/.test(filename)) {
-      $(".file-upload").removeClass('active');
-      $("#noFile").text("No file chosen...");
-    } else {
-      $(".file-upload").addClass('active');
-      $("#noFile").text(filename.replace("C:\\fakepath\\", ""));
-    }
-  });
   
   var p_canvas = document.getElementById("pCanvas");
   video = document.getElementById("myVideo");
@@ -293,7 +322,8 @@ $(document).ready(function(){
         
         
         if(confirm("등록할거니")){
-          lessonArray.push(new Lesson (lCount, l_playTime, l_text, l_left, l_top, l_color, l_sTime) );
+          lessonArray.push(new Lesson (sNum, lCount, l_playTime, l_text, l_left, l_top, l_color, l_sTime) );
+          totalLesson++;
 
           $("#l-pointer").remove();
           $("#li_" + lCount).html("<div class='addLesson'>" + 
@@ -330,24 +360,40 @@ $(document).ready(function(){
   
   iAddBtn();
   
+  var popupOpen = false;
+  
   function iAddBtn() {
     
     $("#i_round-add-button").click(function(e) {
       console.log("popup");
+      
+        
       e.preventDefault();
       var scrTop = $(window).scrollTop();
-      $(".backDrop").animate({"opacity":"0.7" +
-      		""}, 500);
+      $(".backDrop").animate({"opacity":"0.7" +""}, 500);
       $(".box").animate({"opacity":"1.0"}, 500);
       var top = 120;
-  //    $(".box").css({"top":top+scrTop});
-      //$(".backDrop").css("top",top+scrTop+"px");
-      
+        
       $("html, body").css("overflow-y","hidden");
       $(".backDrop, .box").css("display","block");
       $(".box").css("top",top+scrTop+"px");
       $(".lessonArea").css("display", "none");
-    });
+      
+      
+      if(!popupOpen){
+        popupOpen = true;
+        
+        //iImgCount  이미지 개수 카운트변수 (0부터 시작)
+        for (var i = 1; i < 5; i++) {
+          iImgCount++
+          var display = "none";
+          if(i == 1){
+            display = "block";
+          }
+          $("#item_input_file").append("<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + iImgCount + "' style='display: " + display + ";' onchange='selectImage(" + i + ", " + iImgCount + ")'/>");
+        }
+      } //if 문 종료
+    }); //AddBtn 종료
     
   } //iAddBtn() 
   
@@ -368,6 +414,7 @@ $(document).ready(function(){
   
   var v_s_count = 0;
   
+  // 수량과 가격 체크해서 넣기...
   // 스토어 에 들어갈 이미지와 옵션 체크
   // 강의등록할때 메인 이미지 캡쳐 처리 ...
   // 컨트롤러로 널어갈때 이미지와 비디오 파일을 어떻게 넘여줄것인지 체크 (히든으로 넘겨주는 경우 체크)
@@ -386,31 +433,44 @@ $(document).ready(function(){
     
         if(confirm("등록할거니")) {
           
+          popupOpen = false;
+          
           var title = $("#v_store_title").val();
           var content = $("#v_store_content").val();
           var price = $.trim($.trim(strpac[0]).slice(0,-1));
-          var count = $.trim($.trim(strpac[1]).slice(0,-1));
+          var iNumber = $.trim($.trim(strpac[1]).slice(0,-1));
           
-          for(var i = 1 ; i < 5; i++) {
+          itemsArray.push(new VItems(sNum, iCount, title, content, price, iNumber));
+          totalItem++;
+          
+          for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
             if(preview.src != "http://localhost/haeyum/images/png12.png") {
+              console.log("img del");
               preview.src = "http://localhost/haeyum/images/png12.png";
             }
             else {
-              break;
+              $("#store_file_"+iImgCount).remove();
+              iImgCount--;
             }
           }
           
-          $("#i_li_" + icount).html("<div class='addLesson'>" +
+          
+          $("#i_li_" + iCount).html("<div class='addLesson'>" +
                                            "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 210px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + title + "</p>" +
                                            "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 83px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 16px;'>" + price + "원</p>" +
-                                           "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 85px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 9px;'>" + count + "개</p>" +
+                                           "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 85px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 9px;'>" + iNumber + "개</p>" +
                                          "</div>" +
-                                         "<div class='round-del-button id='i_del_" + icount + "' '>del</div>");
+                                         "<div class='round-del-button id='i_del_" + iCount + "'>del</div>");
           closeBox();
+          
+          console.log("sdfsdf  " + $("#i_del_" + iCount));
   
-          $("#i_del_" + icount).click(function() {
+          //삭제 안돼.
+          $("#i_del_" + iCount).click(function() {
             if(confirm("삭제할거니")) {
+              
+              //배열에서 삭제해주기
               
               $(this).parent().remove();
               //        var del_index = lessonArray.indexOf("l_count", $(this).attr("id").substring(6).trim());
@@ -420,7 +480,7 @@ $(document).ready(function(){
             }
           });
           
-          $("#i_ul").prepend("<li id='i_li_" + ++icount + "'>" +
+          $("#i_ul").prepend("<li id='i_li_" + ++iCount + "'>" +
               "<div id='i_round-add-button' class='round-add-button'>+</div>" +
           "</li>");
   
@@ -450,6 +510,31 @@ $(document).ready(function(){
     previewFlag = true;
   });
   
+  $("#v-regist").click(function() {
+    
+    if(confirm("등록할거니")) {
+      //메인이미지 설정확인
+      $(".vView").css("display", "none");
+      $(".vTool").css("width", "737px");
+      $(".lessonDiv").css("display", "none");
+      $(".itemsDiv").css("display", "none");
+      $("#v-comment").css("display", "block");
+      $("#v-items").css("display", "block");
+      $("#l_ul li").remove();
+      $("#l_ul").append("<li id='li_1'><div id='round-add-button' class='round-add-button'>+</div></li>");
+
+      $("#i_ul li").remove();
+      $("#i_ul").append("<li id='i_li_1'><div id='i_round-add-button' class='round-add-button'>+</div></li>");
+      
+      addBtn();
+      iAddBtn();
+      
+      liCount.push(new LessonItemCount(sNum, totalLesson, totalItem));
+      
+    }
+    
+  });
+  
 });   //(document)ready
 
 var sCheck = -1;
@@ -466,9 +551,12 @@ Array.prototype.indexOf = function objectIndexOf(property, value) {
 }
 
 
-function selectImage(imgNum) {
+function selectImage(imgNum, currImgCount) {
+  
+  console.log("바뀔 img number" + imgNum);
+  console.log("바뀐 파일 번호" + currImgCount);
   var preview = document.getElementById("store_img_"+imgNum);
-  var file = document.getElementById("store_file_"+imgNum).files[0];
+  var file = document.getElementById("store_file_"+currImgCount).files[0];
   var reader = new FileReader();
   
   reader.onloadend = function (){
@@ -479,13 +567,14 @@ function selectImage(imgNum) {
     console.log("성공");
     reader.readAsDataURL(file);
     if(imgNum < 4){
-      $("#store_file_"+imgNum).css("display", "none");
-      $("#store_file_"+ ++imgNum).css("display", "block");
+      $("#store_file_"+currImgCount).css("display", "none");
+      $("#store_file_"+ ++currImgCount).css("display", "block");
+    } else {
+      $("#store_file_"+currImgCount).css("display", "none");
     }
   } else {
     console.log("실패");
     preview.src = "http://localhost/haeyum/images/png12.png";
   }
-  
   
 }
