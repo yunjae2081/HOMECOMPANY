@@ -10,6 +10,16 @@ public class FavoriteVO {
 	private String lTitle;
 	private String lContent;
 	private String lCategory;
+	private String lRealFileName;
+	
+
+	public String getlRealFileName() {
+		return lRealFileName;
+	}
+
+	public void setlRealFileName(String lRealFileName) {
+		this.lRealFileName = lRealFileName;
+	}
 
 	public int getlNo() {
 		return lNo;
