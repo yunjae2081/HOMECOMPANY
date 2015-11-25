@@ -137,7 +137,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 		</div>
 		<div class="sphere"></div>
 		<span class="entypo-tools icon fa  fa-desktop"></span> <span
-			class="label">강좌 등록/시청 list</span> \ </section>
+			class="label">LECTURE</span> \ </section>
 
 
 
@@ -147,7 +147,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 		</div>
 		<div class="sphere"></div>
 		<span class="entypo-tools icon fa fa-shopping-cart"></span> <span
-			class="label">물품 구매/판매 List</span> </section>
+			class="label">STORE</span> </section>
 
 
 		<section class="grid-unit bottom-right" onclick="favoriteList();">
@@ -155,7 +155,7 @@ text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9, 0 5px
 			<span class="desc">즐겨찾기</span>
 		</div>
 		<div class="sphere"></div>
-		<span class="entypo-tools icon fa fa-star"></span> <span class="label">즐겨찾기</span>
+		<span class="entypo-tools icon fa fa-star"></span> <span class="label">FAVORITE</span>
 		</section>
 	</div>
 	
