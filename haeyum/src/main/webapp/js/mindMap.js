@@ -98,7 +98,18 @@ $(document).on("click","div[id^='addSNode']", function () {
   html += "<div class='description' id = 'sContentForm" + sNode + "'>";
   html += "<input type = 'hidden' id = 'sContent" + sNode + "' value = 'Second Content'/>Second Content";
   html += "</div>";
-  html += "<a style = 'color: white;'>동영상 추가</a>";
+//  html += "<a style = 'color: white;'>동영상 추가</a>";
+  
+  //수정이 시작 부분
+  html += "<div class='file-upload'>" +
+            "<div class='file-select'>" +
+              "<div class='file-select-button' id='fileName" + sNode + "'>Choose File</div>" +
+              "<div class='file-select-name' id='noFile" + sNode + "'>No file chosen...</div>" +
+              "<input id='chooseFile" + sNode + "' type='file' name='chooseFile" + sNode + "' onchange=playSelectedFile("+sNode+")>" +
+            "</div>" +
+          "</div>";
+  //수정이 끝부분
+
   html += "</div>";
   
   $(".mView").append(html);
@@ -1111,6 +1122,8 @@ function upload() {
   html += "<input type='hidden' name = 'fNodeIndex' value = "+ fNode +" />";
   html += "<input type='hidden' name = 'sNodeIndex' value = "+ sNode +" />";
   html += "<input type='hidden' name = 'tNodeIndex' value = "+ tNode +" />";
+  
+  
   
   $("#dataDiv").html(html);
   return true;
