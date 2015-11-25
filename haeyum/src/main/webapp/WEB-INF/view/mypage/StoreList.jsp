@@ -50,11 +50,17 @@ $(document).ready(function() {
 
 </script>
 </head>
-<body>
+<body class="storeClass">
 <%@include file="../include/topMenu.jsp"%>
 <section class="stretch">
 
-<div style="padding-top:300px;"></div>
+
+<div style="padding-top: 200px;"></div>
+<div class="storeForm">
+
+<div class="mypagetitle">
+Store
+</div>
 
 <div class="tab">
 
@@ -69,7 +75,7 @@ $(document).ready(function() {
 <div class="tabs_item">
 <h4>판매 List</h4>
 
-<div style="box-sizing: border-box; width: 1000px; margin: 0 auto;padding-left:20px;">
+<div style="box-sizing: border-box; width: 1000px; margin: 0 auto;">
 <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
 <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
@@ -165,7 +171,7 @@ $(document).ready(function() {
 </div>
 </div>
 
-
+</div>
 </section>
 </body>
 </html>

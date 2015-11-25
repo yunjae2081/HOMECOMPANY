@@ -58,11 +58,16 @@ $(function() {
 
 </script>
 </head>
-<body>
+<body class="lectureClass">
 <%@include file="../include/topMenu.jsp"%>
 <section class="stretch">
 
-<div style="padding-top:300px;"></div>
+<div style="padding-top: 200px;"></div>
+<div class="lectureForm">
+
+<div class="mypagetitle">
+Lecture
+</div>
 
 <div class="tab">
 
@@ -84,7 +89,7 @@ $(function() {
   <li>
     <a class="expand">
     <div class="right-arrow">+</div>
-    <div><img class="icon"src="../images/videoImg.png"></div>
+    <div><img class="icon"src="../images/studyImg.png"></div>
     <h2>${list.lNo}&nbsp;&nbsp;${list.lCategory}&nbsp;&nbsp;${list.lTitle}</h2>
     <span>${list.lRegDate}</span>
     </a>
@@ -93,6 +98,8 @@ $(function() {
       	
       		<span>${list.lContent}</span>
       </div><br/>
+      
+      
       
       <span class="btn btn-default">이동</span>
       <span class="btn btn-default">수정</span>
@@ -149,6 +156,7 @@ $(function() {
 
 
 
+</div>
 </div>
 </section>
 </body>
