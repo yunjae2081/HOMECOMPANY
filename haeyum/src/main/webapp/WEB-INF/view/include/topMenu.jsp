@@ -2,10 +2,6 @@
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <link rel="styleSheet"href="${pageContext.request.contextPath}/css/login.css" />
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<!-- 
-<script src="${pageContext.request.contextPath}/js/face.js"></script>
- -->
 <script>
 function loginClick(){
 	var f= false;
