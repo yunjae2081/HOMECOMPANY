@@ -25,20 +25,20 @@ $(document).ready(function(){
 	
 
 	$(".sideBtn").on("click", function(){
-	  var category = this.id;
-	  $.ajax({
-	    url: "${pageContext.request.contextPath}/list//latestVideoExtend.json",
-	    type: "POST",
-	    datatype: "JSON",
-	    data: {no:category},
-   		success: function (data, status) {
-     		b_scroll = 0;
-     		bestVideo(data);
-     		boxAction();
-   	},
-   	fail:function(){
-   	}
-	  })
+// 	  var category = this.id;
+// 	  $.ajax({
+// 	    url: "${pageContext.request.contextPath}/list//latestVideoExtend.json",
+// 	    type: "POST",
+// 	    datatype: "JSON",
+// 	    data: {no:category},
+//    		success: function (data, status) {
+//      		b_scroll = 0;
+//      		bestVideo(data);
+//      		boxAction();
+//    	},
+//    	fail:function(){
+//    	}
+// 	  })
 	});
 	
 });
