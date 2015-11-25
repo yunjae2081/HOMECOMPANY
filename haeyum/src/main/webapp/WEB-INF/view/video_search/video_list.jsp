@@ -8,11 +8,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
+<%@include file="../include/searchSideMenu.jsp"%>
 <link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/searchVideo.css"
 	type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/lightbox.css"
+	type="text/css" />
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
+<script src="${pageContext.request.contextPath}/js/lightbox.js"></script>
 <script>
 
 var flag = 0; // 인기순 0, 최신순 1 구분
@@ -186,7 +191,7 @@ function latestVideo(data){ // 최신순 비디오 정렬
 		<c:forEach var="video" items="${list }">
 			<li>
 				<a class='normal' href='#'>
-					<img src="${pageContext.request.contextPath}/images/${video.fileName }" />
+					<img class="imgBtn" src="${pageContext.request.contextPath}/images/${video.fileName }" />
 				</a>
 				<div class='info'>
 					<h3>${video.title }</h3>
@@ -197,6 +202,12 @@ function latestVideo(data){ // 최신순 비디오 정렬
 		
     </ul>
 	</div>
+	
+	<div class = "backDrop">	</div>
+		<div class = "box" style="width:1200px; height:400px; position:absolute; left:50%; margin-left:-600px; background:red;">
+			
+			<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
+		</div>
 </div>
 
  </section>  
