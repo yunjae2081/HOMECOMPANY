@@ -1,0 +1,40 @@
+@CHARSET "UTF-8";
+
+
+
+.backDrop {
+	background-color: #000;
+	display: none;
+	position: absolute;
+	opacity: 0;
+	height: 100%;
+	width: 100%;
+	left: 0px;
+	z-index: 50;
+}
+
+.box {
+	display: none;
+	height: 500px;
+	left: 29%;
+	opacity: 0;
+	position: absolute;
+	z-index: 51;
+}
+
+.largeImage {
+	border-left-width: 5px;
+	border-right-width: 5px;
+	border-top-width: 5px;
+	border-bottom-width: 5px;
+	border-style: solid;
+	border-color: white;
+	width: 700px;
+	height: 500px;
+}
+
+.close {
+	position: absolute;
+	right: 0px;
+	cursor: pointer;
+}
