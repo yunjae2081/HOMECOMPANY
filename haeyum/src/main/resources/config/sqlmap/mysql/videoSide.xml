@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="videosidevo.dao.VideoListDAO">	
+	
+<!-- 	검색을 통한 리스트 -->
+	<select id="selectBestList" resultType="videobestlistvo" parameterType="int">
+		<![CDATA[
+		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title, t.category as category, t.hits
+     				  from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title, l.L_CATEGORY as category
+  																															from tbl_video v, tbl_lecture l
+												   														 				 where v.L_NO = l.L_NO and l.L_CATEGORY = #{category}
+												   														 				 group by v.L_NO
+												  																		having min(S_NO)
+											       													 				 order by hits desc, no) as t
+     limit 0, 16;								       												
+		]]>
+	</select>
+	
+	<!-- 	인기순 리스트 무한 스크롤-->
+	<select id="selectBestExtend" resultType="videobestlistvo" parameterType="map">
+		<![CDATA[
+		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title, t.category as category, t.hits
+     				  from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title, l.L_CATEGORY as category
+  																															from tbl_video v, tbl_lecture l
+												   														 				 where v.L_NO = l.L_NO and l.L_CATEGORY = #{category}
+												   														 				 group by v.L_NO
+												  																		having min(S_NO)
+											       													 				 order by hits desc, no) as t
+     limit #{no}, 8;										       												
+		]]>
+	</select>
+	
+	<!-- 	최신순 리스트 -->
+	<select id="selectLatestList" resultType="videolatestlistvo" parameterType="int">
+		<![CDATA[
+		select v.L_NO as latestNo, l.l_reg_date as date, v.I_REAL_FILE_NAME as fileName, l.L_CONTENT as content, l.L_TITLE as title, l.L_CATEGORY
+      from tbl_video v, tbl_lecture l
+     where v.L_NO = l.L_NO and l.L_CATEGORY = #{category}
+     group by v.L_NO
+    having min(S_NO)
+     order by date , latestNo
+		 limit 0, 16;									       												
+		]]>
+	</select>
+	
+	<!-- 	최신순 무한 스크롤 -->
+	<select id="selectLatestExtend" resultType="videolatestlistvo">
+		<![CDATA[
+		select v.L_NO as latestNo, l.l_reg_date as date, v.I_REAL_FILE_NAME as fileName, l.L_CONTENT as content, l.L_TITLE as title, l.L_CATEGORY
+      from tbl_video v, tbl_lecture l
+     where v.L_NO = l.L_NO and l.L_CATEGORY = #{category}
+     group by v.L_NO
+    having min(S_NO)
+     order by date , latestNo
+		 limit #{no}, 8;											       												
+		]]>
+	</select>
+
+</mapper>
