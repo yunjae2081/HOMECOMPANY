@@ -25,20 +25,8 @@ $(document).ready(function(){
 	
 
 	$(".sideBtn").on("click", function(){
-// 	  var category = this.id;
-// 	  $.ajax({
-// 	    url: "${pageContext.request.contextPath}/list//latestVideoExtend.json",
-// 	    type: "POST",
-// 	    datatype: "JSON",
-// 	    data: {no:category},
-//    		success: function (data, status) {
-//      		b_scroll = 0;
-//      		bestVideo(data);
-//      		boxAction();
-//    	},
-//    	fail:function(){
-//    	}
-// 	  })
+ 	  var category = this.id;
+		location.href = "${pageContext.request.contextPath}/side/video.do?category=" + category;
 	});
 	
 });
@@ -63,23 +51,23 @@ $(document).ready(function(){
 			<ul class="menu">
 				<li><i class="material-icons"><img class="sideBtn" id="1" src="${pageContext.request.contextPath}/images/minibeauty.png"/></i>
 				<p>뷰티 & 패션</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/ministudy.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="2" src="${pageContext.request.contextPath}/images/ministudy.png"/></i>
 				<p>교과목</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/minimusic.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="3" src="${pageContext.request.contextPath}/images/minimusic.png"/></i>
 				<p>음악 & 공연</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/miniit.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="4" src="${pageContext.request.contextPath}/images/miniit.png"/></i>
 				<p>IT</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/miniart.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="5" src="${pageContext.request.contextPath}/images/miniart.png"/></i>
 				<p>미술 & 공예</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/minisport.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="6" src="${pageContext.request.contextPath}/images/minisport.png"/></i>
 				<p>스포츠</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/minicook.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="7" src="${pageContext.request.contextPath}/images/minicook.png"/></i>
 				<p>요리</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/miniforeign.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="8" src="${pageContext.request.contextPath}/images/miniforeign.png"/></i>
 				<p>외국어</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/minigame.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="9" src="${pageContext.request.contextPath}/images/minigame.png"/></i>
 				<p>게임</p></li>
-				<li><i class="material-icons"><img src="${pageContext.request.contextPath}/images/minietc.png"/></i>
+				<li><i class="material-icons"><img class="sideBtn" id="10" src="${pageContext.request.contextPath}/images/minietc.png"/></i>
 				<p>ETC</p></li>
 			</ul>
 		</div>
