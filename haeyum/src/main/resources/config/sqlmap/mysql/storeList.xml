@@ -71,5 +71,38 @@
 			limit #{no}, 8;											       												
 		]]>
 	</select>
-
+	
+	
+	<!-- store 디테일 상품정보 -->
+	<select id="selectStoreDetail" parameterType="int" resultType="productvo">
+		select p_no as pNo , l_no as lNo, p_id as pId, p_name as pName, 
+				p_content as pContent, p_price as pPrice, p_count as pCount, p_reg_date as pRegDate
+			from tbl_product
+			where p_no = #{no}
+	</select>
+	
+	<!-- store 디테일 이미지(4장) -->
+	<select id="selectStoreImg" parameterType="int" resultType="productImgvo"> 
+		select l_no as lNo, p_no as pNo, org_file_name as orgFileName, real_file_name as RealFileName, file_path as FilePath
+			from tbl_product_img
+			where p_no = #{no}
+	</select>
+	
+	<!-- store 디테일 강의명 -->
+	<select id="selectLectureName" parameterType="int" resultType="String">
+		select l.L_TITLE
+  			from tbl_lecture l, tbl_product p
+ 			where l.L_NO = p.L_NO and p.p_no = #{no}
+	</select>
+	
+	<!-- store 디테일 카테고리명 -->
+	<select id="selectCategoryName" parameterType="int" resultType="String">
+		select cate_name
+  			from tbl_category
+ 			where l_category = (select l.L_CATEGORY
+                  				from tbl_lecture l, tbl_product p
+                 				where l.L_NO = p.L_NO and p.p_no = #{no})
+	</select>
+	
+	
 </mapper>
