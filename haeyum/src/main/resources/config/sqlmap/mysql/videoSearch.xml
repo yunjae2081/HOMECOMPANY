@@ -19,7 +19,7 @@
 		]]>
 	</select>
 	
-	<!-- 	인기순 리스트 -->
+	<!-- 	인기순 리스트 무한 스크롤-->
 	<select id="selectBestExtend" resultType="videobestlistvo" parameterType="map">
 		<![CDATA[
 		select ta.listNo as listNo, ta.bestNo as bestNo, ta.fileName as fileName, ta.content as content, ta.title as title         
