@@ -35,7 +35,7 @@ $(document).ready(function(){
 		<div id="menu-fixed">
 			<a href="#" class="cont"> 
 				<i class="material-icons back">
-					<div class="mLogo">
+					<div class="mLogo" style="margin-top: 0px; height: 70px;">
 						<span></span>
 					</div>
 				</i>
