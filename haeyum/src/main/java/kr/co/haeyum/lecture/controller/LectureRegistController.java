@@ -95,7 +95,6 @@ public class LectureRegistController {
 				videoVO.setiRealFileName(saveImgName);
 				
 			}
-			
 //			//lesson
 //			for(int j = 0; j < Integer.parseInt(req.getParameter("totalLCount"+i)); j++){
 //				
