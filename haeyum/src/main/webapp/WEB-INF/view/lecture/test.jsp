@@ -25,10 +25,6 @@
 		 	  <div class="img-div"><img id="store_img_4" src="${pageContext.request.contextPath}/images/png12.png" style="width: 90px; height: 90px;"></div>
 				
 				<div class="store_image_hidden" id="item_input_file">
-<!-- 	  			<input type="file" id = "store_file_1" style="display: block;" onchange="selectImage(1)"/> -->
-<!-- 	  			<input type="file" id = "store_file_2" style="display: none;" onchange="selectImage(2)"/> -->
-<!-- 	  			<input type="file" id = "store_file_3" style="display: none;" onchange="selectImage(3)"/> -->
-<!-- 	  			<input type="file" id = "store_file_4" style="display: none;" onchange="selectImage(4)"/> -->
 				</div>
 				
 				<div id='store_save' class='round-save-button' style="margin-right: 185px;">ok</div>
@@ -38,14 +34,6 @@
 	</div>
 	
 	<div class = "vView">
-		
-<!-- 		<div class="file-upload"> -->
-<!-- 			<div class="file-select"> -->
-<!-- 				<div class="file-select-button" id="fileName">Choose File</div> -->
-<!-- 				<div class="file-select-name" id="noFile">No file chosen...</div> -->
-<!-- 				<input id="chooseFile"type="file" name="chooseFile" accept="vdeio/*"> -->
-<!-- 			</div> -->
-<!-- 		</div> -->
 		
 		<div class="vTool" id="vTool">
 	
@@ -129,4 +117,6 @@
   		<div id="v-view" class="v-btn v-preview">Preview</div>
   		<div id="v-regist" class="v-btn v-regist" title="메인이미지로 원하는 부분에 멈춰주세요">Registration</div>
 		</div>
+		
 	</div>
+	<div class="v-capture-outer" id="v-capture-outer"></div>

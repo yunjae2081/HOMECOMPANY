@@ -513,7 +513,7 @@ $(document).ready(function(){
   $("#v-regist").click(function() {
     
     if(confirm("등록할거니")) {
-      //메인이미지 설정확인
+      
       $(".vView").css("display", "none");
       $(".vTool").css("width", "737px");
       $(".lessonDiv").css("display", "none");
@@ -530,7 +530,8 @@ $(document).ready(function(){
       iAddBtn();
       
       liCount.push(new LessonItemCount(sNum, totalLesson, totalItem));
-      
+      //메인이미지 설정확인
+      shoot();
     }
     
   });
@@ -577,4 +578,28 @@ function selectImage(imgNum, currImgCount) {
     preview.src = "http://localhost/haeyum/images/png12.png";
   }
   
+}
+
+function shoot() {
+  var cap_canvas = capture();
+  var cap_img = cap_canvas.toDataURL("image/png");
+//  console.log(cap_img);
+//  console.log($("#v-capture-outer"));
+//  $("#v-capture-outer").append("<input type='image' name='v_capture_" + sNum + "' src='" + cap_img + "' />");
+  $("#v-capture-outer").append("<input type='hidden' name='v_capture_test1" + sNum + "' value='" + cap_img + "' />");
+  
+}
+
+function capture() {
+  var scaleFactor = 0.3;
+  var cap_w = video.videoWidth * scaleFactor;
+  var cap_h = video.videoHeight * scaleFactor;
+  
+  var cap_canvas = document.createElement('canvas');
+  cap_canvas.width = cap_w;
+  cap_canvas.height = cap_h;
+  cap_canvas.setAttribute("id", "v_capture"+sNum);
+  var cap_context = cap_canvas.getContext('2d');
+  cap_context.drawImage(video, 0, 0, cap_w, cap_h );
+  return cap_canvas;
 }
