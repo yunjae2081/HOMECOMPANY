@@ -2,12 +2,22 @@ package kr.co.haeyum.store.service;
 
 import java.util.List;
 
+import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
 
 public interface StoreService {
 
-	List<ProductVO> selectProductNo();
+	public List<ProductVO> selectBestList();
 
-	List<ProductVO> selectProductExtend(int no);
+	public List<ProductVO> selectBestExtend(int no);
+
+	public List<ProductVO> selectLatestList();
+
+	public List<ProductVO> selectLatestExtend(int no);
+
+	public ProductVO selectStoreDetail(int no);
+
+	public List<ProductImgVO> selectStoreImg(int no);
+
 
 }

@@ -73,6 +73,7 @@ a:hover {
 
 .twitter {
 	background: rgba(71, 186, 255, 0.8);
+	margin-left: 40px
 }
 
 .twitter:hover {
@@ -81,6 +82,7 @@ a:hover {
 
 .dribble {
 	background: rgba(241, 118, 122, 0.8);
+	margin-left: 120px;
 }
 
 .dribble:hover {
