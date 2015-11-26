@@ -722,3 +722,7 @@
 	border: 1px solid black;
 }
 
+.v-capture-outer {
+	display: none;
+}
+
