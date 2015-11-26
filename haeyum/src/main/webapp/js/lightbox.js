@@ -8,7 +8,7 @@ $(document).on("click" ,".normal",function(e) {
   $(".box").css({"top":top+scrTop});
   $(".backDrop").css({"top": scrTop});
   
-  $("body").css({"overflow-y":"hidden"});
+  $("body, html").css({"overflow-y":"hidden"});
   $(".backDrop, .box").css({"display":"block"});
 });
 $(document).on("click", ".backDrop, .close", function() {
@@ -18,6 +18,6 @@ $(document).on("click", ".backDrop, .close", function() {
 function closeBox () {
   $(".backDrop, .box").animate({"opacity":"0"}, 500, function () {
     $(".backDrop, .box").css({"display":"none"});
-    $("body").css({"overflow-y":"auto"});
+    $("body, html").css({"overflow-y":"auto"});
   });
 }
