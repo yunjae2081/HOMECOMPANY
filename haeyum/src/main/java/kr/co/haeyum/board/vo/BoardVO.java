@@ -7,15 +7,7 @@ public class BoardVO {
 	private String bId;
 	private String bTitle;
 	private String bContent;
-	private int bCount;// 조회수
 
-	public int getbCount() {
-		return bCount;
-	}
-
-	public void setbCount(int bCount) {
-		this.bCount = bCount;
-	}
 
 	private String bRegDate;
 
