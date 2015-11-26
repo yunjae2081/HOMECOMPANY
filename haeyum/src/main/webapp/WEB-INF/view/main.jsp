@@ -238,12 +238,12 @@
 			    	<div id=carousel>
 					<div id="container" class="container">
 						<figure id=spinner>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 						</figure>
 					</div>
 				<div id="pager"></div>
@@ -257,12 +257,12 @@
 			    	<div id=carousel>
 					<div id="container" class="container">
 						<figure id=spinner>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video autoplay="autoplay" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 						</figure>
 					</div>
 				<div id="pager"></div>
