@@ -7,20 +7,20 @@
   <selectKey resultType="int" keyProperty="lNo" order="AFTER">
     SELECT LAST_INSERT_ID() 
   </selectKey>
-	insert into tbl_lecture(
-							m_no, 
-							l_category, 
-							l_title, 
-							l_content, 
-							l_id
-							)
-			values (
-								1, 
-								#{lCategory}, 
-								#{lTitle}, 
-								#{lContent}, 
-								'yun'
-							)
+insert into tbl_lecture(
+						m_no, 
+						l_category, 
+						l_title, 
+						l_content, 
+						l_id
+						)
+		values (
+							1, 
+							#{lCategory}, 
+							#{lTitle}, 
+							#{lContent}, 
+							'yun'
+						)
 </insert>
 
 <insert id="insertfNode" parameterType="fnodevo">
@@ -180,4 +180,17 @@ select a.a_no as aNo,
 	from tbl_assignment a, tbl_t_node t
  where a.l_no = #{lNo} and a.l_no = a.l_no and a.t_no = t.t_no
 </select>
+
+<select id="selectLecture" parameterType="int" resultType="lecturevo" >
+select l_no as lNo,
+			 m_no as mNo,
+			 l_category as lCategory,
+			 l_title as lTitle,
+			 l_content as lContent,
+			 l_id as lId,
+			 l_reg_date as lRegDate
+	from tbl_lecture
+ where l_no = #{lNo}
+</select>
+
 </mapper>
