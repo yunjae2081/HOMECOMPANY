@@ -74,4 +74,9 @@ public class LectureServiceImpl implements LectureService{
 		return dao.selecttFile(lNo);
 	}
 
+	@Override
+	public LectureVO selectLecture(int lNo) throws Exception {
+		return dao.selectLecture(lNo);
+	}
+
 }

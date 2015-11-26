@@ -33,4 +33,6 @@ public interface LectureService {
 
 	public List<TfileVO> selecttFile(int lNo) throws Exception;
 
+	public LectureVO selectLecture(int lNo) throws Exception;
+
 }
