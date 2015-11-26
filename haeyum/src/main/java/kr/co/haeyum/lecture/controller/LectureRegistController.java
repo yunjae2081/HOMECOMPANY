@@ -1,10 +1,12 @@
 package kr.co.haeyum.lecture.controller;
 
 import java.io.File;
+import java.io.FileOutputStream;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +21,7 @@ import kr.co.haeyum.lecture.vo.SnodeVO;
 import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
+import kr.co.haeyum.lecture.vo.VideoVO;
 
 @Controller
 @RequestMapping("/lecture")
@@ -58,6 +61,46 @@ public class LectureRegistController {
 			sVO.setfName(req.getParameter("sPname" + i));
 
 			service.insertsNode(sVO);
+			
+			//수정이 부분
+			
+			//video
+			MultipartFile videoFile = req.getFile("chooseFile"+i);
+			String orgFileName = videoFile.getOriginalFilename();
+			if(orgFileName != null && !orgFileName.equals("")){
+				String ext = "";
+				int index = orgFileName.lastIndexOf(".");
+				if(index != -1){
+					ext = orgFileName.substring(index);
+				}
+				
+				String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
+				videoFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\video" + saveFileName));
+
+				byte decode[] = Base64.decodeBase64(req.getParameter("v_capture_test1"+ i));
+				FileOutputStream fo;
+				File mainImg = new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/vMainImage"+i+".jpg");
+				mainImg.createNewFile();
+				fo = new FileOutputStream(mainImg);
+				fo.write(decode);
+				fo.close();
+				
+				String saveImgName = "haeyum-" + UUID.randomUUID().toString() + ".jpg";
+				
+				VideoVO videoVO = new VideoVO();
+				videoVO.setsName("sName"+i);
+				videoVO.setOrgFileName(orgFileName);
+				videoVO.setRealFileName(saveFileName);
+				videoVO.setiOrgFileName("vMainImage"+i+".jpg");
+				videoVO.setiRealFileName(saveImgName);
+				
+			}
+			
+//			//lesson
+//			for(int j = 0; j < Integer.parseInt(req.getParameter("totalLCount"+i)); j++){
+//				
+//			}
+			
 		}
 
 		for (int i = 1; i <= Integer.parseInt(req.getParameter("tNodeIndex")); i++) {
@@ -109,3 +152,4 @@ public class LectureRegistController {
 		return "redirect:/index.jsp";
 	}
 }
+	
