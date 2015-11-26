@@ -19,5 +19,9 @@ public interface StoreService {
 
 	public List<ProductImgVO> selectStoreImg(int no);
 
+	public String selectLectureName(int no);
+
+	public String selectCategoryName(int no);
+
 
 }

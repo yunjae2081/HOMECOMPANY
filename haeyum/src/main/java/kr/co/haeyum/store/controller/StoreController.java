@@ -42,15 +42,28 @@ public class StoreController {
 	
 	/**/
 	@RequestMapping("/storeDetail.do")
-	public /*ModelAndView*/ String detail(/*int no*/) throws Exception{
+	public ModelAndView detail(int no) throws Exception{
 		
-		/*ModelAndView mav = new ModelAndView("/store/storeDetail");
-		List<ProductImgVO> iList = service.selectStoreImg(no);
+		System.out.println("물품번호 ㅣ " + no);
+		ModelAndView mav = new ModelAndView("/store/storeDetail");
+		
+//		List<ProductImgVO> prdImg = service.selectStoreImg(no);
 		ProductVO pVo = service.selectStoreDetail(no);
+		String cate = service.selectCategoryName(no);
+		String lecture = service.selectLectureName(no);
 		
-		mav.addObject("ilist", iList);
-		mav.addObject("pVo", pVo);*/
-		return "/store/storeDetail";
+//		System.out.println("prdImg : " + prdImg.size());
+		System.out.println("pVo : " + pVo.getpNo());
+		System.out.println("cate : " + cate);
+		System.out.println("lecture : " + lecture);
+		
+		
+//		mav.addObject("prdImg", prdImg);
+		mav.addObject("pVo", pVo);
+		mav.addObject("cate", cate);
+		mav.addObject("lecture", lecture);
+		
+		return mav;
 	}
 	
 	// 최신순리스트

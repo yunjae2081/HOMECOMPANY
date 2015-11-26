@@ -32,7 +32,7 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public List<ProductVO> selectLatestExtend(int no) {
-		return dao.selectLatestList(no);
+		return dao.selectLatestExtend(no);
 	}
 
 	@Override
@@ -43,6 +43,16 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public List<ProductImgVO> selectStoreImg(int no) {
 		return dao.selectStoreImg(no);
+	}
+
+	@Override
+	public String selectLectureName(int no) {
+		return dao.selectLectureName(no);
+	}
+
+	@Override
+	public String selectCategoryName(int no) {
+		return dao.selectCategoryName(no);
 	}
 	
 	
