@@ -63,5 +63,9 @@ public class LectureDAO {
 	public List<TfileVO> selecttFile(int lNo) throws Exception{
 		return sqlSession.selectList("kr.co.lecture.selecttFile", lNo);
 	}
+
+	public LectureVO selectLecture(int lNo) throws Exception{
+		return sqlSession.selectOne("kr.co.lecture.selectLecture", lNo);
+	}
 	
 }
