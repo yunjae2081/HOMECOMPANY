@@ -188,14 +188,15 @@ function latestVideo(data){ // 최신순 비디오 정렬
 	
 	<div class="box-list-wrap">
 		<ul>
-		<c:forEach var="video" items="${list }">
+		<c:forEach var="item" items="${list }">
 			<li>
 				<a class='normal' href='#'>
-					<img class="imgBtn" src="${pageContext.request.contextPath}/images/storeImg/${video.fileName }" />
+					<img class="imgBtn" src="${pageContext.request.contextPath}/itemImg/${item.fileName }" />
 				</a>
 				<div class='info'>
-					<h3>${video.title }</h3>
-					<p>${video.content }</p>
+					<h3>${item.name }</h3>
+					<p>${item.price }</p>
+					<p>${item.content }</p>
 				</div>
 			</li>			
 		</c:forEach>
