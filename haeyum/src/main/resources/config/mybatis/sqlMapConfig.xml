@@ -26,6 +26,7 @@
     <typeAlias alias="productvo" type="kr.co.haeyum.store.vo.ProductVO" />
     <typeAlias alias="productImgvo" type="kr.co.haeyum.store.vo.ProductImgVO" />
     <typeAlias alias="videovo" type="kr.co.haeyum.lecture.vo.VideoVO" />
+    <typeAlias alias="storelistvo" type="kr.co.haeyum.store.vo.StoreListVO" />
 	</typeAliases>
 </configuration>
 
