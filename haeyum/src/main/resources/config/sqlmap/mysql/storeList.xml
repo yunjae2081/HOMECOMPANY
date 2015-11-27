@@ -45,5 +45,15 @@
  																												order by p.P_CLICK desc, p.P_NO) as t
 	</select>
 	
+<!-- 	스토어 최신순 -->
+	<select id="selectLatestList" resultType="storelistvo">
+		select @rownum:=@rownum+1 as listNo, t.name as name, t.price as price, t.content as content, t.fileName as fileName
+			 from (select @rownum:=0 order by @rownum) tmp, (select p.P_NAME as name, p.P_PRICE as price, p.P_CONTENT as content, i.REAL_FILE_NAME as fileName
+  																											 from tbl_product p, tbl_product_img i
+ 																												where p.P_NO = i.P_NO
+ 																												group by p.P_NO
+ 																												order by p.P_REG_DATE desc, p.P_NO) as t
+	</select>
+	
 	
 </mapper>
