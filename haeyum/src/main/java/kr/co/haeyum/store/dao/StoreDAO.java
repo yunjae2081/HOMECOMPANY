@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.StoreListVO;
 
 @Repository
 public class StoreDAO {
@@ -52,6 +53,11 @@ public class StoreDAO {
 	// store 디테일 카테고리명
 	public String selectCategoryName(int no) {
 		return session.selectOne("store.dao.StoreDAO.selectCategoryName",no);
+	}
+
+	// store 버튼을 누르고 리스트
+	public List<StoreListVO> selectStoreList() {
+		return session.selectList("store.dao.StoreDAO.selectStoreList");
 	}
 
 }
