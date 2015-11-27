@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import kr.co.haeyum.store.dao.StoreDAO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.StoreListVO;
 
 @Service
 public class StoreServiceImpl implements StoreService{
@@ -53,6 +54,11 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public String selectCategoryName(int no) {
 		return dao.selectCategoryName(no);
+	}
+
+	@Override
+	public List<StoreListVO> selectStoreList() throws Exception {
+		return dao.selectStoreList();
 	}
 	
 	
