@@ -1,77 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
 	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="store.dao.StoreDAO">	
-	
-<!-- 	인기순 무한 스크롤 -->
-	<select id="selectBestExtend" resultType="videobestlistvo">
-		<![CDATA[
-		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
-      from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
-  																											from tbl_video v, tbl_lecture l
-												   														 where v.L_NO = l.L_NO
-												   														 group by v.L_NO
-												  														having min(S_NO)
-											       													 order by hits desc, no) as t
-			limit #{no}, 8;											       												
-		]]>
-	</select>
-	
-<!-- 	인기순 리스트 -->
-	<select id="selectBestList" resultType="videobestlistvo">
-		<![CDATA[
-		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
-      from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
-  																											from tbl_video v, tbl_lecture l
-												   														 where v.L_NO = l.L_NO
-												   														 group by v.L_NO
-												  														having min(S_NO)
-											       													 order by hits desc, no) as t
-			limit 0, 16;											       												
-		]]>
-	</select>
-	
-<!-- 	검색을 통한 리스트 -->
-	<select id="selectNormalList" resultType="videobestlistvo" parameterType="String">
-		<![CDATA[
-		select ta.listNo as listNo, ta.bestNo as bestNo, ta.fileName as fileName, ta.content as content, ta.title as title         
-			from (select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
-     				  from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
-  																															from tbl_video v, tbl_lecture l
-												   														 				 where v.L_NO = l.L_NO
-												   														 				 group by v.L_NO
-												  																		having min(S_NO)
-											       													 				 order by hits desc, no) as t) ta
-     where ta.title like CONCAT('%', #{title}, '%')										       												
-		]]>
-	</select>
-	
-	<!-- 	최신순 리스트 -->
-	<select id="selectLatestList" resultType="videolatestlistvo">
-		<![CDATA[
-		select v.L_NO as latestNo, l.l_reg_date as date, v.I_REAL_FILE_NAME as fileName, l.L_CONTENT as content, l.L_TITLE as title
-      from tbl_video v, tbl_lecture l
-     where v.L_NO = l.L_NO
-     group by v.L_NO
-    having min(S_NO)
-     order by date , latestNo
-		 limit 0, 16;											       												
-		]]>
-	</select>
-	
-	<!-- 	최신순 무한 스크롤 -->
-	<select id="selectLatestExtend" resultType="videolatestlistvo">
-		<![CDATA[
-		select v.L_NO as latestNo, l.l_reg_date as date, v.I_REAL_FILE_NAME as fileName, l.L_CONTENT as content, l.L_TITLE as title
-      from tbl_video v, tbl_lecture l
-     where v.L_NO = l.L_NO
-     group by v.L_NO
-    having min(S_NO)
-     order by date , latestNo
-			limit #{no}, 8;											       												
-		]]>
-	</select>
-	
+<mapper namespace="store.dao.StoreDAO">		
 	
 	<!-- store 디테일 상품정보 -->
 	<select id="selectStoreDetail" parameterType="int" resultType="productvo">
@@ -102,6 +32,17 @@
  			where l_category = (select l.L_CATEGORY
                   				from tbl_lecture l, tbl_product p
                  				where l.L_NO = p.L_NO and p.p_no = #{no})
+	</select>
+	
+	
+<!-- 	스토어 버튼을 통한 진입 -->
+	<select id="selectStoreList" resultType="storelistvo">
+		 select @rownum:=@rownum+1 as listNo, t.name as name, t.price as price, t.content as content, t.fileName as fileName
+			 from (select @rownum:=0 order by @rownum) tmp, (select p.P_NAME as name, p.P_PRICE as price, p.P_CONTENT as content, i.REAL_FILE_NAME as fileName
+  																											 from tbl_product p, tbl_product_img i
+ 																												where p.P_NO = i.P_NO
+ 																												group by p.P_NO
+ 																												order by p.P_CLICK desc, p.P_NO) as t
 	</select>
 	
 	
