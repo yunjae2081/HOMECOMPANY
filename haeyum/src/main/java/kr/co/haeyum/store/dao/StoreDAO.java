@@ -15,25 +15,6 @@ public class StoreDAO {
 
 	@Autowired
 	private SqlSessionTemplate session;
-	// store List 인기순
-	public List<ProductVO> selectBestList() {
-		return session.selectList("store.dao.StoreDAO.selectBestList");
-	}
-
-	// store List 인기순(무한스크롤)
-	public List<ProductVO> selectBestExtend(int no) {
-		return session.selectList("store.dao.StoreDAO.selectBestExtend",no);
-	}
-
-	// store List 최신순
-	public List<ProductVO> selectLatestList() {
-		return session.selectList("store.dao.StoreDAO.selectLatestList");
-	}
-
-	// store List 최신순(무한스크롤)
-	public List<ProductVO> selectLatestExtend(int no) {
-		return session.selectList("store.dao.StoreDAO.selectLatestExtend",no);
-	}
 
 	// store 디테일 상품정보
 	public ProductVO selectStoreDetail(int no) {
@@ -58,6 +39,11 @@ public class StoreDAO {
 	// store 버튼을 누르고 리스트
 	public List<StoreListVO> selectStoreList() {
 		return session.selectList("store.dao.StoreDAO.selectStoreList");
+	}
+
+	// 최신순 진입
+	public List<StoreListVO> selectLatestList() {
+		return session.selectList("store.dao.StoreDAO.selectLatestList");
 	}
 
 }

@@ -44,8 +44,8 @@ public class StoreController {
 		return mav;
 	}
 	
+//	탑메뉴 스토어 버튼 진입
 	@RequestMapping("/storeList.do")
-	@ResponseBody
 	public ModelAndView search() throws Exception{
 		
 		ModelAndView mav = new ModelAndView("/store/storeList");
@@ -54,6 +54,24 @@ public class StoreController {
 		mav.addObject("list", list);
 		
 		return mav;
+	}
+	
+//	최신순 진입
+	@RequestMapping("/latestStore.json")
+	@ResponseBody
+	public List<StoreListVO> lList() throws Exception{		
+		List<StoreListVO> vVo = service.selectLatestList();
+		
+		return vVo;
+	}
+	
+//	인기순 진입
+	@RequestMapping("/bestStore.json")
+	@ResponseBody
+	public List<StoreListVO> bList() throws Exception{		
+		List<StoreListVO> vVo = service.selectBestList();
+		
+		return vVo;
 	}
 	
 	
