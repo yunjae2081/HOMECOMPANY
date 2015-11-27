@@ -8,14 +8,6 @@ import kr.co.haeyum.store.vo.StoreListVO;
 
 public interface StoreService {
 
-	public List<ProductVO> selectBestList();
-
-	public List<ProductVO> selectBestExtend(int no);
-
-	public List<ProductVO> selectLatestList();
-
-	public List<ProductVO> selectLatestExtend(int no);
-
 	public ProductVO selectStoreDetail(int no);
 
 	public List<ProductImgVO> selectStoreImg(int no);
@@ -24,7 +16,14 @@ public interface StoreService {
 
 	public String selectCategoryName(int no);
 
+	// 탑메뉴 스토어 진입
 	public List<StoreListVO> selectStoreList() throws Exception;
+
+	// 최신순 진입
+	public List<StoreListVO> selectLatestList() throws Exception;
+
+	// 인기순 진입
+	public List<StoreListVO> selectBestList() throws Exception;
 
 
 }

@@ -17,26 +17,6 @@ public class StoreServiceImpl implements StoreService{
 	private StoreDAO dao;
 
 	@Override
-	public List<ProductVO> selectBestList() {
-		return dao.selectBestList();
-	}
-
-	@Override
-	public List<ProductVO> selectBestExtend(int no) {
-		return dao.selectBestExtend(no);
-	}
-
-	@Override
-	public List<ProductVO> selectLatestList() {
-		return dao.selectLatestList();
-	}
-
-	@Override
-	public List<ProductVO> selectLatestExtend(int no) {
-		return dao.selectLatestExtend(no);
-	}
-
-	@Override
 	public ProductVO selectStoreDetail(int no) {
 		return dao.selectStoreDetail(no);
 	}
@@ -58,6 +38,16 @@ public class StoreServiceImpl implements StoreService{
 
 	@Override
 	public List<StoreListVO> selectStoreList() throws Exception {
+		return dao.selectStoreList();
+	}
+
+	@Override
+	public List<StoreListVO> selectLatestList() throws Exception {
+		return dao.selectLatestList();
+	}
+
+	@Override
+	public List<StoreListVO> selectBestList() throws Exception {
 		return dao.selectStoreList();
 	}
 	
