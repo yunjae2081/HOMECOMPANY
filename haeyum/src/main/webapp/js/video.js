@@ -1,4 +1,4 @@
-var video
+var video;
 var p_context;
 var lCount = 1;
 var iCount = 1;
@@ -58,8 +58,8 @@ function showLesson(l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime
   
   canvasLessonArray.push(new Lesson(l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime));
   $("#lessonArea").append("<div class='lessonBox' id='pTime" + l_playTime +"' style='border: 1px solid " + l_color+ "'>" +l_text + "</div>");
-  console.log("left " + $("#pTime" + l_playTime).position().left + "  /  top " + $("#pTime"+l_playTime).position().top);
-  console.log("left " + l_left + "   /  top" + l_top);
+//  console.log("left " + $("#pTime" + l_playTime).position().left + "  /  top " + $("#pTime"+l_playTime).position().top);
+//  console.log("left " + l_left + "   /  top" + l_top);
   var lessonLine = makeLSVG('line', {id : 'pLine'+l_playTime , x1 : $("#pTime" + l_playTime).position().left+433 , y1 : $("#pTime"+l_playTime).position().top+35, x2 : l_left+983, y2 : l_top+33, stroke : l_color, 'stroke-width' : 1});
   document.getElementById("vSVG").appendChild(lessonLine);
   var lessonCircle = makeLSVG('circle', {id : 'pCircle'+l_playTime , cx: l_left+983, cy: l_top+33, r:10, fill: l_color });
@@ -67,11 +67,11 @@ function showLesson(l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime
   
   $("#pTime" + l_playTime).click(function() {
     var svg = document.getElementById("pLine"+l_playTime);
-    console.log(svg);
+//    console.log(svg);
     var x = svg.getAttribute('x1');
-    console.log(x);
+//    console.log(x);
     svg.setAttribute('x1', 100);
-    console.log(svg);
+//    console.log(svg);
   });
   
   setTimeout(function() {
@@ -85,10 +85,10 @@ function showLesson(l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime
 
 function reDraw() {
   for (var i = canvasLessonArray.length-1; i >= 0; i--) {
-    console.log("I" + i);
+//    console.log("I" + i);
     var getLineIndex = canvasLessonArray[i];
 //    if(!getLineIndex) continue; //setTimeout이 진행 되서 이미 remove() 된 경우....
-    
+    // 수정아 회식하자..
     var getLine = document.getElementById("pLine" + getLineIndex.l_playTime);
     if(!getLine) continue; //setTimeout이 진행 되서 이미 remove() 된 경우....
     
@@ -133,7 +133,7 @@ $(document).ready(function(){
         $(".file-upload").removeClass('active');
         $("#noFile" + event).text("No file chosen...");
       } else {
-        console.log("성공");
+//        console.log("성공");
         $(".file-upload").addClass('active');
         $("#noFile" + event).text(filename.replace("C:\\fakepath\\", ""));
         $(".vView").css("display", "block");
@@ -151,7 +151,8 @@ $(document).ready(function(){
   var d_time;
   var timeFlag = false;
   //자동 플레이일경우
-  var on = true;
+  var on = true;  //플레이
+  var sound = true; //사운드
   var currTime;
   
   var previewFlag = true;  //미리보기 여부
@@ -160,7 +161,7 @@ $(document).ready(function(){
   
     
     if(!timeFlag){
-      console.log("update");
+//      console.log("update");
       duration = video.duration;
       fDuration = Math.floor(duration);
       var d_rest = (fDuration%60) >= 10 ? fDuration%60 : "0" + fDuration%60;
@@ -185,8 +186,8 @@ $(document).ready(function(){
     
     if(previewFlag) {
       var p_index = lessonArray.indexOf("l_playTime", Math.floor(video.currentTime));
-      if(p_index != -1) {
-        console.log("p_index " + p_index);
+      if(p_index != -1 && lessonArray[p_index].s_num == sNum) {
+//        console.log("p_index " + p_index);
         var currL = lessonArray[p_index];
         showLesson(currL.l_count , currL.l_playTime, currL.l_text, currL.l_left, currL.l_top, currL.l_color, currL.l_sTime);
       }
@@ -220,17 +221,40 @@ $(document).ready(function(){
     if(on){
       video.pause();
       image.fadeOut('fast', function(){
-        image.attr("src", "images/play124.png");
+        image.attr("src", "/haeyum/images/play124.png");
         image.fadeIn('fast');
       });
     } else {
       video.play();
       image.fadeOut('fast', function(){
-        image.attr("src", "images/pause.png");
+        image.attr("src", "/haeyum/images/pause.png");
         image.fadeIn('fast');
       });
     }
     on = !on;
+  });
+  
+  $("#vol-button").click(function() {
+    var image = $("#vol-button img");
+    if(sound){
+      sound  =  !sound;
+      video.muted = !video.muted;
+      image.fadeOut('fast', function() {
+        image.attr("src", "/haeyum/images/speaker113.png");
+        image.fadeIn('fast');
+      });
+    } else{
+      sound  =  !sound;
+      video.muted = !video.muted;
+      image.fadeOut('fast', function() {
+        image.attr("src", "/haeyum/images/speaker100.png");
+        image.fadeIn('fast');
+      });
+    }
+  });
+  
+  $("#full-button").click(function() {
+    
   });
   
   $("#v-comment").click(function(){
@@ -259,7 +283,7 @@ $(document).ready(function(){
   function addBtn() { 
     
     $("#round-add-button").click(function() {
-      console.log("add");
+//      console.log("add");
       $("#control-play-button").trigger("click");
       $(this).parent().html("<div class='addLesson' id='lesson'" + lCount + "> " +
                               "<textarea rows='2'name='add' id='lText' placeholder='pointer를 이동해주세요...'></textarea>" +
@@ -308,6 +332,7 @@ $(document).ready(function(){
       
       
       $("#round-save-button").click(function() {
+//        console.log("clickSave")
         $("#control-play-button").trigger("click");
         
         var l_playTime = Math.floor(video.currentTime);
@@ -322,7 +347,9 @@ $(document).ready(function(){
         
         
         if(confirm("등록할거니")){
+          console.log("lCount" + lCount);
           lessonArray.push(new Lesson (sNum, lCount, l_playTime, l_text, l_left, l_top, l_color, l_sTime) );
+//          console.log("lessonLength : " + lessonArray.length + " / lCount  : " + lCount);
           totalLesson++;
 
           $("#l-pointer").remove();
@@ -339,9 +366,10 @@ $(document).ready(function(){
                
                $(this).parent().remove();
                var del_index = lessonArray.indexOf("l_count", $(this).attr("id").substring(6).trim());
-               console.log(del_index);
-               console.log(lessonArray[del_index]);
+//               console.log(del_index);
+//               console.log(lessonArray[del_index]);
                lessonArray.splice(del_index, 1);  //삭제시 앞으로 index 이동
+               totalLesson--;
                
              }
           });
@@ -365,7 +393,7 @@ $(document).ready(function(){
   function iAddBtn() {
     
     $("#i_round-add-button").click(function(e) {
-      console.log("popup");
+//      console.log("popup");
       
         
       e.preventDefault();
@@ -420,6 +448,7 @@ $(document).ready(function(){
   // 컨트롤러로 널어갈때 이미지와 비디오 파일을 어떻게 넘여줄것인지 체크 (히든으로 넘겨주는 경우 체크)
   // 컨트롤러로 넘어가서 처리
   // 강의 보여주기
+  // 수정이 언제와 수정수정
   
   
     
@@ -446,7 +475,7 @@ $(document).ready(function(){
           for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
             if(preview.src != "http://localhost/haeyum/images/png12.png") {
-              console.log("img del");
+//              console.log("img del");
               preview.src = "http://localhost/haeyum/images/png12.png";
             }
             else {
@@ -464,9 +493,10 @@ $(document).ready(function(){
                                          "<div class='round-del-button id='i_del_" + iCount + "'>del</div>");
           closeBox();
           
-          console.log("sdfsdf  " + $("#i_del_" + iCount));
+//          console.log("sdfsdf  " + $("#i_del_" + iCount));
   
           //삭제 안돼.
+          //수정아 어디니
           $("#i_del_" + iCount).click(function() {
             if(confirm("삭제할거니")) {
               
@@ -520,14 +550,9 @@ $(document).ready(function(){
       $(".itemsDiv").css("display", "none");
       $("#v-comment").css("display", "block");
       $("#v-items").css("display", "block");
-      $("#l_ul li").remove();
-      $("#l_ul").append("<li id='li_1'><div id='round-add-button' class='round-add-button'>+</div></li>");
+      $("#l_ul li").not(':first').remove();
 
-      $("#i_ul li").remove();
-      $("#i_ul").append("<li id='i_li_1'><div id='i_round-add-button' class='round-add-button'>+</div></li>");
-      
-      addBtn();
-      iAddBtn();
+      $("#i_ul li").not(':first').remove();
       
       liCount.push(new LessonItemCount(sNum, totalLesson, totalItem));
       //메인이미지 설정확인
@@ -554,8 +579,8 @@ Array.prototype.indexOf = function objectIndexOf(property, value) {
 
 function selectImage(imgNum, currImgCount) {
   
-  console.log("바뀔 img number" + imgNum);
-  console.log("바뀐 파일 번호" + currImgCount);
+//  console.log("바뀔 img number" + imgNum);
+//  console.log("바뀐 파일 번호" + currImgCount);
   var preview = document.getElementById("store_img_"+imgNum);
   var file = document.getElementById("store_file_"+currImgCount).files[0];
   var reader = new FileReader();
@@ -565,7 +590,7 @@ function selectImage(imgNum, currImgCount) {
   }
   
   if(file) {
-    console.log("성공");
+//    console.log("성공");
     reader.readAsDataURL(file);
     if(imgNum < 4){
       $("#store_file_"+currImgCount).css("display", "none");
@@ -574,7 +599,7 @@ function selectImage(imgNum, currImgCount) {
       $("#store_file_"+currImgCount).css("display", "none");
     }
   } else {
-    console.log("실패");
+//    console.log("실패");
     preview.src = "http://localhost/haeyum/images/png12.png";
   }
   

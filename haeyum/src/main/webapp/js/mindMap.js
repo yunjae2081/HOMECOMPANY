@@ -1131,30 +1131,32 @@ function upload() {
   
   // V_INDEX DATA
   for(var i = 0; i < liCount.length; i++) {
-    html += "<input type='hidden' name='liCountSNum" + liCount[i].s_num + "' value='" + liCount[i].s_num + "' />";
+//    html += "<input type='hidden' name='liCountSNum" + liCount[i].s_num + "' value='" + liCount[i].s_num + "' />";
     html += "<input type='hidden' name='totalLCount" + liCount[i].s_num + "' value='" + liCount[i].totalLCount + "'/>"
     html += "<input type='hidden' name='totalICount" + liCount[i].s_num + "' value='" + liCount[i].totalICount + "'/>"
   }
   // LESSON DATA
   for(var i = 0; i < lessonArray.length; i++) {
-    html += "<input type='hidden' name = 'lesson-sNum" + itemsArray[i].s_num + "' value='" + itemsArray[i].s_num + "' />";
-    html += "<input type='hidden' name = 'lesson-lCount" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_count + "' />";
-    html += "<input type='hidden' name = 'lesson-lPlayTime" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_playTime + "' />";
-    html += "<input type='hidden' name = 'lesson-lText" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_text + "' />";
-    html += "<input type='hidden' name = 'lesson-lLeft" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_left + "' />";
-    html += "<input type='hidden' name = 'lesson-lTop" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_top + "' />";
-    html += "<input type='hidden' name = 'lesson-lColor" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_color + "' />";
-    html += "<input type='hidden' name = 'lesson-lSTime" + itemsArray[i].s_num + "' value='" + itemsArray[i].l_sTime + "' />";
+    console.log("lesson-sNum" + lessonArray[i].l_count);
+    html += "<input type='hidden' name = 'lesson-sNum" + lessonArray[i].l_count + "' value='" + lessonArray[i].s_num + "' />";
+//    html += "<input type='hidden' name = 'lesson-lCount" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_count + "' />";
+    html += "<input type='hidden' name = 'lesson-lPlayTime" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_playTime + "' />";
+    html += "<input type='hidden' name = 'lesson-lText" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_text + "' />";
+    html += "<input type='hidden' name = 'lesson-lLeft" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_left + "' />";
+    html += "<input type='hidden' name = 'lesson-lTop" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_top + "' />";
+    html += "<input type='hidden' name = 'lesson-lColor" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_color + "' />";
+    html += "<input type='hidden' name = 'lesson-lSTime" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_sTime + "' />";
   }
   
   // ITEM DATA
   for(var i = 0; i < itemsArray.length; i++) {
-    html += "<input type='hidden' name = 'item-sNum" + i + "' value='" + itemsArray[i].s_num + "' />";
-    html += "<input type='hidden' name = 'item-iCount" + i + "' value='" + itemsArray[i].i_count + "' />";
-    html += "<input type='hidden' name = 'item-iTitle" + i + "' value='" + itemsArray[i].i_title + "' />";
-    html += "<input type='hidden' name = 'item-iContent" + i + "' value='" + itemsArray[i].i_content + "' />";
-    html += "<input type='hidden' name = 'item-iPrice" + i + "' value='" + itemsArray[i].i_price + "' />";
-    html += "<input type='hidden' name = 'item-iNumber" + i + "' value='" + itemsArray[i].i_number + "' />";
+    console.log("item-sNum" + itemsArray[i].i_count);
+    html += "<input type='hidden' name = 'item-sNum" + itemsArray[i].i_count + "' value='" + itemsArray[i].s_num + "' />";
+//    html += "<input type='hidden' name = 'item-iCount" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_count + "' />";
+    html += "<input type='hidden' name = 'item-iTitle" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_title + "' />";
+    html += "<input type='hidden' name = 'item-iContent" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_content + "' />";
+    html += "<input type='hidden' name = 'item-iPrice" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_price + "' />";
+    html += "<input type='hidden' name = 'item-iNumber" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_number + "' />";
   }
   ////
   
