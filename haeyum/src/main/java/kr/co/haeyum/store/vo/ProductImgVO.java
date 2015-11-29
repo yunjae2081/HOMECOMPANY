@@ -6,7 +6,6 @@ public class ProductImgVO {
 	int pNo;
 	String orgFileName;
 	String RealFileName;
-	String FilePath;
 	
 	public int getiNo() {
 		return iNo;
@@ -32,11 +31,4 @@ public class ProductImgVO {
 	public void setRealFileName(String realFileName) {
 		RealFileName = realFileName;
 	}
-	public String getFilePath() {
-		return FilePath;
-	}
-	public void setFilePath(String filePath) {
-		FilePath = filePath;
-	}
-	
 }
