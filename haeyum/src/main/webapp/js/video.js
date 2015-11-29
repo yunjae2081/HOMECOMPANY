@@ -6,6 +6,12 @@ var iImgCount = 0;
 var sNum;
 var totalLesson;
 var totalItem;
+var timeFlag = false;
+var duration;
+var d_time;
+var on = true;  //플레이
+var sound = true; //사운드
+var currTime;
 
 function Lesson (s_num, l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime) {
   
@@ -147,26 +153,30 @@ $(document).ready(function(){
   var p_canvas = document.getElementById("pCanvas");
   video = document.getElementById("myVideo");
   p_context = p_canvas.getContext("2d");
-  var duration;
-  var d_time;
-  var timeFlag = false;
+//  var duration;
+//  var d_time;
+//  var timeFlag = false;
   //자동 플레이일경우
-  var on = true;  //플레이
-  var sound = true; //사운드
-  var currTime;
+//  var on = true;  //플레이
+//  var sound = true; //사운드
+//  var currTime;
   
   var previewFlag = true;  //미리보기 여부
+  
+  function videoUpdate() {
+    console.log("update");
+    duration = video.duration;
+    fDuration = Math.floor(duration);
+    var d_rest = (fDuration%60) >= 10 ? fDuration%60 : "0" + fDuration%60;
+    d_time = Math.floor(fDuration/60) + ":" + d_rest;
+    timeFlag = true;
+  }
   
   video.ontimeupdate = function() {
   
     
     if(!timeFlag){
-//      console.log("update");
-      duration = video.duration;
-      fDuration = Math.floor(duration);
-      var d_rest = (fDuration%60) >= 10 ? fDuration%60 : "0" + fDuration%60;
-      d_time = Math.floor(fDuration/60) + ":" + d_rest;
-      timeFlag = true;
+      videoUpdate();
     }
   
     //현재 플레이 되고 있는 시간
@@ -187,7 +197,6 @@ $(document).ready(function(){
     if(previewFlag) {
       var p_index = lessonArray.indexOf("l_playTime", Math.floor(video.currentTime));
       if(p_index != -1 && lessonArray[p_index].s_num == sNum) {
-//        console.log("p_index " + p_index);
         var currL = lessonArray[p_index];
         showLesson(currL.l_count , currL.l_playTime, currL.l_text, currL.l_left, currL.l_top, currL.l_color, currL.l_sTime);
       }
