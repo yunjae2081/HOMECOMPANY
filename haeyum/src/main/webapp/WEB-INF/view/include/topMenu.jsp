@@ -175,7 +175,7 @@ function nullCheck(){
 						<li><a href="${pageContext.request.contextPath}/store/storeList.do">Store</a></li>
 						<c:choose>
 						<c:when test="${empty user}">
-						<li><a onclick="loginClick();">Login</a></li>
+						<li><a onclick="loginClick();"style="overflow: hidden;">Login</a></li>
 						
 						<div id="loginDiv" style="display: none; float:right;">
 							  <div class="login-box">
@@ -195,7 +195,7 @@ function nullCheck(){
 							     </div> 	
 							      	
 									-->		
-							      	
+							      	로그인
 							      	
 							    </div>
 							      <div class="u-form-group">
@@ -236,8 +236,8 @@ function nullCheck(){
 						</c:when>
 						<c:otherwise>
 						
-						<li><a href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
-						<li><a onclick="outclick();">Logout</a></li>															
+						<li><a class="topLoginBtn" href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
+						<li><a class="topLoginBtn"onclick="outclick();">Logout</a></li>															
 						</c:otherwise>
 						</c:choose>				
 					</ul>
