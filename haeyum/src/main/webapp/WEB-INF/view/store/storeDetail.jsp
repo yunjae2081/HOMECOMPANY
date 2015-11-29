@@ -80,7 +80,7 @@ console.dir($.fn.avgrund);
       <div class="botBorder">
       <c:forEach var="sideList" items="${sideList}" >
         <div class="product vtop slim">
-            <a href="#">
+            <a href="${pageContext.request.contextPath}/store/storeDetail.do?no=${sideList.pNO}">
                <div class="smallBox"><img src="${sideList.realFileName}" style="width: 92px; height: 92px"></div>
                <span class="manuName">${sideList.pName}</span>
                <span class="prodName">${sideList.pPrice}</span>
