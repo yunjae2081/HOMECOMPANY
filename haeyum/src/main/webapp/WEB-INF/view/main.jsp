@@ -11,22 +11,13 @@
 
 <body style="background-color: #F6F6F6">
 <%@include file="include/topMenu.jsp" %>
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
-	<br />
+	<div style="padding-top: 140px;"></div>
 	<section class="stretch">
 	<div class="navigation" id="nav_var_b">
 		<div id="main-content">
 			<section id="categories">
 				<div class="container_16">
-					<h1>동영상 강의</h1>
-					<h2>혜윰 : '생각'의 순우리말</h2>
+					<div style="padding-top: 150px;"></div>
 					<ul>
 
 						<li>
@@ -226,24 +217,32 @@
 			  <nav style="position:static;">
 			    <ul>
 			      <li class="tab-menu tab1">
-			        <label for="tab1">인기영상</label>
+			        <label for="tab1">popularity</label>
 			      </li>
 			      <li class="tab-menu tab2">
-			        <label for="tab2">최신영상</label>
+			        <label for="tab2">newest</label>
 			      </li>
 			    </ul>
 			  </nav>
+			  
+<!--  -->	
+		  
 			  <section>
+			  
+			  <!-- 인기영상 -->
 			    <div class="tab1">
-			    	<div id=carousel>
+			    
+			    	<div id="carousel">
 					<div id="container" class="container">
-						<figure id=spinner>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						<figure id="spinner" style="padding-top: 50px;">
+						<!-- 
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						 -->
 						</figure>
 					</div>
 				<div id="pager"></div>
@@ -253,30 +252,62 @@
 			<span style="float: right" id="spinR" class="ss-icon" onclick="galleryspin('')">&gt;</span>
 			
 			</div>
+			
+			<!-- 최신영상 -->
 			    <div class="tab2">
-			    	<div id=carousel>
+			    	<div id="carousel">
 					<div id="container" class="container">
-						<figure id=spinner>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" mute="true" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						<figure id="spinner" style="padding-top: 50px;">
+						<!-- 
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+						 -->
 						</figure>
 					</div>
+			<span style="float: left" class="ss-icon spinL" onclick="galleryspin('-')">&lt;</span>
+			<span style="float: right" class="ss-icon spinR" onclick="galleryspin('')">&gt;</span>
 				<div id="pager"></div>
 				</div>
 
-			<span style="float: left" class="ss-icon spinL" onclick="galleryspin('-')">&lt;</span>
-			<span style="float: right" class="ss-icon spinR" onclick="galleryspin('')">&gt;</span>
 			
 			</div>
-			</section>
+			
+			
+			
+			<div style="padding-top: 50px;padding-bottom:50px; border-bottom: 1px solid black;"> </div>
 			</div>
-		<div style="border:1px solid black;height: 500px;">intro</div>
+		<div class="introVideo">
+
+		<div class="videoDiv">
+		<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
+		
+		</div>
+		<div class="introText">
+		
+		<div class="introContent">
+	<article>
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+		Aut iure ipsum eveniet, at ratione a corporis molestiae minima impedit voluptatem quia aspernatur quibusdam, deleniti atque culpa. Ducimus excepturi, voluptas odio!
+		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+		Aut iure ipsum eveniet, at ratione a corporis molestiae minima impedit voluptatem quia aspernatur quibusdam, deleniti atque culpa. Ducimus excepturi, voluptas odio!
+	</article>
+	
+
+</div>
+		
+		
+		</div>
+		
+		
+		</div>
+
+			</section>
 
 	</section>
-
+<%@include file="include/footer.jsp" %>
 </body>
 </html>
