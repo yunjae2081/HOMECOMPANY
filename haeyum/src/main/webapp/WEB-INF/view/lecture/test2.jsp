@@ -12,9 +12,9 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/video.css" />
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+<script src="${pageContext.request.contextPath}/js/video.js"></script>
 <script src="${pageContext.request.contextPath}/js/mindMap.js"></script>
 <script src="${pageContext.request.contextPath}/js/input.js"></script>
-<script src="${pageContext.request.contextPath}/js/video.js"></script>
 </head>
 <body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
