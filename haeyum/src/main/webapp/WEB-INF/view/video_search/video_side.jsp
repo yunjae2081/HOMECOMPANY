@@ -10,6 +10,12 @@
 <%@include file="../include/common_top.jsp"%>
 <%@include file="../include/searchSideMenu.jsp"%>
 <link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/mindMap.css"
+	type="text/css" />
+<link rel="stylesheet"
+	href="${pageContext.request.contextPath}/css/divStyle.css"
+	type="text/css" />
+<link rel="stylesheet"
 	href="${pageContext.request.contextPath}/css/searchVideo.css"
 	type="text/css" />
 <link rel="stylesheet"
@@ -135,7 +141,7 @@ function bestVideo(data){ // 인기순 비디오 정렬
   if(b_scroll == 0){ // 처음 인기순 버튼을 눌렀을 때 가져 올 값
     html ="<ul>";
   	$.each(data, function(index, value) {
-    	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
+    	  html += "<li><a id = '" + data[index].bestNo + "' class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
       	html += "<h3>" + data[index].title + "</h3>"
      	 	html += "<p>" + data[index].content + "</p></div></li>"
   	})
@@ -144,7 +150,7 @@ function bestVideo(data){ // 인기순 비디오 정렬
 	}
   else if(b_scroll == 1){ // 무한 스크롤로 가져 올 값
     $.each(data, function(index, value) {
-  	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
+  	  html += "<li><a id = '" + data[index].bestNo + "' class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
     	html += "<h3>" + data[index].title + "</h3>"
    	 html += "<p>" + data[index].content + "</p></div></li>"
 	})
@@ -158,7 +164,7 @@ function latestVideo(data){ // 최신순 비디오 정렬
   if(l_scroll == 0){ // 처음 최신순 버튼을 눌렀을 때 가져 올 값
     html ="<ul>";
   	$.each(data, function(index, value) {
-    	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
+    	  html += "<li><a id = '" + data[index].latestNo + "' class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
       	html += "<h3>" + data[index].title + "</h3>"
      	 	html += "<p>" + data[index].content + "</p></div></li>"
   	})
@@ -167,7 +173,7 @@ function latestVideo(data){ // 최신순 비디오 정렬
 	}
   else if(l_scroll == 1){ // 무한 스크롤로 가져 올 값
     $.each(data, function(index, value) {
-  	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
+  	  html += "<li><a id = '" + data[index].latestNo + "' class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
     	html += "<h3>" + data[index].title + "</h3>"
    	 html += "<p>" + data[index].content + "</p></div></li>"
 	})
@@ -196,7 +202,7 @@ function latestVideo(data){ // 최신순 비디오 정렬
 		<ul>
 		<c:forEach var="video" items="${list }">
 			<li>
-				<a class='normal' href='#'>
+				<a id = "${video.bestNo}" class='normal' href='#'>
 					<img src="${pageContext.request.contextPath}/mainImg/${video.fileName }" />
 				</a>
 				<div class='info'>
@@ -209,8 +215,8 @@ function latestVideo(data){ // 최신순 비디오 정렬
     </ul>
 	</div>
 	
-	<div class = "backDrop">	</div>
-		<div class = "box" style="width:1200px; height:400px; position:absolute; left:50%; margin-left:-600px; background:red;">
+	<div class = "backDrop" id = "hoverDiv">	</div>
+		<div class = "box">
 			
 			<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
 		</div>
