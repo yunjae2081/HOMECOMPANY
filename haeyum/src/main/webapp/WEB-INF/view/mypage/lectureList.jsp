@@ -8,53 +8,169 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/lectureList.css" />
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
-
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/mypageLecture.js"></script>
 <script>
+$(document).ready(function(){
+		callAjax(1);
+})
 
-$(document).ready(function() { 
+function callAjax(tabNum,req){
+	$.ajax({
+		url:"${pageContext.request.contextPath}/mypage/lectureList.json",
+		type:"POST",
+		datatype:"JSON",
+		data:{tabNumber:tabNum, reqPage:reqPage}
+		}).done(function(data,status){
+			var pagevo = data.pagevo;
+			
+			if (tabNum == 1) {
+				var llist = data.llist;
+				lList(llist);
+				page(pagevo,tabNum);
+			}else {
+				var wlist = data.wlist;
+				wList(wlist);
+				page(pagevo, tabNum);
+			}
+	})
+}
 
-	(function ($) { 
-		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
-		
-		$('.tab ul.tabs li a').click(function (g) { 
-			var tab = $(this).closest('.tab'), 
-				index = $(this).closest('li').index();
-			
-			tab.find('ul.tabs > li').removeClass('current');
-			$(this).closest('li').addClass('current');
-			
-			tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
-			tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
-			
-			g.preventDefault();
-		} );
-	})(jQuery);
-		
-	var flag =false;
-	$("#sLecture").click(function(){
-		$("#sLectureDiv").css("display","block");
-			flag = true;
-			
-	})	
+function lList(llist){
+	var Html="";
+	$.each(llist,function(index,value){
+		Html+="<div id='item-list'>"
+		Html+="<ul>"
+		Html+="<li>"
+		Html+="<a class='expand'>"
+		Html+="<div class='right-arrow'>+</div>"
+		Html+="<div><img class='icon'src='../images/studyImg.png'></div>"
+		Html+="<h2>" + llist[index].lNo + "&nbsp;&nbsp;" + llist[index].lCategory + "&nbsp;&nbsp;" + llist[index].lTitle + "</h2>"
+		Html+="<span>" + llist[index].lRegDate + "</span>"
+		Html+="</a>"
+		Html+="<div class='detail'>"
+		Html+="<div>"
+		Html+="<span>" + llist[index].lContent + "</span>"
+		Html+="</div><br/>"
+		Html+="<span>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/moveIcon.png' style='height: 20px;margin-top: 5px;margin-right: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="<span>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/modifyIcon.png' style='height: 20px;margin-top: 5px;'>"
+		Html+="</a>"           
+		Html+="</span>"
+		Html+="<span>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/deleteIcon.png' style='height: 20px;margin-top: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="</div>"
+		Html+="</li>"
+		Html+="</ul>"
+		Html+="</div>"
+	})
+	$("#registBox").html(Html);
 	
-});
+}
 
-
-$(function() {
-	  $(".expand").on( "click", function() {
-	    $(this).next().slideToggle(100);
-	    $expand = $(this).find(">:first-child");
-	    
-	    if($expand.text() == "+") {
-	      $expand.text("-");
-	    } else {
-	      $expand.text("+");
-	    }
-	  });
-	});
+function wList(wlist){
+	var Html="";
 	
+	$.each(wlist,function(index,value){
+		Html+="<div id='item-list'>"
+		Html+="<ul>"
+		Html+="<li>"
+		Html+="<a class='expand'>"
+		Html+="<div class='right-arrow'>+</div>"
+		Html+="<div style='width: 400px;'>"
+		Html+="<div><img class='icon'src='../images/studyImg.png'></div>"
+		Html+="<h2>" + wlist[index].wNo + wlist[index].wTitle+ "</h2>"
+		Html+="<span>"+ wlist[index].wStartDate + "</span>"
+		Html+="<span>ㅇㅇㅇㅇ</span><br/>"
+		Html+="</div>"
+		Html+="</a>"
+		Html+="<div class='detail'>"
+		Html+="<div><span>뭐넣징</span>"
+		Html+="<span>룰루랄라</span>"
+		Html+="</div>"
+		Html+="<br/>"
+		Html+="<div>질문QnA</div>"
+		Html+="</div>"
+		Html+="</li>"
+		Html+="</ul>"
+	})
+	$("#studiesBox").html(Html);
+}
 
+
+function page(pagevo,tabNum){
+	var Html="";
+	
+	  if(pagevo.reqPage == 1)
+	    Html += "처음&nbsp;";
+	  else
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ 1 +");' >처음</a>&nbsp;"
+	  
+	  if(pagevo.start == 1)
+	    Html += "◀&nbsp;";
+	  else
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >◀</a>&nbsp;"
+
+		for(var i=0;i<pagevo.end;i++){
+			if(i+1 ==pagevo.reqPage){
+				Html+="[" + (i+1) + "]"
+					continue;
+	}
+		Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i+1) +");'>[" + (i+1) + "]</a>";
+}
+		if(tabNum == 1) {
+			$(".registBox").html(Html);
+		} else {
+			$(".studiesBox").html(Html);
+		}
+		
+		Html = "";
+		if(pagevo.end == pagevo.lastPage)
+		  Html += "▶&nbsp;";
+		else
+		  Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >▶</a>&nbsp;"
+		
+		if(pagevo.reqPage == pagevo.lastPage)
+		  Html += "마지막&nbsp;";
+		else
+		  Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ pagevo.lastPage +");' >마지막</a>&nbsp;"
+		  
+			if(tabNum == 1) {
+				$(".registBox").append(Html);
+			} else {
+				$(".studiesBox").append(Html);
+			}
+}
+function move(tabNum,reqPage){
+	$.ajax({
+		url:"${pageContext.request.contextPath}/mypage/lectureList.json",
+		type:"POST",
+		datatype:"JSON",
+		data:{tabNumber:tabNum, reqPage:reqPage}
+		}).done(function(data,status){
+			var pagevo=data.pagevo;
+			var llist = data.llist;
+			page(pagevo);
+			lList(llist);
+		})
+}
+$(document).on("click","#registBtn",function(){
+	callAjax(1);
+})
+
+$(document).on("click","#studiedBtn",function(){
+	callAjax(2);
+})
+
+	
 
 </script>
 </head>
@@ -72,8 +188,8 @@ Lecture
 <div class="tab">
 
 <ul class="tabs">
-		<li><a href="#">Regist Lecture</a></li>
-		<li><a id="sLecture" href="#">Studied Lecture</a></li>
+		<li><a id="registBtn" href="#">Regist Lecture</a></li>
+		<li><a id="studiedBtn" href="#">Studied Lecture</a></li>
 
 </ul>
 
@@ -83,77 +199,15 @@ Lecture
 <div class="tabs_item">
 <h4>Regist Lecture List</h4>
 
-<c:forEach var="list" items="${list}">
-<div id="item-list">
-<ul>
-  <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-    <div><img class="icon"src="../images/studyImg.png"></div>
-    <h2>${list.lNo}&nbsp;&nbsp;${list.lCategory}&nbsp;&nbsp;${list.lTitle}</h2>
-    <span>${list.lRegDate}</span>
-    </a>
-    <div class="detail">
-      <div>
-      	
-      		<span>${list.lContent}</span>
-      </div><br/>
-      
-      
-      
-      <span class="btn btn-default">이동</span>
-      <span class="btn btn-default">수정</span>
-      <span class="btn btn-default">삭제</span>
-    </div>
-  </li>
-
-
-
-</ul>
-</div>
-</c:forEach>
-<div align="center" style="padding-top: 20px;">
-<c:import url="/WEB-INF/view/mypage/pageNavi.jsp"></c:import>
-</div>
+<div id="registBox"></div>
 </div>
 
 <!-- Studied Lecture -->
 <div class="tabs_item">
 <h4>Studied Lecture List</h4>
-<c:forEach var="wlist" items="${wlist}">
-<div id="item-list">
-<div id="sLectureDiv" style="display: none;">
-<ul>
-  <li>
-    <a class="expand">
-    <div class="right-arrow">+</div>
-    <div style="width: 400px;">
-    <div><img class="icon"src="../images/videoImg.png"></div>
-    <h2>${wlist.wNo} ${wlist.lTitle}</h2>
-    <span>${wlist.wStartDate}</span>
-    <span>ddd</span><br/>
-    </div>
-    </a>
-
-    <div class="detail">
-      <div><span>뭐넣징</span>
-      		<span>룰루랄라</span>
-      </div>
-     <br/>
-     	<div>질문QnA</div>
-    </div>
-  </li>
-
-
-
-</ul>
+<div id="studiesBox"></div>
 </div>
 </div>
-</c:forEach>
-		
-</div>
-</div>
-
 
 
 </div>

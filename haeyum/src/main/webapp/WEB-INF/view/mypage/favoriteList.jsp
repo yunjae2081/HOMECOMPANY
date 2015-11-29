@@ -61,13 +61,24 @@ Lecture favorites
 				</figure>
 			</a>
 		</li>
+		<li>
+			<a href="#">
+				<figure>
+					<img style="height: 250px;" src="${pageContext.request.contextPath}/images/${list.lRealFileName}"/>
+					<h1 class="title">3.&nbsp;타이틀</h1>
+					<div class="description contentClass">
+					강의내용3
+					</div>
+				</figure>
+			</a>
+		</li>
 
 		<!-- ///////////////////// -->
 		
 		
 		
 	</ul>
-</div>
+	</div>
 		 
 		
 </c:forEach>

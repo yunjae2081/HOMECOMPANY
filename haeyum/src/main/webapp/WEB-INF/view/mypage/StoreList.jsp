@@ -7,46 +7,189 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/storeList.css" />
-<link rel="styleSheet" href="${pageContext.request.contextPath}/css/lectureList.css" />
 <%@include file="../include/common_top.jsp"%>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="${pageContext.request.contextPath}/js/mypageStore.js"></script>
 <script>
 
-(function () {
-    $(function () {
-        return $('[data-toggle]').on('click', function () {
-            var toggle;
-            toggle = $(this).addClass('active').attr('data-toggle');
-            $(this).siblings('[data-toggle]').removeClass('active');
-            return $('.products').removeClass('grid list').addClass(toggle);
-        });
-    });
-}.call(this));
+$(document).ready(function(){
+	callAjax(1);
+})
 
-
-$(document).ready(function() { 
-
-	(function ($) { 
-		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+function callAjax(tabNum, reqPage) {
+	$.ajax({
+	url:"${pageContext.request.contextPath}/mypage/storeList.json",
+	type:"POST",
+	datatype:"JSON",
+	data:{tabNumber:tabNum, reqPage:reqPage}
+	}).done(function(data,status){
+		var pagevo=data.pagevo;
 		
-		$('.tab ul.tabs li a').click(function (g) { 
-			var tab = $(this).closest('.tab'), 
-				index = $(this).closest('li').index();
-			
-			tab.find('ul.tabs > li').removeClass('current');
-			$(this).closest('li').addClass('current');
-			
-			tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
-			tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
-			
-			g.preventDefault();
-		} );
-	})(jQuery);
+		if (tabNum == 1) {
+			var slist = data.slist;
+			sList(slist);
+			page(pagevo,tabNum);
+		}else {
+			var blist = data.blist;
+			bList(blist);
+			page(pagevo, tabNum);
+		}
+	})
+}
+
+function sList(slist){
+	var Html="";
+
+	$.each(slist,function(index,value){
+		Html+="<li class='product-item'>"
+		Html+="<span class='product-price list-only' style='font-style: italic; '>" + slist[index].sellNo + "</span>"
+		Html+="<span class='product-name'>" + slist[index].pName + "</span>"
+		Html+="<span class='product-price grid-only'>판매 가격 : " + slist[index].pPrice + "원</span>"
+		Html+="<span class='grid-only' style='margin-left: 50px;'>" + slist[index].pRegDate + "</span>"
+		Html+="<br/>"
+		Html+="<span class='grid-only'>판매 수량 : " + slist[index].sellCount + "</span>"
+		Html+="<br/>"
+		Html+="<span class='grid-only'>제품 내용 :<br/>" + slist[index].pContent + "</span>"
+		Html+="<div class='pull-right'>"
+		Html+="<span class='list-only'style='margin-right: 20px;font-size: 15px;'>판매수량 :" + slist[index].sellCount + "</span>"
+		Html+="<span class='list-only' style='margin-right: 20px;font-size: 15px;'>" + slist[index].pRegDate + "</span>"
+		Html+="<span class='product-progress'>"
+		Html+="<span class='product-progress-labels'>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/moveIcon.png' style='height: 30px;margin-top: 5px;margin-right: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/modifyIcon.png' style='height: 30px;margin-top: 5px;'>"
+		Html+="</a>"           
+		Html+="</span>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/deleteIcon.png' style='height: 30px;margin-top: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="</span>"
+		Html+="</span>"
+		Html+="</div>"
+		Html+="</li>"
+	})
 	
-});
+	$("#sellBox").html(Html);
+}
 
+function bList(blist){
+	var Html="";
+	
+	$.each(blist,function(index,value){
+		Html+="<li class='product-item'>"
+		Html+="<span class='product-price list-only' style='font-style: italic; '>" + blist[index].buyNo + "</span>"
+		Html+="<span class='product-name'>" + blist[index].pName + "</span>"
+		Html+="<span class='product-price grid-only'>판매 가격 : " + blist[index].pPrice + " 원</span>"
+		Html+="<span class='grid-only' style='margin-left: 50px;'>" + blist[index].buyDate + "</span>"
+		Html+="<br/>"
+		Html+="<span class='grid-only'>구매 수량 : " + blist[index].buyCount + "</span>"
+		Html+="<br/>"
+		Html+="<span class='grid-only'>제품 내용 :<br/>" + blist[index].pCount + "</span>"
+		Html+="<div class='pull-right'>"
+		Html+="<span class='list-only'style='margin-right: 20px;font-size: 15px;'>구매수량 :" + blist[index].bCount + "</span>"
+		Html+="<span class='list-only' style='margin-right: 20px;font-size: 15px;'>" + blist[index].buyDate + "</span>"
+		Html+="<span class='product-progress'>"
+		Html+="<span class='product-progress-labels'>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/moveIcon.png' style='height: 30px;margin-top: 5px;margin-right: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/modifyIcon.png' style='height: 30px;margin-top: 5px;'>"
+		Html+="</a>"     
+		Html+="</span>"
+		Html+="<span class='product-completes'>"
+		Html+="<a href='#'>"
+		Html+="<img src='../images/deleteIcon.png' style='height: 30px;margin-top: 5px;'>"
+		Html+="</a>"
+		Html+="</span>"
+		Html+="</span>"
+		Html+="</span>"
+		Html+="</div>"
+		Html+="</li>"
+	})
+	$("#buyBox").html(Html);
+}
 
+function page(pagevo, tabNum){
+	var Html="";
+	
+	 	  if(pagevo.reqPage == 1)
+		    Html += "처음&nbsp;";
+		  else
+		    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ 1 +");' >처음</a>&nbsp;"
+		  
+		  if(pagevo.start == 1)
+		    Html += "◀&nbsp;";
+		  else
+		    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >◀</a>&nbsp;"
 
+	for(var i=0;i<pagevo.end;i++){
+		if(i+1 ==pagevo.reqPage){
+			Html+="[" + (i+1) + "]"
+			continue;
+		}
+			Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i+1) +");'>[" + (i+1) + "]</a>";
+	}
+	if(tabNum == 1) {
+		$(".sellPage").html(Html);
+	} else {
+		$(".buyPage").html(Html);
+	}
+	
+	  Html = "";
+	  if(pagevo.end == pagevo.lastPage)
+	    Html += "▶&nbsp;";
+	  else
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >▶</a>&nbsp;"
+
+    if(pagevo.reqPage == pagevo.lastPage)
+	    Html += "마지막&nbsp;";
+	  else
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ pagevo.lastPage +");' >마지막</a>&nbsp;"
+	    
+		if(tabNum == 1) {
+			$(".sellPage").append(Html);
+		} else {
+			$(".buyPage").append(Html);
+		}
+		
+	    
+	  
+}
+
+function move(tabNum, reqPage){
+	$.ajax({
+		url:"${pageContext.request.contextPath}/mypage/storeList.json",
+		type:"POST",
+		datatype:"JSON",
+		data:{tabNumber:tabNum, reqPage:reqPage}
+		}).done(function(data,status){
+			var pagevo=data.pagevo;
+			var slist = data.slist;
+			page(pagevo);
+			sList(slist);
+		})
+	
+	
+}
+
+$(document).on("click", "#sellBtn", function(){
+	callAjax(1);
+})
+
+$(document).on("click", "#buyBtn", function(){
+	callAjax(2);
+})
 
 </script>
 </head>
@@ -65,56 +208,24 @@ Store
 <div class="tab">
 
 <ul class="tabs">
-		<li><a href="#">판매</a></li>
-		<li><a href="#">구매</a></li>
+		<li><a id="sellBtn" href="">SELL</a></li>
+		<li><a id="buyBtn" href="">BUY</a></li>
 </ul>
 
-
 <div class="tab_content">
-
 <div class="tabs_item">
+
 <h4>판매 List</h4>
 
 <div style="box-sizing: border-box; width: 1000px; margin: 0 auto;">
 <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
 <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-<ul class="products grid">
-<c:forEach var="list" items="${list}">
+<ul class="products grid" id="sellBox">
 
-  <li class="product-item">
-    
-     <span class="product-price list-only" style="font-style: italic; ">${list.sellNo}</span>
-    <span class="product-name">${list.pName}</span>
-    <span class="product-price grid-only">판매 가격 : ${list.pPrice} 원</span>
-    <span class="grid-only" style="margin-left: 50px;">${list.pRegDate}</span>
-    <br/>
-    <span class="grid-only">판매 수량 : ${list.sellCount}</span>
-	<br/>
-	<span class="grid-only">제품 내용 :<br/>${list.pContent}</span>
-	
-	
-
-    <div class="pull-right">
-       <span class="list-only"style="margin-right: 20px;">판매수량 :${list.sellCount}</span>
-       <span class="list-only" style="margin-right: 20px;">${list.pRegDate}</span>
-      <span class="product-progress">
-       
-        <span class="product-progress-labels">
-			 <span class="product-completes btn btn-default">이동</span>
-          <span class="product-completes btn btn-default">수정</span>
-           <span class="product-completes btn btn-default">삭제</span>
-        </span>
-      </span>
-      
-     
-    </div>
-  </li>
-</c:forEach>
-
-<div align="center" style="padding-top: 20px;">
-<c:import url="/WEB-INF/view/mypage/pageNavi.jsp"></c:import></div>
 </ul>
+<div class="sellPage"></div>
+
 </div>
 
 </div>
@@ -122,51 +233,19 @@ Store
 <div class="tabs_item">
 <h4>구매 List</h4>
 
-<div style="box-sizing: border-box; width: 1000px; margin: 0 auto;padding-left:20px;">
+<div style="box-sizing: border-box; width: 1000px; margin: 0 auto;">
 <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
 <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-<ul class="products grid">
-<c:forEach var="list" items="${list}">
+<ul class="products grid" id="buyBox">
 
-  <li class="product-item">
-    
-     <span class="product-price list-only" style="font-style: italic; ">${list.sellNo}</span>
-    <span class="product-name">${list.pName}</span>
-    <span class="product-price grid-only">판매 가격 : ${list.pPrice} 원</span>
-    <span class="grid-only" style="margin-left: 50px;">${list.pRegDate}</span>
-    <br/>
-    <span class="grid-only">판매 수량 : ${list.sellCount}</span>
-	<br/>
-	<span class="grid-only">제품 내용 :<br/>${list.pContent}</span>
-	
-	
-
-    <div class="pull-right">
-       <span class="list-only"style="margin-right: 20px;">판매수량 :${list.sellCount}</span>
-       <span class="list-only" style="margin-right: 20px;">${list.pRegDate}</span>
-      <span class="product-progress">
-       
-        <span class="product-progress-labels">
-			 <span class="product-completes btn btn-default">이동</span>
-          <span class="product-completes btn btn-default">수정</span>
-           <span class="product-completes btn btn-default">삭제</span>
-        </span>
-      </span>
-      
-     
-    </div>
-  </li>
-</c:forEach>
-
-<div align="center" style="padding-top: 20px;">
-<c:import url="/WEB-INF/view/mypage/pageNavi.jsp"></c:import></div>
 </ul>
+<div class="buyPage" style="margin-left:420px;"></div>
+
+
 </div>
 
 </div>
-
-
 
 </div>
 </div>
