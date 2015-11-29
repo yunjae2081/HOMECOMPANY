@@ -19,56 +19,50 @@ where id=#{id}
 
 </update>
 
-<!-- lecture 게시물 수 -->
-<select id="selectlectureCount" resultType="int" parameterType="string">
-select count(*)
-from haeyum.tbl_lecture
-where L_ID=#{id}
-</select>
-
 <!-- lecture 강좌 list -->
-<select id="selectlectureList" parameterType="searchvo" resultType="lecturevo">
+<select id="selectLectureList" parameterType="mypagevo" resultType="lecturevo">
 
 select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i')as lRegDate
 from haeyum.tbl_lecture
 where L_ID=#{id}
 order by L_NO desc
-limit #{start},#{end}
+limit #{reqIndex},10
+</select>
+
+
+<select id="LectureLastPage" parameterType="String" resultType="int">
+select count(L_NO) lNo
+from haeyum.tbl_lecture
+where L_ID=#{id}
 
 </select>
 
-<!-- watch 게시물 수 
-<select id="selectWatchCount" resultType="int" parameterType="string">
-select count(*)
-from haeyum.tbl_watch_list
-where W_ID=#{id}
-</select>
--->
 
-<!-- watch 강좌 List 
-<select id="selectWatch" parameterType="String" resultType="watchvo">
+
+<!-- watch 강좌 List -->
+<select id="selectWatchList" parameterType="mypagevo" resultType="watchvo">
 select w.W_NO wNo,DATE_FORMAT(W_START_DATE,'%Y-%m-%d %H:%i')as wStartDate,l.L_TITLE lTitle,l.L_CATEGORY lCategory
 from haeyum.tbl_watch_list w,haeyum.tbl_video v,haeyum.tbl_lecture l
 where w.V_NO=v.V_NO 
 and w.W_ID=#{id}
 order by wNo desc
+limit #{reqIndex},10
 </select>
 
--->
+<select id="watchLastPage" parameterType="String" resultType="int">
+select count(w.W_NO) wNo
+from haeyum.tbl_watch_list w,haeyum.tbl_video v,haeyum.tbl_lecture l
+where w.V_NO=v.V_NO 
+and w.W_ID=#{id}
 
-
-
-
-<!-- product 게시물 수 -->
-<select id="selectProductCount" resultType="int" parameterType="string">
-select count(*)
-from haeyum.tbl_product
-where P_ID=#{id}
 </select>
 
 
-<!-- product 물품 list -->
-<select id="selectProductList" parameterType="searchvo" resultType="productvo">
+
+
+
+<!-- 판매 물품 list -->
+<select id="selectSellList" parameterType="mypagevo" resultType="productvo">
 
 select p.L_NO lNo,p.V_NO vNo,p.P_ID pId,p.P_NAME pName,p.P_PRICE pPrice,p.P_COUNT pCount,p.P_CONTENT pContent,
 s.SELL_COUNT sellCount,s.SELL_NO sellNo,s.SELL_ID sellId,
@@ -77,8 +71,40 @@ from haeyum.tbl_product p,haeyum.tbl_sell s
 where p.P_NO =s.P_NO 
 and s.SELL_ID=#{id}
 order by sellNo desc
-limit #{start},#{end}
+limit #{reqIndex},10
 </select>
+
+<select id="selectLastPage" parameterType="String" resultType="int">
+select count(s.SELL_NO) sellNo
+from haeyum.tbl_product p,haeyum.tbl_sell s
+where p.P_NO =s.P_NO 
+and s.SELL_ID=#{id}
+
+</select>
+
+<!-- 구매 물품 list -->
+<select id="selectBuyList" parameterType="mypagevo" resultType="productvo">
+
+select b.BUY_NO buyNo,b.BUY_COUNT buyCount,p.P_NAME pName,p.P_PRICE pPrice,p.P_CONTENT pContent,
+DATE_FORMAT(BUY_DATE,'%Y-%m-%d %H:%i')as buyDate
+from haeyum.tbl_product p,haeyum.tbl_buy b
+where p.P_NO=b.P_NO
+and BUY_ID=#{id}
+order by buyNo desc
+limit #{reqIndex},10
+</select>
+
+
+<select id="selectBuyLastPage" parameterType="String" resultType="int">
+select count(b.BUY_NO) buyNo
+from haeyum.tbl_product p,haeyum.tbl_buy b
+where p.P_NO=b.P_NO
+and BUY_ID=#{id}
+
+</select>
+
+
+
 
 
 
