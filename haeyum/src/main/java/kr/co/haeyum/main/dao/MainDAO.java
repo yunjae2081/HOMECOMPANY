@@ -15,11 +15,13 @@ public class MainDAO {
 	private SqlSessionTemplate session;
 
 	public MainVO mainClist(int i) {
-		return session.selectOne("kr.co.main.selectMainCurriCount", i);
+		return null;
+//		return session.selectOne("kr.co.main.selectMainCurriCount", i);
 	}
 	
 	public MainVO mainVlist(int i) {
-		return session.selectOne("kr.co.main.selectMainVideoCount", i);
+		return null;
+//		return session.selectOne("kr.co.main.selectMainVideoCount", i);
 	}
 
 }

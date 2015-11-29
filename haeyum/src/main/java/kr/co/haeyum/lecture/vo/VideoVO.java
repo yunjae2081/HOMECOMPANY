@@ -1,6 +1,7 @@
 package kr.co.haeyum.lecture.vo;
 
 public class VideoVO {
+	private int lNo;
 	private int vNo;
 	private int sNo;
 	private String sName;
@@ -9,11 +10,19 @@ public class VideoVO {
 	private String iOrgFileName;
 	private String iRealFileName;
 	private String vRegDate;
-	
+
+	public int getlNo() {
+		return lNo;
+	}
+
+	public void setlNo(int lNo) {
+		this.lNo = lNo;
+	}
+
 	public String getsName() {
 		return sName;
 	}
-	
+
 	public void setsName(String sName) {
 		this.sName = sName;
 	}
