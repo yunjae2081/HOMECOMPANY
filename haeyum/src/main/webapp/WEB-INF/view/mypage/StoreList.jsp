@@ -131,14 +131,14 @@ function page(pagevo, tabNum){
 		  if(pagevo.start == 1)
 		    Html += "◀&nbsp;";
 		  else
-		    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >◀</a>&nbsp;"
+		    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (pagevo.start-1) +");' >◀</a>&nbsp;"
 
-	for(var i=0;i<pagevo.end;i++){
-		if(i+1 ==pagevo.reqPage){
-			Html+="[" + (i+1) + "]"
+	for(var i=pagevo.start;i<=pagevo.end;i++){
+		if(i ==pagevo.reqPage){
+			Html+="[" + (i) + "]"
 			continue;
 		}
-			Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i+1) +");'>[" + (i+1) + "]</a>";
+			Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i) +");'>[" + (i) + "]</a>";
 	}
 	if(tabNum == 1) {
 		$(".sellPage").html(Html);
@@ -150,7 +150,7 @@ function page(pagevo, tabNum){
 	  if(pagevo.end == pagevo.lastPage)
 	    Html += "▶&nbsp;";
 	  else
-	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >▶</a>&nbsp;"
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (pagevo.end+1) +");' >▶</a>&nbsp;"
 
     if(pagevo.reqPage == pagevo.lastPage)
 	    Html += "마지막&nbsp;";
@@ -174,10 +174,17 @@ function move(tabNum, reqPage){
 		datatype:"JSON",
 		data:{tabNumber:tabNum, reqPage:reqPage}
 		}).done(function(data,status){
-			var pagevo=data.pagevo;
-			var slist = data.slist;
-			page(pagevo);
-			sList(slist);
+			if(tabNum == 1) {
+				var pagevo=data.pagevo;
+				var slist = data.slist;
+				page(pagevo);
+				sList(slist);
+			} else {
+				var pagevo=data.pagevo;
+				var blist = data.blist;
+				page(pagevo);
+				bList(blist);
+			}
 		})
 	
 	
@@ -221,9 +228,7 @@ Store
 <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
 <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-<ul class="products grid" id="sellBox">
-
-</ul>
+<ul class="products grid" id="sellBox"></ul>
 <div class="sellPage"></div>
 
 </div>
@@ -237,9 +242,7 @@ Store
 <span class="toggler active" data-toggle="grid"><span class="entypo-layout"></span></span>
 <span class="toggler" data-toggle="list"><span class="entypo-list"></span></span>
 
-<ul class="products grid" id="buyBox">
-
-</ul>
+<ul class="products grid" id="buyBox"></ul>
 <div class="buyPage" style="margin-left:420px;"></div>
 
 
@@ -248,6 +251,7 @@ Store
 </div>
 
 </div>
+
 </div>
 
 </div>
