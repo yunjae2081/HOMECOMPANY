@@ -1,12 +1,15 @@
 package kr.co.haeyum.lecture.controller;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.haeyum.lecture.service.LectureService;
@@ -54,9 +57,9 @@ public class MindMapController {
 		return mav;
 	}
 	
+	@ResponseBody
 	@RequestMapping("/viewVideo.do")
-	public String viewVideo(@RequestParam(value="sNo") int sNo) throws Exception{
-		System.out.println("sno : " + sNo);
+	public Object viewVideo(@RequestParam(value="sNo") int sNo) throws Exception{
 		VideoVO video = service.selectVideo(sNo); // video
 		List<LessonVO> lessonList =  service.selectLessonList(video.getvNo());  //lessonList
 		List<ProductVO> productList = service.selectProductList(video.getvNo()); //productList
@@ -65,8 +68,15 @@ public class MindMapController {
 			productImgList.add(service.selectProductImg(product.getpNo()));
 		}
 		
+		Map<String, Object> retVal = new HashMap<String, Object>();
+		retVal.put("video", video);
+		retVal.put("lessonList", lessonList);
+		retVal.put("productList", productList);
+		retVal.put("productImgList", productImgList);
+		retVal.put("code", "ok");
 		
-		return null;
+		System.out.println("수정이 리턴");
+		return retVal;
 		
 	}
 }
