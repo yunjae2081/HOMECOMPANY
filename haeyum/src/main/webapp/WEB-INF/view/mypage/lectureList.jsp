@@ -8,14 +8,13 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/lectureList.css" />
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/mypageLecture.js"></script>
 <script>
 $(document).ready(function(){
 		callAjax(1);
 })
 
-function callAjax(tabNum,req){
+function callAjax(tabNum,reqPage){
 	$.ajax({
 		url:"${pageContext.request.contextPath}/mypage/lectureList.json",
 		type:"POST",
@@ -38,6 +37,7 @@ function callAjax(tabNum,req){
 
 function lList(llist){
 	var Html="";
+		Html+="<h4>Regist Lecture List</h4>";
 	$.each(llist,function(index,value){
 		Html+="<div id='item-list'>"
 		Html+="<ul>"
@@ -72,6 +72,7 @@ function lList(llist){
 		Html+="</ul>"
 		Html+="</div>"
 	})
+		Html+="<div align='center' id='registPage'></div>";
 	$("#registBox").html(Html);
 	
 }
@@ -79,6 +80,7 @@ function lList(llist){
 function wList(wlist){
 	var Html="";
 	
+		Html+="<h4>Studied Lecture List</h4>"
 	$.each(wlist,function(index,value){
 		Html+="<div id='item-list'>"
 		Html+="<ul>"
@@ -87,9 +89,9 @@ function wList(wlist){
 		Html+="<div class='right-arrow'>+</div>"
 		Html+="<div style='width: 400px;'>"
 		Html+="<div><img class='icon'src='../images/studyImg.png'></div>"
-		Html+="<h2>" + wlist[index].wNo + wlist[index].wTitle+ "</h2>"
+		Html+="<h2>" + wlist[index].wNo + "&nbsp;&nbsp;" + wlist[index].lTitle+ "</h2>"
 		Html+="<span>"+ wlist[index].wStartDate + "</span>"
-		Html+="<span>ㅇㅇㅇㅇ</span><br/>"
+		Html+="<span></span><br/>"
 		Html+="</div>"
 		Html+="</a>"
 		Html+="<div class='detail'>"
@@ -102,6 +104,7 @@ function wList(wlist){
 		Html+="</li>"
 		Html+="</ul>"
 	})
+		Html+="<div align='center' id='studiesPage'></div>"
 	$("#studiesBox").html(Html);
 }
 
@@ -117,26 +120,26 @@ function page(pagevo,tabNum){
 	  if(pagevo.start == 1)
 	    Html += "◀&nbsp;";
 	  else
-	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >◀</a>&nbsp;"
+	    Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (pagevo.start-1) +");' >◀</a>&nbsp;"
 
-		for(var i=0;i<pagevo.end;i++){
-			if(i+1 ==pagevo.reqPage){
-				Html+="[" + (i+1) + "]"
+		for(var i=pagevo.start;i<=pagevo.end;i++){
+			if(i ==pagevo.reqPage){
+				Html+="[" + (i) + "]"
 					continue;
 	}
-		Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i+1) +");'>[" + (i+1) + "]</a>";
+		Html+="<a href='javascript:callAjax(" + tabNum + ","+ (i) +");'>[" + (i) + "]</a>";
 }
 		if(tabNum == 1) {
-			$(".registBox").html(Html);
+			$("#registPage").html(Html);
 		} else {
-			$(".studiesBox").html(Html);
+			$("#studiesPage").html(Html);
 		}
 		
 		Html = "";
 		if(pagevo.end == pagevo.lastPage)
 		  Html += "▶&nbsp;";
 		else
-		  Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (i+1) +");' >▶</a>&nbsp;"
+		  Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ (pagevo.end+1) +");' >▶</a>&nbsp;"
 		
 		if(pagevo.reqPage == pagevo.lastPage)
 		  Html += "마지막&nbsp;";
@@ -144,9 +147,9 @@ function page(pagevo,tabNum){
 		  Html += "<a href = 'javascript:callAjax(" + tabNum + ","+ pagevo.lastPage +");' >마지막</a>&nbsp;"
 		  
 			if(tabNum == 1) {
-				$(".registBox").append(Html);
+				$("#registPage").append(Html);
 			} else {
-				$(".studiesBox").append(Html);
+				$("#studiesPage").append(Html);
 			}
 }
 function move(tabNum,reqPage){
@@ -162,6 +165,7 @@ function move(tabNum,reqPage){
 			lList(llist);
 		})
 }
+
 $(document).on("click","#registBtn",function(){
 	callAjax(1);
 })
@@ -169,8 +173,6 @@ $(document).on("click","#registBtn",function(){
 $(document).on("click","#studiedBtn",function(){
 	callAjax(2);
 })
-
-	
 
 </script>
 </head>
@@ -196,16 +198,20 @@ Lecture
 <div class="tab_content">
 
 <!-- Resist Lecture -->
-<div class="tabs_item">
-<h4>Regist Lecture List</h4>
+<div class="tabs_item" id = "registBox">
 
-<div id="registBox"></div>
+
+
+
 </div>
 
 <!-- Studied Lecture -->
-<div class="tabs_item">
-<h4>Studied Lecture List</h4>
-<div id="studiesBox"></div>
+<div class="tabs_item" id="studiesBox">
+
+
+
+
+</div>
 </div>
 </div>
 
