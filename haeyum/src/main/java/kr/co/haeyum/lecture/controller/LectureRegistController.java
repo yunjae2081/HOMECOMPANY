@@ -5,8 +5,9 @@ import java.io.FileOutputStream;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
-import org.apache.commons.codec.binary.Base64;
+import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -16,12 +17,16 @@ import org.springframework.web.multipart.MultipartHttpServletRequest;
 import kr.co.haeyum.lecture.service.LectureService;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
+import kr.co.haeyum.lecture.vo.LessonVO;
 import kr.co.haeyum.lecture.vo.NodeIndexVO;
 import kr.co.haeyum.lecture.vo.SnodeVO;
 import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 import kr.co.haeyum.lecture.vo.VideoVO;
+import kr.co.haeyum.member.vo.MemberVO;
+import kr.co.haeyum.store.vo.ProductImgVO;
+import kr.co.haeyum.store.vo.ProductVO;
 
 @Controller
 @RequestMapping("/lecture")
@@ -34,9 +39,12 @@ public class LectureRegistController {
 	private ServletContext servletContext;
 	
 	@RequestMapping("/regist.do")
-	public String regist(MultipartHttpServletRequest req, NodeIndexVO nodeVO, LectureVO lVO) throws Exception {
+	public String regist(HttpSession session,  MultipartHttpServletRequest req, NodeIndexVO nodeVO, LectureVO lVO) throws Exception {
 
 		int lNo = service.insertLecture(lVO);
+		int vNo = 0;
+		int lCount = 0;
+		int iCount = 0;
 
 		for (int i = 1; i <= Integer.parseInt(req.getParameter("fNodeIndex")); i++) {
 			FnodeVO fVO = new FnodeVO();
@@ -63,8 +71,10 @@ public class LectureRegistController {
 			service.insertsNode(sVO);
 			
 			//수정이 부분
+			// 수정이는 수정수정
 			
 			//video
+			
 			MultipartFile videoFile = req.getFile("chooseFile"+i);
 			String orgFileName = videoFile.getOriginalFilename();
 			if(orgFileName != null && !orgFileName.equals("")){
@@ -75,30 +85,122 @@ public class LectureRegistController {
 				}
 				
 				String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-				videoFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\video" + saveFileName));
+				videoFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\video/" + saveFileName));
 
-				byte decode[] = Base64.decodeBase64(req.getParameter("v_capture_test1"+ i));
+				String imgURL = req.getParameter("v_capture_test1"+ i);
+				byte decode[] = Base64.decodeBase64(imgURL.substring(22));
 				FileOutputStream fo;
-				File mainImg = new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/vMainImage"+i+".jpg");
+				String saveImgName = "haeyum-" + UUID.randomUUID().toString() + ".jpg";
+				File mainImg = new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/"+saveImgName);
 				mainImg.createNewFile();
 				fo = new FileOutputStream(mainImg);
 				fo.write(decode);
 				fo.close();
 				
-				String saveImgName = "haeyum-" + UUID.randomUUID().toString() + ".jpg";
-				
 				VideoVO videoVO = new VideoVO();
-				videoVO.setsName("sName"+i);
+				videoVO.setlNo(lNo);
+				videoVO.setsName("sNode"+i);
 				videoVO.setOrgFileName(orgFileName);
 				videoVO.setRealFileName(saveFileName);
-				videoVO.setiOrgFileName("vMainImage"+i+".jpg");
+				videoVO.setiOrgFileName("vMainImage"+lNo+".jpg");
 				videoVO.setiRealFileName(saveImgName);
+				vNo = service.insertVideo(videoVO);
 				
 			}
-//			//lesson
-//			for(int j = 0; j < Integer.parseInt(req.getParameter("totalLCount"+i)); j++){
-//				
-//			}
+			
+			//lesson
+			for(int j = 0; j < Integer.parseInt(req.getParameter("totalLCount"+i)); j++){
+				if(Integer.parseInt(req.getParameter("lesson-sNum"+ ++lCount)) == i){
+					System.out.println("lesson등록 : " + lCount);
+					String lesson = req.getParameter("lesson-lText"+ lCount);
+					String playTime = req.getParameter("lesson-lPlayTime" + lCount);
+					String stayTime = req.getParameter("lesson-lSTime" + lCount);
+					req.getParameter("lesson-lLeft"+ lCount).indexOf(".");
+					String left = req.getParameter("lesson-lLeft"+ lCount);
+					int leftIndex = left.indexOf(".");
+					if(leftIndex != -1){
+						left = left.substring(leftIndex+1, left.length());
+					}
+					System.out.println("left" + left);
+					
+					String top = req.getParameter("lesson-lTop" + lCount);
+					int topIndex = top.indexOf(".");
+					if(topIndex != -1) {
+						top = top.substring(topIndex+1, top.length());
+					}
+					System.out.println("top" + top);
+
+					String color = req.getParameter("lesson-lColor" + lCount);
+					LessonVO lessonVO = new LessonVO();
+					System.out.println("videoNO : " +  vNo);
+					lessonVO.setvNo(vNo);
+					lessonVO.setPlLesson(lesson);
+					lessonVO.setPlPlayTime(Integer.parseInt(playTime));
+					lessonVO.setPlStayTime(Integer.parseInt(stayTime));
+					lessonVO.setPlX(Integer.parseInt(left));
+					lessonVO.setPlY(Integer.parseInt(top));
+					lessonVO.setPlColor(color);
+					service.insertLesson(lessonVO);
+					
+					
+				}else {
+					--lCount;
+					break;
+				}
+			}
+			
+			//item
+			for(int j = 0; j < Integer.parseInt(req.getParameter("totalICount"+i)); j++){
+				if(Integer.parseInt(req.getParameter("item-sNum" + ++iCount)) == i){
+					System.out.println("lessonImg등록 : " + iCount);
+					String name = req.getParameter("item-iTitle" + iCount);
+					String content = req.getParameter("item-iContent" + iCount);
+					int price = Integer.parseInt(req.getParameter("item-iPrice" + iCount));
+					int count = Integer.parseInt(req.getParameter("item-iNumber" + iCount));
+					
+					ProductVO productVO = new ProductVO();
+					productVO.setlNo(lNo);
+					productVO.setvNo(vNo);
+					productVO.setpId(((MemberVO)session.getAttribute("user")).getId());
+					productVO.setpName(name);
+					productVO.setpContent(content);
+					productVO.setpPrice(price);
+					productVO.setpCount(count);
+					int pNo = service.insertItem(productVO);
+					
+					for(int k = 1; k <= 4; k++){
+						MultipartFile itemFile = req.getFile("sNum"+i+"iCount"+iCount+"imgCount"+k);
+						if(itemFile != null) {
+							String itemOrgFileName = itemFile.getOriginalFilename();
+							
+							if(itemOrgFileName != null && !itemOrgFileName.equals("")){
+								String ext = "";
+								
+								int index = itemOrgFileName.lastIndexOf(".");
+								if(index != -1){
+									ext = itemOrgFileName.substring(index);
+								}
+								
+								String itemSaveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
+								itemFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\itemImg/" + itemSaveFileName));
+								
+								ProductImgVO imgVO = new ProductImgVO();
+								imgVO.setpNo(pNo);
+								imgVO.setOrgFileName(itemOrgFileName);
+								imgVO.setRealFileName(itemSaveFileName);
+								//제품등록후 제품 번호를 받아와서 처리해줌.
+								
+								service.insertItemImg(imgVO);
+							}
+						} else {
+							--iCount;
+							break;
+						}
+					}
+					
+					
+				}
+			}
 			
 		}
 
@@ -147,6 +249,7 @@ public class LectureRegistController {
 				}
 			}
 		}
+
 		return "redirect:/index.jsp";
 	}
 }
