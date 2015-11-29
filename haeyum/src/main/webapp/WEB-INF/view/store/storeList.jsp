@@ -15,7 +15,6 @@
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
-<script src="${pageContext.request.contextPath}/js/lightbox.js"></script>
 <script>
 
 var flag = 0; // 인기순 0, 최신순 1 구분
@@ -85,7 +84,7 @@ $(document).ready(function(){
 		        b_scroll = 1;
 		        
 		        if(data != ""){
-		        	bestVideo(data);
+		          bestStore(data);
 		        	boxAction();		        
 		        }
 		        else {// 인기순의 스토어를 더이상 가져 올 것이 없을 때
@@ -106,7 +105,7 @@ $(document).ready(function(){
 		        l_scroll = 1;
 		        
 		        if(data != ""){
-		        	latestVideo(data);
+		          latestStore(data);
 		        	boxAction();		        
 		        }
 		        else {// 최신순의 스토어를 더이상 가져 올 것이 없을 때
@@ -128,7 +127,7 @@ function bestStore(data){ // 인기순 스토어 정렬
   if(b_scroll == 0){ // 처음 인기순 버튼을 눌렀을 때 가져 올 값
     html ="<ul>";
   	$.each(data, function(index, value) {
-    	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
+    	  html += "<li><a class='normal' href='${pageContext.request.contextPath}/store/storeDetail.do?no=" + data[index].no + "'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
       	html += "<h3>" + data[index].name + "</h3>"
       	html += "<p>" + data[index].price + "</p>"
      	 	html += "<p>" + data[index].content + "</p></div></li>"
@@ -138,7 +137,7 @@ function bestStore(data){ // 인기순 스토어 정렬
 	}
   else if(b_scroll == 1){ // 무한 스크롤로 가져 올 값
     $.each(data, function(index, value) {
-  	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
+  	  html += "<li><a class='normal' href='${pageContext.request.contextPath}/store/storeDetail.do?no=" + data[index].no + "'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
     	html += "<h3>" + data[index].name + "</h3>"
     	html += "<p>" + data[index].price + "</p>"
    	 html += "<p>" + data[index].content + "</p></div></li>"
@@ -153,7 +152,7 @@ function latestStore(data){ // 최신순 스토어 정렬
   if(l_scroll == 0){ // 처음 최신순 버튼을 눌렀을 때 가져 올 값
     html ="<ul>";
   	$.each(data, function(index, value) {
-    	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
+    	  html += "<li><a class='normal' href='${pageContext.request.contextPath}/store/storeDetail.do?no=" + data[index].no + "'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
       	html += "<h3>" + data[index].name + "</h3>"
       	html += "<p>" + data[index].price + "</p>"
      	 	html += "<p>" + data[index].content + "</p></div></li>"
@@ -163,7 +162,7 @@ function latestStore(data){ // 최신순 스토어 정렬
 	}
   else if(l_scroll == 1){ // 무한 스크롤로 가져 올 값
     $.each(data, function(index, value) {
-  	  html += "<li><a class='normal' href='#'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
+  	  html += "<li><a class='normal' href='${pageContext.request.contextPath}/store/storeDetail.do?no=" + data[index].no + "'><img src='${pageContext.request.contextPath}/itemImg/" + data[index].fileName + "' /></a><div class='info'>"
     	html += "<h3>" + data[index].name + "</h3>"
     	html += "<p>" + data[index].price + "</p>"
    	 html += "<p>" + data[index].content + "</p></div></li>"
@@ -183,6 +182,7 @@ $(".search-wrapper input").mouseout(function(){
       $(".search-wrapper button").css("background-color", "" );
    });
 });
+
 
 </script>
 
@@ -218,7 +218,7 @@ $(".search-wrapper input").mouseout(function(){
 		<ul>
 		<c:forEach var="item" items="${list }">
 			<li>
-				<a class='normal' href='#'>
+				<a class='normal' href="${pageContext.request.contextPath}/store/storeDetail.do?no=${item.no }" >
 					<img class="imgBtn" src="${pageContext.request.contextPath}/itemImg/${item.fileName }" />
 				</a>
 				<div class='info'>
