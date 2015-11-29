@@ -31,7 +31,7 @@ public class MainController {
 //		
 //			System.out.println("카테이름: " + cMainVO.getCategory() + "강의" 
 //								+ cMainVO.getCntCurri() + "총" + vMainVO.getCntVideo());
-			System.out.println("!!!!!");
+//			System.out.println("!!!!!");
 			clist.add(cMainVO);
 			vlist.add(vMainVO);
 		}
