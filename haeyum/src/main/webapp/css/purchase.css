@@ -38,6 +38,7 @@ a:hover {
 	-webkit-border-radius: 3px;
 	-moz-border-radius: 3px;
 	border-radius: 3px;
+	z-index: 992;
 }
 
 .custom p {
@@ -112,12 +113,28 @@ a:hover {
 	background: #000;
 	width: 100%;
 	position: relative;
-	top: -1500px;
 	left: 0;
 	z-index: 101;
 	visibility: hidden;
 	opacity: 0;
-	filter: alpha(opacity=0);
+	filter: alpha(opacity=50%);
+}
+
+html.avgrund-ready,
+body.avgrund-ready .avgrund-popin,
+html.avgrund-ready .avgrund-overlay{
+	-webkit-transform-origin: 50% 50%;
+	-moz-transform-origin: 50% 50%;
+	-ms-transform-origin: 50% 50%;
+	-o-transform-origin: 50% 50%;
+	transform-origin: 50% 50%;
+
+	-webkit-transition: 0.3s all ease-out;
+	-moz-transition: 0.3s all ease-out;
+	-ms-transition: 0.3s all ease-out;
+	-o-transition: 0.3s all ease-out;
+	transition: 0.3s all ease-out;
+	
 }
 
 body.avgrund-ready,
@@ -195,4 +212,14 @@ body.avgrund-active {
 	text-transform: uppercase;
 	position: absolute;
 	
+}
+
+.backHtml {
+	background-color: black;
+	position:absolute;
+	top:0px;
+	width:2000px;
+	height:2000px;
+	opacity: .5;
+	z-index: 2;
 }
