@@ -11,28 +11,28 @@
 			where p_no = #{no}
 	</select>
 	
-	<!-- store 디테일 이미지(4장) -->
-	<select id="selectStoreImg" parameterType="int" resultType="productImgvo"> 
-		select p_no as pNo, real_file_name as RealFileName
+<!-- store 디테일 이미지(4장) -->
+   <select id="selectStoreImg" parameterType="int" resultType="productImgvo"> 
+      select p_no as pNo, real_file_name as RealFileName
          from tbl_product_img
          where p_no = #{no}
-	</select>
-	
-	<!-- store 디테일 강의명 -->
-	<select id="selectLectureName" parameterType="int" resultType="String">
-		select l.L_TITLE
-  			from tbl_lecture l, tbl_product p
- 			where l.L_NO = p.L_NO and p.p_no = #{no}
-	</select>
-	
-	<!-- store 디테일 카테고리명 -->
-	<select id="selectCategoryName" parameterType="int" resultType="String">
-		select cate_name
-  			from tbl_category
- 			where l_category = (select l.L_CATEGORY
-                  				from tbl_lecture l, tbl_product p
-                 				where l.L_NO = p.L_NO and p.p_no = #{no})
-	</select>
+   </select>
+   
+   <!-- store 디테일 강의명 -->
+   <select id="selectLecture" parameterType="int" resultType="lecturevo">
+      select l.L_TITLE as lTitle, l.L_NO as lNo
+           from tbl_lecture l, tbl_product p
+          where l.L_NO = p.L_NO and p.p_no = #{no}
+   </select>
+   
+   <!-- store 디테일 카테고리명 -->
+   <select id="selectCategory" parameterType="int" resultType="categoryvo">
+      select cate_name as cateName, L_CATEGORY as lCategory
+           from tbl_category
+          where l_category = (select l.L_CATEGORY
+                              from tbl_lecture l, tbl_product p
+                             where l.L_NO = p.L_NO and p.p_no = #{no})
+   </select>
 	
 	
 <!-- 	스토어 버튼을 통한 진입 -->
