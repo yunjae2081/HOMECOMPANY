@@ -119,20 +119,17 @@ public class LectureRegistController {
 					String left = req.getParameter("lesson-lLeft"+ lCount);
 					int leftIndex = left.indexOf(".");
 					if(leftIndex != -1){
-						left = left.substring(leftIndex+1, left.length());
+						left = left.substring(0, leftIndex);
 					}
-					System.out.println("left" + left);
 					
 					String top = req.getParameter("lesson-lTop" + lCount);
 					int topIndex = top.indexOf(".");
 					if(topIndex != -1) {
-						top = top.substring(topIndex+1, top.length());
+						top = top.substring(0, topIndex);
 					}
-					System.out.println("top" + top);
 
 					String color = req.getParameter("lesson-lColor" + lCount);
 					LessonVO lessonVO = new LessonVO();
-					System.out.println("videoNO : " +  vNo);
 					lessonVO.setvNo(vNo);
 					lessonVO.setPlLesson(lesson);
 					lessonVO.setPlPlayTime(Integer.parseInt(playTime));
