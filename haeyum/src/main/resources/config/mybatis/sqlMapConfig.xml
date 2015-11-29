@@ -18,15 +18,17 @@
     <typeAlias alias="tnodevo" type="kr.co.haeyum.lecture.vo.TnodeVO"/>
     <typeAlias alias="tlinkvo" type="kr.co.haeyum.lecture.vo.TlinkVO"/>
     <typeAlias alias="tfilevo" type="kr.co.haeyum.lecture.vo.TfileVO"/>
-    <!-- 
-     -->
     <typeAlias alias="favoritevo" type="kr.co.haeyum.video.vo.FavoriteVO"/>
     <typeAlias alias="storevo" type="kr.co.haeyum.store.vo.StoreVO"/>
     <typeAlias alias="videolatestlistvo" type="kr.co.haeyum.search.vo.VideoLatestListVO" />
     <typeAlias alias="productvo" type="kr.co.haeyum.store.vo.ProductVO" />
     <typeAlias alias="productImgvo" type="kr.co.haeyum.store.vo.ProductImgVO" />
     <typeAlias alias="videovo" type="kr.co.haeyum.lecture.vo.VideoVO" />
+    <typeAlias alias="mypagevo" type="kr.co.haeyum.mypage.vo.myPageVO"/>
+    <typeAlias alias="lessonvo" type="kr.co.haeyum.lecture.vo.LessonVO" />
     <typeAlias alias="storelistvo" type="kr.co.haeyum.store.vo.StoreListVO" />
+    <!-- 
+     -->
 	</typeAliases>
 </configuration>
 
