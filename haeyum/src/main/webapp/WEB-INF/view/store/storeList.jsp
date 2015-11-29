@@ -9,12 +9,9 @@
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
 <%@include file="../include/searchSideMenu.jsp"%>
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/searchVideo.css"
-	type="text/css" />
-<link rel="stylesheet"
-	href="${pageContext.request.contextPath}/css/lightbox.css"
-	type="text/css" />
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/searchVideo.css"type="text/css" />
+<link rel="stylesheet"href="${pageContext.request.contextPath}/css/lightbox.css"type="text/css" />
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
 <script src="${pageContext.request.contextPath}/js/lightbox.js"></script>
@@ -174,6 +171,8 @@ function latestStore(data){ // 최신순 스토어 정렬
   	  $(".box-list-wrap > ul").append(html);
 	}
 }
+
+
 </script>
 
 </head>
@@ -186,8 +185,22 @@ function latestStore(data){ // 최신순 스토어 정렬
 		<ul>
 			<li><button type="button" value="1">인기순</button></li>
 			<li><button type="button" value="2">최신순</button></li>
+		
+		<div class="search-wrapper cf" style="float: right;">
+        <input type="text" placeholder="Search">
+        <button type="submit"> <span class="fontawesome-search"></span>
+        </button>
+    </div>
+ 
+		
+		
+		
 		</ul>
+	
+	
+	
 	</div>
+		
 <div class='container-inner'>
 	
 	<div class="box-list-wrap">
