@@ -5,12 +5,22 @@ html,body {
   
 }
 
+
+.topLoginBtn{
+	color:#BC64D8;
+	font-weight: 900;
+}
+
+
+
 body {
 /*   font-family:"Roboto Condensed",sans-serif; */
   color:#000;
   background-color:#fff;
   font-size:15px;
+  /*
   padding-bottom:50px;
+  */
   z-index: 1;
 }
 
@@ -29,7 +39,7 @@ a {
 }
 
 a:hover {
-  color:#fff;
+  color:#000;
   text-decoration:none
 }
 nav ul li a:hover {
@@ -40,7 +50,9 @@ nav ul li a:hover {
 nav {
   height:141px;
   background:#fff;
+  /*  
   border-bottom:1px solid #ccc;
+  */
   width:100%;
   position:fixed;
   top:0;
@@ -206,7 +218,9 @@ nav.small .nav-top {
 
 nav.small .main-nav {
   box-shadow:none;
+/*
   background-color: white;
+*/
 }
 
 nav.small ul.nav {
