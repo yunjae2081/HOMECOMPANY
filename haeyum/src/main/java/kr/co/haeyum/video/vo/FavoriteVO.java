@@ -3,15 +3,13 @@ package kr.co.haeyum.video.vo;
 public class FavoriteVO {
 
 	private int FavNo;
-	private int vNo;
-	private String favId;
-	
 	private int lNo;
+	private String favId;
+
 	private String lTitle;
 	private String lContent;
 	private String lCategory;
 	private String lRealFileName;
-	
 
 	public String getlRealFileName() {
 		return lRealFileName;
@@ -59,14 +57,6 @@ public class FavoriteVO {
 
 	public void setFavNo(int favNo) {
 		FavNo = favNo;
-	}
-
-	public int getvNo() {
-		return vNo;
-	}
-
-	public void setvNo(int vNo) {
-		this.vNo = vNo;
 	}
 
 	public String getFavId() {
