@@ -1,14 +1,19 @@
 package kr.co.haeyum.mypage.service;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.member.vo.MemberVO;
 import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.dao.MypageDAO;
+import kr.co.haeyum.mypage.vo.myPageVO;
+import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.WatchVO;
 
 @Service
 public class MyPageServiceImpl implements MypageService {
@@ -31,26 +36,8 @@ public class MyPageServiceImpl implements MypageService {
 	}
 	
 	
-	@Override
-	public Map<String, Object> selectlectureList(SearchVO param) throws Exception {
-		Map<String,Object> result = new HashMap<>();
-		
-		//페이지에 보여질 목록 게시물
-		result.put("list", dao.selectlectureList(param));
-		//페이징을 위한 전체 게시물 수 
-		result.put("count",dao.selectlectureCount(param.getId()));
-		return result;
-	}
 	
-	
-	@Override
-	public Map<String, Object> selectProductList(SearchVO param) throws Exception {
-		Map<String,Object> result = new HashMap<>();
-		
-		result.put("list",dao.selectProductList(param));
-		result.put("count", dao.selectProductCount(param.getId()));
-		return result;
-	}
+	//즐겨찾기
 	@Override
 	public Map<String, Object> selectFavoriteList(SearchVO param) throws Exception {
 		Map<String,Object> result = new HashMap<>();
@@ -58,12 +45,54 @@ public class MyPageServiceImpl implements MypageService {
 		result.put("count", dao.selectFavoriteCount(param.getId()));
 		return result;
 	}
-	
-	
-	
-	
+	//판매
+	@Override
+	public List<ProductVO> selectSellList(myPageVO pagevo) throws Exception {
+		List<ProductVO> list = dao.selectSellList(pagevo);
+		return list;
+	}
 
-
+	@Override
+	public int selectLastPage(String id) throws Exception{
+		return dao.selectLastPage(id);
+		
+	}
+	
+	//구매
+	@Override
+	public List<ProductVO> selectBuyList(myPageVO pagevo) throws Exception {
+		List<ProductVO> list = dao.selectBuyList(pagevo);
+		return list;
+	}
+	
+	@Override
+	public int selectBuyLastPage(String id) throws Exception{
+		return dao.selectBuyLastPage(id);
+		
+	}
+	
+	
+	@Override
+	public List<LectureVO> selectLectureList(myPageVO pagevo) throws Exception {
+		List<LectureVO> list = dao.selectLectureList(pagevo);
+		return list;
+	}
+	@Override
+	public int LectureLastPage(String id) throws Exception {
+		return dao.LectureLastPage(id);
+	}
+	@Override
+	public List<WatchVO> selectWatchList(myPageVO pagevo) throws Exception {
+		List<WatchVO> list = dao.selectWatchList(pagevo);
+		return list;
+	}
+	@Override
+	public int watchLastPage(String id) throws Exception {
+		return dao.watchLastPage(id);
+	}
+	
+	
+	
 
 
 

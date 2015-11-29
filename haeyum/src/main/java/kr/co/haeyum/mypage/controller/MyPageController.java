@@ -1,5 +1,7 @@
 package kr.co.haeyum.mypage.controller;
 
+import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpSession;
@@ -11,11 +13,15 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.member.vo.MemberVO;
 import kr.co.haeyum.mypage.common.Constants;
 import kr.co.haeyum.mypage.common.PageVO;
 import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.service.MypageService;
+import kr.co.haeyum.mypage.vo.myPageVO;
+import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.WatchVO;
 
 @Controller
 @RequestMapping("/mypage")
@@ -50,83 +56,93 @@ public class MyPageController {
 		}
 
 	}
-
+ 
 	// 강의 list
-	@RequestMapping("/lectureList.do")
-	public ModelAndView lectureList(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
-			HttpSession session) throws Exception {
-
+	@RequestMapping("/lectureList.json")
+	public Map<String, Object> lectureList(HttpSession session,
+			@RequestParam(value = "reqPage", defaultValue = "1") int reqPage, int tabNumber) throws Exception {
+		
+		Map<String, Object> map = new HashMap<>();
 		MemberVO member = (MemberVO) session.getAttribute("user");
-		ModelAndView mav = new ModelAndView("/mypage/lectureList");
+		String id = member.getId();
 
-		System.out.println("pageNo" + pageNo);
+		if(tabNumber==1){
+			int lastPage = service.LectureLastPage(id);
+			lastPage  = (int)Math.ceil(lastPage/10d);
+			myPageVO pagevo = new myPageVO(reqPage, lastPage);
+			pagevo.setId(id);			
+			List<LectureVO> llist = service.selectLectureList(pagevo);
+			map.put("llist", llist);
+			map.put("pagevo", pagevo);
+		}else{
+			int lastPage = service.watchLastPage(id);
+			lastPage  = (int)Math.ceil(lastPage/10d);
+			myPageVO pagevo = new myPageVO(reqPage, lastPage);
+			pagevo.setId(id);			
+			List<WatchVO> wlist = service.selectWatchList(pagevo);
+			map.put("wlist", wlist);
+			map.put("pagevo", pagevo);
+		}
 
-		// regist 목록관련 파라미터 처리
-		SearchVO param = new SearchVO();
-		param.setStart((pageNo - 1) * Constants.PAGE_LIST_COUNT);
-		param.setEnd((pageNo * Constants.PAGE_LIST_COUNT) - param.getStart());
-		param.setId(member.getId());
-
-		System.out.println(member.getId());
-		System.out.println("param.getStart() param.getEnd()" + param.getStart() + "   " + param.getEnd());
-
-		Map<String, Object> result = service.selectlectureList(param);
-
-		int count = (Integer) result.get("count");
-		System.out.println(result.get("list").toString());
-
-		PageVO pagevo = new PageVO("lectureList.do", count, pageNo);
-		mav.addObject("pageVO", pagevo);
-
-		mav.addObject("list", result.get("list"));
-
-		return mav;
+		return map;
 
 	}
 
-	// 스토어 list
-	@RequestMapping("/storeList.do")
-	public ModelAndView storeList(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
-			HttpSession session) throws Exception {
+	// 스토어 list(구매,판매)
+	@RequestMapping("/storeList.json")
+	@ResponseBody
+	public Map<String, Object> storeList(HttpSession session,
+			@RequestParam(value = "reqPage", defaultValue = "1") int reqPage, int tabNumber) throws Exception {
+
+		Map<String, Object> map = new HashMap<>();
 		MemberVO member = (MemberVO) session.getAttribute("user");
-		ModelAndView mav = new ModelAndView("/mypage/StoreList");
+		String id = member.getId();
 
-		SearchVO param = new SearchVO();
-		param.setStart((pageNo - 1) * Constants.PAGE_LIST_COUNT);
-		param.setEnd((pageNo * Constants.PAGE_LIST_COUNT) - param.getStart());
-		param.setId(member.getId());
 
-		Map<String, Object> result = service.selectProductList(param);
+		if (tabNumber == 1) {
+			int lastPage = service.selectLastPage(id);
+			lastPage = (int) Math.ceil(lastPage / 10d);// 마지막페이지에 보여줄
+			myPageVO pagevo = new myPageVO(reqPage, lastPage);
+			pagevo.setId(id);
+			List<ProductVO> slist = service.selectSellList(pagevo);
+			map.put("slist", slist);
+			map.put("pagevo", pagevo);
 
-		int count = (Integer) result.get("count");
+		} else {
+			int lastPage = service.selectBuyLastPage(id);
+			lastPage = (int) Math.ceil(lastPage / 10d);// 마지막페이지에 보여줄
+			myPageVO pagevo = new myPageVO(reqPage, lastPage);
+			pagevo.setId(id);
+			 List<ProductVO> blist = service.selectBuyList(pagevo);
+			 map.put("blist", blist);
+			 map.put("pagevo", pagevo);
+		}
 
-		PageVO pagevo = new PageVO("storeList.do", count, pageNo);
-		mav.addObject("pageVO", pagevo);
+		return map;
 
-		mav.addObject("list", result.get("list"));
-		return mav;
 	}
 
+	// 즐겨찾기
 	@RequestMapping("/favoriteList.do")
-	public ModelAndView favoriteList(@RequestParam(value="pageNo",required=false,defaultValue="1")int pageNo,
-			HttpSession session)throws Exception{
-			MemberVO member = (MemberVO) session.getAttribute("user");	
-			ModelAndView mav = new ModelAndView("/mypage/favoriteList");
-			
-			SearchVO param = new SearchVO();
-			param.setStart((pageNo - 1) * Constants.PAGE_LIST_COUNT);
-			param.setEnd((pageNo * Constants.PAGE_LIST_COUNT) - param.getStart());
-			param.setId(member.getId());
+	public ModelAndView favoriteList(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
+			HttpSession session) throws Exception {
+		MemberVO member = (MemberVO) session.getAttribute("user");
+		ModelAndView mav = new ModelAndView("/mypage/favoriteList");
 
-			Map<String, Object> result = service.selectFavoriteList(param);
+		SearchVO param = new SearchVO();
+		param.setStart((pageNo - 1) * Constants.PAGE_LIST_COUNT);
+		param.setEnd((pageNo * Constants.PAGE_LIST_COUNT) - param.getStart());
+		param.setId(member.getId());
 
-			int count = (Integer) result.get("count");
+		Map<String, Object> result = service.selectFavoriteList(param);
 
-			PageVO pagevo = new PageVO("favoriteList.do", count, pageNo);
-			mav.addObject("pageVO", pagevo);
+		int count = (Integer) result.get("count");
 
-			mav.addObject("list", result.get("list"));
-			return mav;
+		PageVO pagevo = new PageVO("favoriteList.do", count, pageNo);
+		mav.addObject("pageVO", pagevo);
+
+		mav.addObject("list", result.get("list"));
+		return mav;
 	}
 
 }
