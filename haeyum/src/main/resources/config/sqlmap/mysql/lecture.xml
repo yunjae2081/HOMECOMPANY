@@ -254,10 +254,11 @@ select l_no as lNo,
 </select>
 
 <select id="selectLessonList" parameterType="int" resultType="lessonvo">
-	select pl_no plNo, v_no vNo, pl_lesson plLesson, pl_staytime plStayTime, pl_playtme plPlayTime, pl_x plX, pl_y plY, pl_color plColor
+	select pl_no plNo, v_no vNo, pl_lesson plLesson, pl_staytime plStayTime, pl_playtime plPlayTime, pl_x plX, pl_y plY, pl_color plColor
 	from tbl_point_lesson
 	where v_no = #{vNo}
 </select>
+
 <select id="selectProductList" parameterType="int" resultType="productvo">
 	select p_no pNo, l_no lNo, v_no vNo, p_name pName, p_content pContent, p_price pPrice
 	from tbl_product
@@ -266,7 +267,7 @@ select l_no as lNo,
 
 <select id="selectProductImg" parameterType="int" resultType="productImgvo">
 	select i_no iNo, p_no pNo, org_file_name orgFileName, real_file_name RealFileName
-	from tbl_watch_list
+	from tbl_product_img
 	where p_no = #{pNo}
 </select>
 
