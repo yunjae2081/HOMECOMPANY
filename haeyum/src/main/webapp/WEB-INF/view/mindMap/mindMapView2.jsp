@@ -369,6 +369,18 @@ function closeDiv(id) {
 	<h3>${lVO.lContent}</h3>
 	<br/>
 	<br/>
+	
+	<div class="header-div">
+		<h1>VIDEO</h1>
+	</div>
+	<hr id = "hr1"/>
+	<hr id = "hr2"/>
+	<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445">
+					<source src="${pageContext.request.contextPath}/images/standing.mp4" />
+	</video>
+	<br/>
+	<br/>
+	
 	<div class = "header-div">
 		<h1>CURRICULUM</h1>
 	</div>
