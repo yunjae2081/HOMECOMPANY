@@ -24,7 +24,7 @@ console.dir($.fn.avgrund);
 	<br/><br/><br/><br/><br/><br/><br/><br/>
 	<div class="body">
 		<div class="bodyWrap">    
-    <div class="productStage">
+    <div class="productStage" style="margin-bottom: 150px">
         <div class="folderTab clearFix">
     <div class="breadCrumbs">
       <a href="${pageContext.request.contextPath}/side/video.do?category=${cate.lCategory}">${cate.cateName}</a> > 
