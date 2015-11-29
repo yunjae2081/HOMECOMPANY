@@ -5,6 +5,7 @@ public class StoreListVO {
 	private int price;
 	private String content;
 	private String fileName;
+	private int no;
 	
 	public String getName() {
 		return name;
@@ -29,5 +30,11 @@ public class StoreListVO {
 	}
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
+	}
+	public int getNo() {
+		return no;
+	}
+	public void setNo(int no) {
+		this.no = no;
 	}	
 }
