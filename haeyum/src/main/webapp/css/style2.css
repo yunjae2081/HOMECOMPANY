@@ -9,7 +9,10 @@ h1, h2, h3, h4 {
 
 #categories {
 	background: #000 url(../images/back02.jpg) no-repeat top center;
-	border-bottom: 5px solid #A0A0A0;
+	
+	
+	border-bottom: 3px solid #666666;
+	
 	height: 620px;
 	padding: 0
 }

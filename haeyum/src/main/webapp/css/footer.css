@@ -1,0 +1,62 @@
+@CHARSET "UTF-8";
+
+@import url(http://fonts.googleapis.com/css?family=Droid+Serif:400,700);
+
+@import url(http://fonts.googleapis.com/css?family=Raleway:100,400,700);
+
+.footerBody {
+	margin: 0;
+}
+
+.textMain {
+	margin-left: 100px;
+	font-weight: 700;
+	font-family: 'Lato', sans-serif;
+	font-size: 15px;
+}
+
+.footerDiv {
+	margin-top: 200px;
+	background: #D5D5D5;
+	height: 150px;
+}
+
+.borderLine {
+	border-top: solid #408787;
+	border-width: 5px;
+	background: #494949;
+	position: absolute;
+	height: 100%; width : 100%;
+	height: 140px;
+	width: 100%;
+}
+
+.ftext {
+	color: #fff;
+	font-family: Lato;
+	font-size: 30px;
+	text-align: center;
+	margin-top: 10px;
+	margin-bottom: 20px;
+}
+
+.ftext2 {
+	color: #fff;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: center;
+	margin-top: -50px;
+}
+
+.ftext3 {
+	color: #fff;
+	font-family: Lato;
+	font-size: 20px;
+	text-align: center;
+	margin-top: -20px;
+	float: center;
+}
+
+#page-footer {
+	display: none !important;
+}

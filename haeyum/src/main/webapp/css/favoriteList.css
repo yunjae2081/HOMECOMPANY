@@ -42,7 +42,7 @@ ul.items {
 }
 ul.items li {
   float: left;
-  width: 31.33%;
+  width: 30%;
   text-align: center;
   margin-right: 3%;
   display: block;
