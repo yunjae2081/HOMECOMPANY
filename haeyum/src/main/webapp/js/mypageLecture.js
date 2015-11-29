@@ -24,7 +24,7 @@ $(document).ready(function() {
 
 
 $(function() {
-	  $(".expand").on( "click", function() {
+	  $(document).on( "click", ".expand" ,function() {
 	    $(this).next().slideToggle(100);
 	    $expand = $(this).find(">:first-child");
 	    
