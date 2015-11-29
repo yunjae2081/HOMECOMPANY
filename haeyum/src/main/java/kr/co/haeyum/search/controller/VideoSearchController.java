@@ -1,7 +1,16 @@
 package kr.co.haeyum.search.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
+import kr.co.haeyum.lecture.service.LectureService;
+import kr.co.haeyum.lecture.vo.FnodeVO;
+import kr.co.haeyum.lecture.vo.LectureVO;
+import kr.co.haeyum.lecture.vo.SnodeVO;
+import kr.co.haeyum.lecture.vo.TfileVO;
+import kr.co.haeyum.lecture.vo.TlinkVO;
+import kr.co.haeyum.lecture.vo.TnodeVO;
 import kr.co.haeyum.search.service.VideoSearchService;
 import kr.co.haeyum.search.vo.VideoBestListVO;
 import kr.co.haeyum.search.vo.VideoLatestListVO;
@@ -18,6 +27,9 @@ public class VideoSearchController {
 
 	@Autowired
 	private VideoSearchService service;
+	
+	@Autowired
+	private LectureService lService;
 	
 	@RequestMapping("/video.do")
 	@ResponseBody
@@ -63,4 +75,27 @@ public class VideoSearchController {
 		
 		return vVo;
 	}
+	
+	@RequestMapping("/mindMap.json")
+	@ResponseBody
+	public  Map<String, Object> mindMap(int lNo) throws Exception {
+		Map<String, Object> node = new HashMap<String, Object>();
+		
+		LectureVO lVO = lService.selectLecture(lNo);
+		List<FnodeVO> fList = lService.selectfNode(lNo);
+		List<SnodeVO> sList = lService.selectsNode(lNo);
+		List<TnodeVO> tList = lService.selecttNode(lNo);
+		List<TlinkVO> tLink = lService.selecttLink(lNo);
+		List<TfileVO> tFile = lService.selecttFile(lNo);
+		
+		node.put("lVO", lVO);
+		node.put("fList", fList);
+		node.put("sList", sList);
+		node.put("tList", tList);
+		node.put("tLink", tLink);
+		node.put("tFile", tFile);
+		
+		return node;
+	}
+
 }
