@@ -8,10 +8,14 @@ import org.springframework.stereotype.Service;
 import kr.co.haeyum.lecture.dao.LectureDAO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
+import kr.co.haeyum.lecture.vo.LessonVO;
 import kr.co.haeyum.lecture.vo.SnodeVO;
 import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
+import kr.co.haeyum.lecture.vo.VideoVO;
+import kr.co.haeyum.store.vo.ProductImgVO;
+import kr.co.haeyum.store.vo.ProductVO;
 
 @Service
 public class LectureServiceImpl implements LectureService{
@@ -77,6 +81,37 @@ public class LectureServiceImpl implements LectureService{
 	@Override
 	public LectureVO selectLecture(int lNo) throws Exception {
 		return dao.selectLecture(lNo);
+	}
+	
+	public int insertVideo(VideoVO videoVO) throws Exception {
+		return dao.insertVideo(videoVO);
+	}
+	
+	public void insertLesson(LessonVO lessonVO) throws Exception{
+		dao.insertLesson(lessonVO);
+	}
+	
+	public int insertItem(ProductVO itemVO) throws Exception{
+		return dao.insertItem(itemVO);
+	}
+	
+	public void insertItemImg(ProductImgVO iImgVO) throws Exception {
+		dao.insertItemImg(iImgVO);
+	}
+	
+	public VideoVO selectVideo(int sNo) throws Exception {
+		return dao.selectVideo(sNo);
+	}
+	
+	public List<LessonVO> selectLessonList(int vNo) throws Exception {
+		return dao.selectLessonList(vNo);
+	}
+	
+	public List<ProductVO> selectProductList(int vNo) throws Exception {
+		return dao.selectProductList(vNo);
+	}
+	public ProductImgVO selectProductImg (int pNo) throws Exception {
+		return dao.selectProductImg(pNo);
 	}
 
 }
