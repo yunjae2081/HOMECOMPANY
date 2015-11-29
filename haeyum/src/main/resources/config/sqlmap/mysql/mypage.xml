@@ -21,7 +21,6 @@ where id=#{id}
 
 <!-- lecture 강좌 list -->
 <select id="selectLectureList" parameterType="mypagevo" resultType="lecturevo">
-
 select L_NO lNo,L_CATEGORY lCategory,L_TITLE lTitle,L_CONTENT lContent,DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i')as lRegDate
 from haeyum.tbl_lecture
 where L_ID=#{id}
@@ -41,19 +40,23 @@ where L_ID=#{id}
 
 <!-- watch 강좌 List -->
 <select id="selectWatchList" parameterType="mypagevo" resultType="watchvo">
-select w.W_NO wNo,DATE_FORMAT(W_START_DATE,'%Y-%m-%d %H:%i')as wStartDate,l.L_TITLE lTitle,l.L_CATEGORY lCategory
-from haeyum.tbl_watch_list w,haeyum.tbl_video v,haeyum.tbl_lecture l
-where w.V_NO=v.V_NO 
-and w.W_ID=#{id}
-order by wNo desc
+select L_NO lNo, M_NO mNo, L_TITLE lTitle, L_CONTENT lContent, L_ID lId, L_category lCategory,
+DATE_FORMAT(L_REG_DATE,'%Y-%m-%d %H:%i')as lRegDate
+from tbl_lecture
+where l_no in (select r.l_no
+from (select v.l_no as l_no
+from (select w_no, v_no from haeyum.tbl_watch_list where w_id = #{id}) w, tbl_video v
+where v.v_no = w.v_no 
+group by v.l_no) r)
 limit #{reqIndex},10
 </select>
 
 <select id="watchLastPage" parameterType="String" resultType="int">
-select count(w.W_NO) wNo
-from haeyum.tbl_watch_list w,haeyum.tbl_video v,haeyum.tbl_lecture l
-where w.V_NO=v.V_NO 
-and w.W_ID=#{id}
+select count(r.l_no)
+from (select v.l_no as l_no
+from (select w_no, v_no from haeyum.tbl_watch_list where w_id = #{id}) w, tbl_video v
+where v.v_no = w.v_no 
+group by v.l_no) r
 
 </select>
 
@@ -112,22 +115,19 @@ and BUY_ID=#{id}
 <!--즐겨찾기 게시물 수 -->
 <select id="selectFavoriteCount" resultType="int" parameterType="string">
 select count(*)
-from haeyum.tbl_fav_video f,haeyum.tbl_video v,haeyum.tbl_lecture l
-where v.V_NO=f.V_NO 
-and v.L_NO =l.L_NO  
+from haeyum.tbl_fav_video f,haeyum.tbl_lecture l
+where l.L_NO=f.L_NO  
 and FAV_ID=#{id}
 </select>
 
 
 <!-- 즐겨찾기 물품 list -->
 <select id="selectFavoriteList" parameterType="searchvo" resultType="favoritevo">
-
 select l.l_NO lNo,l.L_TITLE lTitle,l.L_CONTENT lContent,l.L_CATEGORY lCategory,v.I_REAL_FILE_NAME lRealFileName
-from haeyum.tbl_fav_video f,haeyum.tbl_video v,haeyum.tbl_lecture l
-where v.V_NO=f.V_NO 
-and v.L_NO =l.L_NO  
+from haeyum.tbl_fav_video f,haeyum.tbl_lecture l,haeyum.tbl_video v
+where l.L_NO=f.L_NO  
 and FAV_ID=#{id}
-having min(S_NO)	
+having min(V_NO)	
 order by lNo desc
 limit #{start},#{end}
 
