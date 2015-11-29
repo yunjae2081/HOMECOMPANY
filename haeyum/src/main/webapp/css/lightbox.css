@@ -14,12 +14,25 @@
 }
 
 .box {
+	background-color:none;
 	display: none;
-	height: 500px;
-	left: 29%;
+	height: 600px;
+	width: 1700px;
+	left: 4%;
 	opacity: 0;
 	position: absolute;
 	z-index: 51;
+	overflow: hidden;
+}
+
+.contentDiv {
+	width: 500px;
+	height: 600px;
+	background: none;
+	margin-left: 1200px;
+	overflow: hidden;
+	word-break:break-all; 
+	word-wrap:break-word;
 }
 
 .largeImage {
@@ -37,4 +50,69 @@
 	position: absolute;
 	right: 0px;
 	cursor: pointer;
+}
+
+.title-out > h1 {
+	margin-left: -18px;
+	font-size:50px;
+	color: white;
+}
+
+.contentDiv > h2 {
+	margin-left: 18px;
+	font-size: 30px;
+	color: white;
+}
+
+#hr1 {
+	width:95%; 
+	border-top: 3px solid white;
+	margin: 0px auto;
+}
+
+#hr2 {
+	width:95%; 
+	border-top: 1px solid white;
+	margin-top: 3px;
+}
+
+.move {
+	cursor: move;
+}
+
+.title-out{
+	width: 80%;
+	margin-left: 30px;
+	float: left;
+}
+
+.linkBtn {
+	margin-left: 390px;
+	position: absolute;
+	top: 548px;
+  background-color: white;
+  color: black;
+  border: 4px solid black;
+  height: 50px;
+  width: 100px;
+  line-height: 50px;
+  text-align: center;
+  font-family: helvetica;
+  font-size: 1.5em;
+  /*NOW 3D*/
+  transition: all 0.3s ease-in-out;
+  transform: perspective(100px) rotateY(0deg);
+  transform-origin: 0% 50%;
+}
+
+.linkBtn:hover {
+  background-color: black;
+  color: white;
+  /*NOW 3D*/
+  transform: perspective(500px) rotateY(-20deg);
+  cursor: pointer;
+}
+
+.myCanvas{
+	
 }
