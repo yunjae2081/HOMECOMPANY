@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -26,13 +27,13 @@ console.dir($.fn.avgrund);
     <div class="productStage">
         <div class="folderTab clearFix">
     <div class="breadCrumbs">
-      <a href="#">카테고리</a> > 
-      <a href="#">강의명</a>
+      <a href="${pageContext.request.contextPath}/side/video.do?category=${cate.lCategory}">${cate.cateName}</a> > 
+      <a href="${pageContext.request.contextPath}/mindMap/view.do?lNo=${lecture.lNo}">${lecture.lTitle}</a>
     </div></div>
   <div class="botBorder clearFix">
       <div class="productImage">
       	<span class="productBigImage">
-        <img src="${pageContext.request.contextPath}/images/example.jpg">
+        <img src="${prdImg[0].realFileName}">
         </span>
           <ul class="imageList">
             <li><a href="#"><img src="${pageContext.request.contextPath}/images/example.jpg"></a></li>
@@ -41,11 +42,12 @@ console.dir($.fn.avgrund);
           </ul>
       </div>
       <div class="overview">
-        <h1>[기타교본] 포인트 기타교본2</h1>
-        <h2>편집부</h2>
-        <h3>8,000원</h3>
+        <h1>${pVo.pName}</h1>
+        <h2>${pVo.pId}</h2>
+        <h3>${pVo.pPrice}</h3>
         <br/><br/><br/>
 
+		<div class="prdCount">수량 : <input type="number" step="1" style="width: 40px"/> / 25</div>
         <div class="button add" id="show">상품 구매</div>
 	</div>
 	
@@ -60,7 +62,7 @@ console.dir($.fn.avgrund);
           <ul class="specs">
           	<li>
          	 <br/>
-          	 요요기요기요기요기요기요기요기
+          	 ${pVo.pContent}
           	</li>
           </ul>
         
@@ -76,34 +78,15 @@ console.dir($.fn.avgrund);
         <h3>강의 다른 상품</h3>
       </div>
       <div class="botBorder">
+      <c:forEach var="sideList" items="${sideList}" >
         <div class="product vtop slim">
             <a href="#">
-               <div class="smallBox"><img src="http://placehold.it/92x92"></div>
-               <span class="manuName">Product Group</span>
-               <span class="prodName">Product Name</span>
+               <div class="smallBox"><img src="${sideList.realFileName}" style="width: 92px; height: 92px"></div>
+               <span class="manuName">${sideList.pName}</span>
+               <span class="prodName">${sideList.pPrice}</span>
             </a>
         </div>
-          <div class="product vtop slim">
-            <a href="#">
-               <div class="smallBox"><img src="http://placehold.it/92x92"></div>
-               <span class="manuName">Product Group</span>
-               <span class="prodName">Product Name</span>
-            </a>
-        </div>
-        <div class="product vtop slim">
-            <a href="#">
-               <div class="smallBox"><img src="http://placehold.it/92x92"></div>
-               <span class="manuName">Product Group</span>
-               <span class="prodName">Product Name</span>
-            </a>
-        </div>
-        <div class="product vtop slim">
-            <a href="#">
-               <div class="smallBox"><img src="http://placehold.it/92x92"></div>
-               <span class="manuName">Product Group</span>
-               <span class="prodName">Product Name</span>
-            </a>
-        </div>
+       </c:forEach>
       </div>    
           
     </div>
