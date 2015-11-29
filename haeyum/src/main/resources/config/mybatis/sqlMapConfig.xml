@@ -27,7 +27,7 @@
     <typeAlias alias="mypagevo" type="kr.co.haeyum.mypage.vo.myPageVO"/>
     <typeAlias alias="lessonvo" type="kr.co.haeyum.lecture.vo.LessonVO" />
     <typeAlias alias="storelistvo" type="kr.co.haeyum.store.vo.StoreListVO" />
-    <typeAlias alias="favoritevo" type="kr.co.haeyum.store.vo.CategoryVO"/>
+    <typeAlias alias="categoryvo" type="kr.co.haeyum.store.vo.CategoryVO"/>
     <!-- 
      -->
 	</typeAliases>
