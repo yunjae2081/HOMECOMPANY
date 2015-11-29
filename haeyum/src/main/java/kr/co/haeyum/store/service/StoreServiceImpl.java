@@ -5,9 +5,12 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.store.dao.StoreDAO;
+import kr.co.haeyum.store.vo.CategoryVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.SideListVO;
 import kr.co.haeyum.store.vo.StoreListVO;
 
 @Service
@@ -27,13 +30,13 @@ public class StoreServiceImpl implements StoreService{
 	}
 
 	@Override
-	public String selectLectureName(int no) {
-		return dao.selectLectureName(no);
+	public LectureVO selectLecture(int no) {
+		return dao.selectLecture(no);
 	}
 
 	@Override
-	public String selectCategoryName(int no) {
-		return dao.selectCategoryName(no);
+	public CategoryVO selectCategory(int no) {
+		return dao.selectCategory(no);
 	}
 
 	@Override
@@ -50,7 +53,20 @@ public class StoreServiceImpl implements StoreService{
 	public List<StoreListVO> selectBestList() throws Exception {
 		return dao.selectStoreList();
 	}
-	
-	
 
+	@Override
+	public List<StoreListVO> selectBestExtend(int no) throws Exception {
+		return dao.selectStoreExtend(no);
+	}
+
+	@Override
+	public List<StoreListVO> selectListExtend(int no) throws Exception {
+		return dao.selectLatestExtend(no);
+	}
+
+	@Override
+	public List<SideListVO> selectSideList(int no) {
+		return dao.selectSideList(no);
+	}
+	
 }
