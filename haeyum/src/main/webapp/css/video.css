@@ -11,10 +11,10 @@
 	display: none;
 }
 
-/* .vCanvas{ */
-/* 		overflow: hidden; */
-/* 		position: absolute; */
-/* } */
+.vCanvas{
+		overflow: hidden;
+		position: absolute;
+}
 
 .roundTool {
 	position: absolute;
