@@ -56,13 +56,15 @@ public class MypageDAO {
 	
 	////////////
 	
-	//Lecture
+	//regist Lecture
 	public List<LectureVO> selectLectureList(myPageVO pagevo)throws Exception{
 		return session.selectList("kr.co.mypage.selectLectureList",pagevo);
 	}
 	public int LectureLastPage(String id)throws Exception {
 		return session.selectOne("kr.co.mypage.LectureLastPage",id);
 	}
+	
+	//studies Lecture
 	public List<WatchVO> selectWatchList(myPageVO pagevo)throws Exception {
 		return session.selectList("kr.co.mypage.selectWatchList",pagevo);
 	}

@@ -59,6 +59,7 @@ public class MyPageController {
  
 	// 강의 list
 	@RequestMapping("/lectureList.json")
+	@ResponseBody
 	public Map<String, Object> lectureList(HttpSession session,
 			@RequestParam(value = "reqPage", defaultValue = "1") int reqPage, int tabNumber) throws Exception {
 		

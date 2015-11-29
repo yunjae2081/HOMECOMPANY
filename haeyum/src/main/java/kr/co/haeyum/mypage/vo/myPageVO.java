@@ -10,6 +10,8 @@ public class myPageVO {
 	private int tabSize = 5;
 	private int curTab;
 	private int lastPage;
+	private String id;
+	
 	public int getLastPage() {
 		return lastPage;
 	}
@@ -26,7 +28,6 @@ public class myPageVO {
 		this.lastPage = lastPage;
 	}
 
-	private String id;
 
 	public myPageVO(int reqPage, int lastPage) {
 		this.reqPage = reqPage;
