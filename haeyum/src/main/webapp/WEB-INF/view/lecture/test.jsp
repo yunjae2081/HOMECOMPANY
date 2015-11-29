@@ -40,7 +40,7 @@
 			<div class="vDiv">
 				<svg id="vSVG" class="vCanvas" width = "730" height = "445" xmlns="http://www.w3.org/2000/svg">
 				</svg>
-<!-- 				<canvas class="vCanvas" id="vCanvas" width = "730" height = "445"></canvas> -->
+				<canvas class="vCanvas" id="vCanvas" width = "730" height = "445"></canvas>
 				
 				<div class="lessonArea" id="lessonArea">
 				</div>
