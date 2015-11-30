@@ -8,7 +8,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
-<%@include file="../include/searchSideMenu.jsp"%>
+<%@include file="../include/storeSideMenu.jsp"%>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/searchVideo.css"type="text/css" />
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/lightbox.css"type="text/css" />

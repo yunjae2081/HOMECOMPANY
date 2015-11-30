@@ -23,6 +23,10 @@ $(document).ready(function(){
 		return false;
 	});
 	
+	$(document).on("click", ".menu > li[class^='in']", function(){
+ 	  var category = this.id;
+		location.href = "${pageContext.request.contextPath}/side/video.do?category=" + category;
+	});
 });
 </script>
 	<div id="cont">
