@@ -35,6 +35,11 @@ public class MainController {
 			clist.add(cMainVO);
 			vlist.add(vMainVO);
 		}
+		System.out.println("clist:"+clist.size());
+		System.out.println("vlist:"+vlist.size());
+		
+		System.out.println("cccc:"+ clist.get(0).toString());
+		
 		mav.addObject("clist", clist);
 		mav.addObject("vlist", vlist);
 		 
