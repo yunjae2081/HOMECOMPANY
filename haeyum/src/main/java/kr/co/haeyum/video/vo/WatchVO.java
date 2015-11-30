@@ -10,8 +10,22 @@ private String wStartDate;
 private String lNo;
 private String lTitle;
 private String lCategory;
+private String lContent;
+private String lRegDate;
 
 
+public String getlRegDate() {
+	return lRegDate;
+}
+public void setlRegDate(String lRegDate) {
+	this.lRegDate = lRegDate;
+}
+public String getlContent() {
+	return lContent;
+}
+public void setlContent(String lContent) {
+	this.lContent = lContent;
+}
 public String getlNo() {
 	return lNo;
 }
