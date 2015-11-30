@@ -343,7 +343,7 @@
 			</div>
 		<div class="introVideo">
 		<div class="videoDiv">
-		<video style="height: 95%; controls="controls" src="${pageContext.request.contextPath}/images/december.mp4">
+		<video style="height: 95%;" controls="controls" src="${pageContext.request.contextPath}/images/december.mp4">
 		</video>
 		</div>
 		
