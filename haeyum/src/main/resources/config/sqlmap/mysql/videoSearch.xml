@@ -43,7 +43,7 @@
      where v.L_NO = l.L_NO and l.L_TITLE like CONCAT('%', #{title}, '%')
      group by v.L_NO
     having min(S_NO)
-     order by date , latestNo
+     order by date desc, latestNo
 		 limit 0, 16;											       												
 		]]>
 	</select>
@@ -56,7 +56,7 @@
      where v.L_NO = l.L_NO and l.L_TITLE like CONCAT('%', #{title}, '%')
      group by v.L_NO
     having min(S_NO)
-     order by date , latestNo
+     order by date desc, latestNo
 			limit #{no}, 8;											       												
 		]]>
 	</select>
