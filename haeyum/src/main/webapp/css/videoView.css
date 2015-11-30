@@ -1,0 +1,151 @@
+@CHARSET "UTF-8";
+
+.aVideo {
+	cursor: pointer;
+}
+
+.store-slider {
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+#slider-wrapper {
+	width: 100%;
+	max-width: 520px;
+	margin: 0 auto;
+	margin-top: 100px;
+}
+
+/*SLIDER*/
+#slider-wrap {
+	width: 100%;
+	height: 232px;
+	overflow: hidden;
+	background: #ccc;
+	position: relative;
+}
+
+ul#slider {
+	width: 100%;
+	position: absolute;
+	top: 0;
+	left: 0;
+}
+
+ul#slider li {
+	width: 320px;
+	margin-top: 10px;
+	margin-left: 10px;
+	border-radius: 2px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	float: left;
+	background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+	opacity: 0.5;
+	-webkit-transition: all 0.5s ease;
+	-moz-transition: all 0.5s ease;
+	-o-transition: all 0.5s ease;
+	-ms-transition: all 0.5s ease;
+	transition: all 0.5s ease;
+	padding: 10px;
+}
+
+ul#slider li.slider-active {
+	opacity: 1;
+}
+
+ul#slider li:first-child {
+	margin-left: 10px;
+}
+
+.slider-btns {
+	position: absolute;
+	top: 50%;
+	width: 10px;
+	height: 50px;
+	margin-top: -25px;
+	background: blue;
+	color: #666;
+	line-height: 50px;
+	padding: 0 10px;
+	text-align: center;
+	background: #fff;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 5px;
+	cursor: pointer;
+	font-size: 21px;
+}
+
+.slider-btns#next {
+	right: 0;
+	border-radius: 30px 0 0 30px;
+	padding-right: 5px;
+}
+
+.slider-btns#previous {
+	left: 0;
+	border-radius: 0 30px 30px 0;
+	padding-left: 5px;
+	display: none;
+}
+
+.slider-btns:active {
+	color: #1783bb;
+	box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 8px inset;
+}
+
+/*Content*/
+.slider-img {
+	height: 80px;
+	overflow: hidden;
+	margin-bottom: 10px;
+}
+
+.slider-img img {
+	width: 100%;
+}
+
+.slider-content h2 {
+	font-size: 21px;
+	margin-bottom: 3px;
+	color: #444;
+}
+
+.slider-content .slider-rating {
+	color: #ccc;
+	padding-bottom: 6px;
+}
+
+.slider-content .slider-rating .rated {
+	color: #1783bb;
+}
+
+.slider-content .review-count {
+	font-family: 'Questrial', sans-serif;
+	font-size: 11px;
+	padding-left: 6px;
+	color: #999;
+}
+
+.slider-content p {
+	font-family: 'Questrial', sans-serif;
+	color: #666;
+	font-size: 14px;
+	margin: 10px 0;
+	line-height: 1.3;
+}
+
+.slider-content .slider-btn {
+	text-align: center;
+	color: #fff;
+	padding: 8px 15px;
+	background: #1783bb;
+	text-transform: uppercase;
+	cursor: pointer;
+}
+
+.slider-content .slider-btn:hover {
+	background: #116d9c;
+}
