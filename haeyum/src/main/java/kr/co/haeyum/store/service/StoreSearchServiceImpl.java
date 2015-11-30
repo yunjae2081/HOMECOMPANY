@@ -20,4 +20,19 @@ public class StoreSearchServiceImpl implements StoreSearchService{
 		return dao.selectBestList(title);
 	}
 
+	@Override
+	public List<StoreListVO> selectBestExtend(String title, int no) throws Exception {
+		return dao.selectBestExtend(title, no);
+	}
+
+	@Override
+	public List<StoreListVO> selectLatestList(String title) throws Exception {
+		return dao.selectLatestList(title);
+	}
+
+	@Override
+	public List<StoreListVO> selectLatestExtend(String title, int no) throws Exception {
+		return dao.selectLatestExtend(title, no);
+	}
+
 }
