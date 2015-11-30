@@ -433,6 +433,26 @@ function closeDiv(id) {
 			</div>
 	</div>
 	
+	<div class = "btn-right">
+		<a><img id="right-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
+	</div>
+	<div class = "curr-div-out">
+		<div class = "curr-div" id = "cur1">
+			<div class = "fnodeInfo">STEP1</div>
+			<div class = "snodeInfo">
+				<div class = "snodeDetail">snode1</div>
+				<div class = "snodeDetail">snode2</div>
+				<div class = "snodeDetail">snode3</div>
+				<div class = "snodeDetail">snode4</div>
+				<div class = "snodeDetail">snode5</div>
+			</div>
+		</div>
+		<div class = "curr-div" id = "cur2">STEP2</div>
+	</div>
+	<div class = "btn-left">
+		<a><img id = "left-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
+	</div>
+	
 	<br/>
 	<br/>
 	
