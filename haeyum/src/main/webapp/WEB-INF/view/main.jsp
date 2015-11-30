@@ -225,7 +225,6 @@
 			    </ul>
 			  </nav>
 			  
-<!--  -->	
 		  
 			  <section>
 			  
@@ -281,7 +280,7 @@
 			<div style="padding-top: 50px;padding-bottom:50px; border-bottom: 1px solid black;"> </div>
 			</div>
 		<div class="introVideo">
-
+		
 		<div class="videoDiv">
 		<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 		
@@ -295,7 +294,6 @@
 		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
 		Aut iure ipsum eveniet, at ratione a corporis molestiae minima impedit voluptatem quia aspernatur quibusdam, deleniti atque culpa. Ducimus excepturi, voluptas odio!
 	</article>
-	
 
 </div>
 		
