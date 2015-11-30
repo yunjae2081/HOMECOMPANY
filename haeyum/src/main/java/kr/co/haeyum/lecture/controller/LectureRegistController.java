@@ -1,16 +1,26 @@
 package kr.co.haeyum.lecture.controller;
 
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileOutputStream;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 import java.util.UUID;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpSession;
 
-import org.apache.tomcat.util.codec.binary.Base64;
+import org.apache.commons.codec.binary.Base64;
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
@@ -85,13 +95,13 @@ public class LectureRegistController {
 				}
 				
 				String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-				videoFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\video/" + saveFileName));
+				videoFile.transferTo(new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\video/" + saveFileName));
 
 				String imgURL = req.getParameter("v_capture_test1"+ i);
 				byte decode[] = Base64.decodeBase64(imgURL.substring(22));
 				FileOutputStream fo;
 				String saveImgName = "haeyum-" + UUID.randomUUID().toString() + ".jpg";
-				File mainImg = new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/"+saveImgName);
+				File mainImg = new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/"+saveImgName);
 				mainImg.createNewFile();
 				fo = new FileOutputStream(mainImg);
 				fo.write(decode);
@@ -179,7 +189,7 @@ public class LectureRegistController {
 								}
 								
 								String itemSaveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-								itemFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\itemImg/" + itemSaveFileName));
+								itemFile.transferTo(new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\itemImg/" + itemSaveFileName));
 								
 								ProductImgVO imgVO = new ProductImgVO();
 								imgVO.setpNo(pNo);
@@ -248,6 +258,100 @@ public class LectureRegistController {
 		}
 
 		return "redirect:/index.jsp";
+	}
+	
+	@RequestMapping("/excelUpload.json")
+	@ResponseBody
+	public Map<String, Object> excelUpload(MultipartHttpServletRequest req) throws Exception{
+		Map<String, Object> data = new HashMap<String, Object>();
+		MultipartFile file = req.getFile("excelFile");
+		List<FnodeVO> fList = new ArrayList<>();
+		List<SnodeVO> sList = new ArrayList<>();
+		List<TnodeVO> tList = new ArrayList<>();
+		List<TlinkVO> tLink = new ArrayList<>();
+		
+		XSSFRow row;
+		XSSFCell cell;
+		
+		String ext = "";
+		String orgFileName = file.getOriginalFilename();
+		
+		int index = orgFileName.lastIndexOf(".");
+		if(index != -1) {
+			ext = orgFileName.substring(index);
+		}
+		
+		String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
+		file.transferTo(new File(servletContext.getRealPath("/excel/") + "/" + saveFileName));
+		
+		FileInputStream ios = new FileInputStream(servletContext.getRealPath("/excel/") + "/" + saveFileName);
+		XSSFWorkbook workbook = new XSSFWorkbook(ios);
+		
+		XSSFSheet sheet = workbook.getSheetAt(0);
+		
+		// rows 수
+		int fNode = 0;
+		int sNode = 0;
+		int tNode = 0;
+		int rows = sheet.getPhysicalNumberOfRows();
+		for (int i = 0; i < rows; i++) {
+			row = sheet.getRow(i);
+			if (row != null) {
+				FnodeVO fVO = new FnodeVO();
+				SnodeVO sVO = new SnodeVO();
+				TlinkVO lVO = new TlinkVO();
+				for(int c = 0; c < 4; c++) {
+					cell = row.getCell(c);
+					if(cell != null) {
+						String value = cell.getStringCellValue();
+						switch(c) {
+						case 0:
+							fNode++;
+							fVO.setfTitle(value);
+							fVO.setfName("fNode" + fNode);
+							fVO.setfX(200*fNode);
+							fVO.setfY(100);
+							fList.add(fVO);
+							break;
+						case 1:
+							sNode++;
+							sVO.setsTitle(value);
+							sVO.setsName("sNode" + sNode);
+							sVO.setfName("fNode" + fNode);
+							sVO.setsX(200*fNode);
+							sVO.setsY(100 + (sNode * 50));
+							sList.add(sVO);
+							break;
+						case 2:
+							tNode++;
+							lVO.setLinkTitle(value);
+							lVO.settName("tNode" + tNode);
+							break;
+						case 3:
+							lVO.setlUrl(value);
+							TnodeVO tVO = new TnodeVO();
+							tVO.settX(200 * fNode);
+							tVO.settY(200 + (tNode * 50));
+							tVO.settName("tNode" + tNode);
+							tVO.setsName("sNode" + sNode);
+							tList.add(tVO);
+							tLink.add(lVO);
+							System.out.println("Dd");
+							break;
+						}
+					}
+					if(lVO.getLinkTitle() != null && lVO.getlUrl() != null) {
+					}
+				}
+			}
+		}
+		
+		data.put("fList", fList);
+		data.put("sList", sList);
+		data.put("tList", tList);
+		data.put("tLink", tLink);
+		
+		return data;
 	}
 }
 	
