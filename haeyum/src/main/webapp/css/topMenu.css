@@ -209,7 +209,7 @@ section.stretch p.bottom {
 
 nav.small {
   height:50px;
-  background-color: #F6F6F6
+  background-color: #F6F6F6;
 }
 
 nav.small .nav-top {
@@ -218,9 +218,8 @@ nav.small .nav-top {
 
 nav.small .main-nav {
   box-shadow:none;
-/*
   background-color: white;
-*/
+  border-bottom: 1px solid #e2e2e2;
 }
 
 nav.small ul.nav {
