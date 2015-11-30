@@ -51,6 +51,9 @@ public class LectureRegistController {
 	@RequestMapping("/regist.do")
 	public String regist(HttpSession session,  MultipartHttpServletRequest req, NodeIndexVO nodeVO, LectureVO lVO) throws Exception {
 
+		MemberVO id = (MemberVO) session.getAttribute("user");
+		lVO.setlId(id.getId());
+		
 		int lNo = service.insertLecture(lVO);
 		int vNo = 0;
 		int lCount = 0;
@@ -59,8 +62,21 @@ public class LectureRegistController {
 		for (int i = 1; i <= Integer.parseInt(req.getParameter("fNodeIndex")); i++) {
 			FnodeVO fVO = new FnodeVO();
 			fVO.setlNo(lNo);
-			fVO.setfX(Integer.parseInt(req.getParameter("fX" + i)));
-			fVO.setfY(Integer.parseInt(req.getParameter("fY" + i)));
+			
+			String left = req.getParameter("fX"+ i);
+			int leftIndex = left.indexOf(".");
+			if(leftIndex != -1){
+				left = left.substring(0, leftIndex);
+			}
+			fVO.setfX(Integer.parseInt(left));
+			
+			String top = req.getParameter("fY"+ i);
+			int topIndex = top.indexOf(".");
+			if(topIndex != -1){
+				top = top.substring(0, topIndex);
+			}
+			fVO.setfY(Integer.parseInt(top));
+			
 			fVO.setfTitle(req.getParameter("fTitle" + i));
 			fVO.setfContent(req.getParameter("fContent" + i));
 			fVO.setfName(req.getParameter("fName" + i));
@@ -71,8 +87,21 @@ public class LectureRegistController {
 		for (int i = 1; i <= Integer.parseInt(req.getParameter("sNodeIndex")); i++) {
 			SnodeVO sVO = new SnodeVO();
 			sVO.setlNo(lNo);
-			sVO.setsX(Integer.parseInt(req.getParameter("sX" + i)));
-			sVO.setsY(Integer.parseInt(req.getParameter("sY" + i)));
+			
+			String left = req.getParameter("sX"+ i);
+			int leftIndex = left.indexOf(".");
+			if(leftIndex != -1){
+				left = left.substring(0, leftIndex);
+			}
+			sVO.setsX(Integer.parseInt(left));
+			
+			String top = req.getParameter("sY"+ i);
+			int topIndex = top.indexOf(".");
+			if(topIndex != -1){
+				top = top.substring(0, topIndex);
+			}
+			sVO.setsY(Integer.parseInt(top));
+			
 			sVO.setsTitle(req.getParameter("sTitle" + i));
 			sVO.setsContent(req.getParameter("sContent" + i));
 			sVO.setsName(req.getParameter("sName" + i));
@@ -126,14 +155,14 @@ public class LectureRegistController {
 					String playTime = req.getParameter("lesson-lPlayTime" + lCount);
 					String stayTime = req.getParameter("lesson-lSTime" + lCount);
 					req.getParameter("lesson-lLeft"+ lCount).indexOf(".");
-					String left = req.getParameter("lesson-lLeft"+ lCount);
-					int leftIndex = left.indexOf(".");
+					left = req.getParameter("lesson-lLeft"+ lCount);
+					leftIndex = left.indexOf(".");
 					if(leftIndex != -1){
 						left = left.substring(0, leftIndex);
 					}
 					
-					String top = req.getParameter("lesson-lTop" + lCount);
-					int topIndex = top.indexOf(".");
+					top = req.getParameter("lesson-lTop" + lCount);
+					topIndex = top.indexOf(".");
 					if(topIndex != -1) {
 						top = top.substring(0, topIndex);
 					}
@@ -214,6 +243,21 @@ public class LectureRegistController {
 		for (int i = 1; i <= Integer.parseInt(req.getParameter("tNodeIndex")); i++) {
 			TnodeVO tVO = new TnodeVO();
 			tVO.setlNo(lNo);
+			
+			String left = req.getParameter("tX"+ i);
+			int leftIndex = left.indexOf(".");
+			if(leftIndex != -1){
+				left = left.substring(0, leftIndex);
+			}
+			tVO.settX(Integer.parseInt(left));
+			
+			String top = req.getParameter("tY"+ i);
+			int topIndex = top.indexOf(".");
+			if(topIndex != -1){
+				top = top.substring(0, topIndex);
+			}
+			tVO.settY(Integer.parseInt(top));
+			
 			tVO.settX(Integer.parseInt(req.getParameter("tX" + i)));
 			tVO.settY(Integer.parseInt(req.getParameter("tY" + i)));
 			tVO.setsName(req.getParameter("tPname" + i));
