@@ -173,15 +173,29 @@ function latestStore(data){ // 최신순 스토어 정렬
 }
 
 $(document).ready(function(){
-  $(".search-wrapper input").mouseenter(function(){
+  $(".search-wrapper input").on("mouseenter", function(){
       $(".search-wrapper button").css("background-color", "#4aba10");
-    
-      
   });
-$(".search-wrapper input").mouseout(function(){
+	$(".search-wrapper input").on("mouseenter", function(){
       $(".search-wrapper button").css("background-color", "" );
    });
 });
+
+//search
+function nullCheck(){
+    if($("#title").val()  == ""){
+      return false;
+    }
+    else{
+      return true;
+    }
+  }
+  
+
+  
+$(document).on("click", "#ttte",function() {
+  document.forms["searchForm"].submit();
+})
 
 
 </script>
@@ -196,15 +210,15 @@ $(".search-wrapper input").mouseout(function(){
       <ul>
          <li><button type="button" value="1">인기순</button></li>
          <li><button type="button" value="2">최신순</button></li>
-      
-      <div class="search-wrapper cf" style="float: right;">
-        <input type="text" placeholder="Search">
-        <button type="submit"> <span class="fontawesome-search"></span>
-        </button>
-    </div>
- 
-      
-      
+        
+      <li style="float: right;">
+      	<form id = "searchForm" class="search-wrapper cf" action="${pageContext.request.contextPath}/store/search.do" method="GET" onsubmit="return nullCheck()" >
+        	<input id="title" name="title" type="text" placeholder="Search">
+        	<button type="submit" id = "ttte">
+        		<span class="fontawesome-search"></span>
+        	</button>
+				</form>
+      </li>
       
       </ul>
    
@@ -223,7 +237,8 @@ $(".search-wrapper input").mouseout(function(){
 				</a>
 				<div class='info'>
 					<h3>${item.name }</h3>
-					<p>${item.price }</p>
+					<br />
+					<p>${item.price } 원</p>
 					<p>${item.content }</p>
 				</div>
 			</li>			
