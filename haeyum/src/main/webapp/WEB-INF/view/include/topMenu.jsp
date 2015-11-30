@@ -177,7 +177,19 @@ function nullCheck(){
 						<c:when test="${empty user}">
 						<li><a onclick="loginClick();"style="overflow: hidden;">Login</a></li>
 						
-						<div id="loginDiv" style="display: none; float:right;">
+													
+						</c:when>
+						<c:otherwise>
+						
+						<li><a class="topLoginBtn" href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
+						<li><a class="topLoginBtn"onclick="outclick();">Logout</a></li>															
+						</c:otherwise>
+						</c:choose>				
+					</ul>
+				</div>
+			</div>
+			<!-- 로그인DIV -->
+				<div id="loginDiv" style="display: none;margin-left: 900px;">
 							  <div class="login-box">
 							    <div class="lb-header">
 							      <a href="#" class="active" id="login-box-link">Login</a>
@@ -232,17 +244,10 @@ function nullCheck(){
 							      </div>
 							    </div>
 							  </div>
-							</div>									
-						</c:when>
-						<c:otherwise>
-						
-						<li><a class="topLoginBtn" href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
-						<li><a class="topLoginBtn"onclick="outclick();">Logout</a></li>															
-						</c:otherwise>
-						</c:choose>				
-					</ul>
-				</div>
-			</div>
+							</div>	
+							<!-- 로그인 DIV end -->
+		
+		
 		</nav>
 		<!-- /end nav -->
 
