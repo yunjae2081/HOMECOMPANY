@@ -72,6 +72,8 @@ function lList(llist){
 		Html+="</ul>"
 		Html+="</div>"
 	})
+		Html+="<br/>"
+		Html+="<br/>"
 		Html+="<div align='center' id='registPage'></div>";
 	$("#registBox").html(Html);
 	
@@ -89,14 +91,14 @@ function wList(wlist){
 		Html+="<div class='right-arrow'>+</div>"
 		Html+="<div style='width: 400px;'>"
 		Html+="<div><img class='icon'src='../images/studyImg.png'></div>"
-		Html+="<h2>" + wlist[index].wNo + "&nbsp;&nbsp;" + wlist[index].lTitle+ "</h2>"
-		Html+="<span>"+ wlist[index].wStartDate + "</span>"
+		Html+="<h2>" + wlist[index].lNo + "&nbsp;&nbsp;" + wlist[index].lTitle+ "</h2>"
+		Html+="<span>"+ wlist[index].lRegDate+ "</span>"
 		Html+="<span></span><br/>"
 		Html+="</div>"
 		Html+="</a>"
 		Html+="<div class='detail'>"
-		Html+="<div><span>뭐넣징</span>"
-		Html+="<span>룰루랄라</span>"
+		Html+="<div><span>"+ wlist[index].lContent+ "</span>"
+		Html+="<span>내용</span>"
 		Html+="</div>"
 		Html+="<br/>"
 		Html+="<div>질문QnA</div>"
@@ -104,6 +106,8 @@ function wList(wlist){
 		Html+="</li>"
 		Html+="</ul>"
 	})
+		Html+="<br/>"
+		Html+="<br/>"
 		Html+="<div align='center' id='studiesPage'></div>"
 	$("#studiesBox").html(Html);
 }
@@ -176,7 +180,7 @@ $(document).on("click","#studiedBtn",function(){
 
 </script>
 </head>
-<body class="lectureClass">
+<body class="lectureClass" >
 <%@include file="../include/topMenu.jsp"%>
 <section class="stretch">
 

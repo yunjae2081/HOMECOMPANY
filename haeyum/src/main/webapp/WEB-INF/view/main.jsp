@@ -5,10 +5,76 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+<style>
+@import url(http://fonts.googleapis.com/css?family=Roboto);
+.text {
+  width: 100%;
+  text-align: center;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.text .content {
+  display: inline;
+}
+.text .dash {
+  display: inline-block;
+  height: 3px;
+  width: 20px;
+  background-color: #3498db;
+  animation: blink .5s infinite linear;
+}
+
+@keyframes blink {
+  0% {
+    opacity: 1;
+  }
+  99% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+
+</style>
 <%@include file="include/common_top.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoMain.css" type="text/css" />
 </head>
+<script>
+(function () {
+    var app;
+    $(document).ready(function () {
+        return app.init();
+    });
+    app = {
+        text: 'Hello. How to make a MindMap?',
+        index: 0,
+        chars: 0,
+        speed: 100,
+        container: '.text .content',
+        init: function () {
+            this.chars = this.text.length;
+            return this.write();
+        },
+        write: function () {
+            $(this.container).append(this.text[this.index]);
+            if (this.index < this.chars) {
+                this.index++;
+                return window.setTimeout(function () {
+                    return app.write();
+                }, this.speed);
+            }
+        }
+    };
+}.call(this));
 
+</script>
 <body style="background-color: #F6F6F6">
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
@@ -234,14 +300,12 @@
 			    	<div id="carousel">
 					<div id="container" class="container">
 						<figure id="spinner" style="padding-top: 50px;">
-						<!-- 
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-						 -->
 						</figure>
 					</div>
 				<div id="pager"></div>
@@ -257,14 +321,12 @@
 			    	<div id="carousel">
 					<div id="container" class="container">
 						<figure id="spinner" style="padding-top: 50px;">
-						<!-- 
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
 							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-						 -->
 						</figure>
 					</div>
 			<span style="float: left" class="ss-icon spinL" onclick="galleryspin('-')">&lt;</span>
@@ -280,26 +342,23 @@
 			<div style="padding-top: 50px;padding-bottom:50px; border-bottom: 1px solid black;"> </div>
 			</div>
 		<div class="introVideo">
-		
 		<div class="videoDiv">
-		<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-		
+		<video style="height: 95%; controls="controls" src="${pageContext.request.contextPath}/images/december.mp4">
+		</video>
 		</div>
+		
 		<div class="introText">
-		
+			
 		<div class="introContent">
-	<article>
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-		Aut iure ipsum eveniet, at ratione a corporis molestiae minima impedit voluptatem quia aspernatur quibusdam, deleniti atque culpa. Ducimus excepturi, voluptas odio!
-		Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
-		Aut iure ipsum eveniet, at ratione a corporis molestiae minima impedit voluptatem quia aspernatur quibusdam, deleniti atque culpa. Ducimus excepturi, voluptas odio!
-	</article>
-
-</div>
-		
-		
+			<div class='text' >
+		  	<div class='content'></div>
+		  	<div class='dash'></div>	
+			</div>
 		</div>
-		
+		<div>
+		<article>마인드맵 소개글 </article>
+		</div>
+		</div>
 		
 		</div>
 
