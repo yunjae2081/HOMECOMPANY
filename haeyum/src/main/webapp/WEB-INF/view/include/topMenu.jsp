@@ -199,15 +199,8 @@ function nullCheck(){
 							    <!-- 로그인 -->
 							    <div class="email-login">
 							    <div class="social-login">
-									<!-- 페이스북 
-														      	
-							     <div class="fb-login-button" 
-							     data-max-rows="1" data-size="large" 
-							     data-show-faces="false" data-auto-logout-link="false">
-							     </div> 	
-							      	
-									-->		
-							      	로그인
+								
+							       <a href="" class="faceBtn">Login with Facebook</a>
 							      	
 							    </div>
 							      <div class="u-form-group">
