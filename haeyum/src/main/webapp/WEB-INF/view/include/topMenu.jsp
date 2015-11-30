@@ -170,7 +170,7 @@ function nullCheck(){
 					<ul class="nav nav-justified">
 						<li><a class="active" href="${pageContext.request.contextPath}/index.jsp">Home</a></li>
 						<li><a href="${pageContext.request.contextPath}/list/listVideo.do">Search</a></li>
-						<li><a href="#">Lecture</a></li>
+						<li><a href="${pageContext.request.contextPath}/lecture/registForm.do">Lecture</a></li>
 						<!--  -->
 						<li><a href="${pageContext.request.contextPath}/store/storeList.do">Store</a></li>
 						<c:choose>
