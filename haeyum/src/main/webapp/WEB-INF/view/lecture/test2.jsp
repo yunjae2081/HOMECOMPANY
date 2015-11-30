@@ -113,6 +113,13 @@
     <div class="form_row">
       <input class="more wider" type="submit" value="REGIST">
     </div>
+    <div class = "file-upload">
+	    <div class="file-select">
+	     <div class="file-select-button" id="fileName">EXCEL UPLOAD</div>
+	     <div class="file-select-name" id="excelName">No file chosen...</div>
+	     <input id="excelFile" type="file" name="excelFile" onchange="selectExcel();">
+	    </div>
+    </div>
   </fieldset>
   <div id = "dataDiv">
   </div>

@@ -94,7 +94,7 @@ function mindMapView(data) {
   html += "<hr id = 'hr1'/>";
   html += "<hr id = 'hr2'/>";
   html += "<h2>" + lVO.lContent + "</h2>";
-  html += "<div class = 'linkBtn'>MOVE !</div>";
+  html += "<div class = 'linkBtn' id = 'moveDetail" + lVO.lNo + "'>MOVE !</div>";
   html += "</div>";
   $(".box").append(html);
   $(".mView").css("margin", "0px");
@@ -431,4 +431,10 @@ $(document).on("mouseenter", ".myCanvas", function () {
 $(document).on("mouseout", ".myCanvas", function () {
   $(".myCanvas").removeClass("move");
   allDrag = false;;
+})
+
+$(document).on("click", "div[id^='moveDetail']", function () {
+  var id = this.id;
+  var detailNum = Number(id.replace("moveDetail", ""));
+  location.href="/haeyum/mindMap/view.do?lNo=" + detailNum;
 })
