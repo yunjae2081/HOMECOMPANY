@@ -8,6 +8,7 @@ import kr.co.haeyum.store.vo.StoreListVO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -20,8 +21,6 @@ public class StoreSearchController {
 	@RequestMapping("/search.do")
 	public ModelAndView search(String title) throws Exception{
 		
-		System.out.println(title);
-		
 		ModelAndView mav = new ModelAndView("/store/storeSearch");
 		List<StoreListVO> list = service.selectBestList(title);
 		
@@ -31,5 +30,36 @@ public class StoreSearchController {
 		return mav;
 	}
 
+	@RequestMapping("/bestSearch.json")
+	@ResponseBody
+	public List<StoreListVO> bList(String title) throws Exception{		
+		List<StoreListVO> vVo = service.selectBestList(title);
+		
+		return vVo;
+	}
+	
+	@RequestMapping("/bestSearchExtend.json")
+	@ResponseBody
+	public List<StoreListVO> bExtend(String title, int no) throws Exception{	
+		List<StoreListVO> vVo = service.selectBestExtend(title, no);
+		
+		return vVo;
+	}
+	
+	@RequestMapping("/latestSearch.json")
+	@ResponseBody
+	public List<StoreListVO> lList(String title) throws Exception{		
+		List<StoreListVO> vVo = service.selectLatestList(title);
+		
+		return vVo;
+	}
+	
+	@RequestMapping("/latestSearchExtend.json")
+	@ResponseBody
+	public List<StoreListVO> lExtend(String title, int no) throws Exception{	
+		List<StoreListVO> vVo = service.selectLatestExtend(title, no);
+		
+		return vVo;
+	}
 	
 }
