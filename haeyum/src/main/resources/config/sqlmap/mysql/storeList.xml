@@ -80,10 +80,14 @@
 	</select>
 	
 	<!-- store 디테일 사이드 강의 다른 상품 -->
-	<select id="selectSideList" parameterType="int" resultType="sidelistvo">
+   <select id="selectSideList" parameterType="int" resultType="sidelistvo">
       select p.P_NO as pNO, p.p_NAME as pName, p.p_PRICE as pPrice, i.REAL_FILE_NAME as realFileName
+from tbl_product p, tbl_product_img i 
+where p.p_NO = i.p_NO and p.L_NO = (select p.L_NO
               from tbl_product p, tbl_product_img i              
-             where p.p_NO = i.p_NO and p.L_NO = #{no}
+             where p.p_NO = i.p_NO and p.P_NO = #{no}
+             group by i.P_NO
+             having min(i_NO))
              group by i.P_NO
              having min(i_NO)
    </select>
