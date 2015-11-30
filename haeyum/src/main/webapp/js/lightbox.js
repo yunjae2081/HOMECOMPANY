@@ -181,7 +181,7 @@ function mindMapView(data) {
     html += "<input type = 'hidden' id = 'tLinkContent" + tNodeNum + "' value = 'Third Content'/>" + tLink[i].linkContent;
     html += "</div>";
     html += "<div id = 'tLinkUrlForm" + tNodeNum + "' >";
-    html += "<a href = '" + tLink[i].lUrl + "' id = 'tUrl" + tNodeNum + "' style = 'color: white;'>링크</a>";
+    html += "<a href = '" + tLink[i].lUrl + "' target='_black' id = 'tUrl" + tNodeNum + "' style = 'color: white;'>링크</a>";
     html += "<input type = 'hidden' id = 'tLinkUrl" + tNodeNum + "' name = 'tLinkUrl" + tNodeNum + "' style='color:black; width:100%;' />";
     html += "</div>";
     html += "</div>";
