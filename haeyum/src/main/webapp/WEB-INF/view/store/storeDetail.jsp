@@ -21,10 +21,9 @@
 console.dir($.fn.avgrund);
 </script>
 	
-	<br/><br/><br/><br/><br/><br/><br/><br/>
-	<div class="body">
+	<div class="body" style="padding-top: 140px">
 		<div class="bodyWrap">    
-    <div class="productStage" style="margin-bottom: 150px">
+    <div class="productStage" style="margin-bottom: 100px">
         <div class="folderTab clearFix">
     <div class="breadCrumbs">
       <a href="${pageContext.request.contextPath}/side/video.do?category=${cate.lCategory}">${cate.cateName}</a> > 
@@ -33,21 +32,45 @@ console.dir($.fn.avgrund);
   <div class="botBorder clearFix">
       <div class="productImage">
       	<span class="productBigImage">
-        <img src="${prdImg[0].realFileName}">
+        <img src="${pageContext.request.contextPath}/itemImg/${prdImg[0].realFileName}">
         </span>
+        
+        <div class="productSmallImage" style="padding-right: 20px;">
           <ul class="imageList">
-            <li><a href="#"><img src="${pageContext.request.contextPath}/images/example.jpg"></a></li>
-            <li><a href="#"><img src="${pageContext.request.contextPath}/images/example.jpg"></a></li>
-            <li><a href="#"><img src="${pageContext.request.contextPath}/images/example.jpg"></a></li>
+          	<c:choose>
+          		<c:when test="${empty prdImg[1].realFileName}">
+            		<li><a href="#"><img src="${pageContext.request.contextPath}/images/png12.png"></a></li>
+          		</c:when>
+          		<c:otherwise>
+		            <li><a href="#"><img src="${pageContext.request.contextPath}/itemImg/${prdImg[1].realFileName}"></a></li>
+          		</c:otherwise>
+            </c:choose>
+          	<c:choose>
+          		<c:when test="${empty prdImg[2].realFileName}">
+            		<li><a href="#"><img src="${pageContext.request.contextPath}/images/png12.png"></a></li>
+          		</c:when>
+          		<c:otherwise>
+		            <li><a href="#"><img src="${pageContext.request.contextPath}/itemImg/${prdImg[2].realFileName}"></a></li>
+          		</c:otherwise>
+            </c:choose>
+          	<c:choose>
+          		<c:when test="${empty prdImg[3].realFileName}">
+            		<li><a href="#"><img src="${pageContext.request.contextPath}/images/png12.png"></a></li>
+          		</c:when>
+          		<c:otherwise>
+		            <li><a href="#"><img src="${pageContext.request.contextPath}/itemImg/${prdImg[3].realFileName}"></a></li>
+          		</c:otherwise>
+            </c:choose>
           </ul>
+          </div>
       </div>
       <div class="overview">
         <h1>${pVo.pName}</h1>
         <h2>${pVo.pId}</h2>
-        <h3>${pVo.pPrice}</h3>
+        <h3>${pVo.pPrice}&#8361;</h3>
         <br/><br/><br/>
 
-		<div class="prdCount">수량 : <input type="number" step="1" style="width: 40px"/> / 25</div>
+		<div class="prdCount">수량 : <input type="number" step="1" min="1" max="${pVo.pCount}" value="1" style="width: 40px"/> / ${pVo.pCount}</div>
         <div class="button add" id="show">상품 구매</div>
 	</div>
 	
@@ -81,9 +104,9 @@ console.dir($.fn.avgrund);
       <c:forEach var="sideList" items="${sideList}" >
         <div class="product vtop slim">
             <a href="${pageContext.request.contextPath}/store/storeDetail.do?no=${sideList.pNO}">
-               <div class="smallBox"><img src="${sideList.realFileName}" style="width: 92px; height: 92px"></div>
+               <div class="smallBox"><img src="${pageContext.request.contextPath}/itemImg/${sideList.realFileName}" style="width: 92px; height: 92px"></div>
                <span class="manuName">${sideList.pName}</span>
-               <span class="prodName">${sideList.pPrice}</span>
+               <span class="prodName">${sideList.pPrice}&#8361;</span>
             </a>
         </div>
        </c:forEach>
