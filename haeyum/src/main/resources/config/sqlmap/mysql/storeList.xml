@@ -4,12 +4,12 @@
 <mapper namespace="store.dao.StoreDAO">		
 	
 	<!-- store 디테일 상품정보 -->
-	<select id="selectStoreDetail" parameterType="int" resultType="productvo">
-		select p_no as pNo , l_no as lNo, p_id as pId, p_name as pName, 
-				p_content as pContent, p_price as pPrice, p_count as pCount, p_reg_date as pRegDate
-			from tbl_product
-			where p_no = #{no}
-	</select>
+   <select id="selectStoreDetail" parameterType="int" resultType="productvo">
+      select p_no as pNo , l_no as lNo, p_id as pId, p_name as pName, P_COUNT as pCount,
+            p_content as pContent, p_price as pPrice, p_count as pCount, p_reg_date as pRegDate
+         from tbl_product
+         where p_no = #{no}
+   </select>
 	
 <!-- store 디테일 이미지(4장) -->
    <select id="selectStoreImg" parameterType="int" resultType="productImgvo"> 
