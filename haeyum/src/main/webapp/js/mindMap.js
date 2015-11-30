@@ -28,6 +28,10 @@ var menuSelectId;
 
 var drag = false;
 
+var x;
+var y;
+var allDrag = false;
+
 // 초기화
 $(document).ready(function () {
   canvas = document.getElementById("myCanvas");
@@ -667,7 +671,12 @@ $(document).on("click", "div[id^='nodeRemoveS']", function () {
   }
   
   var sNodeArrTemp = fNodeArray[fNodeNumTemp];
+  for(var i = 0; i < sNodeArrTemp.length; i++) {
+    console.log(sNodeArrTemp[i]);
+  }
   var index = sNodeArrTemp.indexOf("sNode" + deleteNum);
+//  alert("deledeNum" + deleteNum);
+//  alert("index : " + index);
   sNodeArrTemp.splice(index, 1);
   
   var tNodeArrTemp = sNodeArray[deleteNum - 1];
@@ -1026,7 +1035,8 @@ function sNodeSort() {
       $("#sTitle" + sNumTemp).attr("id", "sTitle" + sNum);
       $("#sContentForm" + sNumTemp).attr("id", "sContentForm" + sNum);
       $("#sContent" + sNumTemp).attr("id", "sContent" + sNum);
-      
+//      alert(sNodeIdTemp);
+//      alert(sNum + "번 정렬");
       sNodeArrTemp[j] = "sNode" + sNum;
       sNum++;
     }
@@ -1165,3 +1175,229 @@ function upload() {
   $("#dataDiv").html(html);
   return true;
 }
+
+
+function selectExcel() {
+  var fileName = $("#excelFile").val();
+  $("#excelName").text(fileName.replace("C:\\fakepath\\", ""));
+  
+  var formData = new FormData();
+  formData.append("excelFile", $("input[name='excelFile']")[0].files[0]);
+  
+  $.ajax({
+    url:"excelUpload.json",
+    data:formData,
+    processData:false,
+    contentType:false,
+    type:'POST',
+    success:function(data, status) {
+      drawExcel(data);
+    }
+  })
+}
+
+function drawExcel(data) {
+  var fList = data.fList;
+  var sList = data.sList;
+  var tList = data.tList;
+  var tLink = data.tLink;
+  
+  $(".menu").remove();
+  $("div[id^='fNode']").remove();
+  $("div[id^='sNode']").remove();
+  $("div[id^='tNode']").remove();
+  $("div[id^='fDiv").remove();
+  $("div[id^='sDiv").remove();
+  $("div[id^='tDiv").remove();
+  
+  fNode = 0;
+  sNode = 0;
+  tNode = 0;
+  
+  fNodeArray.splice(0, fNodeArray.length);
+  sNodeArray.splice(0, sNodeArray.length);
+  
+  for (var i = 0; i < fList.length; i++) {
+    var html = "";
+    html += "<div class = 'fNode' id = 'fNode" + ++fNode + "' ></div>";
+    html += "<div class = 'menu' id = 'addFNode" + fNode + "' >+</div>";
+    html += "<div class = 'menu' id = 'addSNode" + fNode + "' >+</div>";
+    html += "<div class = 'menu' id = 'remove" + fNode + "' >-</div>";
+    html += "<div class='bookmark-box' id = 'fDiv" + fNode + "' >";
+    html += "<a class='boxclose' id='fDiv" + fNode + "' onclick='closeDiv(this)'></a>";
+    html += "<div class='bookmark-title' id = 'fWrite" + fNode + "' >";
+    html += "<input type = 'button' onclick='fNodeWriteForm(this)' id = 'fNodeForm" + fNode + "' style='float: right;'/>";
+    html += "<input type = 'hidden' id = 'fTitle" + fNode + "' value = '" + fList[i].fTItle + "' style='color:black;' />";
+    html += "<h3>" + fList[i].fTItle + "</h3>";
+    html += "</div>";
+    html += "<div class='description' id = 'fContentForm" + fNode + "' >";
+    html += "  <input type = 'hidden' id = 'fContent" + fNode + "' value = 'Step Content'/>Step Content";
+    html += "</div>";
+    html += "</div>";
+    
+    $(".mView").append(html);
+    $("#fNode" + fNode).draggable();
+    
+    $("#fNode" + fNode).css("left", fList[i].fX + 'px');
+    $("#fNode" + fNode).css("top", fList[i].fY + 'px');
+    
+    $("#addFNode" + fNode).css("left", $("#fNode" + fNode).position().left + 30);
+    $("#addFNode" + fNode).css("top", $("#fNode" + fNode).position().top + 30);
+    $("#addSNode" + fNode).css("left", $("#fNode" + fNode).position().left + 30);
+    $("#addSNode" + fNode).css("top", $("#fNode" + fNode).position().top + 30);
+    $("#remove" + fNode).css("left", $("#fNode" + fNode).position().left + 30);
+    $("#remove" + fNode).css("top", $("#fNode" + fNode).position().top + 30);
+    $("#fDiv" + fNode).css("left", $("#fNode" + fNode).position().left - 115);
+    $("#fDiv" + fNode).css("top", $("#fNode" + fNode).position().top - 200);
+    var fNodeAdd = [];
+    fNodeArray.push(fNodeAdd);
+
+    if(i != fNodeArray.length) {
+      $("#addFNode" + fNode).remove();
+    }
+  }
+  
+  for (var i = 0; i < sList.length; i++) {
+    var fNodeNum = Number(sList[i].fName.replace("fNode", "")) - 1;
+    var html = "";
+    html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' ></div>";
+    html += "<div class = 'menu' id = 'addLinkS" + sNode + "' >+</div>";
+    html += "<div class = 'menu' id = 'addSubjectS" + sNode + "' >+</div>";
+    html += "<div class = 'menu' id = 'nodeRemoveS" + sNode + "' >-</div>";
+    html += "<div class='bookmark-box' id = 'sDiv" + sNode + "' >";
+    html += "<a class='boxclose' id='sDiv" + sNode + "' onclick='closeDiv(this)'></a>";
+    html += "<div class='bookmark-title' id = 'sWrite" + sNode + "' >";
+    html += "<input type = 'button' onclick='sNodeWriteForm(this)' id = 'sNodeForm" + sNode + "' style='float: right;'/>";
+    html += "<input type = 'hidden' id = 'sTitle" + sNode + "' value = '" + sList[i].sTitle + "' style='color:black;' />";
+    html += "<h3>SECOND TITLE</h3>";
+    html += "</div>";
+    html += "<div class='description' id = 'sContentForm" + sNode + "'>";
+    html += "<input type = 'hidden' id = 'sContent" + sNode + "' value = 'Second Content'/>Second Content";
+    html += "</div>";
+//      html += "<a style = 'color: white;'>동영상 추가</a>";
+    
+    //수정이 시작 부분
+    html += "<div class='file-upload'>" +
+    "<div class='file-select'>" +
+    "<div class='file-select-button' id='fileName" + sNode + "'>Choose File</div>" +
+    "<div class='file-select-name' id='noFile" + sNode + "'>No file chosen...</div>" +
+    "<input id='chooseFile" + sNode + "' type='file' name='chooseFile" + sNode + "' onchange=playSelectedFile("+sNode+")>" +
+    "</div>" +
+    "</div>";
+    //수정이 끝부분
+    
+    html += "</div>";
+    
+    $(".mView").append(html);
+    $("#sNode" + sNode).draggable();
+    
+    $("#sNode" + sNode).css("left", $("#fNode" + (fNodeNum + 1)).position().left + (50 * sNode));
+    $("#sNode" + sNode).css("top", $("#fNode" + (fNodeNum + 1)).position().top + (50 * sNode));
+    
+    $(".menu[id$=S" + sNode + "]").css("left", $("#sNode" + sNode).position().left + 20);
+    $(".menu[id$=S" + sNode + "]").css("top", $("#sNode" + sNode).position().top + 20);
+    $("#sDiv" + sNode).css("left", $("#sNode" + sNode).position().left - 125);
+    $("#sDiv" + sNode).css("top", $("#sNode" + sNode).position().top - 200);
+    
+    fNodeArray[fNodeNum].push("sNode" + sNode);
+    var sNodeAdd = [];
+    sNodeArray.push(sNodeAdd);
+  }
+
+  for (var i = 0; i < tLink.length; i++) {
+    var sNodeNum = Number(tList[i].sName.replace("sNode", "")) - 1;
+    var html = "";
+    
+    html += "<div class = 'tNode' id = 'tNode" + ++tNode + "' >LINK</div>";
+    html += "<div class = 'menu' id = 'mTNodeRemove" + tNode + "' >-</div>";
+    html += "<div class='bookmark-box' id = 'tDiv" + tNode + "' >";
+    html += "<a class='boxclose' id='tDiv" + tNode + "' onclick='closeDiv(this)'></a>";
+    html += "<div class='bookmark-title' id = 'tWrite" + tNode + "' >";
+    html += "<input type = 'button' onclick='tLinkWriteForm(this)' id = 'tLinkForm" + tNode + "' style='float: right;'/>";
+    html += "<input type = 'hidden' id = 'tLinkTitle" + tNode + "' value = '" + tLink[i].linkTitle + "' style='color:black;' />";
+    html += "<h3>" + tLink[i].linkTitle + "</h3>";
+    html += "</div>";
+    html += "<div class='description' id = 'tContentForm" + tNode + "'>";
+    html += "<input type = 'hidden' id = 'tLinkContent" + tNode + "' value = 'Third Content'/>Third Content";
+    html += "</div>";
+    html += "<div id = 'tLinkUrlForm" + tNode + "' >";
+    html += "<a id = 'tUrl" + tNode + "' href = '" + tLink[i].lUrl + "' style = 'color: white;'>링크</a>";
+    html += "<input type = 'hidden' id = 'tLinkUrl" + tNode + "' name = 'tLinkUrl" + tNode + "' value = '" + tLink[i].lUrl + "' style='color:black; width:100%;' />";
+    html += "</div>";
+    html += "</div>";
+
+    $(".mView").append(html);
+    $("#tNode" + tNode).draggable();
+
+    $("#tNode" + tNode).css("left", $("#sNode" + (sNodeNum + 1)).position().left + 30);
+    $("#tNode" + tNode).css("top", $("#sNode" + (sNodeNum + 1)).position().top + 30);
+    $("#mTNodeRemove" + tNode).css("left", $("#tNode" + tNode).position().left + 10);
+    $("#mTNodeRemove" + tNode).css("top", $("#tNode" + tNode).position().top + 10);
+    $("#tDiv" + tNode).css("left", $("#tNode" + tNode).position().left - 140);
+    $("#tDiv" + tNode).css("top", $("#tNode" + tNode).position().top - 200);
+    sNodeArray[sNodeNum].push("tNode" + tNode);
+  }
+  drawLine();  
+}
+
+//전체 drag 이벤트
+var fNodePreX = [];
+var fNodePreY = [];
+var sNodePreX = [];
+var sNodePreY = [];
+var tNodePreX = [];
+var tNodePreY = [];
+$(document).on("mousedown",".myCanvas", function () {
+  x = event.clientX;
+  y = event.clientY;
+  fNodePreX.splice(0, fNodePreX.length)
+  fNodePreY.splice(0, fNodePreY.length)
+  sNodePreX.splice(0, sNodePreX.length)
+  sNodePreY.splice(0, sNodePreY.length)
+  tNodePreX.splice(0, tNodePreX.length)
+  tNodePreY.splice(0, tNodePreY.length)
+  for (var i = 1; i <= fNode; i++) {
+    fNodePreX.push($("#fNode" + i).position().left);
+    fNodePreY.push($("#fNode" + i).position().top);
+  }
+  for (var i = 1; i <= sNode; i++) {
+    sNodePreX.push($("#sNode" + i).position().left);
+    sNodePreY.push($("#sNode" + i).position().top);
+  }
+  for (var i = 1; i <= tNode; i++) {
+    tNodePreX.push($("#tNode" + i).position().left);
+    tNodePreY.push($("#tNode" + i).position().top);
+  }
+  $(".myCanvas").addClass("move");
+  allDrag = true;
+})
+
+$(document).on("mousemove", ".myCanvas", function() {
+  if(allDrag) {
+    $(".menu").css("display", "none");
+    for (var i = 1; i <= fNode; i++) {
+      $("#fNode" + i).css("left", fNodePreX[i-1] - (x-event.clientX) / 3);
+      $("#fNode" + i).css("top", fNodePreY[i-1] - (y-event.clientY) / 3);
+      fMenuOut();
+    }
+    for (var i = 1; i <= sNode; i++) {
+      $("#sNode" + i).css("left", sNodePreX[i-1] - (x-event.clientX) / 3);
+      $("#sNode" + i).css("top", sNodePreY[i-1] - (y-event.clientY) / 3);
+      divSet();
+      sMenuOut();
+    }
+    for (var i = 1; i <= tNode; i++) {
+      $("#tNode" + i).css("left", tNodePreX[i-1] - (x-event.clientX) / 3);
+      $("#tNode" + i).css("top", tNodePreY[i-1] - (y-event.clientY) / 3);
+      divSet();
+      tMenuOut();
+    }
+    divSet();
+    drawLine();
+  }
+}) 
+
+$(document).on("mouseup", ".myCanvas", function () {
+  $(".myCanvas").removeClass("move");
+  allDrag = false;;
+})
