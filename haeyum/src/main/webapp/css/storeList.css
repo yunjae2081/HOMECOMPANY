@@ -35,6 +35,8 @@ body {
 
 
 .storeForm{
+	
+	box-shadow :0 0 10px 5px #dfdfdf;
 	margin:0 auto;
 	padding-top:50px;
 	background-color:#fff; 
