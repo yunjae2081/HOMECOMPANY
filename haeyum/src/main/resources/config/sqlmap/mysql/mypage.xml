@@ -48,6 +48,7 @@ from (select v.l_no as l_no
 from (select w_no, v_no from haeyum.tbl_watch_list where w_id = #{id}) w, tbl_video v
 where v.v_no = w.v_no 
 group by v.l_no) r)
+order by L_NO desc
 limit #{reqIndex},10
 </select>
 
