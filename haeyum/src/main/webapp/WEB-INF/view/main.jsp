@@ -87,7 +87,7 @@
 					<ul>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block red"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=1"	class="subject_toggle flip-container flipper block red"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/beauty.png" alt="" /></span>
@@ -106,7 +106,7 @@
 						</li>
 
 						<li>
-							<a href="#" class="subject_toggle flip-container flipper block plum"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=2" class="subject_toggle flip-container flipper block plum"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/study.png" alt="" /></span>
@@ -125,7 +125,7 @@
 						</li>
 
 						<li><a
-							href="#"
+							href="${pageContext.request.contextPath}/side/video.do?category=3"
 							class="subject_toggle flip-container flipper block teal"> <span
 								class="flipper-front"> <i class="icon"><span><img src="images/music.png" alt="" /></span><span>음악 & 공연</span></i> <span
 									class="title">Music / Performance</span>
@@ -140,7 +140,7 @@
 						</a></li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block orange"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=4"	class="subject_toggle flip-container flipper block orange"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/it.png" alt="" /></span>
@@ -159,7 +159,7 @@
 						</li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block purple"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=5"	class="subject_toggle flip-container flipper block purple"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/art.png" alt="" /></span>
@@ -178,7 +178,7 @@
 						</li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block blue"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=6"	class="subject_toggle flip-container flipper block blue"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/sports.png" alt="" /></span>
@@ -197,7 +197,7 @@
 						</li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block green"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=7"	class="subject_toggle flip-container flipper block green"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/cook.png" alt="" /></span>
@@ -216,7 +216,7 @@
 						</li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block yellow"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=8"	class="subject_toggle flip-container flipper block yellow"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/foreign.png" alt="" /></span>
@@ -235,7 +235,7 @@
 						</li>
 						
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block army"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=9"	class="subject_toggle flip-container flipper block army"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/game.png" alt="" /></span>
@@ -254,7 +254,7 @@
 						</li>
 
 						<li>
-							<a href="#"	class="subject_toggle flip-container flipper block sky"> 
+							<a href="${pageContext.request.contextPath}/side/video.do?category=10"	class="subject_toggle flip-container flipper block sky"> 
 								<span class="flipper-front"> 
 									<i class="icon">
 										<span><img src="images/etc.png" alt="" /></span>
