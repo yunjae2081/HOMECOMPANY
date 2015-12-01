@@ -125,7 +125,7 @@ $(document).ready(function () {
 	  html += "<input type = 'hidden' id = 'tLinkContent" + tNodeNum + "' value = 'Third Content'/>${tlink.linkContent}";
 	  html += "</div>";
 	  html += "<div id = 'tLinkUrlForm" + tNodeNum + "' >";
-	  html += "<a href = '${tlink.lUrl}' id = 'tUrl" + tNodeNum + "' style = 'color: white;'>링크</a>";
+	  html += "<a href = '${tlink.lUrl}' id = 'tUrl" + tNodeNum + "' target='_blank' style = 'color: white;'>링크</a>";
 	  html += "<input type = 'hidden' id = 'tLinkUrl" + tNodeNum + "' name = 'tLinkUrl" + tNodeNum + "' style='color:black; width:100%;' />";
 	  html += "</div>";
 	  html += "</div>";
@@ -342,6 +342,77 @@ function closeDiv(id) {
   $("#" + divId).css("display", "none");
   fMenu = true;
 }
+
+$(document).on("click", ".aVideo", function() {
+  $("html, body").animate({scrollTop:400}, $("#scrollTop").offset().top);
+  console.log();
+})
+
+//전체 drag 이벤트
+var fNodePreX = [];
+var fNodePreY = [];
+var sNodePreX = [];
+var sNodePreY = [];
+var tNodePreX = [];
+var tNodePreY = [];
+var allDrag = false;
+$(document).on("mousedown",".myCanvas", function () {
+  x = event.clientX;
+  y = event.clientY;
+  fNodePreX.splice(0, fNodePreX.length);
+  fNodePreY.splice(0, fNodePreY.length);
+  sNodePreX.splice(0, sNodePreX.length);
+  sNodePreY.splice(0, sNodePreY.length);
+  tNodePreX.splice(0, tNodePreX.length);
+  tNodePreY.splice(0, tNodePreY.length);
+  for (var i = 1; i <= fNode; i++) {
+    fNodePreX.push($("#fNode" + i).position().left);
+    fNodePreY.push($("#fNode" + i).position().top);
+  }
+  for (var i = 1; i <= sNode; i++) {
+    sNodePreX.push($("#sNode" + i).position().left);
+    sNodePreY.push($("#sNode" + i).position().top);
+  }
+  for (var i = 1; i <= tNode; i++) {
+    tNodePreX.push($("#tNode" + i).position().left);
+    tNodePreY.push($("#tNode" + i).position().top);
+  }
+  allDrag = true;
+})
+
+$(document).on("mousemove", ".myCanvas", function() {
+  if(allDrag) {
+    for (var i = 1; i <= fNode; i++) {
+      $("#fNode" + i).css("left", fNodePreX[i-1] - (x-event.clientX) / 2);
+      $("#fNode" + i).css("top", fNodePreY[i-1] - (y-event.clientY) / 2);
+    }
+    for (var i = 1; i <= sNode; i++) {
+      $("#sNode" + i).css("left", sNodePreX[i-1] - (x-event.clientX) / 2);
+      $("#sNode" + i).css("top", sNodePreY[i-1] - (y-event.clientY) / 2);
+      divSet();
+    }
+    for (var i = 1; i <= tNode; i++) {
+      $("#tNode" + i).css("left", tNodePreX[i-1] - (x-event.clientX) / 2);
+      $("#tNode" + i).css("top", tNodePreY[i-1] - (y-event.clientY) / 2);
+      divSet();
+    }
+    divSet();
+    drawLine();
+  }
+})
+
+$(document).on("mouseup", ".myCanvas", function () {
+  allDrag = false;;
+})
+
+$(document).on("mouseenter", ".myCanvas", function () {
+  $(".myCanvas").addClass("move");
+})
+
+$(document).on("mouseout", ".myCanvas", function () {
+  $(".myCanvas").removeClass("move");
+  allDrag = false;;
+})
 </script>
 </head>
 <body>
@@ -375,7 +446,7 @@ function closeDiv(id) {
 	<br/>
 	
 	<div class="header-div">
-		<h1>VIDEO</h1>
+		<h1 id = "scrollTop">VIDEO</h1>
 	</div>
 	<hr id = "hr1"/>
 	<hr id = "hr2"/>
@@ -457,7 +528,38 @@ function closeDiv(id) {
 		<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600">
 		</canvas>
 	</div>
-	
+	<div class = "btn-right">
+		<a><img id="right-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
+	</div>
+	<div class = "curr-div-out">
+		<div class = "curr-div" id = "cur1">
+			<div class = "fnodeInfo">
+				<div class = "stepTItle">STEP1</div>
+				● 라인전 필승법<br/>
+				● CS 먹는 꿀팁<br/>
+				● 스킬과 평타 견제<br/>
+			</div>
+			<div class = "snodeInfo">
+				<div class = "snodeDetail">snode1</div>
+				<div class = "snodeDetail">snode2</div>
+				<div class = "snodeDetail">snode3</div>
+				<div class = "snodeDetail">snode4</div>
+				<div class = "snodeDetail">snode5</div>
+			</div>
+		</div>
+		<div class = "curr-div" id = "cur2">STEP2</div>
+	</div>
+	<div class = "btn-left">
+		<a><img id = "left-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
+	</div>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
+	<br/>
 	<br/>
 	<br/>
 </div>
