@@ -277,70 +277,11 @@
 			</section>
 		</div>
 	</div>
-		<div class="pc-tab" style="max-width:90%">
-			<input checked="checked" id="tab1" type="radio" name="pct" />
-			<input id="tab2" type="radio" name="pct" />
-			  <nav style="position:static;">
-			    <ul>
-			      <li class="tab-menu tab1">
-			        <label for="tab1">popularity</label>
-			      </li>
-			      <li class="tab-menu tab2">
-			        <label for="tab2">newest</label>
-			      </li>
-			    </ul>
-			  </nav>
-			  
-		  
-			  <section>
-			  
-			  <!-- 인기영상 -->
-			    <div class="tab1">
-			    
-			    	<div id="carousel">
-					<div id="container" class="container">
-						<figure id="spinner" style="padding-top: 50px;">
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video  controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-						</figure>
-					</div>
-				<div id="pager"></div>
-				</div>
+	
+	<!--요기부터 최신.인기 -->
 
-			<span style="float: left" id="spinL" class="ss-icon" onclick="galleryspin('-')">&lt;</span>
-			<span style="float: right" id="spinR" class="ss-icon" onclick="galleryspin('')">&gt;</span>
-			
-			</div>
-			
-			<!-- 최신영상 -->
-			    <div class="tab2">
-			    	<div id="carousel">
-					<div id="container" class="container">
-						<figure id="spinner" style="padding-top: 50px;">
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-							<video controls="controls" src="${pageContext.request.contextPath}/images/december.mp4"></video>
-						</figure>
-					</div>
-			<span style="float: left" class="ss-icon spinL" onclick="galleryspin('-')">&lt;</span>
-			<span style="float: right" class="ss-icon spinR" onclick="galleryspin('')">&gt;</span>
-				<div id="pager"></div>
-				</div>
-
-			
-			</div>
-			
-			
-			
-			<div style="padding-top: 50px;padding-bottom:50px; border-bottom: 1px solid black;"> </div>
-			</div>
+	
+	<!-- 요기까쥐 -->
 		<div class="introVideo">
 		<div class="videoDiv">
 		<video style="height: 95%;" controls="controls" src="${pageContext.request.contextPath}/images/december.mp4">
