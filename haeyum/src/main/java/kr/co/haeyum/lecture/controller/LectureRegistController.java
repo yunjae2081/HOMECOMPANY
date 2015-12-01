@@ -258,8 +258,6 @@ public class LectureRegistController {
 			}
 			tVO.settY(Integer.parseInt(top));
 			
-			tVO.settX(Integer.parseInt(req.getParameter("tX" + i)));
-			tVO.settY(Integer.parseInt(req.getParameter("tY" + i)));
 			tVO.setsName(req.getParameter("tPname" + i));
 			tVO.settName(req.getParameter("tName" + i));
 			service.inserttNode(tVO);
