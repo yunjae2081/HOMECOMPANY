@@ -105,10 +105,13 @@
 	cursor: move;
 }
 
-
-
-
-
+/* input[id^=fNodeForm] { */
+/* 	background-image: url("/haeyum/images/inputPen.png"); */
+/* 	width:24px; */
+/* 	height:24px; */
+/* 	background-color: rgba(245,245,220,0); */
+/* 	border:0px; */
+/* } */
 
 
 
