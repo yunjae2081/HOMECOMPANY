@@ -125,7 +125,7 @@ $(document).on("click","div[id^='addSNode']", function () {
   $(".menu[id$=S" + sNode + "]").css("left", $("#sNode" + sNode).position().left + 20);
   $(".menu[id$=S" + sNode + "]").css("top", $("#sNode" + sNode).position().top + 20);
   $("#sDiv" + sNode).css("left", $("#sNode" + sNode).position().left - 125);
-  $("#sDiv" + sNode).css("top", $("#sNode" + sNode).position().top - 200);
+  $("#sDiv" + sNode).css("top", $("#sNode" + sNode).position().top - 250);
   
   fNodeArray[fNodeNum].push("sNode" + sNode);
   var sNodeAdd = [];
@@ -188,9 +188,23 @@ $(document).on("click", "div[id^='addSubjectS']", function () {
   html += "<div class='description' id = 'tContentForm" + tNode + "'>";
   html += "<input type = 'hidden' id = 'tAsmtContent" + tNode + "' value = 'Third Content'/>Third Content";
   html += "</div>";
-  html += "<div id = 'tAsmtForm" + tNode + "' >";
-  html += "<input type = 'file' id = 'tAsmtFile" + tNode + "' name = 'tAsmtFile" + tNode + "' style='color:black; width:100%;' />";
-  html += "</div>";
+//  html += "<div id = 'tAsmtForm" + tNode + "' >";
+//  html += "<input type = 'file' id = 'tAsmtFile" + tNode + "' name = 'tAsmtFile" + tNode + "' style='color:black; width:100%;' />";
+//  html += "</div>";
+  
+  
+  html += "<div class='file-upload'>" +
+          "<div class='file-select'>" +
+            "<div class='file-select-button' id='fileName" + tNode + "'>Choose File</div>" +
+            "<div class='file-select-name' id='tAsmtName" + tNode + "'>No file chosen...</div>" +
+            "<input id='tAsmtFile" + tNode + "' type='file' name='tAsmtFile" + tNode + "' onchange='selectASMT(" + tNode + ");'>" +
+          "</div>" +
+          "</div>";
+  
+  
+  
+  
+  
   html += "</div>";
   
   $(".mView").append(html);
@@ -606,8 +620,8 @@ $(document).on("click", "div[id^='remove']", function () {
   fNode--;
   
   // FIRST 정렬
+  var fNum = deleteNum + 1;
   for (var i = deleteNum; i <= fNodeArray.length; i++) {
-    var fNum = deleteNum + 1;
     $("#fNode" + fNum).attr("id", "fNode" + i);
     $("#addFNode" + fNum).attr("id", "addFNode" + i);
     $("#addSNode" + fNum).attr("id", "addSNode" + i);
@@ -619,6 +633,7 @@ $(document).on("click", "div[id^='remove']", function () {
     $("#fTitle" + fNum).attr("id", "fTitle" + i);
     $("#fContentForm" + fNum).attr("id", "fContentForm" + i);
     $("#fContent" + fNum).attr("id", "fContent" + i);
+    fNum++;
   }
   
   // SECOND 정렬
@@ -674,9 +689,8 @@ $(document).on("click", "div[id^='nodeRemoveS']", function () {
   for(var i = 0; i < sNodeArrTemp.length; i++) {
     console.log(sNodeArrTemp[i]);
   }
-  var index = sNodeArrTemp.indexOf("sNode" + deleteNum);
-//  alert("deledeNum" + deleteNum);
-//  alert("index : " + index);
+  var index;
+  index = fNodeArray[fNodeNumTemp].indexOf("sNode" + deleteNum);
   sNodeArrTemp.splice(index, 1);
   
   var tNodeArrTemp = sNodeArray[deleteNum - 1];
@@ -763,12 +777,12 @@ function divSet() {
   
   for (var i = 1; i <= sNode; i ++) {
     $("#sDiv" + i ).css("display", "none");
-    $("#sDiv" + i).css({top:$("#sNode" + i).position().top - 200, left:$("#sNode" + i).position().left - 125});
+    $("#sDiv" + i).css({top:$("#sNode" + i).position().top - 250, left:$("#sNode" + i).position().left - 125});
   };
   
   for (var i = 1; i <= tNode; i ++) {
     $("#tDiv" + i ).css("display", "none");
-    $("#tDiv" + i).css({top:$("#tNode" + i).position().top - 200, left:$("#tNode" + i).position().left - 140});
+    $("#tDiv" + i).css({top:$("#tNode" + i).position().top - 250, left:$("#tNode" + i).position().left - 140});
   };
   
 }
@@ -853,7 +867,7 @@ function fNodeWriteForm(id) {
   if($("#fText" + formNum).val() == null) {
    $("#fTitle" + formNum).removeAttr("type").attr("type", "text");
    $("#fWrite" + formNum +  "> h3").remove();
-   $("#fContentForm" + formNum).html("<textarea rows='100%' cols='29' id = 'fText" + formNum +"' style='color:black'>" + $("#fContent" + formNum).val() + "</textarea>")
+   $("#fContentForm" + formNum).html("<textarea rows='3' cols='29' id = 'fText" + formNum +"' style='color:black'>" + $("#fContent" + formNum).val() + "</textarea>")
   }else {
    if($("#fTitle" + formNum).val() == "") {
      alert("STEP의 제목을 입력해 주세요.")
@@ -884,7 +898,7 @@ function sNodeWriteForm(id) {
   if($("#sText" + formNum).val() == null) {
     $("#sTitle" + formNum).removeAttr("type").attr("type", "text");
     $("#sWrite" + formNum +  "> h3").remove();
-    $("#sContentForm" + formNum).html("<textarea rows='100%' cols='29' id = 'sText" + formNum +"' style='color:black'>" + $("#sContent" + formNum).val() + "</textarea>")
+    $("#sContentForm" + formNum).html("<textarea rows='3' cols='29' id = 'sText" + formNum +"' style='color:black'>" + $("#sContent" + formNum).val() + "</textarea>")
   }else {
     if($("#sTitle" + formNum).val() == "") {
       alert("SECOND의 제목을 입력해 주세요.")
@@ -914,7 +928,7 @@ function tLinkWriteForm(id) {
   if($("#tText" + formNum).val() == null) {
     $("#tLinkTitle" + formNum).removeAttr("type").attr("type", "text");
     $("#tWrite" + formNum +  "> h3").remove();
-    $("#tContentForm" + formNum).html("<textarea rows='100%' cols='29' id = 'tText" + formNum +"' style='color:black'>" + $("#tLinkContent" + formNum).val() + "</textarea>")
+    $("#tContentForm" + formNum).html("<textarea rows='3' cols='29' id = 'tText" + formNum +"' style='color:black'>" + $("#tLinkContent" + formNum).val() + "</textarea>")
     $("#tLinkUrl" + formNum).removeAttr("type").attr("type", "text");
   }else {
     if($("#tLinkTitle" + formNum).val() == "") {
@@ -953,7 +967,7 @@ function tAsmtWriteForm(id) {
   if($("#tText" + formNum).val() == null) {
     $("#tAsmtTitle" + formNum).removeAttr("type").attr("type", "text");
     $("#tWrite" + formNum +  "> h3").remove();
-    $("#tContentForm" + formNum).html("<textarea rows='100%' cols='29' id = 'tText" + formNum +"' style='color:black'>" + $("#tAsmtContent" + formNum).val() + "</textarea>")
+    $("#tContentForm" + formNum).html("<textarea rows='3' cols='29' id = 'tText" + formNum +"' style='color:black'>" + $("#tAsmtContent" + formNum).val() + "</textarea>")
   }else {
     if($("#tAsmtTitle" + formNum).val() == "") {
       alert("SECOND의 제목을 입력해 주세요.")
@@ -1176,6 +1190,10 @@ function upload() {
   return true;
 }
 
+function selectASMT(num) {
+  var fileName = $("#tAsmtFile" + num).val();
+  $("#tAsmtName" + num).text(fileName.replace("C:\\fakepath\\", ""));
+}
 
 function selectExcel() {
   var fileName = $("#excelFile").val();
