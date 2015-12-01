@@ -17,6 +17,32 @@
 	border-top: 2px solid #666666;
 }
 
+.introVideo .chartList{
+	border: 1px solid black; 
+	height: 346px;
+}
+
+.introVideo .chartItem{
+	border: 1px solid black; 
+	height:322px; 
+	width:270px; 
+	margin:10px 7px 10px 7px; 
+	float: left;
+}
+
+.introVideo .lectureImg{
+	border: 1px solid black; 
+	height: 190px;
+}
+
+.introVideo .lectureText{
+	border: 1px solid black;
+	height: 126px;
+	margin-top: 5px;
+}
+
+
+
 .videoDiv {
 	height: 390px;
 	width: 650px;
