@@ -26,7 +26,7 @@
 			</div>
 
 		</center>
-
+		<a href="#">
 		<section class="grid-unit top-left">
 			<div class="swing-panel">
 				<span class="desc">&nbsp;&nbsp;${user.id}&nbsp;&nbsp;
@@ -47,36 +47,37 @@
 			</div>
 			<div class="sphere"></div>
 			<span class="entypo-vcard icon fa fa-user"></span>
-			<span class="label"><br/>${user.id} 님<br /></span>
+			<span class="label" style="vertical-align: middle;">회원 아이디<br/><br/>${user.id}<br /></span>
 		</section>
+		</a>
 
-
+		<a href="#">
 		<section class="grid-unit top-right" onclick="lectureList();">
 		<div class="swing-panel">
 			<span class="desc">강좌 등록/시청</span>
 		</div>
 		<div class="sphere"></div>
 		<span class="entypo-tools icon fa  fa-desktop"></span> <span
-			class="label">LECTURE</span> \ </section>
+			class="label">LECTURE</span> \ </section></a>
 
 
-
+		<a href="#">
 		<section class="grid-unit bottom-left" onclick="storeList();">
 		<div class="swing-panel">
 			<span class="desc">물품 구매/판매</span>
 		</div>
 		<div class="sphere"></div>
 		<span class="entypo-tools icon fa fa-shopping-cart"></span> <span
-			class="label">STORE</span> </section>
+			class="label">STORE</span> </section></a>
 
-
+		<a href="#">
 		<section class="grid-unit bottom-right" onclick="favoriteList();">
 		<div class="swing-panel">
 			<span class="desc">즐겨찾기</span>
 		</div>
 		<div class="sphere"></div>
 		<span class="entypo-tools icon fa fa-star"></span> <span class="label">FAVORITE</span>
-		</section>
+		</section></a>
 	</div>
 	
 
