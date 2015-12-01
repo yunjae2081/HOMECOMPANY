@@ -12,6 +12,7 @@ import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.vo.myPageVO;
 import kr.co.haeyum.store.vo.ProductVO;
 import kr.co.haeyum.store.vo.StoreVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 import kr.co.haeyum.video.vo.WatchVO;
 
 @Repository
@@ -29,15 +30,6 @@ public class MypageDAO {
 		session.update("kr.co.mypage.updatePass",member);
 	}
 	///////////
-	
-	//즐겨찾기
-	public List<WatchVO> selectFavoriteList(SearchVO param)throws Exception{
-		return session.selectList("kr.co.mypage.selectFavoriteList",param);
-	}
-	public int selectFavoriteCount(String id)throws Exception{
-		return session.selectOne("kr.co.mypage.selectFavoriteCount",id);
-	}
-	/////////////
 	
 	//판매
 	public List<ProductVO> selectSellList(myPageVO pagevo)throws Exception{
@@ -70,6 +62,14 @@ public class MypageDAO {
 	}
 	public int watchLastPage(String id)throws Exception{
 		return session.selectOne("kr.co.mypage.watchLastPage",id);
+	}
+	
+	//즐겨찾기
+	public List<FavoriteVO> selectFavoriteList(myPageVO pagevo)throws Exception {
+		return session.selectList("kr.co.mypage.selectFavoriteList",pagevo);
+	}
+	public int selectFavoriteLastPage(String id)throws Exception {
+		return session.selectOne("kr.co.mypage.selectFavoriteLastPage",id);
 	}
 
 }
