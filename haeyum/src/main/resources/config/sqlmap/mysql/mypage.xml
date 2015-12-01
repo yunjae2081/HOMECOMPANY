@@ -113,24 +113,24 @@ and BUY_ID=#{id}
 
 
 
-<!--즐겨찾기 게시물 수 -->
-<select id="selectFavoriteCount" resultType="int" parameterType="string">
-select count(*)
-from haeyum.tbl_fav_video f,haeyum.tbl_lecture l
-where l.L_NO=f.L_NO  
-and FAV_ID=#{id}
-</select>
-
-
-<!-- 즐겨찾기 물품 list -->
-<select id="selectFavoriteList" parameterType="searchvo" resultType="favoritevo">
+<!-- 즐겨찾기 -->
+<select id="selectFavoriteList" parameterType="mypagevo" resultType="favoritevo">
 select l.l_NO lNo,l.L_TITLE lTitle,l.L_CONTENT lContent,l.L_CATEGORY lCategory,v.I_REAL_FILE_NAME lRealFileName
 from haeyum.tbl_fav_video f,haeyum.tbl_lecture l,haeyum.tbl_video v
 where l.L_NO=f.L_NO  
 and FAV_ID=#{id}
-having min(V_NO)	
+having min(v_NO)	
 order by lNo desc
-limit #{start},#{end}
+limit #{reqIndex},10
+
+</select>
+
+
+<select id="selectFavoriteLastPage" parameterType="string" resultType="int">
+select count(l.l_NO) lNo
+from haeyum.tbl_fav_video f,haeyum.tbl_lecture l
+where l.L_NO=f.L_NO  
+and FAV_ID=#{id}
 
 </select>
 
