@@ -15,11 +15,11 @@ insert into tbl_lecture(
 						l_id
 						)
 		values (
-							(select m_no from tbl_member where id = #{id}), 
+							(select m_no from tbl_member where id = #{lId}), 
 							#{lCategory}, 
 							#{lTitle}, 
 							#{lContent}, 
-							#{id}
+							#{lId}
 						)
 </insert>
 
