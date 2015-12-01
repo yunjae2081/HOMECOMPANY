@@ -390,7 +390,7 @@ function closeDiv(id) {
 				</div>
 				
 				<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445">
-					<source src="${pageContext.request.contextPath}/images/december.mp4" />
+					<source src="${pageContext.request.contextPath}/video/${firstVideo.realFileName}"/>
 				</video>
 				<div class="control-bar">
 					<div class="control-bar-in">
@@ -433,26 +433,17 @@ function closeDiv(id) {
 			</div>
 	</div>
 	
-	<div class = "btn-right">
-		<a><img id="right-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
-	</div>
-	<div class = "curr-div-out">
-		<div class = "curr-div" id = "cur1">
-			<div class = "fnodeInfo">STEP1</div>
-			<div class = "snodeInfo">
-				<div class = "snodeDetail">snode1</div>
-				<div class = "snodeDetail">snode2</div>
-				<div class = "snodeDetail">snode3</div>
-				<div class = "snodeDetail">snode4</div>
-				<div class = "snodeDetail">snode5</div>
-			</div>
+	<div id="slider-wrapper" class="store-slider">
+		<div id="slider-wrap" class="store-slider">
+
+			<ul id="slider" class="store-slider">
+			</ul>
+
+			<div class="slider-btns store-slider" id="next"></div>
+			<div class="slider-btns store-slider" id="previous"></div>
+			<!--controls-->
 		</div>
-		<div class = "curr-div" id = "cur2">STEP2</div>
 	</div>
-	<div class = "btn-left">
-		<a><img id = "left-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
-	</div>
-	
 	<br/>
 	<br/>
 	
