@@ -536,7 +536,7 @@ $(document).on("mouseout", ".myCanvas", function () {
 			<div class = "fnodeInfo">
 				<div class = "stepTItle">STEP1</div>
 				● 라인전 필승법<br/>
-				● CS 먹는 꿀팁<br/>
+				● CS 먹는꿀팁<br/>
 				● 스킬과 평타 견제<br/>
 			</div>
 			<div class = "snodeInfo">
