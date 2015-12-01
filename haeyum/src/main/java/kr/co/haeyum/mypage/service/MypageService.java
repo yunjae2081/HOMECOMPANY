@@ -8,6 +8,7 @@ import kr.co.haeyum.member.vo.MemberVO;
 import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.vo.myPageVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 import kr.co.haeyum.video.vo.WatchVO;
 
 public interface MypageService {
@@ -17,8 +18,6 @@ public interface MypageService {
 	
 	public void updatePass(MemberVO member)throws Exception;
 	
-	//즐겨찾기
-	public Map<String, Object> selectFavoriteList(SearchVO param)throws Exception;
 
 	//Store
 	public List<ProductVO> selectSellList(myPageVO pagevo)throws Exception;
@@ -29,7 +28,7 @@ public interface MypageService {
 
 	public int selectBuyLastPage(String id)throws Exception;
 
-	///////
+
 	//Lecture
 	public List<LectureVO> selectLectureList(myPageVO pagevo)throws Exception;
 
@@ -38,6 +37,12 @@ public interface MypageService {
 	public List<WatchVO> selectWatchList(myPageVO pagevo)throws Exception;
 
 	public int watchLastPage(String id)throws Exception;
+
+	
+	//즐겨찾기
+	public List<FavoriteVO> selectFavoriteList(myPageVO pagevo)throws Exception;
+
+	public int selectFavoriteLastPage(String id)throws Exception;
 
 
 

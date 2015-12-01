@@ -13,6 +13,7 @@ import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.dao.MypageDAO;
 import kr.co.haeyum.mypage.vo.myPageVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 import kr.co.haeyum.video.vo.WatchVO;
 
 @Service
@@ -35,16 +36,6 @@ public class MyPageServiceImpl implements MypageService {
 		
 	}
 	
-	
-	
-	//즐겨찾기
-	@Override
-	public Map<String, Object> selectFavoriteList(SearchVO param) throws Exception {
-		Map<String,Object> result = new HashMap<>();
-		result.put("list", dao.selectFavoriteList(param));
-		result.put("count", dao.selectFavoriteCount(param.getId()));
-		return result;
-	}
 	//판매
 	@Override
 	public List<ProductVO> selectSellList(myPageVO pagevo) throws Exception {
@@ -71,7 +62,7 @@ public class MyPageServiceImpl implements MypageService {
 		
 	}
 	
-	
+	//Lecture
 	@Override
 	public List<LectureVO> selectLectureList(myPageVO pagevo) throws Exception {
 		List<LectureVO> list = dao.selectLectureList(pagevo);
@@ -91,10 +82,19 @@ public class MyPageServiceImpl implements MypageService {
 		return dao.watchLastPage(id);
 	}
 	
+
+	//즐겨찾기
+	@Override
+	public List<FavoriteVO> selectFavoriteList(myPageVO pagevo) throws Exception {
+		List<FavoriteVO>  list = dao.selectFavoriteList(pagevo);
+		return list;
+	}
+	@Override
+	public int selectFavoriteLastPage(String id) throws Exception {
+		return dao.selectFavoriteLastPage(id);
+	}
 	
 	
-
-
 
 
 

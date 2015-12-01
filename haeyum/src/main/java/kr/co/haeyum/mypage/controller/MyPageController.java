@@ -21,6 +21,7 @@ import kr.co.haeyum.mypage.common.SearchVO;
 import kr.co.haeyum.mypage.service.MypageService;
 import kr.co.haeyum.mypage.vo.myPageVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 import kr.co.haeyum.video.vo.WatchVO;
 
 @Controller
@@ -99,7 +100,7 @@ public class MyPageController {
 		MemberVO member = (MemberVO) session.getAttribute("user");
 		String id = member.getId();
 
-
+		
 		if (tabNumber == 1) {
 			int lastPage = service.selectLastPage(id);
 			lastPage = (int) Math.ceil(lastPage / 10d);// 마지막페이지에 보여줄
@@ -124,26 +125,25 @@ public class MyPageController {
 	}
 
 	// 즐겨찾기
-	@RequestMapping("/favoriteList.do")
-	public ModelAndView favoriteList(@RequestParam(value = "pageNo", required = false, defaultValue = "1") int pageNo,
-			HttpSession session) throws Exception {
+	@RequestMapping("/favoriteList.json")
+	@ResponseBody
+	public Map<String,Object> favoriteList(HttpSession session,
+			@RequestParam(value = "reqPage", defaultValue = "1") int reqPage) throws Exception {
+		
+		Map<String,Object> map = new HashMap<>();
 		MemberVO member = (MemberVO) session.getAttribute("user");
-		ModelAndView mav = new ModelAndView("/mypage/favoriteList");
-
-		SearchVO param = new SearchVO();
-		param.setStart((pageNo - 1) * Constants.PAGE_LIST_COUNT);
-		param.setEnd((pageNo * Constants.PAGE_LIST_COUNT) - param.getStart());
-		param.setId(member.getId());
-
-		Map<String, Object> result = service.selectFavoriteList(param);
-
-		int count = (Integer) result.get("count");
-
-		PageVO pagevo = new PageVO("favoriteList.do", count, pageNo);
-		mav.addObject("pageVO", pagevo);
-
-		mav.addObject("list", result.get("list"));
-		return mav;
+		String id = member.getId();
+	
+		int lastPage = service.selectFavoriteLastPage(id);
+		lastPage =(int) Math.ceil(lastPage/10d);
+		myPageVO pagevo = new myPageVO(reqPage, lastPage);
+		pagevo.setId(id);
+		List<FavoriteVO> flist = service.selectFavoriteList(pagevo);
+		map.put("flist", flist);
+		map.put("pagevo", pagevo);
+		
+		return map;
+	
 	}
 
 }
