@@ -91,7 +91,7 @@ div#carousel ~ span:hover {
 #container {
   height: 100%;
   width: 100%;
-  background: #F6F6F6;
+  background: #fff;
 }
 
 .item {

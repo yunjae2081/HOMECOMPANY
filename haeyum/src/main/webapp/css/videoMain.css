@@ -18,12 +18,12 @@
 }
 
 .videoDiv {
-	height: 400px;
-	width: 730px;
-	margin: 40px 0 40px 20px;
+	height: 390px;
+	width: 650px;
+	margin: 40px 0 40px 0;
 	margin-left: 50px; 
 	float : left; 
-	padding: 20px;
+	padding: 10px;
 	box-shadow:0 0 10px 10px #dfdfdf;
 	float: left;
 }
