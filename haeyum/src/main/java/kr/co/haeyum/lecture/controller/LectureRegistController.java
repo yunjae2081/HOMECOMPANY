@@ -188,7 +188,6 @@ public class LectureRegistController {
 			//item
 			for(int j = 0; j < Integer.parseInt(req.getParameter("totalICount"+i)); j++){
 				if(Integer.parseInt(req.getParameter("item-sNum" + ++iCount)) == i){
-					System.out.println("lessonImg등록 : " + iCount);
 					String name = req.getParameter("item-iTitle" + iCount);
 					String content = req.getParameter("item-iContent" + iCount);
 					int price = Integer.parseInt(req.getParameter("item-iPrice" + iCount));
@@ -228,13 +227,13 @@ public class LectureRegistController {
 								
 								service.insertItemImg(imgVO);
 							}
-						} else {
-							--iCount;
-							break;
 						}
 					}
 					
 					
+				} else {
+					--iCount;
+					break;
 				}
 			}
 			
