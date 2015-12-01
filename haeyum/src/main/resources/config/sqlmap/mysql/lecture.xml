@@ -268,7 +268,10 @@ select l_no as lNo,
 <select id="selectProductImg" parameterType="int" resultType="productImgvo">
 	select i_no iNo, p_no pNo, org_file_name orgFileName, real_file_name RealFileName
 	from tbl_product_img
-	where p_no = #{pNo}
+	where I_NO = ( select min(I_NO)
+									from haeyum.tbl_product_img
+									group by p_no
+									having p_no = #{pNo} )
 </select>
 
 </mapper>
