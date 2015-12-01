@@ -113,7 +113,7 @@ h1, h2 {
   margin: 0;
   overflow: auto;
   padding: 10px 20px 10px 100px;
-  width: 900px;
+  width: 700px;
 }
 #mapForm .input textarea {
   -moz-border-radius: 14px;
@@ -134,11 +134,11 @@ h1, h2 {
   margin: 0;
   overflow: auto;
   padding: 10px 20px 10px 100px;
-  width: 1200px;
+  width: 930px;
 }
 
 #mapForm .input textarea {
-  height: 250px;
+  height: 210px;
 }
 #mapForm .input label {
   -moz-transition: all 0.2s linear;
@@ -155,16 +155,16 @@ h1, h2 {
 }
 
 #mapForm .input.active {
-  overflow: hidden;
+/*   overflow: hidden; */
   width: 100%;
 }
 #mapForm .input.active input{
   padding-left: 155px;
-  width: 900px;
+/*   width: 900px; */
 }
 #mapForm .input.active textarea {
   padding-left: 155px;
-  width: 1200px;
+/*   width: 1200px; */
 }
 #mapForm .input.active input:required:invalid, #mapForm .input.active textarea:required:invalid {
   border: 1px solid #e9322d;
@@ -216,7 +216,7 @@ h1, h2 {
   }
 
   .span6 {
-    width: 900px;
+/*     width: 900px; */
   }
 
   .span12 {
@@ -237,7 +237,7 @@ h1, h2 {
 .icon {
   display: block;
   position: relative;
-  width: 1.5em;
+/*   width: 1.5em; */
   height: 1.5em;
   margin: 0 auto;
 }
@@ -247,8 +247,8 @@ h1, h2 {
 }
 
 .dropp {
-  width: 290px;
-  margin-left: 910px;
+  width: 220px;
+  margin-left: 710px;
 }
 
 .dropp-header {
@@ -374,7 +374,7 @@ h1, h2 {
   overflow: hidden;
   z-index: 5;
   position: absolute;
-  width: 290px;
+  width: 220px;
   max-height: 0;
   background: #13A7D7;
   color: #fff;
