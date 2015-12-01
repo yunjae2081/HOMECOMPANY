@@ -180,8 +180,7 @@ function nullCheck(){
 													
 						</c:when>
 						<c:otherwise>
-						
-						<li><a class="topLoginBtn" href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>
+						<li><a class="topLoginBtn" href="${pageContext.request.contextPath}/mypage/mypageMember.do">Mypage</a></li>						
 						<li><a class="topLoginBtn"onclick="outclick();">Logout</a></li>															
 						</c:otherwise>
 						</c:choose>				
