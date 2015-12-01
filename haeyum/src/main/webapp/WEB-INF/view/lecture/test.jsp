@@ -64,7 +64,7 @@
 							</div>
 							
 							<div class="control-vol-button">
-								<div class="vol-button">
+								<div class="vol-button" id="vol-button">
 									<img src="${pageContext.request.contextPath}/images/speaker100.png" style="width: 20px; height:20px;" />
 								</div>
 							</div>
@@ -77,7 +77,7 @@
 							
 							<div>
 								<div class="control-full-button">
-									<div class="full-button">
+									<div class="full-button" id="full-button">
 										<img src="${pageContext.request.contextPath}/images/switch27.png" style="width: 25px; height:20px;" />
 									</div>
 								</div>
