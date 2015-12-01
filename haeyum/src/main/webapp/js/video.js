@@ -573,7 +573,7 @@ $(document).ready(function(){
 });   //(document)ready
 
 var sCheck = -1;
-Array.prototype.indexOf = function objectIndexOf(property, value) {
+Array.prototype.indexOf2 = function objectIndexOf(property, value) {
   if (sCheck == value) {
     return -1;
   } else {
