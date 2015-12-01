@@ -9,12 +9,11 @@
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
 <%@include file="../include/storeSideMenu.jsp"%>
-<link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/searchVideo.css"type="text/css" />
-
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
+<script src="${pageContext.request.contextPath}/js/videoAndStoreTab.js"></script>
 <script>
 var category = "${category}";
 
@@ -28,8 +27,8 @@ var l_scroll = 0; // 최신순의 스토어 무한 스크롤
 var l_scroll_no = 16; // 최신순의 가져오는 스토어의 갯수
 var l_scroll_block = 0; // 최신순의 스토어 무한 스크롤 방지 해제(값이 있을 때)
 
-$(document).on("click","button", function() {
-  if (this.value == '1') { // 인기순의 버튼을 눌렀음
+$(document).on("click","a", function() {
+  if (this.id == '1') { // 인기순의 버튼을 눌렀음
     flag = 0;
     b_scroll_no = 16; // 인기순의 버튼을 눌렀으니 다시 스토어 갯수 초기화
     b_scroll_block = 0; // 인기순의 버튼을 눌렀으니 무한 스크롤 방지 해제
@@ -47,7 +46,7 @@ $(document).on("click","button", function() {
       fail:function(){
       }
     })
-  } else if (this.value == '2') { // 최신순의 버튼을 눌렀음
+  } else if (this.id == '2') { // 최신순의 버튼을 눌렀음
     flag = 1;
     l_scroll_no = 16; // 최신순의 버튼을 눌렀으니 다시 스토어 갯수 초기화
     b_scroll_block = 0; // 인기순의 버튼을 눌렀으니 무한 스크롤 방지 해제
@@ -214,9 +213,9 @@ $(document).on("click", "#ttte",function() {
 <section class="stretch box-slide" style="margin-top:200px; height:auto;">  
 	
 	<div class="box-list-btn">  
-      <ul>
-         <li><button type="button" value="1">인기순</button></li>
-         <li><button type="button" value="2">최신순</button></li>
+      <ul class="tabs1">
+         <li><a id="1" href="#">인기순</a></li>
+         <li><a id="2" href="#">최신순</a></li>
         
       <li style="float: right;">
       	<form id = "searchForm" class="search-wrapper cf" action="${pageContext.request.contextPath}/store/search.do" method="GET" onsubmit="return nullCheck()" >
