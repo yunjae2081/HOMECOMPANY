@@ -11,7 +11,7 @@
 <%@include file="../include/storeSideMenu.jsp"%>
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/searchVideo.css"type="text/css" />
-<link rel="stylesheet"href="${pageContext.request.contextPath}/css/lightbox.css"type="text/css" />
+
 <link rel="stylesheet"href="${pageContext.request.contextPath}/css/storeSearch.css"type="text/css" />
 
 <script src="${pageContext.request.contextPath}/js/searchVideo.js"></script>
@@ -246,12 +246,6 @@ $(document).on("click", "#ttte",function() {
 		
     </ul>
 	</div>
-	
-	<div class = "backDrop">	</div>
-		<div class = "box" style="width:1200px; height:400px; position:absolute; left:50%; margin-left:-600px; background:red;">
-			
-			<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
-		</div>
 </div>
 
  </section>  
