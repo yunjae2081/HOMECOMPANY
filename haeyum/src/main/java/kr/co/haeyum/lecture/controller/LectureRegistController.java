@@ -124,13 +124,13 @@ public class LectureRegistController {
 				}
 				
 				String saveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-				videoFile.transferTo(new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\video/" + saveFileName));
+				videoFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\video/" + saveFileName));
 
 				String imgURL = req.getParameter("v_capture_test1"+ i);
 				byte decode[] = Base64.decodeBase64(imgURL.substring(22));
 				FileOutputStream fo;
 				String saveImgName = "haeyum-" + UUID.randomUUID().toString() + ".jpg";
-				File mainImg = new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/"+saveImgName);
+				File mainImg = new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\mainImg/"+saveImgName);
 				mainImg.createNewFile();
 				fo = new FileOutputStream(mainImg);
 				fo.write(decode);
@@ -217,7 +217,7 @@ public class LectureRegistController {
 								}
 								
 								String itemSaveFileName = "haeyum-" + UUID.randomUUID().toString() + ext;
-								itemFile.transferTo(new File("C:\\java\\web-workspace\\haeyum\\src\\main\\webapp\\itemImg/" + itemSaveFileName));
+								itemFile.transferTo(new File("C:\\java73\\web-workspace\\haeyum\\src\\main\\webapp\\itemImg/" + itemSaveFileName));
 								
 								ProductImgVO imgVO = new ProductImgVO();
 								imgVO.setpNo(pNo);
