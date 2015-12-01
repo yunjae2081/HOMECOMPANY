@@ -7,8 +7,10 @@ html,body {
 
 
 .topLoginBtn{
-	color:#BC64D8;
+	color:#5DC8B8;
 	font-weight: 900;
+	font-size: 15px;
+	border-bottom: 3px solid #38A3AD;
 }
 
 
@@ -35,7 +37,8 @@ p {
 */
 
 a {
-  color:#009
+  color:#009;
+  font-weight:600;
 }
 
 a:hover {
@@ -219,7 +222,7 @@ nav.small .nav-top {
 nav.small .main-nav {
   box-shadow:none;
   background-color: white;
-  border-bottom: 1px solid #e2e2e2;
+  border-bottom: 2px solid #e2e2e2;
 }
 
 nav.small ul.nav {
