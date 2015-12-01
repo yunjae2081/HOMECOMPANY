@@ -73,7 +73,6 @@ public class MindMapController {
 		retVal.put("lessonList", lessonList);
 		retVal.put("productList", productList);
 		retVal.put("productImgList", productImgList);
-		retVal.put("code", "ok");
 		
 		System.out.println("수정이 리턴");
 		return retVal;
