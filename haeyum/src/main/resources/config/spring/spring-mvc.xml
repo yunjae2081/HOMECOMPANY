@@ -76,7 +76,7 @@
 	
 	<mvc:view-controller path="/lecture/registForm.do" view-name="lecture/test2"/>
 	<mvc:view-controller path="/registTest.do" view-name="lecture/registFormVideo"/>
-	<mvc:view-controller path="/mypage/lectureList.do" view-name="mypage/lectureList"/>
-	<mvc:view-controller path="/mypage/storeList.do" view-name="mypage/StoreList"/>
+	<mvc:view-controller path="/mypage/lectureList.do" view-name="mypage/mypageLecture"/>
+  <mvc:view-controller path="/mypage/storeList.do" view-name="mypage/mypageStore"/>
 
 </beans>
