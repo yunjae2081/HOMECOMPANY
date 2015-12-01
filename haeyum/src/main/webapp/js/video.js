@@ -84,7 +84,7 @@ function showLesson(l_count, l_playTime, l_text, l_left, l_top, l_color, l_sTime
     $("#pTime"+l_playTime).remove();
     $("#pLine"+l_playTime).remove();
     $("#pCircle"+l_playTime).remove();
-    canvasLessonArray.splice(canvasLessonArray.indexOf("l_count", l_count),1);
+    canvasLessonArray.splice(canvasLessonArray.indexOf2("l_count", l_count),1);
     reDraw();
   }, l_sTime);
 }
@@ -195,7 +195,7 @@ $(document).ready(function(){
     colorEft();
     
     if(previewFlag) {
-      var p_index = lessonArray.indexOf("l_playTime", Math.floor(video.currentTime));
+      var p_index = lessonArray.indexOf2("l_playTime", Math.floor(video.currentTime));
       if(p_index != -1 && lessonArray[p_index].s_num == sNum) {
         var currL = lessonArray[p_index];
         showLesson(currL.l_count , currL.l_playTime, currL.l_text, currL.l_left, currL.l_top, currL.l_color, currL.l_sTime);
@@ -374,7 +374,7 @@ $(document).ready(function(){
              if(confirm("삭제할거니")) {
                
                $(this).parent().remove();
-               var del_index = lessonArray.indexOf("l_count", $(this).attr("id").substring(6).trim());
+               var del_index = lessonArray.indexOf2("l_count", $(this).attr("id").substring(6).trim());
 //               console.log(del_index);
 //               console.log(lessonArray[del_index]);
                lessonArray.splice(del_index, 1);  //삭제시 앞으로 index 이동
