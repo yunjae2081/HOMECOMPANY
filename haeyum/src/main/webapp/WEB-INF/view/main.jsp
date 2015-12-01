@@ -41,6 +41,25 @@
   }
 }
 
+.introVideo h1{
+	font-size: 25px;
+	font-family: Jeju Gothic;
+	margin-top: 10px;
+	margin-bottom: 10px;
+	font-weight: lighter;
+}
+
+@font-face {
+  font-family: 'Jeju Gothic';
+  font-style: normal;
+  font-weight: 400;
+  src: url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.eot);
+  src: url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.eot?#iefix) format('embedded-opentype'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.woff2) format('woff2'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.woff) format('woff'),
+       url(//fonts.gstatic.com/ea/jejugothic/v3/JejuGothic-Regular.ttf) format('truetype');
+}
+
 
 </style>
 <%@include file="include/common_top.jsp" %>
@@ -279,23 +298,42 @@
 	</div>
 	
 	<!--요기부터 최신.인기 -->
+		<!-- 인기? -->
 
 		<div class="introVideo">
-		
-		
-		<!-- 인기? -->
-		
+			<h1>인기강좌</h1>
+			<div class="chartList">
+				<div class="chartItem">
+					<div class="lectureImg"><img src=""></div>
+					<div class="lectureText"></div>
+				</div>
+				<div class="chartItem">
+					<div class="lectureImg"><img src=""></div>
+					<div class="lectureText"></div>
+				</div>
+				<div class="chartItem">
+					<div class="lectureImg"><img src=""></div>
+					<div class="lectureText"></div>
+				</div>
+				<div class="chartItem">
+					<div class="lectureImg"><img src=""></div>
+					<div class="lectureText"></div>
+				</div>
+				<div class="chartItem">
+					<div class="lectureImg"><img src=""></div>
+					<div class="lectureText"></div>
+				</div>
+				
+			</div>
 		</div>
-		
-		<div class="introVideo">
 		
 		<!-- 최신? -->
+		<div class="introVideo">
+		<h1>최신강좌</h1>
+		
 		
 		</div>
 		
-
-
-
 
 
 	
