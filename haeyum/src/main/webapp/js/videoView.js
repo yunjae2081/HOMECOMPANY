@@ -1,8 +1,16 @@
-$(document).ready(function() {
-  var pos = 0;
-  var totalSlides = $('#slider-wrap ul li').length;
-  var sliderWidth = $('#slider-wrap').width();
+var pos = 0;
+var totalSlides;
+var sliderWidth;
+
+function ChangeWidth() {
+  totalSlides = $('#slider-wrap ul li').length;
+  sliderWidth = $('#slider-wrap').width();
   $('#slider-wrap ul').width(sliderWidth * totalSlides);
+}
+
+$(document).ready(function() {
+  
+  ChangeWidth();
 
   /*NEXT SLIDE*/
   $('#next').click(
@@ -82,6 +90,7 @@ function aVideo(sNo) {
       }).done(function (retVal) {
         var productList = new Array();
         var prodcutImgList = new Array();
+        $("#slider").html("");
         
         $.each(retVal, function(index, data) {
           if(index == "video") {
@@ -95,13 +104,11 @@ function aVideo(sNo) {
             });
           }
           else if(index == "productList") {
-            console.log(retVal[index]);
             $.each(retVal[index], function(index2, data2) {
               productList.push(data2);
             });
           }
-          else {
-            console.log(retVal[index]);
+          else if(index == "productImgList"){
             $.each(retVal[index], function(index2, data2) {
               prodcutImgList.push(data2);
             });
@@ -109,18 +116,32 @@ function aVideo(sNo) {
         });
         
         for(var i = 0; i < productList.length; i++){
+          
          $("#slider").append("<li class='slider-active store-slider'>"+
                                "<div class='slider-img store-slider'>"+
-                                 "<img src='http://lorempixel.com/320/160/animals/8'>"+
+                                 "<img src='../../haeyum/itemImg/" + prodcutImgList[i].realFileName + "'>"+
                                "</div>"+
                                "<div class='slider-content store-slider'>"+
-                                 "<h2>물건이름</h2>"+
+                                 "<h2>" + productList[i].pName + "</h2>"+
                                  "<div class='slider-rating store-slider'>"+
-                                   "<span class='review-count store-slider'>10000원</span>"+
+                                   "<span class='review-count store-slider'>" + productList[i].pPrice + "</span>"+
                                  "</div>"+
                                  "<div class='slider-btn store-slider'>store</div>"+
                               "</div>"+
                              "</li>");
+        }
+        
+        ChangeWidth();
+        if(productList.length == 0){
+          $(".store-slider").css("display", "none");
+        } else if (productList.length == 1) {
+          $(".store-slider").css("display", "block");
+          $(".slider-btns").css("display", "none");
+          $("#slider li:nth-child(1").css("margin-left", "100px");
+        } else {
+          $(".store-slider").css("display", "block");
+          $(".slider-btns").css("display", "block");
+          $("#slider li:nth-child(1)").css("margin-left", "10px");
         }
         
       });
