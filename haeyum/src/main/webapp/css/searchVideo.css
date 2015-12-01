@@ -580,24 +580,26 @@ ul:after {
 	width:840px;
 	margin:0 auto;	
 }
-.box-list-btn ul {
-	overflow:hidden;
-	margin:0 0 10px 5px !important;
-}
-.box-list-btn li {
-	float:left;
-	margin-right:10px;
-}
-.box-list-btn button {
-	display:block;
-	width:80px;
-	height:40px;
-	background:blue;
-	font-weight:bold;
-	color:#fff;
-	font-size:15px;
-	border:0;
-	text-shadow:1px 2px 3px #000;
+/* .box-list-btn ul { */
+/* 	overflow:hidden; */
+/* 	margin:0 0 10px 5px !important; */
+/* } */
+/* .box-list-btn li { */
+/* 	float:left; */
+/* } */
+.box-list-btn button {	
+	padding-top: 0;
+  margin-bottom: 20px;
+  position: relative;
+  overflow: hidden;
+  background:#fff;
+  width: 88%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.5;
+  font-weight: 300;
+  color: #888;
+  -webkit-font-smoothing: antialiased;
 }
 
 a>img{
