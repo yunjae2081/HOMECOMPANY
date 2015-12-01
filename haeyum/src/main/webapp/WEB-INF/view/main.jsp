@@ -280,6 +280,24 @@
 	
 	<!--요기부터 최신.인기 -->
 
+		<div class="introVideo">
+		
+		
+		<!-- 인기? -->
+		
+		</div>
+		
+		<div class="introVideo">
+		
+		<!-- 최신? -->
+		
+		</div>
+		
+
+
+
+
+
 	
 	<!-- 요기까쥐 -->
 		<div class="introVideo">
@@ -306,6 +324,5 @@
 			</section>
 
 	</section>
-<%@include file="include/footer.jsp" %>
 </body>
 </html>
