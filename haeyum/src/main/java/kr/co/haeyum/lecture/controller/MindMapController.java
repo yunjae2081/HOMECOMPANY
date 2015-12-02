@@ -5,6 +5,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +15,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.co.haeyum.lecture.service.LectureService;
+import kr.co.haeyum.lecture.vo.BMarkVO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.lecture.vo.LessonVO;
@@ -21,6 +24,8 @@ import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 import kr.co.haeyum.lecture.vo.VideoVO;
+import kr.co.haeyum.lecture.vo.WatchListVO;
+import kr.co.haeyum.member.vo.MemberVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
 
@@ -59,8 +64,30 @@ public class MindMapController {
 	
 	@ResponseBody
 	@RequestMapping("/viewVideo.do")
-	public Object viewVideo(@RequestParam(value="sNo") int sNo) throws Exception{
+	public Object viewVideo(@RequestParam(value="sNo") int sNo, HttpSession session) throws Exception{
 		VideoVO video = service.selectVideo(sNo); // video
+		Map<String, Object> retVal = new HashMap<String, Object>();
+
+		MemberVO user = (MemberVO)session.getAttribute("user");
+		
+		if(user != null) {
+			WatchListVO watch = new WatchListVO();
+			watch.setwId(user.getId());
+			watch.setvNo(video.getvNo());
+			WatchListVO check = service.selectWatchList(watch);
+			int wNo = 0;
+			if(check == null){
+				wNo = service.insertWatchList(watch);
+			} else {
+				wNo = check.getwNo();
+				List<BMarkVO> bmarkList = service.selectBMarkList(wNo);
+				retVal.put("bmarkList", bmarkList);
+			}
+			retVal.put("wNo", wNo);
+		}
+		
+		service.updateVideoHit(video.getvNo());
+		
 		List<LessonVO> lessonList =  service.selectLessonList(video.getvNo());  //lessonList
 		List<ProductVO> productList = service.selectProductList(video.getvNo()); //productList
 		List<ProductImgVO> productImgList = new ArrayList<ProductImgVO>() ;
@@ -68,14 +95,19 @@ public class MindMapController {
 			productImgList.add(service.selectProductImg(product.getpNo()));
 		}
 		
-		Map<String, Object> retVal = new HashMap<String, Object>();
 		retVal.put("video", video);
 		retVal.put("lessonList", lessonList);
 		retVal.put("productList", productList);
 		retVal.put("productImgList", productImgList);
 		
-		System.out.println("수정이 리턴");
 		return retVal;
 		
+		
+	}
+	
+	@ResponseBody
+	@RequestMapping("/bookMarkRegist.do")
+	public void bookMarkRegist(BMarkVO bmark) throws Exception {
+		service.insertBMark(bmark);
 	}
 }
