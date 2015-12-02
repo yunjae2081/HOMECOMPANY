@@ -210,7 +210,7 @@ $(document).on("click", "#ttte",function() {
         
       <li style="float: right;">
       	<form id = "searchForm" class="search-wrapper cf" action="${pageContext.request.contextPath}/store/search.do" method="GET" onsubmit="return nullCheck()" >
-        	<input id="title" name="title" type="text" placeholder="Search">
+        	<input id="title" name="title" type="text" placeholder="Search" >
         	<button type="submit" id = "ttte">
         		<span class="fontawesome-search"></span>
         	</button>
