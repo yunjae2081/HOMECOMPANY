@@ -1,6 +1,7 @@
 var pos = 0;
 var totalSlides;
 var sliderWidth;
+var watchNo;
 
 function ChangeWidth() {
   totalSlides = $('#slider-wrap ul li').length;
@@ -116,17 +117,16 @@ $(document).ready(function() {
                                 "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + $("#bookmark-textBox").val() + "</p>"+
                                 "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + v_time + "</p>"+
                               "</li>");
-    $("#bookmark-textBox").val("");
     
     $.ajax({
       type : "post",
       url : "/haeyum/mindMap/bookMarkRegist.do",
-      data : {},
-      dataType : "json"
-    }).done(function(){
-      
+      data : {title : $("#bookmark-textBox").val(),
+              playTime : v_time}
     });
     
+    $("#bookmark-textBox").val("");
+
     $("#bCount" + vBookmarkCount).click(function() {
       var bTime = $(this).find(".bTime").html().split(":");
       var bMin = bTime[0]*60;
