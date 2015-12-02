@@ -16,7 +16,7 @@
   line-height: 50px;
   font-size: 30px;
   position: absolute;
-  top: 0;
+/*   top: 0; */
   bottom: 0;
   margin: auto;
 }
@@ -66,7 +66,10 @@
 
 </style>
 <%@include file="include/common_top.jsp" %>
+<script src="${pageContext.request.contextPath}/js/lightbox.js"></script>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoMain.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/lightbox.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/mindMap.css" type="text/css" />
 </head>
 <script>
 (function () {
@@ -79,7 +82,6 @@
 	      $(".alertDiv").fadeOut(3000);
       }
       $(window).scroll(function(event) {
-        console.log($(window).scrollTop())
         if($(window).scrollTop() > 1200 && oneTime) {
           oneTime = false;
           return app.init();
@@ -328,7 +330,7 @@
 			<h1>인기강좌</h1>
 			<div class="chartList">
 				<c:forEach var="best" items="${best}">
-					<a href="#"> <!-- light박스 -->
+					<a href="javascript:viewDetail(${best.bestNo})" > <!-- light박스 -->
 					<div class="chartItem">
 						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${best.fileName}"></div>
 						<div class="lectureText">
@@ -345,7 +347,7 @@
 		<h1>최신강좌</h1>
 			<div class="chartList">
 				<c:forEach var="latest" items="${latest}">
-					<a href="#"> <!-- light박스 -->
+					<a href="javascript:viewDetail(${latest.latestNo})"> <!-- light박스 -->
 					<div class="chartItem">
 						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${latest.fileName}"></div>
 						<div class="lectureText">
@@ -357,7 +359,13 @@
 			</div>
 		</div>
 		
-
+		<div class = "backDrop">	</div>
+		<div class = "box" id = "hoverDiv">
+		<div class = "mView">
+			<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600"></canvas>
+		</div>
+			<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
+		</div>
 
 	
 	<!-- 요기까쥐 -->
