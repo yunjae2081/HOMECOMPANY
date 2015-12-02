@@ -205,8 +205,8 @@ $(document).on("click", "#ttte",function() {
 	
 	<div class="box-list-btn">  
       <ul class="tabs1">
-         <li><a id="1" href="#">인기순</a></li>
-         <li><a id="2" href="#">최신순</a></li>
+         <li><a id="1" href="#">인&nbsp;&nbsp;&nbsp;기&nbsp;&nbsp;&nbsp;순</a></li>
+         <li><a id="2" href="#">최&nbsp;&nbsp;&nbsp;신&nbsp;&nbsp;&nbsp;순</a></li>
         
       <li style="float: right;">
       	<form id = "searchForm" class="search-wrapper cf" action="${pageContext.request.contextPath}/store/search.do" method="GET" onsubmit="return nullCheck()" >
