@@ -79,7 +79,9 @@
       
       if("${user}" != "") {
         $(".alertDiv").css("display", "block");
-	      $(".alertDiv").fadeOut(3000);
+        $(".alertDiv").animate({duration:5000}, function () {
+	      	$(".alertDiv").fadeOut(2000);
+        })
       }
       $(window).scroll(function(event) {
         if($(window).scrollTop() > 1200 && oneTime) {
