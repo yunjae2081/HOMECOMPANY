@@ -56,6 +56,28 @@ $(document).on("click" ,".normal",function(e) {
   })
 })
 
+function viewDetail(lNo) {
+  var scrTop = $(window).scrollTop();
+  $(".backDrop").animate({"opacity":"0.7"}, 500);
+  $(".box").animate({"opacity":"1.0"}, 500);
+  var top = 150;
+  var width = $("body").width();
+  $(".box").css({"top":top+scrTop});
+  $(".backDrop").css({"top": scrTop});
+  
+  $("body, html").css({"overflow-y":"hidden"});
+  $(".backDrop, .box").css({"display":"block"});
+  $.ajax({
+    url: "list/mindMap.json",
+    type: "POST",
+    datatype: "JSON",
+    data: {lNo:lNo},
+    success: function(data, status) {
+      mindMapView(data);
+    }
+  })
+}
+
 $(document).on("click", ".backDrop, .close", function() {
   closeBox();
 });
@@ -101,6 +123,7 @@ function mindMapView(data) {
   
   canvas = document.getElementById("myCanvas");
   context = canvas.getContext("2d");
+  
   
   for (var i = 0; i < fList.length; i++) {
     var html = "";
