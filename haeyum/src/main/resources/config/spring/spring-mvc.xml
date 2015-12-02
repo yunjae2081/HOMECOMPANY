@@ -65,7 +65,7 @@
 	<!-- 최대 업로드 파일 사이즈 : 10MB -->
     <bean id="multipartResolver" 
    	      class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
-		<property name="maxUploadSize" value="904857600" />
+		<property name="maxUploadSize" value="20000000000" />
 	</bean>
     
 	<mvc:default-servlet-handler />
@@ -74,7 +74,7 @@
 		<mvc:jsp prefix="/WEB-INF/view/" suffix=".jsp" />
 	</mvc:view-resolvers>
 	
-	<mvc:view-controller path="/lecture/registForm.do" view-name="lecture/test2"/>
+	<mvc:view-controller path="/lecture/registForm.do" view-name="lecture/test3"/>
 	<mvc:view-controller path="/registTest.do" view-name="lecture/registFormVideo"/>
 	<mvc:view-controller path="/mypage/lectureList.do" view-name="mypage/mypageLecture"/>
    <mvc:view-controller path="/mypage/storeList.do" view-name="mypage/mypageStore"/>
