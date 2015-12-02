@@ -7,6 +7,8 @@ import org.springframework.stereotype.Service;
 
 import kr.co.haeyum.main.dao.MainDAO;
 import kr.co.haeyum.main.vo.MainVO;
+import kr.co.haeyum.search.vo.VideoBestListVO;
+import kr.co.haeyum.search.vo.VideoLatestListVO;
 
 @Service
 public class MainServiceImpl implements MainService{
@@ -23,6 +25,16 @@ public class MainServiceImpl implements MainService{
 	public MainVO mainVlist(int i) throws Exception {
 		MainVO vMainVO = dao.mainVlist(i);
 		return vMainVO;
+	}
+
+	@Override
+	public List<VideoBestListVO> selectPopular() {
+		return dao.selectPopular();
+	}
+
+	@Override
+	public List<VideoLatestListVO> selectLetest() {
+		return dao.selectLetest();
 	}
 
 }

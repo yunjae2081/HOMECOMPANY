@@ -14,5 +14,30 @@
 		from tbl_lecture as lec, tbl_s_node as s
 		where lec.l_no = s.l_no and lec.l_category=#{i}
 	</select>
+	
+	<select id="selectPopular" resultType="videobestlistvo">
+	<![CDATA[
+		select @rownum:=@rownum+1 as listNo, t.no as bestNo, t.name as fileName, t.con as content, t.title as title
+      from (select @rownum:=0 order by @rownum) tmp, (select v.L_NO as no, sum(v.v_HITS) as hits, v.I_REAL_FILE_NAME as name, l.L_CONTENT as con, l.L_TITLE as title
+  																											from tbl_video v, tbl_lecture l
+												   														 where v.L_NO = l.L_NO
+												   														 group by v.L_NO
+												  														having min(S_NO)
+											       													 order by hits desc, no) as t
+			limit 0, 5;										       												
+		]]>
+	</select>
+	
+	<select id="selectLetest" resultType="videolatestlistvo">
+		<![CDATA[
+		select v.L_NO as latestNo, l.l_reg_date as date, v.I_REAL_FILE_NAME as fileName, l.L_CONTENT as content, l.L_TITLE as title
+      from tbl_video v, tbl_lecture l
+     where v.L_NO = l.L_NO
+     group by v.L_NO
+    having min(S_NO)
+     order by date desc, latestNo
+		 limit 0, 5;											       												
+		]]>
+	</select>
 </mapper> 
 

@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import kr.co.haeyum.main.vo.MainVO;
+import kr.co.haeyum.search.vo.VideoBestListVO;
+import kr.co.haeyum.search.vo.VideoLatestListVO;
 
 @Repository
 public class MainDAO {
@@ -20,6 +22,14 @@ public class MainDAO {
 	
 	public MainVO mainVlist(int i) {
 		return session.selectOne("kr.co.main.selectMainVideoCount", i);
+	}
+
+	public List<VideoBestListVO> selectPopular() {
+		return session.selectList("kr.co.main.selectPopular");
+	}
+
+	public List<VideoLatestListVO> selectLetest() {
+		return session.selectList("kr.co.main.selectLetest");
 	}
 
 }
