@@ -165,3 +165,10 @@ transition: all 2.0s linear;
   color:#fff !important;
   background:#04ADBF !important;
 }
+
+@font-face{
+font-family:bin;
+src:url('../webfont/SeoulHangangM.eot');
+src:local(※), 
+	url('../webfont/SeoulHangangM.woff') format('woff');
+}
