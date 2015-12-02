@@ -26,6 +26,7 @@ public class MemberController {
 
 		int cnt = service.selectlogin(member);
 		if (cnt == 1) {
+			member.setName(service.selectName(member));
 			HttpSession session = req.getSession();
 			session.setAttribute("user", member);
 			System.out.println(cnt);

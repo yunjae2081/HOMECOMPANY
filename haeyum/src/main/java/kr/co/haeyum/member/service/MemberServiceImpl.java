@@ -24,4 +24,11 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 
+	@Override
+	public String selectName(MemberVO member) throws Exception {
+		// TODO Auto-generated method stub
+		return dao.selectName(member);
+	}
+
+
 }
