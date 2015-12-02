@@ -26,7 +26,12 @@ $(document).ready(function(){
 
 	$(document).on("click", ".menu > li[class^='in']", function(){
  	  var category = this.id;
-		location.href = "${pageContext.request.contextPath}/side/video.do?category=" + category;
+ 	  if(category == 0){
+ 	   location.href = "${pageContext.request.contextPath}/list/listVideo.do";
+ 	  }
+ 	  else{
+ 	   location.href = "${pageContext.request.contextPath}/side/video.do?category=" + category;
+ 	  }		
 	});
 	
 });
