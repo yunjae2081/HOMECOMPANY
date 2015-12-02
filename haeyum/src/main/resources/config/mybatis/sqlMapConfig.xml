@@ -30,6 +30,8 @@
     <typeAlias alias="storelistvo" type="kr.co.haeyum.store.vo.StoreListVO" />
     <typeAlias alias="categoryvo" type="kr.co.haeyum.store.vo.CategoryVO"/>
     <typeAlias alias="sidelistvo" type="kr.co.haeyum.store.vo.SideListVO"/>
+    <typeAlias alias="watchListvo" type="kr.co.haeyum.lecture.vo.WatchListVO"/>
+    <typeAlias alias="bmarkvo" type="kr.co.haeyum.lecture.vo.BMarkVO.java"/>
      
 	</typeAliases>
 </configuration>
