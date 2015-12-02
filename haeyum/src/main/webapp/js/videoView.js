@@ -80,22 +80,60 @@ $(document).ready(function() {
       }
   );
   
-  var bookmark = false;
-  $("#video-bookmark").click(function(){
-    if(bookmark){
-      bookmark = !bookmark;
+  var vBookmark = false;
+  $("#video-bookmark").click(function() {
+    if(vBookmark) {
+      vBookmark = !vBookmark;
       $(".control-bookmark-text").css("display", "none");
     } else {
-      bookmark = !bookmark;
+      vBookmark = !vBookmark;
       $(".control-bookmark-text").css("display", "block");
     }
   });
   
-  $("#bookmark-regist").click(function() {
-    $(".control-bookmark-text").css("display", "none");
-    $("#bookmark-textBox").val("");
+  var vBookmarkList = false;
+  $("#video-bookmark-list").click(function() {
+    if(vBookmarkList) {
+      vBookmarkList = !vBookmarkList;
+      $(".vTool").css("width", "737");  //북마크
+      $(".video-bookmarkList-div").css("display", "none"); //북마크
+      
+    } else {
+      vBookmarkList = !vBookmarkList;
+      $(".vTool").css("width", "1037");  //북마크
+      $(".video-bookmarkList-div").css("display", "block"); //북마크
+    }
   });
   
+  var vBookmarkCount = 0;
+  $("#bookmark-regist").click(function() {
+    vBookmark = !vBookmark;
+    $(".control-bookmark-text").css("display", "none");
+    $("#vBookmark_ul").append("<li id='bCount" + ++vBookmarkCount+ "'>"+
+                                "<div class='bookmark-img'>"+
+                                  "<img src='/haeyum/images/bookmark40.png' style='width: 20px; height:24px;' />"+
+                                "</div>"+
+                                "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + $("#bookmark-textBox").val() + "</p>"+
+                                "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + v_time + "</p>"+
+                              "</li>");
+    $("#bookmark-textBox").val("");
+    
+    $.ajax({
+      type : "post",
+      url : "/haeyum/mindMap/bookMarkRegist.do",
+      data : {},
+      dataType : "json"
+    }).done(function(){
+      
+    });
+    
+    $("#bCount" + vBookmarkCount).click(function() {
+      var bTime = $(this).find(".bTime").html().split(":");
+      var bMin = bTime[0]*60;
+      var bSec = bTime[1];
+      video.currentTime = Number(bMin) + Number(bSec);
+    });
+  });
 });  //(document).ready
 
 function aVideo(sNo) {
@@ -150,6 +188,7 @@ function aVideo(sNo) {
         }
         
         ChangeWidth();
+        
         if(productList.length == 0){
           $(".store-slider").css("display", "none");
         } else if (productList.length == 1) {
