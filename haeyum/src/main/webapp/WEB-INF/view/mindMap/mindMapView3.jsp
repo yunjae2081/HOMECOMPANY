@@ -5,6 +5,74 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<style>
+#item-list ul {
+  padding: 0;
+  margin: 20px 0;
+  font-family: Arial, sans serif;
+  color: #555;
+}
+
+#item-list ul > li {
+  list-style: none;
+  border-top: 1px solid #ddd;
+  display: block;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#item-list ul:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+#item-list ul > li:hover {
+  background: #efefef;
+}
+
+
+.expand {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  cursor: pointer;
+}
+
+h2 {
+  padding: 0;
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+
+.spanView {
+  font-size: 14px;
+}
+
+.detail {
+  margin: 20px 0 0 0;
+  display: none;
+  line-height: 22px;
+}
+
+.right-arrow {
+  width: 10px;
+  height: 10px;
+  float: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 15px 15px 0 0;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+
+
+
+</style>
 <title>Insert title here</title>
 <%@ include file = "../include/common_top.jsp" %>
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mindMap.css" />
@@ -413,9 +481,46 @@ $(document).on("mouseout", ".myCanvas", function () {
   $(".myCanvas").removeClass("move");
   allDrag = false;;
 })
+
+
+
+$(document).ready(function() { 
+
+	(function ($) { 
+		$('.tab ul.tabs').addClass('active').find('> li:eq(0)').addClass('current');
+		
+		$('.tab ul.tabs li a').click(function (g) { 
+			var tab = $(this).closest('.tab'), 
+				index = $(this).closest('li').index();
+			
+			tab.find('ul.tabs > li').removeClass('current');
+			$(this).closest('li').addClass('current');
+			
+			tab.find('.tab_content').find('div.tabs_item').not('div.tabs_item:eq(' + index + ')').slideUp();
+			tab.find('.tab_content').find('div.tabs_item:eq(' + index + ')').slideDown();
+			
+			g.preventDefault();
+		} );
+	})(jQuery);
+
+});
+
+$(function() {
+	  $(".expand").on( "click", function() {
+	    $(this).next().slideToggle(100);
+	    $expand = $(this).find(">:first-child");
+	    
+	    if($expand.text() == "+") {
+	      $expand.text("-");
+	    } else {
+	      $expand.text("+");
+	    }
+	  });
+	});
+
 </script>
 </head>
-<body>
+<body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
 <br/>
 <br/>
@@ -433,114 +538,115 @@ $(document).on("mouseout", ".myCanvas", function () {
 <br/>
 <br/>
 <section class="stretch">
-<div class = "lecture-detail">
+<div class = "lecture-detail" style="margin-bottom: 100px;">
+	
+	<!-- 강의소개 -->
+	<div align="left" style="margin-left: 50px;padding-top: 50px; margin-bottom: 50px;">
+	<h2 style="font-size: 50px;"> ${lVO.lTitle}<span style="font-size: 25px;">with 등록아이디</span></h2>
+	<button type="button" class="btn btn-warning" style="float: right;margin-right: 200px;">즐겨찾기</button>
+	<br/>
+	<h3 style="font-size: 20px;">${lVO.lContent}</h3>
+	</div>
+<!-- 강의 소개 end -->
 
-	<div class = "header-div">
-		<h1>INTRODUCE</h1>
-	</div>
-	<hr id = "hr1"/>
-	<hr id = "hr2"/>
-	<h2>${lVO.lTitle}</h2>
-	<h3>${lVO.lContent}</h3>
-	<br/>
-	<br/>
+  <hr class="hrLecture" data-content="Video" style="margin-top:100px;margin-bottom: 50px;">	
+
+<!-- video -->
 	
-	<div class="header-div">
-		<h1 id = "scrollTop">VIDEO</h1>
-	</div>
-	<hr id = "hr1"/>
-	<hr id = "hr2"/>
+   <div class="vTool" >
+      <div class="vDiv">
+            <svg id="vSVG" class="vCanvas" width = "730" height = "445" xmlns="http://www.w3.org/2000/svg">
+            </svg>
+            <canvas class="vCanvas" id="vCanvas" width = "730" height = "445"></canvas>
+            
+            <div class="lessonArea" id="lessonArea">
+            </div>
+            
+            <video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445">
+               <source src="${pageContext.request.contextPath}/video/${firstVideo.realFileName}"/>
+            </video>
+            <div class="control-bar">
+               <div class="control-bar-in">
+                  <canvas class="pCanvas" id="pCanvas" width="700" height="3"></canvas>
+               </div>
+               
+               <div class="videobottom">
+                  
+                  <div class="controls">
+                  
+                     <div class="control-play-button" id="control-play-button">
+                        <div class="play-button" id="play-button">
+                           <img alt="" src="${pageContext.request.contextPath}/images/pause.png" style="width: 20px; height:20px; ">
+                        </div>
+                     </div>
+                     
+                     <div class="control-vol-button">
+                        <div class="vol-button" id="vol-button">
+                           <img src="${pageContext.request.contextPath}/images/speaker100.png" style="width: 20px; height:20px;" />
+                        </div>
+                     </div>
+                     
+                     <div class="control-playTime-div">
+                        <div class="playTime-div">
+                           <span id="playTime-span" style="color: white;"></span>
+                        </div>
+                     </div>
+                     
+                     
+                     <div class="control-video-bookmark">
+                        <div class="video-bookmark" id="video-bookmark">
+                           <img src="${pageContext.request.contextPath}/images/add158.png" style="width: 30px; height:22px;" />
+                        </div>
+                     </div>
+                     
+                     <div class="control-bookmark-text">
+                        <div class="bookmark-textBox">
+                           <input type="text" id="bookmark-textBox" class="bookmark-shadow" size="18" placeholder='bookmark text..'/>
+                        </div>
+                        <div class="bookmark-regist" id="bookmark-regist">
+                           <img src="${pageContext.request.contextPath}/images/ok3.png" style="width: 22px; height:23px;" />
+                        </div>
+                     </div>
+                     
+                     <div class="control-video-bookmark" id="video-bookmark-list" style="padding-left: 3px; margin-left: 13px;">
+                        <div class="video-bookmark">
+                           <img src="${pageContext.request.contextPath}/images/bookmark26.png" style="width: 25px; height:22px;" />
+                        </div>
+                     </div>
+                     
+                     <div>
+                        <div class="control-full-button">
+                           <div class="full-button" id="full-button">
+                              <img src="${pageContext.request.contextPath}/images/switch27.png" style="width: 25px; height:20px;" />
+                           </div>
+                        </div>
+                     </div>
+                     
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+         <div class="video-bookmarkList-div">
+            <div class="video-outLine-top">
+               <div class="video-bookmarkList-img">
+                  <img src="${pageContext.request.contextPath}/images/bookmark40.png" style="width: 25px; height:30px;" />
+               </div>
+               <div class="bookmarkList-text">Bookmarks</div>
+            </div>
+            <div class="video-bookmarkList-ul">
+               <article>
+                  <ul id="vBookmark_ul"></ul>
+               </article>
+            </div>
+         </div>
+         
+   </div>
 	
-	<div class="vTool" >
-		<div class="vDiv">
-				<svg id="vSVG" class="vCanvas" width = "730" height = "445" xmlns="http://www.w3.org/2000/svg">
-				</svg>
-				<canvas class="vCanvas" id="vCanvas" width = "730" height = "445"></canvas>
-				
-				<div class="lessonArea" id="lessonArea">
-				</div>
-				
-				<video id="myVideo" loop="loop" autoplay="autoplay" width="730" height="445">
-					<source src="${pageContext.request.contextPath}/video/${firstVideo.realFileName}"/>
-				</video>
-				<div class="control-bar">
-					<div class="control-bar-in">
-						<canvas class="pCanvas" id="pCanvas" width="700" height="3"></canvas>
-					</div>
-					
-					<div class="videobottom">
-						
-						<div class="controls">
-						
-							<div class="control-play-button" id="control-play-button">
-								<div class="play-button" id="play-button">
-									<img alt="" src="${pageContext.request.contextPath}/images/pause.png" style="width: 20px; height:20px; ">
-								</div>
-							</div>
-							
-							<div class="control-vol-button">
-								<div class="vol-button" id="vol-button">
-									<img src="${pageContext.request.contextPath}/images/speaker100.png" style="width: 20px; height:20px;" />
-								</div>
-							</div>
-							
-							<div class="control-playTime-div">
-								<div class="playTime-div">
-									<span id="playTime-span" style="color: white;"></span>
-								</div>
-							</div>
-							
-							
-							<div class="control-video-bookmark">
-								<div class="video-bookmark" id="video-bookmark">
-									<img src="${pageContext.request.contextPath}/images/add158.png" style="width: 30px; height:22px;" />
-								</div>
-							</div>
-							
-							<div class="control-bookmark-text">
-								<div class="bookmark-textBox">
-									<input type="text" id="bookmark-textBox" class="bookmark-shadow" size="18" placeholder='bookmark text..'/>
-								</div>
-								<div class="bookmark-regist" id="bookmark-regist">
-									<img src="${pageContext.request.contextPath}/images/ok3.png" style="width: 22px; height:23px;" />
-								</div>
-							</div>
-							
-							<div class="control-video-bookmark" id="video-bookmark-list" style="padding-left: 3px; margin-left: 13px;">
-								<div class="video-bookmark">
-									<img src="${pageContext.request.contextPath}/images/bookmark26.png" style="width: 25px; height:22px;" />
-								</div>
-							</div>
-							
-							<div>
-								<div class="control-full-button">
-									<div class="full-button" id="full-button">
-										<img src="${pageContext.request.contextPath}/images/switch27.png" style="width: 25px; height:20px;" />
-									</div>
-								</div>
-							</div>
-							
-						</div>
-					</div>
-				</div>
-			</div>
-			
-			<div class="video-bookmarkList-div">
-				<div class="video-outLine-top">
-					<div class="video-bookmarkList-img">
-						<img src="${pageContext.request.contextPath}/images/bookmark40.png" style="width: 25px; height:30px;" />
-					</div>
-					<div class="bookmarkList-text">Bookmarks</div>
-				</div>
-				<div class="video-bookmarkList-ul">
-					<article>
-						<ul id="vBookmark_ul"></ul>
-					</article>
-				</div>
-			</div>
-			
-	</div>
 	
+	
+<!-- video end -->
+<!-- video Slide -->	
 	<div id="slider-wrapper" class="store-slider">
 		<div id="slider-wrap" class="store-slider">
 
@@ -552,53 +658,81 @@ $(document).on("mouseout", ".myCanvas", function () {
 			<!--controls-->
 		</div>
 	</div>
-	<br/>
-	<br/>
+<!--  -->	
 	
-	<div class = "header-div">
-		<h1>CURRICULUM</h1>
-	</div>
-	<hr id = "hr1"/>
-	<hr id = "hr2"/>
-	<div class = "mView">
+  <hr class="hrLecture" data-content="Curriculum" style="margin-top:100px; margin-bottom: 50px;">	
+
+	<!--  -->
+
+	<div class="tabLecture" style="margin-top: 50px;">
+	
+	<div class="tab">
+
+	<ul class="tabs">
+		<li><a href="#">커리큘럼</a></li>
+		<li><a href="#">게시판</a></li>
+	</ul> 
+	<!-- / tabs -->
+
+	<div class="tab_content">
+
+		<div class="tabs_item">
+						
+		<div class = "mView">
 		<!-- CANVAS -->
-		<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600">
+		<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600"style="border-bottom:2px solid #3BBEE4;border-top:2px solid #3BBEE4">
 		</canvas>
+		</div>		
+				<!-- 커리큘럼 글? -->
+				
+				
+		</div> 
+		<!-- / tabs_item -->
+
+		<div class="tabs_item">
+				<div id="" class="" style="margin-left: 200px;">
+				<textarea rows="5" cols="80" placeholder="질문해주세요"></textarea> 
+				<button type="button" class="btn btn-default">확인</button>
+				</div>
+			
+			
+			<div id="item-list">
+				<ul>
+				  <li>
+				    <a class="expand">
+				    <div class="right-arrow">+</div>
+				    <div class="icon london"></div>
+				    <h2>타이틀</h2>
+				    <span class="spanView">강좌 내용</span>
+				    </a>
+				    
+				    <div class="detail">
+				      <div><span>왓더헬</span></div><br/>
+				      
+				      <span><input type="text" size="100" placeholder="답변 입력해주세요"></span>
+				    </div>
+				  </li>
+				 
+				</ul>
+				</div>
+			
+			
+			
+
+
+
+		</div> 
+		<!-- / tabs_item -->
+
+	</div> <!-- / tab_content -->
+</div> <!-- / tab -->
+	
+	
+	
+	
 	</div>
-	<div class = "btn-right">
-		<a><img id="right-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
-	</div>
-	<div class = "curr-div-out">
-		<div class = "curr-div" id = "cur1">
-			<div class = "fnodeInfo">
-				<div class = "stepTItle">STEP1</div>
-				● 라인전 필승법<br/>
-				● CS 먹는꿀팁<br/>
-				● 스킬과 평타 견제<br/>
-			</div>
-			<div class = "snodeInfo">
-				<div class = "snodeDetail">snode1</div>
-				<div class = "snodeDetail">snode2</div>
-				<div class = "snodeDetail">snode3</div>
-				<div class = "snodeDetail">snode4</div>
-				<div class = "snodeDetail">snode5</div>
-			</div>
-		</div>
-		<div class = "curr-div" id = "cur2">STEP2</div>
-	</div>
-	<div class = "btn-left">
-		<a><img id = "left-img" src="${pageContext.request.contextPath}/images/btn-right.png"></a>
-	</div>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
-	<br/>
+ <hr class="hrLecture" data-content="end" style="margin-top: 100px;" >	
+<div style="padding-bottom: 100px;"></div>
 </div>
 </section>
 </body>
