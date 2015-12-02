@@ -120,8 +120,8 @@
 <!-- 
  -->
 <div class = "alertDiv">
-	<img src="${pageContext.request.contextPath}/images/alert2.jpg"/>
-	<h1>WELL COME! <br/>${user.id}님</h1>
+	<img src="${pageContext.request.contextPath}/images/alert3.jpg"/>
+	<h1>WELL COME! <br/>${user.name}님</h1>
 </div>
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
