@@ -77,7 +77,25 @@ $(document).ready(function() {
         $('#slider-wrap ul li:nth-child(' + newpos + ')').addClass(
             'slider-active');
 
-      });
+      }
+  );
+  
+  var bookmark = false;
+  $("#video-bookmark").click(function(){
+    if(bookmark){
+      bookmark = !bookmark;
+      $(".control-bookmark-text").css("display", "none");
+    } else {
+      bookmark = !bookmark;
+      $(".control-bookmark-text").css("display", "block");
+    }
+  });
+  
+  $("#bookmark-regist").click(function() {
+    $(".control-bookmark-text").css("display", "none");
+    $("#bookmark-textBox").val("");
+  });
+  
 });  //(document).ready
 
 function aVideo(sNo) {
