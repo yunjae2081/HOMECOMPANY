@@ -49,6 +49,8 @@ $(document).ready(function(){
 			</a>
 			<hr>
 			<ul class="menu">
+				<li id = '0'><i class="material-icons"><img class="sideBtn" id="0" src="${pageContext.request.contextPath}/images/miniall.png"/></i>
+				<p>전체</p></li>  
 				<li id = "1"><i class="material-icons"><img class="sideBtn" id="1" src="${pageContext.request.contextPath}/images/minibeauty.png"/></i>
 				<p>뷰티 & 패션</p></li>
 				<li id = "2"><i class="material-icons"><img class="sideBtn" id="2" src="${pageContext.request.contextPath}/images/ministudy.png"/></i>
