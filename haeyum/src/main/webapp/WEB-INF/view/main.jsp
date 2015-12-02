@@ -1,11 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <style>
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
 .text {
   width: 100%;
@@ -42,11 +44,12 @@
 }
 
 .introVideo h1{
-	font-size: 25px;
-	font-family: Jeju Gothic;
-	margin-top: 10px;
-	margin-bottom: 10px;
+	font-size: 40px;
+	font-family: 'Hanna', serif;
+	margin-top: 25px;
+	margin-bottom: 20px;
 	font-weight: lighter;
+	
 }
 
 @font-face {
@@ -303,35 +306,34 @@
 		<div class="introVideo">
 			<h1>인기강좌</h1>
 			<div class="chartList">
-				<div class="chartItem">
-					<div class="lectureImg"><img src=""></div>
-					<div class="lectureText"></div>
-				</div>
-				<div class="chartItem">
-					<div class="lectureImg"><img src=""></div>
-					<div class="lectureText"></div>
-				</div>
-				<div class="chartItem">
-					<div class="lectureImg"><img src=""></div>
-					<div class="lectureText"></div>
-				</div>
-				<div class="chartItem">
-					<div class="lectureImg"><img src=""></div>
-					<div class="lectureText"></div>
-				</div>
-				<div class="chartItem">
-					<div class="lectureImg"><img src=""></div>
-					<div class="lectureText"></div>
-				</div>
-				
+				<c:forEach var="best" items="${best}">
+					<a href="#"> <!-- light박스 -->
+					<div class="chartItem">
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${best.fileName}"></div>
+						<div class="lectureText">
+							<h3>${best.title}</h3> <br/>
+							<h4>${best.content}</h4></div>
+					</div>
+					</a>
+				</c:forEach>
 			</div>
 		</div>
 		
 		<!-- 최신? -->
 		<div class="introVideo">
 		<h1>최신강좌</h1>
-		
-		
+			<div class="chartList">
+				<c:forEach var="latest" items="${latest}">
+					<a href="#"> <!-- light박스 -->
+					<div class="chartItem">
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${latest.fileName}"></div>
+						<div class="lectureText">
+							<h3>${latest.title}</h3> <br/>
+							<h4>${latest.content}</h4></div>
+					</div>
+					</a>
+				</c:forEach>
+			</div>
 		</div>
 		
 
