@@ -146,7 +146,7 @@ function nullCheck(){
 					</div>
 					<div class="search hidden-xs">
 						<form action="${pageContext.request.contextPath}/search/video.do" method="GET" onsubmit="return nullCheck()" >
-		                   <input id="title" name="title" placeholder="Search" type="text">
+		                   <input id="title" name="title" placeholder="Search" type="text" required="required">
 							<button class="search-submit" type="submit">
 								<i class="fa fa-search"></i>
 							</button>
