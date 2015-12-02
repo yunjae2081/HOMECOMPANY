@@ -493,16 +493,22 @@ $(document).on("mouseout", ".myCanvas", function () {
 							
 							<div class="control-video-bookmark">
 								<div class="video-bookmark" id="video-bookmark">
-									<img src="${pageContext.request.contextPath}/images/add158.png" style="width: 27px; height:22px;" />
+									<img src="${pageContext.request.contextPath}/images/add158.png" style="width: 30px; height:22px;" />
 								</div>
 							</div>
 							
 							<div class="control-bookmark-text">
 								<div class="bookmark-textBox">
-									<input type="text" id="cx" class="bookmark-shadow" size="18" placeholder='bookmark text..'/>
+									<input type="text" id="bookmark-textBox" class="bookmark-shadow" size="18" placeholder='bookmark text..'/>
 								</div>
 								<div class="bookmark-regist" id="bookmark-regist">
 									<img src="${pageContext.request.contextPath}/images/ok3.png" style="width: 22px; height:23px;" />
+								</div>
+							</div>
+							
+							<div class="control-video-bookmark" id="video-bookmark-list" style="padding-left: 3px; margin-left: 13px;">
+								<div class="video-bookmark">
+									<img src="${pageContext.request.contextPath}/images/bookmark26.png" style="width: 25px; height:22px;" />
 								</div>
 							</div>
 							
@@ -518,6 +524,21 @@ $(document).on("mouseout", ".myCanvas", function () {
 					</div>
 				</div>
 			</div>
+			
+			<div class="video-bookmarkList-div">
+				<div class="video-outLine-top">
+					<div class="video-bookmarkList-img">
+						<img src="${pageContext.request.contextPath}/images/bookmark40.png" style="width: 25px; height:30px;" />
+					</div>
+					<div class="bookmarkList-text">Bookmarks</div>
+				</div>
+				<div class="video-bookmarkList-ul">
+					<article>
+						<ul id="vBookmark_ul"></ul>
+					</article>
+				</div>
+			</div>
+			
 	</div>
 	
 	<div id="slider-wrapper" class="store-slider">
