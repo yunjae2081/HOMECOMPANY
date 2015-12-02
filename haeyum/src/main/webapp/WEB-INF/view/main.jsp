@@ -71,8 +71,21 @@
 <script>
 (function () {
     var app;
+    var oneTime = true;
     $(document).ready(function () {
-        return app.init();
+      
+      if("${user}" != "") {
+        $(".alertDiv").css("display", "block");
+	      $(".alertDiv").fadeOut(3000);
+      }
+      $(window).scroll(function(event) {
+        console.log($(window).scrollTop())
+        if($(window).scrollTop() > 1200 && oneTime) {
+          oneTime = false;
+          return app.init();
+        }
+      })
+//         return app.init();
     });
     app = {
         text: 'Hello. How to make a MindMap?',
@@ -96,8 +109,16 @@
     };
 }.call(this));
 
+
+
 </script>
 <body style="background-color: #F6F6F6">
+<!-- 
+ -->
+<div class = "alertDiv">
+	<img src="${pageContext.request.contextPath}/images/alert2.jpg"/>
+	<h1>WELL COME! <br/>${user.id}님</h1>
+</div>
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
 	<section class="stretch">

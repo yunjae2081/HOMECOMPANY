@@ -207,3 +207,32 @@ section p, section ul li {
 	font: 400 15px/160% Helvetica, Arial, sans-serif 
 }
 
+
+.alertDiv{
+	width: 400px; 
+	height: 200px; 
+	position: absolute;
+	z-index: 999;
+	top: 200px;
+	left: 40%;
+	box-shadow: 0 0 10px 10px #dfdfdf;
+	display: none;
+/* 	transition: .5s; */
+}
+
+.alertDiv > img {
+	width: 400px; 
+	height: 200px; 
+	position:absolute;
+	z-index: 0;
+	
+}
+
+.alertDiv > h1{
+	position: absolute;
+	top: 30px;
+	left: 30px;
+	font-size: 30px;
+	font-weight: 400;
+	font-family: "Comic Sans MS", Georgia, Serif;
+}
