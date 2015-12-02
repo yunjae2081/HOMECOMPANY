@@ -2,19 +2,14 @@ var pos = 0;
 var totalSlides;
 var sliderWidth;
 var watchNo;
-
-function ChangeWidth() {
-  totalSlides = $('#slider-wrap ul li').length;
-  sliderWidth = $('#slider-wrap').width();
-  $('#slider-wrap ul').width(sliderWidth * totalSlides);
-}
+var vBookmarkCount = 0;
 
 $(document).ready(function() {
   
-  ChangeWidth();
-
   /*NEXT SLIDE*/
   $('#next').click(
+
+      
       function() {
 
         var p = 90;
@@ -34,7 +29,7 @@ $(document).ready(function() {
         } else {
           $('.slider-btns#next').fadeIn(100);
         }
-
+        
         $('#slider-wrap ul#slider').animate({
           left : -(330 * pos - p)
         }, {
@@ -106,7 +101,6 @@ $(document).ready(function() {
     }
   });
   
-  var vBookmarkCount = 0;
   $("#bookmark-regist").click(function() {
     vBookmark = !vBookmark;
     $(".control-bookmark-text").css("display", "none");
@@ -117,24 +111,27 @@ $(document).ready(function() {
                                 "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + $("#bookmark-textBox").val() + "</p>"+
                                 "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + v_time + "</p>"+
                               "</li>");
-    
     $.ajax({
       type : "post",
       url : "/haeyum/mindMap/bookMarkRegist.do",
-      data : {title : $("#bookmark-textBox").val(),
-              playTime : v_time}
+      data : {bmTitle : $("#bookmark-textBox").val(),
+              bmPlayTime : v_time,
+               wNo : watchNo}
     });
     
     $("#bookmark-textBox").val("");
-
-    $("#bCount" + vBookmarkCount).click(function() {
-      var bTime = $(this).find(".bTime").html().split(":");
-      var bMin = bTime[0]*60;
-      var bSec = bTime[1];
-      video.currentTime = Number(bMin) + Number(bSec);
-    });
+    bmarkClick();
   });
 });  //(document).ready
+
+function bmarkClick () {
+  $("#bCount" + vBookmarkCount).click(function() {
+    var bTime = $(this).find(".bTime").html().split(":");
+    var bMin = bTime[0]*60;
+    var bSec = bTime[1];
+    video.currentTime = Number(bMin) + Number(bSec);
+  });
+}
 
 function aVideo(sNo) {
   sNum = sNo;
@@ -147,6 +144,8 @@ function aVideo(sNo) {
         var productList = new Array();
         var prodcutImgList = new Array();
         $("#slider").html("");
+        $("#vBookmark_ul").html("");
+        $('#slider-wrap ul#slider').css("left", "0");
         
         $.each(retVal, function(index, data) {
           if(index == "video") {
@@ -169,7 +168,28 @@ function aVideo(sNo) {
               prodcutImgList.push(data2);
             });
           }
+          else if(index == "wNo") {
+            watchNo = data;
+            
+          }
+          else if(index == "bmarkList") {
+            $.each(retVal[index], function(index2, data2) {
+              $("#vBookmark_ul").append("<li id='bCount" + ++vBookmarkCount+ "'>"+
+                  "<div class='bookmark-img'>"+
+                    "<img src='/haeyum/images/bookmark40.png' style='width: 20px; height:24px;' />"+
+                  "</div>"+
+                  "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + data2.bmTitle + "</p>"+
+                  "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + data2.bmPlayTime + "</p>"+
+                "</li>");
+              
+              bmarkClick();
+            });
+          }
         });
+        
+        totalSlides = productList.length;
+        sliderWidth = 520;
+        $('#slider-wrap ul').width(sliderWidth * totalSlides);
         
         for(var i = 0; i < productList.length; i++){
           
@@ -187,8 +207,6 @@ function aVideo(sNo) {
                              "</li>");
         }
         
-        ChangeWidth();
-        
         if(productList.length == 0){
           $(".store-slider").css("display", "none");
         } else if (productList.length == 1) {
@@ -200,7 +218,6 @@ function aVideo(sNo) {
           $(".slider-btns").css("display", "block");
           $("#slider li:nth-child(1)").css("margin-left", "10px");
         }
-        
       });
   
 }
