@@ -274,4 +274,35 @@ select l_no as lNo,
 									having p_no = #{pNo} )
 </select>
 
+<select id="selectWatchList" parameterType="watchListvo" resultType="watchListvo">
+	select w_no wNo
+	from tbl_watch_list
+	where v_no = #{vNo} and w_id = #{wId}
+</select>
+
+<insert id="insertWatchList" parameterType="watchListvo">
+	<selectKey resultType="int" keyProperty="wNo" order="AFTER">
+			SELECT LAST_INSERT_ID()
+	</selectKey>
+	insert into tbl_watch_list(v_no, w_id)
+	values ( #{vNo}, #{wId} )
+</insert>
+
+<update id="updateVideoHit" parameterType="int">
+	update tbl_video
+	set v_HITS = v_HITS+1
+	where v_no = #{vNo};
+</update>
+
+<select id="selectBMarkList" parameterType="int" resultType="bmarkvo">
+	select bm_no bmNo, bm_playtime bmPlayTime, bm_title bmTitle
+	from tbl_bmark
+	where w_no = #{wNo}
+</select>
+
+<insert id="insertBMark" parameterType="bmarkvo">
+	insert into tbl_bmark(w_no, bm_playtime, bm_title)
+	values ( #{wNo}, #{bmPlayTime}, #{bmTitle})
+</insert>
+
 </mapper>
