@@ -21,4 +21,10 @@ insert into haeyum.tbl_member(NAME,ID,PASSWORD)
 
 </insert>
 
+<select id="selectName" parameterType="membervo" resultType="string">
+select name
+from tbl_member
+where id = #{id}
+</select>
+
 </mapper>
