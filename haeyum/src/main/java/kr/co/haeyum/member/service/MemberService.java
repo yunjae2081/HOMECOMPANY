@@ -10,4 +10,6 @@ public interface MemberService {
 	//회원가입
 	public void insertJoin(MemberVO member)throws Exception;
 
+	public String selectName(MemberVO member) throws Exception;
+
 }

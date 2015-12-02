@@ -20,4 +20,9 @@ public class MemberDAO {
 			 session.insert("kr.co.member.insertJoin",member);
 	}
 
+	public String selectName(MemberVO member) {
+		// TODO Auto-generated method stub
+		return session.selectOne("kr.co.member.selectName", member);
+	}
+
 }
