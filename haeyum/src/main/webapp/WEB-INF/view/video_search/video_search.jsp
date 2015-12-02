@@ -187,8 +187,8 @@ function latestVideo(data){ // 최신순 비디오 정렬
 	
 	<div class="box-list-btn">  
       <ul class="tabs1">
-         <li><a id="1" href="#">인&nbsp;&nbsp;&nbsp;기&nbsp;&nbsp;&nbsp;순</a></li>
-         <li><a id="2" href="#">최&nbsp;&nbsp;&nbsp;신&nbsp;&nbsp;&nbsp;순</a></li>
+         <li><a id="1" href="#">인기순</a></li>
+         <li><a id="2" href="#">최신순</a></li>
 		</ul>
 	</div>
 <div class='container-inner'>
