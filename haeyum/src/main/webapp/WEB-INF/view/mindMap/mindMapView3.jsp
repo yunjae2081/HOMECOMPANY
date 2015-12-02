@@ -490,6 +490,22 @@ $(document).on("mouseout", ".myCanvas", function () {
 								</div>
 							</div>
 							
+							
+							<div class="control-video-bookmark">
+								<div class="video-bookmark" id="video-bookmark">
+									<img src="${pageContext.request.contextPath}/images/add158.png" style="width: 27px; height:22px;" />
+								</div>
+							</div>
+							
+							<div class="control-bookmark-text">
+								<div class="bookmark-textBox">
+									<input type="text" id="cx" class="bookmark-shadow" size="18" placeholder='bookmark text..'/>
+								</div>
+								<div class="bookmark-regist" id="bookmark-regist">
+									<img src="${pageContext.request.contextPath}/images/ok3.png" style="width: 22px; height:23px;" />
+								</div>
+							</div>
+							
 							<div>
 								<div class="control-full-button">
 									<div class="full-button" id="full-button">
