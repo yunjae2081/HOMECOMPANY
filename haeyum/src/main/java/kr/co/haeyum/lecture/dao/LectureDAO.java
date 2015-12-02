@@ -6,6 +6,7 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import kr.co.haeyum.lecture.vo.BMarkVO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.lecture.vo.LessonVO;
@@ -14,6 +15,7 @@ import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 import kr.co.haeyum.lecture.vo.VideoVO;
+import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
 
@@ -106,6 +108,27 @@ public class LectureDAO {
 	
 	public ProductImgVO selectProductImg (int pNo) throws Exception {
 		return sqlSession.selectOne("kr.co.lecture.selectProductImg", pNo);
+	}
+	
+	public WatchListVO selectWatchList(WatchListVO watch) throws Exception {
+		return sqlSession.selectOne("kr.co.lecture.selectWatchList", watch);
+	}
+	
+	public int insertWatchList(WatchListVO watch) throws Exception {
+		sqlSession.insert("kr.co.lecture.insertWatchList", watch);
+		return watch.getwNo();
+	}
+	
+	public void updateVideoHit(int vNo) throws Exception {
+		sqlSession.update("kr.co.lecture.updateVideoHit", vNo);
+	}
+	
+	public List<BMarkVO> selectBMarkList(int wNo) throws Exception {
+		return sqlSession.selectList("kr.co.lecture.selectBMarkList", wNo);
+	}
+	
+	public void insertBMark(BMarkVO bmark) throws Exception {
+		sqlSession.insert("kr.co.lecture.insertBMark", bmark);
 	}
 	
 	// 수정이 부분

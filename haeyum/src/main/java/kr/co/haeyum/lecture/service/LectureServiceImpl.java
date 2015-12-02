@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import kr.co.haeyum.lecture.dao.LectureDAO;
+import kr.co.haeyum.lecture.vo.BMarkVO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.lecture.vo.LessonVO;
@@ -14,6 +15,7 @@ import kr.co.haeyum.lecture.vo.TfileVO;
 import kr.co.haeyum.lecture.vo.TlinkVO;
 import kr.co.haeyum.lecture.vo.TnodeVO;
 import kr.co.haeyum.lecture.vo.VideoVO;
+import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
 
@@ -110,8 +112,29 @@ public class LectureServiceImpl implements LectureService{
 	public List<ProductVO> selectProductList(int vNo) throws Exception {
 		return dao.selectProductList(vNo);
 	}
+	
 	public ProductImgVO selectProductImg (int pNo) throws Exception {
 		return dao.selectProductImg(pNo);
+	}
+	
+	public WatchListVO selectWatchList(WatchListVO watch) throws Exception {
+		return dao.selectWatchList(watch);
+	}
+	
+	public int insertWatchList(WatchListVO watch) throws Exception {
+		return dao.insertWatchList(watch);
+	}
+	
+	public void updateVideoHit(int vNo) throws Exception {
+		dao.updateVideoHit(vNo);
+	}
+	
+	public List<BMarkVO> selectBMarkList(int wNo) throws Exception {
+		return dao.selectBMarkList(wNo);
+	}
+	
+	public void insertBMark(BMarkVO bmark) throws Exception {
+		dao.insertBMark(bmark);
 	}
 
 }
