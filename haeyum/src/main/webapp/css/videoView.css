@@ -159,6 +159,7 @@ ul#slider li:first-child {
 	height: 36px;
 	float: left;
 	padding-left: 20px;
+	display: none;
 }
 
 .control-video-bookmarkList {
