@@ -522,6 +522,20 @@ $(document).ready(function() {
 			g.preventDefault();
 		} );
 	})(jQuery);
+	
+	$("#wishVideoBtn").click(function() {
+	  if("${user.id}") {
+		  $.ajax({
+		    type : "post",
+		    url : "/haeyum/mindMap/wishVideo.do",
+		    data : {lNo : "${lVO.lNo}",
+		      			favId : "${user.id}"}
+		  });
+		  
+	  } else {
+	    console.log("로그인 필요함");
+	  }
+	});
 });
 
 $(function() {
@@ -688,8 +702,8 @@ function viewPage(pageVO) {
 	
 	<!-- 강의소개 -->
 	<div align="left" style="margin-left: 50px;padding-top: 50px; margin-bottom: 50px;">
-	<h2 style="font-size: 50px;"> ${lVO.lTitle}<span style="font-size: 25px;">with 등록아이디</span></h2>
-	<button type="button" class="btn btn-warning" style="float: right;margin-right: 200px;">즐겨찾기</button>
+	<h2 style="font-size: 50px;"> ${lVO.lTitle}<span style="font-size: 25px;">with ${lVO.lId}</span></h2>
+	<button type="button" class="btn btn-warning" id="wishVideoBtn" style="float: right;margin-right: 200px;">즐겨찾기</button>
 	<br/>
 	<h3 style="font-size: 20px;">${lVO.lContent}</h3>
 	</div>
