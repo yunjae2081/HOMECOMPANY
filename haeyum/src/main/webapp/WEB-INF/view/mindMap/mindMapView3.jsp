@@ -69,8 +69,28 @@ h2 {
   margin: 0 15px 0 0;
 }
 
+.commentList {
+	margin-top: 10px;
+	padding-left: 90px;
+	line-height: 27px;
+	width: 83%;
+	
+}
 
+input[id^=comment] {
+	margin-left: 90px;
+}
 
+.commentHR {
+	border: 1px solid rgb(221, 221, 221);
+	margin-top: 10px;
+}
+
+.boardPage{
+	margin: 0px auto;
+	text-align: center;
+	font-size: 20px;
+}
 
 </style>
 <title>Insert title here</title>
@@ -80,7 +100,7 @@ h2 {
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/board.css" />
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/video.css" />
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/videoView.css" />
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+<!-- <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script> -->
 <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
 <script src="${pageContext.request.contextPath}/js/video.js"></script>
 <script src="${pageContext.request.contextPath}/js/videoView.js"></script>
@@ -502,11 +522,10 @@ $(document).ready(function() {
 			g.preventDefault();
 		} );
 	})(jQuery);
-
 });
 
 $(function() {
-	  $(".expand").on( "click", function() {
+	  $(document).on("click", ".expand", function() {
 	    $(this).next().slideToggle(100);
 	    $expand = $(this).find(">:first-child");
 	    
@@ -518,6 +537,133 @@ $(function() {
 	  });
 	});
 
+function callBoard(reqPage) {
+  $.ajax({
+    url: "${pageContext.request.contextPath}/board/list.json",
+    type: "POST",
+    datatype: "JSON",
+    data: {reqPage:reqPage, lNo:"${lVO.lNo}"},
+    success: function (data, status) {
+      viewList(data);
+      viewPage(data.pageVO);
+    }
+  })
+}
+
+function registBoard(){
+  var id = "${user.id}";
+  var bContent = $("#bContent").val();
+  $.ajax({
+    url: "${pageContext.request.contextPath}/board/registBoard.json",
+    type: "POST",
+    datatype: "JSON",
+    data:{bId:id, bContent:bContent, lNo:"${lVO.lNo}", bName:"${user.name}"},
+    success: function (data, status) {
+			callBoard(1);
+    }
+  })
+}
+
+function viewList(data) {
+  var html = "";
+  var bList = data.bList;
+  
+  $.each(bList, function (index, value) {
+	  html += "<li>";
+	  html += "<a class='expand' id = '" + bList[index].bNo + "' >";
+	  html += "<div class='right-arrow'>+</div>"
+	  html += "<div class='icon london'></div>";
+	  html += "<h2>" + bList[index].bRegDate + "</h2>"; 
+	  html += "<h2>" + bList[index].bName + "</h2>";
+	  html += "<span class='spanView'>" + bList[index].bContent + "</span>";
+	  html += "</a>";
+	  html += "<div class='detail'>";
+	  html += "<span><input type='text' id= 'comment" + bList[index].bNo + "'size='100' placeholder='답변 입력해주세요'>";
+	  html += "<input type = 'button' id = 'cRegist" + bList[index].bNo + "'value = '등록' />";
+	  html += "</span>";
+	  html += "<div class = 'commentList' id = 'commentList" + bList[index].bNo + "'><div>"
+	  html += "</div>";
+		html += "</li>";
+  }) 
+  
+  $("#board-ul").html(html);
+}
+
+$(document).on("click", "input[id^='cRegist']", function () {
+  var bNum = this.id;
+  var bNo = Number(bNum.replace("cRegist", ""));
+  var cId = "${user.id}"
+  var cContent = $("#comment" + bNo).val();
+  $.ajax({
+    url: "${pageContext.request.contextPath}/board/registComment.json",
+    type: "POST",
+    datatype: "JSON",
+    data: {bNo:bNo, cId:cId, cContent:cContent},
+    success: function (data, status) {
+      viewComment(data, bNo);
+    }
+  })
+})
+
+$(document).on("click", ".expand", function () {
+  var bNo = this.id;
+  $.ajax({
+    url: "${pageContext.request.contextPath}/board/commentList.json",
+    type: "POST",
+    datatype: "JSON",
+    data: {bNo:bNo},
+    success: function (data, status) {
+      viewComment(data, bNo);
+    }
+  })
+})
+
+function viewComment(data, bNo) {
+  var html = "";
+  $.each(data, function(index, value) {
+    html += "● &nbsp<span class = 'spanView'>" + data[index].cId + "</span>&nbsp&nbsp " + data[index].cRegDate + "<br/>"
+    html += data[index].cContent + "<br/>"
+    html += "<hr class = 'commentHR'/>"
+  })
+  
+  $("#commentList" + bNo).html(html);
+}
+
+function viewPage(pageVO) {
+  var html = "";
+  
+  if(pageVO.reqPage == 1)
+    html += "처음&nbsp;";
+  else
+    html += "<a href = 'javascript:callBoard(" + 1 + ")' >처음</a>&nbsp;"
+  
+  if(pageVO.start == 1)
+    html += "◀&nbsp;";
+  else
+    html += "<a href = 'javascript:callBoard(" + (pageVO.start - 1) + ")' >◀</a>&nbsp;"
+
+	for (var i = pageVO.start; i <= pageVO.end; i++) {
+	  if (pageVO.reqPage == i) {
+	    html += "[" + i + "]&nbsp";
+	  } else {
+	    html += "<a href='javascript:callBoard(" + i + ")'>[" + i + "]&nbsp</a>";
+	  }
+	} 
+    
+  if(pageVO.end == pageVO.lastPage)
+    html += "▶&nbsp;";
+  else
+    html += "<a href = 'javascript:callBoard(" + (pageVO.end + 1) + ")' >▶</a>&nbsp;"
+
+   if(pageVO.reqPage == pageVO.lastPage)
+    html += "마지막&nbsp;";
+  else
+    html += "<a href = 'javascript:callBoard(" + pageVO.lastPage + ")' >마지막</a>&nbsp;"
+  $("#cList").append(html);
+  
+  $(".boardPage").html(html);
+  
+}
 </script>
 </head>
 <body style="background: #f1f1f1;">
@@ -670,7 +816,7 @@ $(function() {
 
 	<ul class="tabs">
 		<li><a href="#">커리큘럼</a></li>
-		<li><a href="#">게시판</a></li>
+		<li onclick="callBoard(1);"><a href="#">게시판</a></li>
 	</ul> 
 	<!-- / tabs -->
 
@@ -691,13 +837,11 @@ $(function() {
 
 		<div class="tabs_item">
 				<div id="" class="" style="margin-left: 200px;">
-				<textarea rows="5" cols="80" placeholder="질문해주세요"></textarea> 
-				<button type="button" class="btn btn-default">확인</button>
-				</div>
-			
-			
+					<textarea rows="5" cols="80" id = "bContent" placeholder="질문해주세요"></textarea>
+				<button type="button" onclick = "registBoard()" class="btn btn-default">확인</button>
+		</div>
 			<div id="item-list">
-				<ul>
+				<ul id = "board-ul">
 				  <li>
 				    <a class="expand">
 				    <div class="right-arrow">+</div>
@@ -712,15 +856,9 @@ $(function() {
 				      <span><input type="text" size="100" placeholder="답변 입력해주세요"></span>
 				    </div>
 				  </li>
-				 
 				</ul>
+				<div class = "boardPage"></div>
 				</div>
-			
-			
-			
-
-
-
 		</div> 
 		<!-- / tabs_item -->
 
