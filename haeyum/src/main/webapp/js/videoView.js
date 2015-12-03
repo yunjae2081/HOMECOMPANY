@@ -117,6 +117,8 @@ $(document).ready(function() {
       data : {bmTitle : $("#bookmark-textBox").val(),
               bmPlayTime : v_time,
                wNo : watchNo}
+    }).done(function() {
+      console.log("북마크 콜백");
     });
     
     $("#bookmark-textBox").val("");
@@ -147,6 +149,7 @@ function aVideo(sNo) {
         $("#slider").html("");
         $("#vBookmark_ul").html("");
         $('#slider-wrap ul#slider').css("left", "0");
+        $(".control-video-bookmark").css("display", "block");
         
         $.each(retVal, function(index, data) {
           if(index == "video") {
