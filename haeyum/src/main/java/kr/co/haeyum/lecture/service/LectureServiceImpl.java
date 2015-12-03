@@ -18,6 +18,7 @@ import kr.co.haeyum.lecture.vo.VideoVO;
 import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 
 @Service
 public class LectureServiceImpl implements LectureService{
@@ -135,6 +136,14 @@ public class LectureServiceImpl implements LectureService{
 	
 	public void insertBMark(BMarkVO bmark) throws Exception {
 		dao.insertBMark(bmark);
+	}
+	
+	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception {
+		return dao.selectFavCheck(fav);
+	}
+	
+	public void insertFavVideo(FavoriteVO fav) throws Exception {
+		dao.insertFavVideo(fav);
 	}
 
 }
