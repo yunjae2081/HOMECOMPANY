@@ -269,6 +269,7 @@ $(document).ready(function(){
   
   $("#v-comment").click(function(){
     $(".vTool").css("width", "1037");
+    $(".v-buttons").css("margin-left", "430px");
     $(this).css("display", "none");
     $("#v-items").css("display", "block");
 //    $(".v-preview").css("display", "block");
@@ -278,6 +279,7 @@ $(document).ready(function(){
   });
   
   $("#v-items").click(function() {
+    $(".v-buttons").css("margin-left", "360px");
     $(".vTool").css("width", "1037");
     $(this).css("display", "none");
     $("#v-comment").css("display", "block");
@@ -556,6 +558,7 @@ $(document).ready(function(){
       
       $(".vView").css("display", "none");
       $(".vTool").css("width", "737px");
+      $(".v-buttons").css("margin-left", "270px");
       $(".lessonDiv").css("display", "none");
       $(".itemsDiv").css("display", "none");
       $("#v-comment").css("display", "block");

@@ -122,6 +122,7 @@ $(document).ready(function() {
     $("#bookmark-textBox").val("");
     bmarkClick();
   });
+  
 });  //(document).ready
 
 function bmarkClick () {
@@ -202,7 +203,7 @@ function aVideo(sNo) {
                                  "<div class='slider-rating store-slider'>"+
                                    "<span class='review-count store-slider'>" + productList[i].pPrice + "</span>"+
                                  "</div>"+
-                                 "<div class='slider-btn store-slider'>store</div>"+
+                                 "<div class='slider-btn store-slider' onClick='storeBtn(" + productList[i].pNo+ ")'>store</div>"+
                               "</div>"+
                              "</li>");
         }
@@ -219,5 +220,9 @@ function aVideo(sNo) {
           $("#slider li:nth-child(1)").css("margin-left", "10px");
         }
       });
-  
+}
+
+function storeBtn(pNo) {
+  $(location).attr('href', '/haeyum/store/storeDetail.do?no='+pNo);
+  console.log(pNo);
 }
