@@ -428,7 +428,7 @@ $(document).ready(function(){
           if(i == 1){
             display = "block";
           }
-          $("#item_input_file").append("<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + iImgCount + "' style='display: " + display + ";' onchange='selectImage(" + i + ", " + iImgCount + ")'/>");
+          $("#item_input_file").append("<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + i + "' style='display: " + display + ";' onchange='selectImage(" + i + ", " + iImgCount + ")'/>");
         }
       } //if 문 종료
     }); //AddBtn 종료
