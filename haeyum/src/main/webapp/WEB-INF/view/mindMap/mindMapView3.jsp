@@ -432,7 +432,7 @@ function closeDiv(id) {
 }
 
 $(document).on("click", ".aVideo", function() {
-  $("html, body").animate({scrollTop:400}, $("#scrollTop").offset().top);
+  $("html, body").animate({scrollTop:400}, $(".hrLecture").offset().top);
   console.log();
 })
 
