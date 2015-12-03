@@ -204,6 +204,7 @@ public class LectureRegistController {
 					int pNo = service.insertItem(productVO);
 					
 					for(int k = 1; k <= 4; k++){
+						System.out.println("sNum"+i+"iCount"+iCount+"imgCount"+k);
 						MultipartFile itemFile = req.getFile("sNum"+i+"iCount"+iCount+"imgCount"+k);
 						if(itemFile != null) {
 							String itemOrgFileName = itemFile.getOriginalFilename();
@@ -227,6 +228,8 @@ public class LectureRegistController {
 								
 								service.insertItemImg(imgVO);
 							}
+						} else {
+							break;
 						}
 					}
 					
