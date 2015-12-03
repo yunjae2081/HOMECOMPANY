@@ -109,7 +109,7 @@ $(document).ready(function() {
                                   "<img src='/haeyum/images/bookmark40.png' style='width: 20px; height:24px;' />"+
                                 "</div>"+
                                 "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + $("#bookmark-textBox").val() + "</p>"+
-                                "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + v_time + "</p>"+
+                                "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 44px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + v_time + "</p>"+
                               "</li>");
     $.ajax({
       type : "post",
@@ -180,7 +180,7 @@ function aVideo(sNo) {
                     "<img src='/haeyum/images/bookmark40.png' style='width: 20px; height:24px;' />"+
                   "</div>"+
                   "<p style='float: left; font-size: 10px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 150px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 4px 4px; border: 2px solid #c2c2c2; background-color: white;'>" + data2.bmTitle + "</p>"+
-                  "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 45px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + data2.bmPlayTime + "</p>"+
+                  "<p class='bTime' style='float: left; font-size: 13px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 44px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 2px 2px; border: 2px solid #c2c2c2; background-color: white; text-align:center; margin-left: 2px;'>" + data2.bmPlayTime + "</p>"+
                 "</li>");
               
               bmarkClick();
