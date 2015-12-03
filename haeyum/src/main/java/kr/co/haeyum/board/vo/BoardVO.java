@@ -5,10 +5,8 @@ public class BoardVO {
 	private int bNo;
 	private int lNo;
 	private String bId;
-	private String bTitle;
+	private String bName;
 	private String bContent;
-
-
 	private String bRegDate;
 
 	public int getbNo() {
@@ -35,12 +33,12 @@ public class BoardVO {
 		this.bId = bId;
 	}
 
-	public String getbTitle() {
-		return bTitle;
+	public String getbName() {
+		return bName;
 	}
 
-	public void setbTitle(String bTitle) {
-		this.bTitle = bTitle;
+	public void setbName(String bName) {
+		this.bName = bName;
 	}
 
 	public String getbContent() {
