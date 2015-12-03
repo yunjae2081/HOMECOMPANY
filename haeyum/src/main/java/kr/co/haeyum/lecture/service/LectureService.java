@@ -14,6 +14,7 @@ import kr.co.haeyum.lecture.vo.VideoVO;
 import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 
 public interface LectureService {
 
@@ -66,4 +67,8 @@ public interface LectureService {
 	public List<BMarkVO> selectBMarkList(int wNo) throws Exception;
 	
 	public void insertBMark(BMarkVO bmark) throws Exception;
+	
+	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception;
+	
+	public void insertFavVideo(FavoriteVO fav) throws Exception;
 }

@@ -28,6 +28,7 @@ import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.member.vo.MemberVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 
 @Controller
 @RequestMapping("/mindMap")
@@ -109,5 +110,13 @@ public class MindMapController {
 	@RequestMapping("/bookMarkRegist.do")
 	public void bookMarkRegist(BMarkVO bmark) throws Exception {
 		service.insertBMark(bmark);
+	}
+	
+	@ResponseBody
+	@RequestMapping("/wishVideo.do")
+	public void wishVideo(FavoriteVO fav) throws Exception {
+		if(service.selectFavCheck(fav) == null) {
+			service.insertFavVideo(fav);
+		}
 	}
 }

@@ -18,6 +18,7 @@ import kr.co.haeyum.lecture.vo.VideoVO;
 import kr.co.haeyum.lecture.vo.WatchListVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.video.vo.FavoriteVO;
 
 @Repository
 public class LectureDAO {
@@ -129,6 +130,14 @@ public class LectureDAO {
 	
 	public void insertBMark(BMarkVO bmark) throws Exception {
 		sqlSession.insert("kr.co.lecture.insertBMark", bmark);
+	}
+	
+	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception {
+		return sqlSession.selectOne("kr.co.lecture.selectFavCheck", fav);
+	}
+	
+	public void insertFavVideo(FavoriteVO fav) throws Exception {
+		sqlSession.insert("kr.co.lecture.insertFavVideo", fav);
 	}
 	
 	// 수정이 부분
