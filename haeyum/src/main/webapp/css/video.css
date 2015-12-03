@@ -304,10 +304,11 @@
 }
 
 .v-buttons {
-  padding-top: 35px;
+  padding-top: 30px;
   text-align: center;
   margin: 0 auto;
   display: none;
+  margin-left: 270px;
 }
 
 .v-btn {
