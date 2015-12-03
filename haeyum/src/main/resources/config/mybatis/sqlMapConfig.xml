@@ -24,14 +24,18 @@
     <typeAlias alias="productvo" type="kr.co.haeyum.store.vo.ProductVO" />
     <typeAlias alias="productImgvo" type="kr.co.haeyum.store.vo.ProductImgVO" />
     <typeAlias alias="videovo" type="kr.co.haeyum.lecture.vo.VideoVO" />
-    <!-- -->
     <typeAlias alias="mypagevo" type="kr.co.haeyum.mypage.vo.myPageVO"/>
     <typeAlias alias="lessonvo" type="kr.co.haeyum.lecture.vo.LessonVO" />
     <typeAlias alias="storelistvo" type="kr.co.haeyum.store.vo.StoreListVO" />
     <typeAlias alias="categoryvo" type="kr.co.haeyum.store.vo.CategoryVO"/>
     <typeAlias alias="sidelistvo" type="kr.co.haeyum.store.vo.SideListVO"/>
+    <!--
+     -->
     <typeAlias alias="watchListvo" type="kr.co.haeyum.lecture.vo.WatchListVO"/>
-    <typeAlias alias="bmarkvo" type="kr.co.haeyum.lecture.vo.BMarkVO.java"/>
+    <typeAlias alias="bmarkvo" type="kr.co.haeyum.lecture.vo.BMarkVO"/>
+    <typeAlias alias="boardvo" type="kr.co.haeyum.board.vo.BoardVO"/>
+    <typeAlias alias="commentvo" type="kr.co.haeyum.board.vo.BoardCommentVO"/>
+    <typeAlias alias="boardpagevo" type="kr.co.haeyum.board.vo.PageIndexVO"/>
      
 	</typeAliases>
 </configuration>

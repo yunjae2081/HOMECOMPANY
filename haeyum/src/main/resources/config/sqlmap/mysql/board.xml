@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+	"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="kr.co.board">
+<insert id="insertBoard" parameterType="boardvo">
+  insert into tbl_board(l_no, b_id, b_name, b_content)
+  value (#{lNo}, #{bId}, #{bName}, #{bContent})
+</insert>
+
+<select id="selectLastPage" parameterType="map" resultType="int">
+	select count(*) from tbl_board where l_no=#{lNo}
+</select>
+
+<select id="selectbList" parameterType="map" resultType="boardvo">
+select @rownum:=@rownum+1 as rownum, b.bNo as bNo, b.lNo as lNo, b.bId as bId, b.bName as bName, b.bContent as bContent, DATE_FORMAT(b.b_reg_date,'%Y-%m-%d %H:%i') as bRegDate
+from (select @rownum:=0 order by @rownum) tmp, (select b_no as bNo, l_no as lNo, 
+b_id as bId, b_name as bName, b_content as bContent, b_reg_date
+	from tbl_board
+	where l_no = #{lNo}) b
+	order by b.bNo desc
+limit #{pIndex}, 5
+</select>
+
+<insert id="insertComment" parameterType="commentvo">
+insert into tbl_board_comment(b_no, c_id, c_content)
+value (#{bNo}, #{cId}, #{cContent})
+</insert>
+
+<select id="selectCommentList" parameterType="int" resultType="commentvo" >
+select c_no as cNo, b_no as bNo, c_id as cId, c_content as cContent, DATE_FORMAT(c_reg_date,'%Y-%m-%d %H:%i') as cRegDate
+from tbl_board_comment
+where b_no = #{bNo}
+</select>
+</mapper>
