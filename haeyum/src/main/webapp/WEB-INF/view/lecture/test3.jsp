@@ -19,41 +19,27 @@
 </head>
 <body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
-<br />
+
 <section class="stretch">
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-<br/>
-
+<div style="padding-top: 150px;"></div>
+<div class="regForm">
 <div class="topBanner">
-	<div class="topBanner-inner">
-		<div class="explain">
-			<div class="explain-title">Create Your Lecture</div>
-			<div class="explain-content">
-				<div class="explain-content-l">설명하는 글입니다. Customize this lesson by editing or excluding any section below.
-																			You can title your lesson, provide context for the video, add or remove questions, start discussions, and end the lesson with additional resources.
-																			Your progress will be auto-saved.
-        </div>
-			</div>
-		</div>
-		<div class="lecture-btn">REGIST</div>
-	</div>
-</div>
+			
+				<div data-title="Create Yure Lecture" class="dialog-box_info">
+				  <em></em>
+				  설명하는 글입니다. Customize this lesson by editing or excluding any section below. You can title your lesson, 
+				  provide context for the video, add or remove questions, start discussions, and end the lesson with additional 
+				  resources. Your progress will be auto-saved.
+				<div class="helpBtn">
+				<button type="button" class="btn btn-success">도움말</button>
+				
+				</div>
+				</div>
 
-<div class="created-wrapper">
-	<div class="created-by"> LECTURE CREATED BY <strong>안수정</strong>
-	</div>
+
+</div>
+	
+	<div class="lectureMakeId"> LECTURE CREATED BY&nbsp;&nbsp;&nbsp;&nbsp;<strong>배신자 쑤</strong>
 </div>
 
 <form id = "mapForm" action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return upload();">
@@ -98,10 +84,10 @@
 		</fieldset>
 	</div>
 </div>
-<div class = "mView">
+<div class = "mView" style="border: 2px solid #5893B0;">
+
+<!-- 엑셀 업로드  -->
 	<div class="curriculum">
-		<div class="curr-text">CURRICULU</div>
-		<div class="curr-file">http://www.flaticon.com/free-icon/xlsx-file-format-extension_28841</div>
 		<div class="curr-realFile">
 			<div class = "file-upload">
 	   	 <div class="file-select">
@@ -155,6 +141,7 @@
   <div id = "dataDiv">
   </div>
 </form>
+</div>
 </section>
 </body>
 </html>
