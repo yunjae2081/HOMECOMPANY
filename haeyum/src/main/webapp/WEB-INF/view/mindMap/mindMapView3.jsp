@@ -435,13 +435,27 @@ $(document).ready(function() {
 		} );
 	})(jQuery);
 	
+	var wishBtn = false;
+
+	if("${favCheck}"){
+	  wishBtn = true;
+	  $(".likeButton").toggleClass("liked");
+	}
+	
+	$(".likeButton").click(function() {
+	  wishBtn = !wishBtn;
+		$(this).toggleClass("liked");
+	});
+	
+	//수정이
 	$("#wishVideoBtn").click(function() {
 	  if("${user.id}") {
 		  $.ajax({
 		    type : "post",
 		    url : "/haeyum/mindMap/wishVideo.do",
 		    data : {lNo : "${lVO.lNo}",
-		      			favId : "${user.id}"}
+		      			favId : "${user.id}",
+		      			favCheck : (wishBtn ? 1 : 0)}
 		  });
 		  
 	  } else {
@@ -592,13 +606,6 @@ function viewPage(pageVO) {
   
 }
 
-
-
-$(document).ready(function () {
-	$(".likeButton").click(function() {
-		$(this).toggleClass("liked");
-	});
-});
 </script>
 </head>
 <body style="background: #f1f1f1;">
