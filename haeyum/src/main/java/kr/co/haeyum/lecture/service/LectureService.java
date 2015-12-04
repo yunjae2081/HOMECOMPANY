@@ -68,7 +68,9 @@ public interface LectureService {
 	
 	public void insertBMark(BMarkVO bmark) throws Exception;
 	
-	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception;
-	
 	public void insertFavVideo(FavoriteVO fav) throws Exception;
+	
+	public void deleteFavVideo(FavoriteVO fav) throws Exception;
+	
+	public int selectFavCheck(FavoriteVO fav) throws Exception;
 }

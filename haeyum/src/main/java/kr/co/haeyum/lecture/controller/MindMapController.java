@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.mysql.fabric.xmlrpc.base.Member;
+
 import kr.co.haeyum.lecture.service.LectureService;
 import kr.co.haeyum.lecture.vo.BMarkVO;
 import kr.co.haeyum.lecture.vo.FnodeVO;
@@ -38,7 +40,7 @@ public class MindMapController {
 	private LectureService service;
 	
 	@RequestMapping("/view.do")
-	public ModelAndView viewMap(@RequestParam(value="lNo", required=false, defaultValue="1") int lNo) throws Exception{
+	public ModelAndView viewMap(@RequestParam(value="lNo", required=false, defaultValue="1") int lNo, HttpSession session) throws Exception{
 		
 		ModelAndView mav = new ModelAndView("/mindMap/mindMapView3");
 		
@@ -58,8 +60,19 @@ public class MindMapController {
 		
 		
 		//수정이 부분
-		VideoVO firstVideo = service.selectVideo(sList.get(0).getsNo());
-		mav.addObject("firstVideo", firstVideo);
+		if(sList.size() != 0){
+			VideoVO firstVideo = service.selectVideo(sList.get(0).getsNo());
+			FavoriteVO fav = new FavoriteVO();
+			String id = ((MemberVO) session.getAttribute("user")).getId();
+			if(id != null) {
+				fav.setlNo(lNo);
+				fav.setFavId(id);
+				if(service.selectFavCheck(fav) == 1){
+					mav.addObject("favCheck", "1");
+				}
+			}
+			mav.addObject("firstVideo", firstVideo);
+		}
 		return mav;
 	}
 	
@@ -112,11 +125,14 @@ public class MindMapController {
 		service.insertBMark(bmark);
 	}
 	
+	
 	@ResponseBody
 	@RequestMapping("/wishVideo.do")
-	public void wishVideo(FavoriteVO fav) throws Exception {
-		if(service.selectFavCheck(fav) == null) {
+	public void wishVideo(FavoriteVO fav, @RequestParam(value="favCheck", required=false, defaultValue="0") int favCheck) throws Exception {
+		if(favCheck == 1) {
 			service.insertFavVideo(fav);
+		} else {
+			service.deleteFavVideo(fav);
 		}
 	}
 }

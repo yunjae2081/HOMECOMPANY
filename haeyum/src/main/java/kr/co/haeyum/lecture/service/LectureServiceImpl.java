@@ -138,12 +138,16 @@ public class LectureServiceImpl implements LectureService{
 		dao.insertBMark(bmark);
 	}
 	
-	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception {
-		return dao.selectFavCheck(fav);
-	}
-	
 	public void insertFavVideo(FavoriteVO fav) throws Exception {
 		dao.insertFavVideo(fav);
+	}
+	
+	public void deleteFavVideo(FavoriteVO fav) throws Exception {
+		dao.deleteFavVideo(fav);
+	}
+	
+	public int selectFavCheck(FavoriteVO fav) throws Exception {
+		 return dao.selectFavCheck(fav);
 	}
 
 }
