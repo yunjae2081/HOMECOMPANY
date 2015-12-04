@@ -63,12 +63,14 @@ public class MindMapController {
 		if(sList.size() != 0){
 			VideoVO firstVideo = service.selectVideo(sList.get(0).getsNo());
 			FavoriteVO fav = new FavoriteVO();
-			String id = ((MemberVO) session.getAttribute("user")).getId();
-			if(id != null) {
-				fav.setlNo(lNo);
-				fav.setFavId(id);
-				if(service.selectFavCheck(fav) == 1){
-					mav.addObject("favCheck", "1");
+			if(session.getAttribute("user") != null) {
+				String id = ((MemberVO) session.getAttribute("user")).getId();
+				if(id != null) {
+					fav.setlNo(lNo);
+					fav.setFavId(id);
+					if(service.selectFavCheck(fav) == 1){
+						mav.addObject("favCheck", "1");
+					}
 				}
 			}
 			mav.addObject("firstVideo", firstVideo);
