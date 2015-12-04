@@ -132,12 +132,16 @@ public class LectureDAO {
 		sqlSession.insert("kr.co.lecture.insertBMark", bmark);
 	}
 	
-	public FavoriteVO selectFavCheck(FavoriteVO fav) throws Exception {
-		return sqlSession.selectOne("kr.co.lecture.selectFavCheck", fav);
-	}
-	
 	public void insertFavVideo(FavoriteVO fav) throws Exception {
 		sqlSession.insert("kr.co.lecture.insertFavVideo", fav);
+	}
+	
+	public void deleteFavVideo(FavoriteVO fav) throws Exception {
+		sqlSession.delete("kr.co.lecture.deleteFavVideo", fav);
+	}
+	
+	public int selectFavCheck(FavoriteVO fav) throws Exception {
+		return sqlSession.selectOne("kr.co.lecture.selectFavCheck", fav);
 	}
 	
 	// 수정이 부분
