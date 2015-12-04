@@ -33,7 +33,7 @@
 	<img class="close" src="${pageContext.request.contextPath}/images/close.jpg" />
 	</div>
 	
-	<div class = "vView">
+	<div class = "vView" style="padding-top: 50px;">
 		
 		<div class="vTool" id="vTool">
 	
