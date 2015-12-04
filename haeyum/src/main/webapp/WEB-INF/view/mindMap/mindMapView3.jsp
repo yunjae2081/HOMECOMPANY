@@ -5,94 +5,6 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<style>
-#item-list ul {
-  padding: 0;
-  margin: 20px 0;
-  font-family: Arial, sans serif;
-  color: #555;
-}
-
-#item-list ul > li {
-  list-style: none;
-  border-top: 1px solid #ddd;
-  display: block;
-  padding: 15px;
-  overflow: hidden;
-}
-
-#item-list ul:last-child {
-  border-bottom: 1px solid #ddd;
-}
-
-#item-list ul > li:hover {
-  background: #efefef;
-}
-
-
-.expand {
-  display: block;
-  text-decoration: none;
-  color: #555;
-  cursor: pointer;
-}
-
-h2 {
-  padding: 0;
-  margin: 0 0 5px 0;
-  font-size: 18px;
-}
-
-.spanView {
-  font-size: 14px;
-}
-
-.detail {
-  margin: 20px 0 0 0;
-  display: none;
-  line-height: 22px;
-}
-
-.right-arrow {
-  width: 10px;
-  height: 10px;
-  float: left;
-  font-weight: bold;
-  font-size: 20px;
-  margin: 15px 15px 0 0;
-}
-
-.icon {
-  height: 50px;
-  width: 50px;
-  float: left;
-  margin: 0 15px 0 0;
-}
-
-.commentList {
-	margin-top: 10px;
-	padding-left: 90px;
-	line-height: 27px;
-	width: 83%;
-	
-}
-
-input[id^=comment] {
-	margin-left: 90px;
-}
-
-.commentHR {
-	border: 1px solid rgb(221, 221, 221);
-	margin-top: 10px;
-}
-
-.boardPage{
-	margin: 0px auto;
-	text-align: center;
-	font-size: 20px;
-}
-
-</style>
 <title>Insert title here</title>
 <%@ include file = "../include/common_top.jsp" %>
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mindMap.css" />
@@ -432,7 +344,7 @@ function closeDiv(id) {
 }
 
 $(document).on("click", ".aVideo", function() {
-  $("html, body").animate({scrollTop:400}, $(".hrLecture").offset().top);
+  $("html, body").animate({scrollTop:400}, $("#scrollTop").offset().top);
   console.log();
 })
 
@@ -581,19 +493,19 @@ function registBoard(){
 function viewList(data) {
   var html = "";
   var bList = data.bList;
-  
+ 
   $.each(bList, function (index, value) {
 	  html += "<li>";
 	  html += "<a class='expand' id = '" + bList[index].bNo + "' >";
 	  html += "<div class='right-arrow'>+</div>"
 	  html += "<div class='icon london'></div>";
-	  html += "<h2>" + bList[index].bRegDate + "</h2>"; 
-	  html += "<h2>" + bList[index].bName + "</h2>";
+	  html += "<h2>" + bList[index].bName +"&nbsp;&nbsp;&nbsp;"+ bList[index].bRegDate + "</h2>";
 	  html += "<span class='spanView'>" + bList[index].bContent + "</span>";
+	  html += "<input type='button' value='삭제' class='btn btn-default' style='float:right'/>";
 	  html += "</a>";
 	  html += "<div class='detail'>";
-	  html += "<span><input type='text' id= 'comment" + bList[index].bNo + "'size='100' placeholder='답변 입력해주세요'>";
-	  html += "<input type = 'button' id = 'cRegist" + bList[index].bNo + "'value = '등록' />";
+	  html += "<span><div class='col-xs-8'><input type='text' id= 'comment" + bList[index].bNo + "'size='100' class='form-control' placeholder='답변 입력해주세요'></div>";
+	  html += "<input type = 'button' id = 'cRegist" + bList[index].bNo + "'value = '등록' class='btn btn-default'  style='margin-left:70px;vertical-align:text-top' />";
 	  html += "</span>";
 	  html += "<div class = 'commentList' id = 'commentList" + bList[index].bNo + "'><div>"
 	  html += "</div>";
@@ -636,7 +548,8 @@ function viewComment(data, bNo) {
   var html = "";
   $.each(data, function(index, value) {
     html += "● &nbsp<span class = 'spanView'>" + data[index].cId + "</span>&nbsp&nbsp " + data[index].cRegDate + "<br/>"
-    html += data[index].cContent + "<br/>"
+    html += "<span class='spanViewContent'>"+data[index].cContent +"</span><br/>"
+    html += "<input type='button' value='삭제' class='btn btn-default deleteViewBtn'></button><br/>"
     html += "<hr class = 'commentHR'/>"
   })
   
@@ -678,6 +591,14 @@ function viewPage(pageVO) {
   $(".boardPage").html(html);
   
 }
+
+
+
+$(document).ready(function () {
+	$(".likeButton").click(function() {
+		$(this).toggleClass("liked");
+	});
+});
 </script>
 </head>
 <body style="background: #f1f1f1;">
@@ -701,15 +622,18 @@ function viewPage(pageVO) {
 <div class = "lecture-detail" style="margin-bottom: 100px;">
 	
 	<!-- 강의소개 -->
-	<div align="left" style="margin-left: 50px;padding-top: 50px; margin-bottom: 50px;">
-	<h2 style="font-size: 50px;"> ${lVO.lTitle}<span style="font-size: 25px;">with ${lVO.lId}</span></h2>
-	<button type="button" class="btn btn-warning" id="wishVideoBtn" style="float: right;margin-right: 200px;">즐겨찾기</button>
+	<div class="lectureIntro" align="left">
+	<h2 class="titletext"> ${lVO.lTitle}<span style="font-size: 25px;">with ${lVO.lId}</span></h2>
+	<span id="wishVideoBtn" class="likeButton">♥</span>
 	<br/>
-	<h3 style="font-size: 20px;">${lVO.lContent}</h3>
+	<h3 class="h3text">${lVO.lContent}</h3>
+	<div class="titleIntro">
+	[목차][목차][목차][목차][목차][목차][목차][목차][목차]	
 	</div>
-<!-- 강의 소개 end -->
+	</div>
+	<!-- 강의 소개 end -->
 
-  <hr class="hrLecture" data-content="Video" style="margin-top:100px;margin-bottom: 50px;">	
+  <hr class="hrLecture" data-content="Video" style="margin-top:50px;margin-bottom: 50px;">	
 
 <!-- video -->
 	
@@ -820,7 +744,7 @@ function viewPage(pageVO) {
 	</div>
 <!--  -->	
 	
-  <hr class="hrLecture" data-content="Curriculum" style="margin-top:100px; margin-bottom: 50px;">	
+  <hr class="hrLecture" data-content="" style="margin-top:100px; margin-bottom: 50px;">	
 
 	<!--  -->
 
@@ -836,11 +760,11 @@ function viewPage(pageVO) {
 
 	<div class="tab_content">
 
-		<div class="tabs_item">
+		<div class="tabs_item" style="padding-top: 100px;">
 						
 		<div class = "mView">
 		<!-- CANVAS -->
-		<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600"style="border-bottom:2px solid #3BBEE4;border-top:2px solid #3BBEE4">
+		<canvas class = "myCanvas" id = "myCanvas" width="1200" height="600">
 		</canvas>
 		</div>		
 				<!-- 커리큘럼 글? -->
@@ -850,28 +774,15 @@ function viewPage(pageVO) {
 		<!-- / tabs_item -->
 
 		<div class="tabs_item">
-				<div id="" class="" style="margin-left: 200px;">
-					<textarea rows="5" cols="80" id = "bContent" placeholder="질문해주세요"></textarea>
-				<button type="button" onclick = "registBoard()" class="btn btn-default">확인</button>
+				<div style="margin-left: 200px;">
+					<textarea rows="5" id = "bContent" class="form-control col-xs-4 textQuestion" placeholder="질문해주세요"></textarea>
+				<button type="button" onclick = "registBoard()" class="btn btn-default contentChk">확인</button>
 		</div>
-			<div id="item-list">
-				<ul id = "board-ul">
-				  <li>
-				    <a class="expand">
-				    <div class="right-arrow">+</div>
-				    <div class="icon london"></div>
-				    <h2>타이틀</h2>
-				    <span class="spanView">강좌 내용</span>
-				    </a>
-				    
-				    <div class="detail">
-				      <div><span>왓더헬</span></div><br/>
-				      
-				      <span><input type="text" size="100" placeholder="답변 입력해주세요"></span>
-				    </div>
-				  </li>
+			<div id="item-list" style="margin-top: 100px;">
+				<ul id = "board-ul" style="width: 1000px;margin: 0 auto;">
+				  
 				</ul>
-				<div class = "boardPage"></div>
+				<div class = "boardPage" style="padding-top: 30px;padding-bottom: 50px;"></div>
 				</div>
 		</div> 
 		<!-- / tabs_item -->
@@ -880,10 +791,9 @@ function viewPage(pageVO) {
 </div> <!-- / tab -->
 	
 	
-	
-	
 	</div>
- <hr class="hrLecture" data-content="end" style="margin-top: 100px;" >	
+<br/>
+<br/><br/><br/><br/><br/>
 <div style="padding-bottom: 100px;"></div>
 </div>
 </section>
