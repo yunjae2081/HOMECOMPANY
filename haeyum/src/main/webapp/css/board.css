@@ -2,6 +2,180 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto:300);
+
+
+
+
+.likeButton {
+	display: inline-block;
+	font-size: 62px;
+	color: #cca2a3;
+	position: absolute;
+	left: 79%;
+	top: 58%;
+	cursor: pointer;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	-webkit-transition: all 0.1s ease-in-out;
+	        transition: all 0.1s ease-in-out;
+}
+
+
+.likeButton:after {
+	display: inline-block;
+	content: "♥";
+	font-size: 1px;
+	color: #D61F12;
+	opacity: 0;
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	-webkit-transform: translate(-50%, -50%);
+	        transform: translate(-50%, -50%);
+	-webkit-transition: all 0.2s ease-in-out;
+	        transition: all 0.2s ease-in-out;
+}
+
+.likeButton.liked:after {
+	font-size: 62px;
+	opacity: 1;
+}
+
+
+
+.h3text{
+	font-size: 20px;
+	width: 900px;
+	background: rgba(228, 228, 228, 0.44);
+	padding: 20px;
+}
+
+.titletext{
+	font-size: 50px; 
+	font-weight: 600; 
+	box-shadow:0 3px 0 #03A9F4;
+	width: 900px;
+}
+
+.titleIntro{
+padding-left:10px;
+padding-top: 40px;
+font-size: 20px;
+}
+
+.favoritBtn{
+	margin: 40px 90px 30px 0;	
+}
+
+.lectureIntro{
+
+	margin-left: 50px;
+	padding-top: 100px;
+	margin-bottom: 50px;
+}
+
+#item-list ul {
+  padding: 0;
+  margin: 20px 0;
+  font-family: Arial, sans serif;
+  color: #555;
+}
+
+#item-list ul > li {
+  list-style: none;
+  border-top: 1px solid #ddd;
+  display: block;
+  padding: 15px;
+  overflow: hidden;
+}
+
+#item-list ul:last-child {
+  border-bottom: 1px solid #ddd;
+}
+
+#item-list ul > li:hover {
+  background: #efefef;
+}
+
+
+.expand {
+  display: block;
+  text-decoration: none;
+  color: #555;
+  cursor: pointer;
+}
+
+h2 {
+  padding: 0;
+  margin: 0 0 5px 0;
+  font-size: 18px;
+}
+
+.spanView {
+  font-size: 15px;
+  font-weight: 	700;
+}
+.spanViewContent{
+	padding-left: 20px;
+
+}
+
+.deleteViewBtn{
+	float: right;
+}
+
+.detail {
+  margin: 20px 0 0 0;
+  display: none;
+  line-height: 22px;
+}
+
+.right-arrow {
+  width: 10px;
+  height: 10px;
+  float: left;
+  font-weight: bold;
+  font-size: 20px;
+  margin: 15px 15px 0 0;
+}
+
+.icon {
+  height: 50px;
+  width: 50px;
+  float: left;
+  margin: 0 15px 0 0;
+}
+
+
+.commentList {
+	margin-top: 10px;
+	padding-left: 90px;
+	line-height: 27px;
+	width: 83%;
+	
+}
+
+input[id^=comment] {
+	margin-left: 70px;
+}
+
+.commentHR {
+	border: 1px solid rgb(221, 221, 221);
+	margin-top: 10px;
+}
+
+.boardPage{
+	margin: 0px auto;
+	text-align: center;
+	font-size: 20px;
+}
+
+
+
+
+
+
+
 .tab {
   margin-bottom: 20px;
   position: relative;
@@ -16,11 +190,17 @@
   -webkit-font-smoothing: antialiased;
 }
 
+.tab_content{
+	border-top: 2px solid #3BBEE4;
+	border-bottom: 2px solid #3BBEE4;
+	
+}
+
 .tabs {
   display: table;
   position: relative;
   overflow: hidden;
-  margin: 0;
+  margin-left:10px;
   width: 100%;
 }
 
@@ -34,7 +214,6 @@
 
 .tabs a {
   background-color: #eff0f2;
-  border-bottom: 1px solid #fff;
   color: #888;
   font-weight: 500;
   display: block;
@@ -45,10 +224,10 @@
   -webkit-transition: all 0.2s ease-in-out;
   -moz-transition: all 0.2s ease-in-out;
   transition: all 0.2s ease-in-out;
-  border-bottom: 2px solid #3BBEE4;
 }
 
 .tabs_item {
+  background:rgba(243, 243, 243, 0.54);
   display: none;
   padding: 10px 0;
 }
@@ -156,7 +335,7 @@
 .lecture-detail {
 	background:#fff;
 	width: 1200px;
-	height:2300px;
+	height:2000px;
 	margin-bottom:50px;
 	margin: 0px auto;
 	box-shadow: 0 0 10px 5px #dfdfdf;
@@ -238,3 +417,13 @@
 	border-bottom: 1px solid #c0c0c0;
 }
 
+.contentChk{
+	vertical-align: top;
+	margin-top: 50px;
+	margin-left: 20px;
+}
+.textQuestion{
+	width: 800px;
+	margin: 0 auto;
+	margin-top: 20px;
+}
