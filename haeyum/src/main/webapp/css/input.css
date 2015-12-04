@@ -252,9 +252,9 @@ h1, h2 {
 }
 
 .dropp-header {
-  background: #13a7d7;
+  background: #AACCCC;
   color: #fff;
-  border-bottom: 2px solid #0e628c;
+  border-bottom: 2px solid #549595;
   -webkit-box-align: stretch;
   -moz-box-align: stretch;
   box-align: stretch;
@@ -312,7 +312,7 @@ h1, h2 {
 
 .dropp-header__btn {
   display: block;
-  background: #3BB7E1;
+  background: #AACCCC;
   color: #fff;
   padding: 0.8em 0.5em;
   -webkit-box-flex: 1;
@@ -376,7 +376,7 @@ h1, h2 {
   position: absolute;
   width: 220px;
   max-height: 0;
-  background: #13A7D7;
+  background: #AACCCC;
   color: #fff;
   -webkit-transition: all 0.3s ease-in-out;
   -moz-transition: all 0.3s ease-in-out;
@@ -393,14 +393,14 @@ h1, h2 {
   text-decoration: none;
   padding: 1em 0.5em;
   font-weight: 400;
-  box-shadow: 0 -1px 0 #9CD2EE, inset 0 1px 0 #337ab7;
+  box-shadow:0 -1px 0 #f9f9f9, inset 0 1px 0 #FFFFFF;
   cursor: pointer;
 }
 .dropp-body label:first-child {
   box-shadow: none;
 }
 .dropp-body label:hover, .dropp-body label.js-open {
-  background: #0F88B0;
+  background: #6FADAD;
 }
 .dropp-body label > input {
   display: none;
