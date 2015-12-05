@@ -141,7 +141,7 @@ $(document).ready(function(){
         $("#noFile" + event).text("No file chosen...");
       } else {
 //        console.log("성공");
-        $(".file-upload").addClass('active');
+        $("#videoInput" + sNum).addClass('active');
         $("#noFile" + event).text(filename.replace("C:\\fakepath\\", ""));
         $(".vView").css("display", "block");
         $(".v-buttons").css("display", "block");
