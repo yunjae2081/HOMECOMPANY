@@ -75,6 +75,8 @@ h1, h2 {
   text-decoration: none;
 }
 .more.wider {
+  margin-left:45%;
+  margin-top:50px;
   padding-left: 25px !important;
   padding-right: 25px !important;
 }
@@ -104,7 +106,7 @@ h1, h2 {
   transition: all 0.2s linear;
   background: white;
   border: 1px solid #ccc;
-  color: #13A7D7;
+  color: #222;
   display: inline-block;
   height: 45px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -125,7 +127,7 @@ h1, h2 {
   transition: all 0.2s linear;
   background: white;
   border: 1px solid #ccc;
-  color: #13A7D7;
+  color: #222;
   display: inline-block;
   height: 45px;
   font-family: "Roboto", Helvetica, Arial, sans-serif;
@@ -167,21 +169,21 @@ h1, h2 {
 /*   width: 1200px; */
 }
 #mapForm .input.active input:required:invalid, #mapForm .input.active textarea:required:invalid {
-  border: 1px solid #e9322d;
-  color: #e9322d;
+  border: 1px solid #57CACA;
+  color: #57CACA;
 }
 #mapForm .input.active input:required:invalid + label, form .input.active textarea:required:invalid + label {
-  background: #e9322d;
+  background: #57CACA;
 }
 #mapForm .input.active input:required:invalid:focus + label, #mapForm .input.active textarea:required:invalid:focus + label {
-  background: #e9322d;
+  background: #57CACA;
 }
 #mapForm .input.active label {
   -moz-border-radius: 14px 0 0 14px;
   -webkit-border-radius: 14px;
   border-radius: 14px 0 0 14px;
   color: #fff;
-  background: #13A7D7;
+  background: #469A9A;
   top: 0;
   left: 0;
   padding: 14px 10px;

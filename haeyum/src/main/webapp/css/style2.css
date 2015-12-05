@@ -1,4 +1,5 @@
 @charset "utf-8";
+<link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
 
 h1, h2, h3, h4 {
 	font-family: Helvetica, Arial, sans-serif
@@ -209,6 +210,7 @@ section p, section ul li {
 
 
 .alertDiv{
+	background: #fff;
 	width: 400px; 
 	height: 200px; 
 	position: absolute;
@@ -220,13 +222,7 @@ section p, section ul li {
 /* 	transition: .5s; */
 }
 
-.alertDiv > img {
-	width: 400px; 
-	height: 200px; 
-	position:absolute;
-	z-index: 0;
-	
-}
+
 
 .alertDiv > h1{
 	position: absolute;
@@ -234,5 +230,5 @@ section p, section ul li {
 	left: 30px;
 	font-size: 30px;
 	font-weight: 400;
-	font-family: "Comic Sans MS", Georgia, Serif;
+	font-family: 'Fredoka One', cursive;
 }
