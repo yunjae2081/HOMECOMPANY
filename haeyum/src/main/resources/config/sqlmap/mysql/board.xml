@@ -32,4 +32,14 @@ select c_no as cNo, b_no as bNo, c_id as cId, c_content as cContent, DATE_FORMAT
 from tbl_board_comment
 where b_no = #{bNo}
 </select>
+
+<delete id="deleteBoard" parameterType="int">
+delete from tbl_board
+where b_no = #{bNo}
+</delete>
+
+<delete id="deleteComment" parameterType="int">
+delete from tbl_board_comment
+where c_no = #{cNo}
+</delete>
 </mapper>

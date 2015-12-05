@@ -344,7 +344,7 @@ function closeDiv(id) {
 }
 
 $(document).on("click", ".aVideo", function() {
-  $("html, body").animate({scrollTop:400}, $("#scrollTop").offset().top);
+  $("html, body").animate({scrollTop:400}, $(".hrLecture").offset().top + 500 + 'px');
   console.log();
 })
 
@@ -435,27 +435,13 @@ $(document).ready(function() {
 		} );
 	})(jQuery);
 	
-	var wishBtn = false;
-
-	if("${favCheck}"){
-	  wishBtn = true;
-	  $(".likeButton").toggleClass("liked");
-	}
-	
-	$(".likeButton").click(function() {
-	  wishBtn = !wishBtn;
-		$(this).toggleClass("liked");
-	});
-	
-	//수정이
 	$("#wishVideoBtn").click(function() {
 	  if("${user.id}") {
 		  $.ajax({
 		    type : "post",
 		    url : "/haeyum/mindMap/wishVideo.do",
 		    data : {lNo : "${lVO.lNo}",
-		      			favId : "${user.id}",
-		      			favCheck : (wishBtn ? 1 : 0)}
+		      			favId : "${user.id}"}
 		  });
 		  
 	  } else {
@@ -491,6 +477,9 @@ function callBoard(reqPage) {
 }
 
 function registBoard(){
+  if("${user.id}" == ""){
+    return;
+  }
   var id = "${user.id}";
   var bContent = $("#bContent").val();
   $.ajax({
@@ -507,6 +496,7 @@ function registBoard(){
 function viewList(data) {
   var html = "";
   var bList = data.bList;
+  var sessionId = "${user.id}"
  
   $.each(bList, function (index, value) {
 	  html += "<li>";
@@ -515,7 +505,9 @@ function viewList(data) {
 	  html += "<div class='icon london'></div>";
 	  html += "<h2>" + bList[index].bName +"&nbsp;&nbsp;&nbsp;"+ bList[index].bRegDate + "</h2>";
 	  html += "<span class='spanView'>" + bList[index].bContent + "</span>";
-	  html += "<input type='button' value='삭제' class='btn btn-default' style='float:right'/>";
+	  if(sessionId == bList[index].bId) {
+		  html += "<input type='button' value='삭제' onclick='delectBoard(" + bList[index].bNo + ")' class='btn btn-default' style='float:right'/>";
+	  }
 	  html += "</a>";
 	  html += "<div class='detail'>";
 	  html += "<span><div class='col-xs-8'><input type='text' id= 'comment" + bList[index].bNo + "'size='100' class='form-control' placeholder='답변 입력해주세요'></div>";
@@ -530,6 +522,9 @@ function viewList(data) {
 }
 
 $(document).on("click", "input[id^='cRegist']", function () {
+  if("${user.id}" == ""){
+    return;
+  }
   var bNum = this.id;
   var bNo = Number(bNum.replace("cRegist", ""));
   var cId = "${user.id}"
@@ -560,10 +555,13 @@ $(document).on("click", ".expand", function () {
 
 function viewComment(data, bNo) {
   var html = "";
+  var sessionId = "${user.id}"
   $.each(data, function(index, value) {
     html += "● &nbsp<span class = 'spanView'>" + data[index].cId + "</span>&nbsp&nbsp " + data[index].cRegDate + "<br/>"
     html += "<span class='spanViewContent'>"+data[index].cContent +"</span><br/>"
-    html += "<input type='button' value='삭제' class='btn btn-default deleteViewBtn'></button><br/>"
+    if(sessionId == data[index].cId) {
+	    html += "<input type='button' onclick = 'deleteComment(" + data[index].cNo + ", " + bNo + ")' value='삭제' class='btn btn-default deleteViewBtn'></button><br/>"
+    }
     html += "<hr class = 'commentHR'/>"
   })
   
@@ -605,6 +603,39 @@ function viewPage(pageVO) {
   $(".boardPage").html(html);
   
 }
+
+function delectBoard(bNo) {
+	$.ajax({
+	  url: "${pageContext.request.contextPath}/board/deleteBoard.json",
+		type: "POST",
+		datatype: "JSON",
+		data: {bNo:bNo},
+		success: function (data, status) {
+		  callBoard(1);
+		}
+	})
+}
+
+function deleteComment(cNo, bNo) {
+	$.ajax({
+	  url: "${pageContext.request.contextPath}/board/deleteComment.json",
+		type: "POST",
+		datatype: "JSON",
+		data: {cNo:cNo, bNo:bNo},
+		success: function (data, status) {
+		  viewComment(data, bNo);
+		}
+	})
+}
+
+
+
+
+$(document).ready(function () {
+	$(".likeButton").click(function() {
+		$(this).toggleClass("liked");
+	});
+});
 
 </script>
 </head>
