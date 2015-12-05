@@ -146,7 +146,7 @@ $(document).ready(function(){
         $(".vView").css("display", "block");
         $(".v-buttons").css("display", "block");
       }
-      
+      $("html, body").animate({scrollTop:$(".vView").offset().top - 200});
     }
     
   }(window));

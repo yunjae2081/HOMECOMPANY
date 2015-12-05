@@ -49,8 +49,8 @@ $(document).ready(function () {
 	
   <c:forEach var = "flist" items = "${fList}">
 	  var html = "";
-	  html += "<div class = 'fNode' id = '${flist.fName}' ></div>";
-	  html += "<div class='bookmark-box' id = 'fDiv" + ++fNode + "' >";
+	  html += "<div class = 'fNode' id = '${flist.fName}' >STEP" + ++fNode + "</div>";
+	  html += "<div class='bookmark-box' id = 'fDiv" + fNode + "' >";
 	  html += "<a class='boxclose' id='fDiv" + fNode + "' onclick='closeDiv(this)'></a>";
 	  html += "<div class='bookmark-title' id = 'fWrite" + fNode + "' >";
 	  html += "<h3>${flist.fTitle}</h3>";
@@ -73,7 +73,7 @@ $(document).ready(function () {
   <c:forEach var = "slist" items="${sList}">
   	var fNodeNum = Number("${slist.fName}".replace("fNode",""));
 	  var html = "";
-	  html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' ></div>";
+	  html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' >VIDEO " + sNode + "</div>";
 	  html += "<div class='bookmark-box' id = 'sDiv" + sNode + "' >";
 	  html += "<a class='boxclose' id='sDiv" + sNode + "' onclick='closeDiv(this)'></a>";
 	  html += "<div class='bookmark-title' id = 'sWrite" + sNode + "' >";
@@ -344,8 +344,7 @@ function closeDiv(id) {
 }
 
 $(document).on("click", ".aVideo", function() {
-  $("html, body").animate({scrollTop:400}, $(".hrLecture").offset().top + 500 + 'px');
-  console.log();
+  $("html, body").animate({scrollTop:$(".hrLecture").offset().top - 100});
 })
 
 //전체 drag 이벤트
