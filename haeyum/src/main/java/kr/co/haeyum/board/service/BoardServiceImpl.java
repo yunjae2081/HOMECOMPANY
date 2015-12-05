@@ -35,4 +35,14 @@ public class BoardServiceImpl implements BoardService{
 	public List<BoardCommentVO> selectCommentList(int bNo) throws Exception {
 		return dao.selectCommentList(bNo);
 	}
+
+	@Override
+	public void deleteBoard(int bNo) throws Exception {
+		dao.deleteBoard(bNo);
+	}
+
+	@Override
+	public void deleteComment(int cNo) throws Exception {	
+		dao.deleteComment(cNo);
+	}
 }

@@ -16,4 +16,8 @@ public interface BoardService {
 
 	public List<BoardCommentVO> selectCommentList(int bNo) throws Exception;
 
+	public void deleteBoard(int bNo) throws Exception;
+
+	public void deleteComment(int cNo) throws Exception;
+
 }
