@@ -79,6 +79,7 @@
 	<mvc:view-controller path="/mypage/lectureList.do" view-name="mypage/mypageLecture"/>
    <mvc:view-controller path="/mypage/storeList.do" view-name="mypage/mypageStore"/>
    <mvc:view-controller path="/mypage/favoriteList.do" view-name="mypage/favoriteList"/>
+   <mvc:view-controller path="/lecture/helpPop.do" view-name="lecture/helpPop"/>
   
 
 </beans>
