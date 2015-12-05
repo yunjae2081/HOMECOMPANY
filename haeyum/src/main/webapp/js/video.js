@@ -475,20 +475,19 @@ $(document).ready(function(){
         if(confirm("등록할거니")) {
           
           popupOpen = false;
-          
           var title = $("#v_store_title").val();
           var content = $("#v_store_content").val();
-          var price = $.trim($.trim(strpac[0]).slice(0,-1));
-          var iNumber = $.trim($.trim(strpac[1]).slice(0,-1));
+          var price = $.trim($.trim(strpac[0]));
+          var iNumber = $.trim($.trim(strpac[1]));
           
           itemsArray.push(new VItems(sNum, iCount, title, content, price, iNumber));
           totalItem++;
           
           for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
-            if(preview.src != "http://localhost/haeyum/images/png12.png") {
+            if(preview.src != "/haeyum/images/png12.png") {
 //              console.log("img del");
-              preview.src = "http://localhost/haeyum/images/png12.png";
+              preview.src = "/haeyum/images/png12.png";
             }
             else {
               $("#store_file_"+iImgCount).remove();
