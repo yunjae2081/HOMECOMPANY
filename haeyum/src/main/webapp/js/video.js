@@ -569,6 +569,7 @@ $(document).ready(function(){
       liCount.push(new LessonItemCount(sNum, totalLesson, totalItem));
       //메인이미지 설정확인
       shoot();
+      $("html, body").animate({scrollTop:$(".mView").offset().top - 200});
     }
     
   });
