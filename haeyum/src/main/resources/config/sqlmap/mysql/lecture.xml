@@ -305,15 +305,20 @@ select l_no as lNo,
 	values ( #{wNo}, #{bmPlayTime}, #{bmTitle})
 </insert>
 
-<select id="selectFavCheck" parameterType="favoritevo" resultType="favoritevo">
-	select fav_no favNo
-	from tbl_fav_video
-	where l_no = #{lNo} and fav_id = #{favId}
-</select>
-
 <insert id="insertFavVideo" parameterType="favoritevo">
 	insert into tbl_fav_video(l_no, fav_id)
 	values (#{lNo}, #{favId})
 </insert>
+
+<delete id="deleteFavVideo" parameterType="favoritevo">
+	delete from tbl_fav_video
+	where L_NO = #{lNo} and fav_id = #{favId}
+</delete>
+
+<select id="selectFavCheck" parameterType="favoritevo" resultType="int">
+	select count(*)
+	from haeyum.tbl_fav_video
+	where l_no = #{lNo} and fav_id = #{favId}
+</select>
 
 </mapper>
