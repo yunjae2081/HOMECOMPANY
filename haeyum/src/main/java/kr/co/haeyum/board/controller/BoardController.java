@@ -53,13 +53,28 @@ public class BoardController {
 		
 		service.insertComment(cVO);
 		
-		
 		return service.selectCommentList(cVO.getbNo());
 	}
 	
 	@RequestMapping("/commentList.json")
 	@ResponseBody
 	public List<BoardCommentVO> commentList(int bNo) throws Exception{
+		
+		return service.selectCommentList(bNo);
+	}
+	
+	@RequestMapping("/deleteBoard.json")
+	@ResponseBody
+	public void deleteBoard(int bNo) throws Exception {
+		
+		service.deleteBoard(bNo);
+	}
+	
+	@RequestMapping("/deleteComment.json")
+	@ResponseBody
+	public List<BoardCommentVO> deleteComment(int cNo, int bNo) throws Exception {
+		
+		service.deleteComment(cNo);
 		
 		return service.selectCommentList(bNo);
 	}

@@ -38,4 +38,12 @@ public class BoardDAO {
 		return sqlSession.selectList("kr.co.board.selectCommentList", bNo);
 	}
 
+	public void deleteBoard(int bNo) throws Exception{
+		sqlSession.delete("kr.co.board.deleteBoard", bNo);
+	}
+
+	public void deleteComment(int cNo) throws Exception{
+		sqlSession.delete("kr.co.board.deleteComment", cNo);
+	}
+
 }
