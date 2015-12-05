@@ -25,6 +25,10 @@
 	text-align: center;
 	background-color: #5ba9b7;
 	z-index: 1;
+	font-size: 20px;
+	padding-top: 39px;
+	color: white;
+	font-weight: bold;
 }
 
 /* SECOND NODE 설정 */
@@ -36,6 +40,10 @@
 	text-align: center;
 	background-color: #466973;
 	z-index: 1;
+	font-size: 15px;
+	color:white;
+	font-weight: bold;
+	padding-top: 32px;
 }
 
 /* THIRD NODE 설정 */
@@ -114,6 +122,16 @@
 /* 	background-color: rgba(245,245,220,0); */
 /* 	border:0px; */
 /* } */
+
+.nodeModifyBtn {
+	background-image: url("/haeyum/images/inputPen.png");
+	background-size: 20px;
+	background-repeat:no-repeat;
+	background-color: rgba(245,245,220,0);
+	border:0px;
+	width: 24px;
+	height: 24px;
+}
 
 
 

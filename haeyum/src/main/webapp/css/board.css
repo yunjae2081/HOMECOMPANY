@@ -11,8 +11,8 @@
 	font-size: 62px;
 	color: #cca2a3;
 	position: absolute;
-	left: 79%;
-	top: 58%;
+	left: 71%;
+	top: 47%;
 	cursor: pointer;
 	-webkit-transform: translate(-50%, -50%);
 	        transform: translate(-50%, -50%);
@@ -61,6 +61,7 @@
 padding-left:10px;
 padding-top: 40px;
 font-size: 20px;
+line-height: 38px;
 }
 
 .favoritBtn{
