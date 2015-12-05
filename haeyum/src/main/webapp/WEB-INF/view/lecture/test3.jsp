@@ -22,7 +22,7 @@
 
 <section class="stretch">
 <div style="padding-top: 150px;"></div>
-<div class="regForm">
+<div class="regForm" style="margin-bottom: 100px;">
 <div class="topBanner">
 			
 				<div data-title="Create Yure Lecture" class="dialog-box_info">
