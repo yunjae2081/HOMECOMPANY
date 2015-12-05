@@ -80,7 +80,9 @@
       if("${user}" != "") {
         $(".alertDiv").css("display", "block");
         $(".alertDiv").animate({duration:5000}, function () {
-	      	$(".alertDiv").fadeOut(2000);
+	      	/*
+        	$(".alertDiv").fadeOut(2000);
+	      	*/
         })
       }
       $(window).scroll(function(event) {
@@ -120,8 +122,8 @@
 <!-- 
  -->
 <div class = "alertDiv">
-	<img src="${pageContext.request.contextPath}/images/alert3.jpg"/>
-	<h1>WELL COME! <br/>${user.name}님</h1>
+	
+	${user.name}님
 </div>
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
@@ -393,7 +395,7 @@
 		</div>
 
 			</section>
-
 	</section>
+<%@include file="include/footer.jsp" %>
 </body>
 </html>
