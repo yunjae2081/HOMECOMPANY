@@ -153,7 +153,7 @@ function mindMapView(data) {
     var fNodeNameTemp = sList[i].fName;
     var fNodeNum = Number(fNodeNameTemp.replace("fNode",""));
     var html = "";
-    html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' ></div>";
+    html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' >VIDEO " + sNode + "</div>";
     html += "<div class='bookmark-box' id = 'sDiv" + sNode + "' >";
     html += "<a class='boxclose' id='sDiv" + sNode + "' onclick='closeDiv(this)'></a>";
     html += "<div class='bookmark-title' id = 'sWrite" + sNode + "' >";

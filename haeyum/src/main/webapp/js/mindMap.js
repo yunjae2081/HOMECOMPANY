@@ -50,14 +50,14 @@ $(document).on("click", "div[id^='addFNode']", function () {
   $("#menuAddFNode").css("display", "none");
   $("#addFNode" + fNode++).remove();
   var html = "";
-  html += "<div class = 'fNode' id = 'fNode" + fNode + "' ></div>";
+  html += "<div class = 'fNode' id = 'fNode" + fNode + "' >STEP" + fNode + "</div>";
   html += "<div class = 'menu' id = 'addFNode" + fNode + "' >+</div>";
   html += "<div class = 'menu' id = 'addSNode" + fNode + "' >+</div>";
   html += "<div class = 'menu' id = 'remove" + fNode + "' >-</div>";
   html += "<div class='bookmark-box' id = 'fDiv" + fNode + "' >";
   html += "<a class='boxclose' id='fDiv" + fNode + "' onclick='closeDiv(this)'></a>";
   html += "<div class='bookmark-title' id = 'fWrite" + fNode + "' >";
-  html += "<input type = 'button' onclick='fNodeWriteForm(this)' id = 'fNodeForm" + fNode + "' style='float: right;'/>";
+  html += "<input class = 'nodeModifyBtn' type = 'button' onclick='fNodeWriteForm(this)' id = 'fNodeForm" + fNode + "' style='float: right;'/>";
   html += "<input type = 'hidden' id = 'fTitle" + fNode + "' value = 'STEP TITLE' style='color:black;' />";
   html += "<h3>STEP TITLE</h3>";
   html += "</div>";
@@ -88,14 +88,14 @@ $(document).on("click","div[id^='addSNode']", function () {
   menuId = this.id
   var fNodeNum = Number(menuId.replace("addSNode", "")) - 1;
   var html = "";
-  html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' ></div>";
+  html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' >VIDEO " + sNode + "</div>";
   html += "<div class = 'menu' id = 'addLinkS" + sNode + "' >+</div>";
   html += "<div class = 'menu' id = 'addSubjectS" + sNode + "' >+</div>";
   html += "<div class = 'menu' id = 'nodeRemoveS" + sNode + "' >-</div>";
   html += "<div class='bookmark-box' id = 'sDiv" + sNode + "' >";
   html += "<a class='boxclose' id='sDiv" + sNode + "' onclick='closeDiv(this)'></a>";
   html += "<div class='bookmark-title' id = 'sWrite" + sNode + "' >";
-  html += "<input type = 'button' onclick='sNodeWriteForm(this)' id = 'sNodeForm" + sNode + "' style='float: right;'/>";
+  html += "<input class = 'nodeModifyBtn' type = 'button' onclick='sNodeWriteForm(this)' id = 'sNodeForm" + sNode + "' style='float: right;'/>";
   html += "<input type = 'hidden' id = 'sTitle" + sNode + "' value = 'SECOND TITLE' style='color:black;' />";
   html += "<h3>SECOND TITLE</h3>";
   html += "</div>";
@@ -105,7 +105,7 @@ $(document).on("click","div[id^='addSNode']", function () {
 //  html += "<a style = 'color: white;'>동영상 추가</a>";
   
   //수정이 시작 부분
-  html += "<div class='file-upload'>" +
+  html += "<div class='file-upload' id = 'videoInput" + sNode + "'>" +
             "<div class='file-select'>" +
               "<div class='file-select-button' id='fileName" + sNode + "'>Choose File</div>" +
               "<div class='file-select-name' id='noFile" + sNode + "'>No file chosen...</div>" +
@@ -145,7 +145,7 @@ $(document).on("click", "div[id^='addLinkS']", function () {
   html += "<div class='bookmark-box' id = 'tDiv" + tNode + "' >";
   html += "<a class='boxclose' id='tDiv" + tNode + "' onclick='closeDiv(this)'></a>";
   html += "<div class='bookmark-title' id = 'tWrite" + tNode + "' >";
-  html += "<input type = 'button' onclick='tLinkWriteForm(this)' id = 'tLinkForm" + tNode + "' style='float: right;'/>";
+  html += "<input class = 'nodeModifyBtn' type = 'button' onclick='tLinkWriteForm(this)' id = 'tLinkForm" + tNode + "' style='float: right;'/>";
   html += "<input type = 'hidden' id = 'tLinkTitle" + tNode + "' value = 'THIRD TITLE' style='color:black;' />";
   html += "<h3>THIRD TITLE</h3>";
   html += "</div>";
@@ -181,7 +181,7 @@ $(document).on("click", "div[id^='addSubjectS']", function () {
   html += "<div class='bookmark-box' id = 'tDiv" + tNode + "' >";
   html += "<a class='boxclose' id='tDiv" + tNode + "' onclick='closeDiv(this)'></a>";
   html += "<div class='bookmark-title' id = 'tWrite" + tNode + "' >";
-  html += "<input type = 'button' onclick='tAsmtWriteForm(this)' id = 'tAsmtBtnForm" + tNode + "' style='float: right;'/>";
+  html += "<input type = 'button' class = 'nodeModifyBtn' onclick='tAsmtWriteForm(this)' id = 'tAsmtBtnForm" + tNode + "' style='float: right;'/>";
   html += "<input type = 'hidden' id = 'tAsmtTitle" + tNode + "' value = 'THIRD TITLE' style='color:black;' />";
   html += "<h3>THIRD TITLE</h3>";
   html += "</div>";
@@ -193,7 +193,7 @@ $(document).on("click", "div[id^='addSubjectS']", function () {
 //  html += "</div>";
   
   
-  html += "<div class='file-upload'>" +
+  html += "<div class='file-upload' id = 'asmtDIV" + tNode + "'>" +
           "<div class='file-select'>" +
             "<div class='file-select-button' id='fileName" + tNode + "'>Choose File</div>" +
             "<div class='file-select-name' id='tAsmtName" + tNode + "'>No file chosen...</div>" +
@@ -1193,11 +1193,13 @@ function upload() {
 function selectASMT(num) {
   var fileName = $("#tAsmtFile" + num).val();
   $("#tAsmtName" + num).text(fileName.replace("C:\\fakepath\\", ""));
+  $("#asmtDIV" + num).addClass("active");
 }
 
 function selectExcel() {
   var fileName = $("#excelFile").val();
   $("#excelName").text(fileName.replace("C:\\fakepath\\", ""));
+  $("#excelinput").addClass("active");
   
   var formData = new FormData();
   formData.append("excelFile", $("input[name='excelFile']")[0].files[0]);
@@ -1237,7 +1239,7 @@ function drawExcel(data) {
   
   for (var i = 0; i < fList.length; i++) {
     var html = "";
-    html += "<div class = 'fNode' id = 'fNode" + ++fNode + "' ></div>";
+    html += "<div class = 'fNode' id = 'fNode" + ++fNode + "' >STEP" + fNode + "</div>";
     html += "<div class = 'menu' id = 'addFNode" + fNode + "' >+</div>";
     html += "<div class = 'menu' id = 'addSNode" + fNode + "' >+</div>";
     html += "<div class = 'menu' id = 'remove" + fNode + "' >-</div>";
@@ -1278,7 +1280,7 @@ function drawExcel(data) {
   for (var i = 0; i < sList.length; i++) {
     var fNodeNum = Number(sList[i].fName.replace("fNode", "")) - 1;
     var html = "";
-    html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' ></div>";
+    html += "<div class = 'sNode' id = 'sNode" + ++sNode + "' >VIDEO " + sNode + "</div>";
     html += "<div class = 'menu' id = 'addLinkS" + sNode + "' >+</div>";
     html += "<div class = 'menu' id = 'addSubjectS" + sNode + "' >+</div>";
     html += "<div class = 'menu' id = 'nodeRemoveS" + sNode + "' >-</div>";
@@ -1339,7 +1341,7 @@ function drawExcel(data) {
     html += "<input type = 'hidden' id = 'tLinkContent" + tNode + "' value = 'Third Content'/>Third Content";
     html += "</div>";
     html += "<div id = 'tLinkUrlForm" + tNode + "' >";
-    html += "<a id = 'tUrl" + tNode + "' href = '" + tLink[i].lUrl + "' style = 'color: white;'>링크</a>";
+    html += "<a id = 'tUrl" + tNode + "' target = '_blank' href = '" + tLink[i].lUrl + "' style = 'color: white;'>링크</a>";
     html += "<input type = 'hidden' id = 'tLinkUrl" + tNode + "' name = 'tLinkUrl" + tNode + "' value = '" + tLink[i].lUrl + "' style='color:black; width:100%;' />";
     html += "</div>";
     html += "</div>";
