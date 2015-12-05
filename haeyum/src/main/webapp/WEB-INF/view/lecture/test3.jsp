@@ -16,6 +16,14 @@
 <script src="${pageContext.request.contextPath}/js/video.js"></script>
 <script src="${pageContext.request.contextPath}/js/mindMap.js"></script>
 <script src="${pageContext.request.contextPath}/js/input.js"></script>
+<script>
+function openPop() {
+  window.open("helpPop.do",
+  	"searchPop",
+  	"width=640, height=900, scrollbars=yes, resizable=false"
+  );
+}
+</script>
 </head>
 <body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
@@ -31,7 +39,7 @@
 				  provide context for the video, add or remove questions, start discussions, and end the lesson with additional 
 				  resources. Your progress will be auto-saved.
 				<div class="helpBtn">
-				<button type="button" class="btn btn-success">도움말</button>
+				<button type="button" onclick="openPop()" class="btn btn-success">도움말</button>
 				
 				</div>
 				</div>
@@ -39,7 +47,7 @@
 
 </div>
 	
-	<div class="lectureMakeId"> LECTURE CREATED BY&nbsp;&nbsp;&nbsp;&nbsp;<strong>배신자 쑤</strong>
+	<div class="lectureMakeId"> LECTURE CREATED BY&nbsp;&nbsp;&nbsp;&nbsp;<strong>${user.id}</strong>
 </div>
 
 <form id = "mapForm" action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return upload();">
@@ -61,7 +69,7 @@
 		    <a href="#" class="dropp-header__btn js-dropp-action"><i class="icon"></i></a>
 		  </div>
 		  <div class="dropp-body">
-		    <label for="optA">&nbsp;&nbsp;뷰티 & 패션<input type="radio" id="optA" name="lCategory" value="1"/></label>
+		    <label for="optA">&nbsp;&nbsp;뷰티 & 패션<input type="radio" id="optA" name="lCategory" checked="checked" value="1"/></label>
 		    <label for="optB">&nbsp;&nbsp;교과목<input type="radio" id="optB" name="lCategory" value="2"/></label>
 		    <label for="optC">&nbsp;&nbsp;음악 & 공연<input type="radio" id="optC" name="lCategory" value="3"/></label>
 		    <label for="optD">&nbsp;&nbsp;IT<input type="radio" id="optD" name="lCategory" value="4"/></label>
@@ -89,7 +97,7 @@
 <!-- 엑셀 업로드  -->
 	<div class="curriculum">
 		<div class="curr-realFile">
-			<div class = "file-upload">
+			<div class = "file-upload" id= "excelinput">
 	   	 <div class="file-select">
 	   	  <div class="file-select-button" id="fileName">EXCEL UPLOAD</div>
 	 	    <div class="file-select-name" id="excelName">No file chosen...</div>
@@ -110,14 +118,14 @@
 	<div class = "menuDiv" id = "menuTNodeRemove">삭제</div>
 	
 	<!-- 기본 FIRST NODE -->
-	<div class = "fNode" id = "fNode1"></div>
+	<div class = "fNode" id = "fNode1">STEP1</div>
 	<div class = "menu" id = "addFNode1">+</div>
 	<div class = "menu" id = "addSNode1">+</div>
 	<div class = "menu" id = "remove1">-</div>
 	<div class="bookmark-box" id = "fDiv1">
 		<a class="boxclose" id="fDiv1" onclick="closeDiv(this)"></a>
 		<div class="bookmark-title" id = "fWrite1" >
-			<input type = "button" onclick="fNodeWriteForm(this)" id = "fNodeForm1" style="float: right;"/>
+			<input type = "button" class = "nodeModifyBtn" onclick="fNodeWriteForm(this)" id = "fNodeForm1" style="float: right;"/>
 			<input type = "hidden" id = "fTitle1" value = "STEP TITLE" style="color:black;" />
 			<h3>STEP TITLE</h3>
 		</div>

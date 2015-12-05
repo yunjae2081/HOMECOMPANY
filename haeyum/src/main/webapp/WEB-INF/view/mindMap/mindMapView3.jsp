@@ -666,7 +666,10 @@ $(document).ready(function () {
 	<br/>
 	<h3 class="h3text">${lVO.lContent}</h3>
 	<div class="titleIntro">
-	[목차][목차][목차][목차][목차][목차][목차][목차][목차]	
+	[목차]<br/><br/>
+	<c:forEach var = "flist" items = "${fList}">
+	●${flist.fTitle} <br/>
+	</c:forEach>
 	</div>
 	</div>
 	<!-- 강의 소개 end -->
