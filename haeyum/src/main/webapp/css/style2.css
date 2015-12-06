@@ -282,20 +282,20 @@ hr.style15:after {
     text-align:center;
 	font-size: 30px;
 	font-weight: 400;
-	font-family: 'Merriweather', sans-serif;
+	font-family: sans-serif,'Hanna';
 	text-shadow: 8px 1px 5px rgba(0,0,0,0.4);
 }
 
 
 
 .alertDiv > h2{
-	padding-top:14px;
+	padding-top:0px;
     text-align:center;
 	font-size: 50px;
 	font-weight: 500;
-	font-family: 'Hanna', serif;
+	font-family: 'Merriweather', serif;
 	/*
 	text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
-	*/
 	text-shadow: 9px 11px 4px rgba(0,0,0,0.4);
+	*/
 }
