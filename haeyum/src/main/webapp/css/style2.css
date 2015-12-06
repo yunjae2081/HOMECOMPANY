@@ -211,7 +211,7 @@ section p, section ul li {
 	font: 400 15px/160% Helvetica, Arial, sans-serif 
 }
 
-
+/*show alert*/
 .dialog-box_info{
   border-radius: 1em;
   color: #fafafa;
@@ -245,7 +245,42 @@ section p, section ul li {
   */
 }
 
+/*Error alert*/
+.dialog-box_Error{
+  border-radius: 1em;
+  color: #fafafa;
+  margin: 5% auto;
+  max-width: 25em;
+  padding: 2em;
+  position: relative;
+  width: 95%;
+}
+.dialog-box_Error:before{
+  background: rgb(236, 25, 25);
+  content: attr(data-title);
+  left: 50%;
+  padding: 4px 1em;
+  position: absolute;
+  text-transform: uppercase;
+  top: -0.6em;
+  text-align: center;
+  transform: translateX(-50%);
+}
 
+.dialog-box_Error {
+  border: 0.2em solid rgba(242, 63, 63, 0.89);
+}
+.dialog-box_Error:before {
+
+  border-left: 0.2em solid #f9f9f9;
+  border-right: 0.2em solid #f9f9f9;
+  /*
+  color: #9ceefe;
+  */
+}
+
+
+/*********************/
 hr.style15 {
 	border-top: 4px double #8c8b8b;
 	text-align: center;
@@ -298,4 +333,13 @@ hr.style15:after {
 	text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
 	text-shadow: 9px 11px 4px rgba(0,0,0,0.4);
 	*/
+}
+
+
+
+.alertDiv > h3{
+    text-align:center;
+	font-size: 30px;
+	font-weight: 400;
+	font-family: sans-serif,'Hanna';
 }
