@@ -80,9 +80,7 @@
       if("${user}" != "") {
         $(".alertDiv").css("display", "block");
         $(".alertDiv").animate({duration:5000}, function () {
-	      	/*
         	$(".alertDiv").fadeOut(2000);
-	      	*/
         })
       }
       $(window).scroll(function(event) {
@@ -121,9 +119,10 @@
 <body style="background-color: #F6F6F6">
 <!-- 
  -->
-<div class = "alertDiv">
-	
-	${user.name}님
+<div data-title="Hello" class="alertDiv dialog-box_info">
+	<h2>${user.name}님</h2>
+	<hr class="style15">
+	<h1>좋은 하루 되세요</h1>
 </div>
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
