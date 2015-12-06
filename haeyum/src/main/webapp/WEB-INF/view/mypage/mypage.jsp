@@ -34,7 +34,7 @@
 				</span>
 			<br/>
 			<form id="modifyDiv" style="display: none;">
-							<div class='modify col-xs-6 form-group' style='margin-left:20px; width:400px;margin-top:10px;'>
+							<div class='modify col-xs-6 form-group' style='margin-left:16px; width:400px;margin-top:55px;'>
 							<input id='pPass' type='password' class='form-control' size='20' placeholder="현재 비밀번호" style="margin-bottom: 10px; height: 40px;"/>
 							<input id='mPass' type='password' class='form-control' size='20' placeholder="새로운 비밀번호"style="margin-bottom: 10px;height: 40px;"/>
 							<input id='mPassChk' type='password' class='form-control' size='20'placeholder="새로운 비밀번호 확인"style="margin-bottom: 10px;height: 40px;"/>
@@ -82,8 +82,6 @@
 	
 
 	<!-- end wrapper --> </section>
-
-
 
 
 </body>
