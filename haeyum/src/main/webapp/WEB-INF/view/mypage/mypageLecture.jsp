@@ -228,7 +228,12 @@ Lecture
 
 
 </div>
-</div>
 </section>
+
+<div style="margin-top:-130px;">
+<%@include file="../include/footer.jsp" %>
+</div>
+
+
 </body>
 </html>

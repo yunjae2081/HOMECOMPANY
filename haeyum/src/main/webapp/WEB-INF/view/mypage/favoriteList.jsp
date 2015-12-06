@@ -48,9 +48,6 @@ function fList(flist){
 		Html+="</ul>"
 		Html+="</div>"
 	})
-		Html+="<br/>"
-		Html+="<br/>"
-		Html+="<div align='center' id='favoritePage'></div>"
 		$("#favoriteBox").html(Html);
 }
 
@@ -112,14 +109,19 @@ function move(reqPage){
 
 
 <div style="padding-top: 200px;"></div>
-<div class="favForm">
+<div class="favForm" style="height: 1300px;">
 
 <div class="mypagetitle">
 Lecture favorites
 </div>
 <div id="favoriteBox" style="padding-bottom: 30px;"></div>
+<div align='center' id='favoritePage'></div>
 </div>
 </section>
+
+<div style="margin-top:-50px;">
+<%@include file="../include/footer.jsp" %>
+</div>
 
 
 </body>

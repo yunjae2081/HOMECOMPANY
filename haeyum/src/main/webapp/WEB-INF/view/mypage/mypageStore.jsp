@@ -255,6 +255,10 @@ Store
 </div>
 
 </div>
+
+<div style="margin-top:77px; margin-left: -202px;">
+<%@include file="../include/footer.jsp" %>
+</div>
 </section>
 </body>
 </html>
