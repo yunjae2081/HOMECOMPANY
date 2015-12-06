@@ -485,11 +485,12 @@ $(document).ready(function(){
           
           for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
-            if(preview.src != "/haeyum/images/png12.png") {
-//              console.log("img del");
+            if(preview.src != "http://localhost/haeyum/images/png12.png") {
+              console.log(1);
               preview.src = "/haeyum/images/png12.png";
             }
             else {
+              console.log(2);
               $("#store_file_"+iImgCount).remove();
               iImgCount--;
             }
