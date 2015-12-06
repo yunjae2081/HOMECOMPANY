@@ -6,7 +6,8 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mypageMain.css" />
-<title>Insert title here</title>
+<link rel="styleSheet" href="${pageContext.request.contextPath}/css/style2.css" />
+<title>Mypage</title>
 <%@include file="../include/common_top.jsp"%>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
 <script src="${pageContext.request.contextPath}/js/mypage.js"></script>
@@ -17,7 +18,10 @@
 
 	<section class="stretch">
 
-	
+<!-- 호오 -->
+
+
+<!--  -->
 	
 	<div class="wrapper preload" style="position: absolute;">
 		<center>
@@ -79,7 +83,11 @@
 		<span class="entypo-tools icon fa fa-star"></span> <span class="label">FAVORITE</span>
 		</section></a>
 	</div>
+
 	
+<div class="alertDiv" style="display: block;">
+<h1>어머님은 짜장면이 싫다고 하셨엉</h1>
+</div>
 
 
 	<!-- end wrapper --> </section>
