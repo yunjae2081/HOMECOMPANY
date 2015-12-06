@@ -135,7 +135,6 @@ function bestVideo(data){ // 인기순 비디오 정렬
   if(b_scroll == 0){ // 처음 인기순 버튼을 눌렀을 때 가져 올 값
     html ="<ul>";
   	$.each(data, function(index, value) {
-  	  alert(data[index].bestNo);
     	  html += "<li><a id = '" + data[index].bestNo + "' class='normal' href='#'><img src='${pageContext.request.contextPath}/mainImg/" + data[index].fileName + "' /></a><div class='info'>"
       	html += "<h3>" + data[index].title + "</h3>"
      	 	html += "<p>" + data[index].content + "</p></div></li>"
