@@ -81,8 +81,13 @@
 	</div>
 	
 
+
 	<!-- end wrapper --> </section>
 
+
+<div style="margin-top:-135px;">
+<%@include file="../include/footer.jsp" %>
+</div>
 
 </body>
 
