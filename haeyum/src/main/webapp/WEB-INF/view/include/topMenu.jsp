@@ -35,7 +35,6 @@ $(document).ready(function(){
 
 
 	$("#loginBtn").click(function(){
-		/*
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#id").val()==""){
 			alert("이메일을 입력해주세요.");
@@ -49,7 +48,6 @@ $(document).ready(function(){
 			
 			}
 		}
-		*/
 		$.ajax({
 			url:"${pageContext.request.contextPath}/member/login.json",
 			type:"POST",
@@ -223,7 +221,7 @@ function nullCheck(){
 							        <input id="jName"type="text" placeholder="Name"/>
 							      </div>
 							      <div class="u-form-group">
-							        <input id="jId" type="email" placeholder="Email" maxlength="12"/>
+							        <input id="jId" type="email" placeholder="Email"/>
 							      </div>
 							      <div class="u-form-group">
 							        <input id="jPassword" type="password" placeholder="Password" maxlength="12"/>
