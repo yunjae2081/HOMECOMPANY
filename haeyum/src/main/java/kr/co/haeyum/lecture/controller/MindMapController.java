@@ -70,6 +70,8 @@ public class MindMapController {
 					fav.setFavId(id);
 					if(service.selectFavCheck(fav) == 1){
 						mav.addObject("favCheck", "1");
+					} else {
+						mav.addObject("favCheck", "0");
 					}
 				}
 			}
@@ -131,6 +133,7 @@ public class MindMapController {
 	@ResponseBody
 	@RequestMapping("/wishVideo.do")
 	public void wishVideo(FavoriteVO fav, @RequestParam(value="favCheck", required=false, defaultValue="0") int favCheck) throws Exception {
+		System.out.println("check" + favCheck + "id" + fav.getFavId());
 		if(favCheck == 1) {
 			service.insertFavVideo(fav);
 		} else {
