@@ -434,20 +434,36 @@ $(document).ready(function() {
 		} );
 	})(jQuery);
 	
+	if("${favCheck}" == 1){
+	  $(".likeButton").toggleClass("liked");
+	}
+	var favCheck = "${favCheck}";
+	
 	$("#wishVideoBtn").click(function() {
+	  if(favCheck == 0) {
+	    favCheck = 1;
+	  } else {
+	    favCheck = 0;
+	  }
 	  if("${user.id}") {
 		  $.ajax({
 		    type : "post",
 		    url : "/haeyum/mindMap/wishVideo.do",
 		    data : {lNo : "${lVO.lNo}",
-		      			favId : "${user.id}"}
+		      			favId : "${user.id}",
+		      			favCheck : favCheck}
 		  });
 		  
 	  } else {
 	    console.log("로그인 필요함");
 	  }
 	});
+	
+	$(".likeButton").click(function() {
+		$(this).toggleClass("liked");
+	});
 });
+
 
 $(function() {
 	  $(document).on("click", ".expand", function() {
@@ -626,15 +642,6 @@ function deleteComment(cNo, bNo) {
 		}
 	})
 }
-
-
-
-
-$(document).ready(function () {
-	$(".likeButton").click(function() {
-		$(this).toggleClass("liked");
-	});
-});
 
 </script>
 </head>
