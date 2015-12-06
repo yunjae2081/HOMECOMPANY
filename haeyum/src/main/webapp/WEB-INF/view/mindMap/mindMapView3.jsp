@@ -843,7 +843,7 @@ function deleteComment(cNo, bNo) {
 <br/><br/><br/><br/><br/>
 </div>
 </section>
-<div style="margin-top:450px;">
+<div style="margin-top:950px;">
 <%@include file="../include/footer.jsp" %>
 </div>
 </body>
