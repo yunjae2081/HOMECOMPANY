@@ -509,6 +509,7 @@ $(document).ready(function(){
             if(confirm("삭제할거니")) {
               console.log(itemsArray);
               itemsArray.splice(itemsArray.indexOf2("i_count", $(this).attr("id").substring(6).trim()));
+              totalItem--;
               //배열에서 삭제해주기
               
               $(this).parent().remove();
