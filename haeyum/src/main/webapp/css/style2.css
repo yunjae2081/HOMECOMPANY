@@ -1,5 +1,8 @@
 @charset "utf-8";
+@import url(http://fonts.googleapis.com/css?family=Merriweather:300,700);
 <link href='https://fonts.googleapis.com/css?family=Fredoka+One' rel='stylesheet' type='text/css'>
+
+
 
 h1, h2, h3, h4 {
 	font-family: Helvetica, Arial, sans-serif
@@ -209,15 +212,66 @@ section p, section ul li {
 }
 
 
+.dialog-box_info{
+  border-radius: 1em;
+  color: #fafafa;
+  margin: 5% auto;
+  max-width: 25em;
+  padding: 2em;
+  position: relative;
+  width: 95%;
+}
+.dialog-box_info:before{
+  background: rgba(43, 42, 42, 0.86);
+  content: attr(data-title);
+  left: 50%;
+  padding: 4px 1em;
+  position: absolute;
+  text-transform: uppercase;
+  top: -0.6em;
+  text-align: center;
+  transform: translateX(-50%);
+}
+
+.dialog-box_info {
+  border: 0.2em solid rgba(204, 204, 204, 0.89);
+}
+.dialog-box_info:before {
+
+  border-left: 0.2em solid #f9f9f9;
+  border-right: 0.2em solid #f9f9f9;
+  /*
+  color: #9ceefe;
+  */
+}
+
+
+hr.style15 {
+	border-top: 4px double #8c8b8b;
+	text-align: center;
+}
+hr.style15:after {
+	content: '\002665';
+	display: inline-block;
+	position: relative;
+	top: -15px;
+	padding: 3px 9px;
+	background: #fff;
+	color: #8c8b8b;
+	font-size: 18px;
+}
+
+
+
 .alertDiv{
 	background: #fff;
 	width: 400px; 
 	height: 200px; 
 	position: absolute;
 	z-index: 999;
-	top: 200px;
+	top: 165px;
 	left: 40%;
-	box-shadow: 0 0 10px 10px #dfdfdf;
+	box-shadow: 0 0 30px 10px #f9f9f9;
 	display: none;
 /* 	transition: .5s; */
 }
@@ -225,10 +279,23 @@ section p, section ul li {
 
 
 .alertDiv > h1{
-	position: absolute;
-	top: 30px;
-	left: 30px;
+    text-align:center;
 	font-size: 30px;
 	font-weight: 400;
-	font-family: 'Fredoka One', cursive;
+	font-family: 'Merriweather', sans-serif;
+	text-shadow: 8px 1px 5px rgba(0,0,0,0.4);
+}
+
+
+
+.alertDiv > h2{
+	padding-top:14px;
+    text-align:center;
+	font-size: 50px;
+	font-weight: 500;
+	font-family: 'Hanna', serif;
+	/*
+	text-shadow: 1px 1px 5px rgba(0,0,0,0.4);
+	*/
+	text-shadow: 9px 11px 4px rgba(0,0,0,0.4);
 }
