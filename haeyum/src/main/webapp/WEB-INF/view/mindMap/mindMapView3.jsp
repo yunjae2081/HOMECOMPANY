@@ -665,20 +665,28 @@ function deleteComment(cNo, bNo) {
 <section class="stretch">
 <div class = "lecture-detail" style="margin-bottom: 100px;">
 	
-	<!-- 강의소개 -->
-	<div class="lectureIntro" align="left">
-	<h2 class="titletext"> ${lVO.lTitle}<span style="font-size: 25px;">with ${lVO.lId}</span></h2>
-	<span id="wishVideoBtn" class="likeButton">♥</span>
-	<br/>
-	<h3 class="h3text">${lVO.lContent}</h3>
-	<div class="titleIntro">
-	[목차]<br/><br/>
-	<c:forEach var = "flist" items = "${fList}">
-	●${flist.fTitle} <br/>
-	</c:forEach>
-	</div>
-	</div>
-	<!-- 강의 소개 end -->
+<!-- 강의소개 -->
+   <div class="lectureIntro" align="left">
+   <h2 class="titletext"> ${lVO.lTitle}
+   <br/>
+   <span style="font-size: 25px;">with</span>
+   <span style="font-size: 40px;color: #0e628c;">
+   ${lVO.lId}
+   </span> 
+   </h2>
+   <span id="wishVideoBtn" class="likeButton">♥</span>
+   <br/>
+   <h3 class="h3text">${lVO.lContent}</h3>
+   <div class="titleIntro">
+   <span style="font-weight: 800; font-size: 25px;">
+   [목차]<br/>
+   </span>
+   <c:forEach var = "flist" items = "${fList}">
+   ●${flist.fTitle} <br/>
+   </c:forEach>
+   </div>
+   </div>
+   <!-- 강의 소개 end -->
 
   <hr class="hrLecture" data-content="Video" style="margin-top:50px;margin-bottom: 50px;">	
 
