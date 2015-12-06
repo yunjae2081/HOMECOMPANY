@@ -149,8 +149,8 @@ public class LectureRegistController {
 			
 			//lesson
 			for(int j = 0; j < Integer.parseInt(req.getParameter("totalLCount"+i)); j++){
-				if(Integer.parseInt(req.getParameter("lesson-sNum"+ ++lCount)) == i){
-					System.out.println("lesson등록 : " + lCount);
+				if(req.getParameter("lesson-sNum"+ ++lCount) != null && Integer.parseInt(req.getParameter("lesson-sNum"+ lCount)) == i){
+					System.out.println("lesson등록 : " + i);
 					String lesson = req.getParameter("lesson-lText"+ lCount);
 					String playTime = req.getParameter("lesson-lPlayTime" + lCount);
 					String stayTime = req.getParameter("lesson-lSTime" + lCount);
@@ -179,15 +179,16 @@ public class LectureRegistController {
 					service.insertLesson(lessonVO);
 					
 					
-				}else {
-					--lCount;
-					break;
+				}
+				else {
+					--j;
+//					--lCount;
 				}
 			}
 			
 			//item
 			for(int j = 0; j < Integer.parseInt(req.getParameter("totalICount"+i)); j++){
-				if(Integer.parseInt(req.getParameter("item-sNum" + ++iCount)) == i){
+				if(req.getParameter("item-sNum" + ++iCount) != null && Integer.parseInt(req.getParameter("item-sNum" + iCount)) == i){
 					String name = req.getParameter("item-iTitle" + iCount);
 					String content = req.getParameter("item-iContent" + iCount);
 					int price = Integer.parseInt(req.getParameter("item-iPrice" + iCount));
@@ -235,8 +236,9 @@ public class LectureRegistController {
 					
 					
 				} else {
-					--iCount;
-					break;
+					--j;
+//					--iCount;
+//					break;
 				}
 			}
 			
