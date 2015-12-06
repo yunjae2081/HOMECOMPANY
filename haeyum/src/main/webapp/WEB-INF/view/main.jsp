@@ -120,9 +120,9 @@
 <!-- 
  -->
 <div data-title="Hello" class="alertDiv dialog-box_info">
-	<h2>${user.name}님</h2>
+	<h2>Hello</h2>
 	<hr class="style15">
-	<h1>좋은 하루 되세요</h1>
+	<h1>${user.name}님</h1>
 </div>
 <%@include file="include/topMenu.jsp" %>
 	<div style="padding-top: 140px;"></div>
