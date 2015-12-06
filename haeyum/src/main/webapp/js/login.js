@@ -30,7 +30,6 @@ $(document).ready(function(){
 
 
 	$("#loginBtn").click(function(){
-		/*
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#id").val()==""){
 			alert("이메일을 입력해주세요.");
@@ -44,7 +43,7 @@ $(document).ready(function(){
 			
 			}
 		}
-		*/
+
 		$.ajax({
 			url:"${pageContext.request.contextPath}/member/login.json",
 			type:"POST",
