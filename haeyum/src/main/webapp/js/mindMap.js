@@ -1156,12 +1156,17 @@ function upload() {
   // V_INDEX DATA
   for(var i = 0; i < liCount.length; i++) {
 //    html += "<input type='hidden' name='liCountSNum" + liCount[i].s_num + "' value='" + liCount[i].s_num + "' />";
+    console.log("totalCount");
+    console.log("s_num" + liCount[i].s_num);
+    console.log("lession" + liCount[i].totalLCount);
+    console.log("item" + liCount[i].totalICount);
     html += "<input type='hidden' name='totalLCount" + liCount[i].s_num + "' value='" + liCount[i].totalLCount + "'/>"
     html += "<input type='hidden' name='totalICount" + liCount[i].s_num + "' value='" + liCount[i].totalICount + "'/>"
   }
   // LESSON DATA
   for(var i = 0; i < lessonArray.length; i++) {
-    console.log("lesson-sNum" + lessonArray[i].l_count);
+    console.log("lesson-sNum" + lessonArray[i].s_num);
+    console.log("lesson-count" + lessonArray[i].l_count);
     html += "<input type='hidden' name = 'lesson-sNum" + lessonArray[i].l_count + "' value='" + lessonArray[i].s_num + "' />";
 //    html += "<input type='hidden' name = 'lesson-lCount" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_count + "' />";
     html += "<input type='hidden' name = 'lesson-lPlayTime" + lessonArray[i].l_count + "' value='" + lessonArray[i].l_playTime + "' />";
@@ -1174,7 +1179,8 @@ function upload() {
   
   // ITEM DATA
   for(var i = 0; i < itemsArray.length; i++) {
-    console.log("item-sNum" + itemsArray[i].i_count);
+    console.log("item-sNum" + itemsArray[i].s_num);
+    console.log("item-count" + itemsArray[i].i_count);
     html += "<input type='hidden' name = 'item-sNum" + itemsArray[i].i_count + "' value='" + itemsArray[i].s_num + "' />";
 //    html += "<input type='hidden' name = 'item-iCount" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_count + "' />";
     html += "<input type='hidden' name = 'item-iTitle" + itemsArray[i].i_count + "' value='" + itemsArray[i].i_title + "' />";

@@ -481,6 +481,7 @@ $(document).ready(function(){
           var iNumber = $.trim($.trim(strpac[1]));
           
           itemsArray.push(new VItems(sNum, iCount, title, content, price, iNumber));
+          console.log(itemsArray);
           totalItem++;
           
           for(var i = 4 ; i > 0; i--) {
@@ -508,7 +509,8 @@ $(document).ready(function(){
           $("#i_del_" + iCount).click(function() {
             if(confirm("삭제할거니")) {
               console.log(itemsArray);
-              itemsArray.splice(itemsArray.indexOf2("i_count", $(this).attr("id").substring(6).trim()));
+              itemsArray.splice(itemsArray.indexOf2("i_count", $(this).attr("id").substring(6).trim()), 1);
+              console.log(itemsArray);
               totalItem--;
               //배열에서 삭제해주기
               
