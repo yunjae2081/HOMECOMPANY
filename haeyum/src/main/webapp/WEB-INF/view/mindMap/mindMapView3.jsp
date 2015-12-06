@@ -834,8 +834,10 @@ $(document).ready(function () {
 	</div>
 <br/>
 <br/><br/><br/><br/><br/>
-<div style="padding-bottom: 100px;"></div>
 </div>
 </section>
+<div style="margin-top:450px;">
+<%@include file="../include/footer.jsp" %>
+</div>
 </body>
 </html>
