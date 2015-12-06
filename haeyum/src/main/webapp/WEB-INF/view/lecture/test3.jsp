@@ -151,7 +151,7 @@ function openPop() {
 </form>
 </div>
 </section>
-<div style="margin-left: -50px;margin-top:200px; ">
+<div style="margin-left: -50px;margin-top:790px; ">
 <%@include file="../include/footer.jsp" %>
 </div>
 </body>
