@@ -70,7 +70,6 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoMain.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/lightbox.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mindMap.css" type="text/css" />
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/divStyle.css" type="text/css" />
 </head>
 <script>
 (function () {
@@ -79,8 +78,8 @@
     $(document).ready(function () {
       
       if("${user}" != "") {
-        $(".alertDiv").css("display", "block");
-        $(".alertDiv").animate({duration:5000}, function () {
+        $("#loginAlertDiv").css("display", "block");
+        $("#loginAlertDiv").animate({duration:5000}, function () {
         	$(".alertDiv").fadeOut(2000);
         })
       }
@@ -120,7 +119,7 @@
 <body style="background-color: #F6F6F6">
 <!-- 
  -->
-<div data-title="Hello" class="alertDiv dialog-box_info">
+<div data-title="Hello" id="loginAlertDiv"class="alertDiv dialog-box_info">
 	<h2>Hello</h2>
 	<hr class="style15">
 	<h1>${user.name}님</h1>
@@ -336,7 +335,7 @@
 				<c:forEach var="best" items="${best}">
 					<a href="javascript:viewDetail(${best.bestNo})" > <!-- light박스 -->
 					<div class="chartItem">
-						<div class="lectureImg"><img src="${pageContext.request.contextPath}/mainImg/${best.fileName}"></div>
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${best.fileName}"></div>
 						<div class="lectureText">
 							<h3>${best.title}</h3> <br/>
 							<h4>${best.content}</h4></div>
@@ -353,7 +352,7 @@
 				<c:forEach var="latest" items="${latest}">
 					<a href="javascript:viewDetail(${latest.latestNo})"> <!-- light박스 -->
 					<div class="chartItem">
-						<div class="lectureImg"><img src="${pageContext.request.contextPath}/mainImg/${latest.fileName}"></div>
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${latest.fileName}"></div>
 						<div class="lectureText">
 							<h3>${latest.title}</h3> <br/>
 							<h4>${latest.content}</h4></div>
@@ -388,9 +387,7 @@
 			</div>
 		</div>
 		<div>
-		<article>What Is Mind Map?<br/><br/>
-		혜;윰은 체계화 된 커리큘럼을 제작할 수 있도록 마인드 맵을 제공합니다. 각각의 노드마다 정보를 담을 수 있으며, 가장 큰 노드에는 챕터의 제목과 내용, 두번째 노드에는 각 절에대한 동영상을 등록할 수 있습니다. 등록된 동영상은 onePointLesson을 통하여 편집을 할 수 있고, 동영상 마다 원하는 제품을 등록하여 판매 할 수 있습니다. 사용자는 이렇게 체계화된 마인드 맵 커리큘럼으로 원하는 강좌를 들을 수 있고, 또한 강좌에 나오는 제품이나 관련된 링크, 과제 등을 받아서 사용할 수 있습니다.
-		 </article>
+		<article>마인드맵 소개글 </article>
 		</div>
 		</div>
 		
