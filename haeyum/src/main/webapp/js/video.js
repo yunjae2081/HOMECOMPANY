@@ -486,11 +486,9 @@ $(document).ready(function(){
           for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
             if(preview.src != "http://localhost/haeyum/images/png12.png") {
-              console.log(1);
               preview.src = "/haeyum/images/png12.png";
             }
             else {
-              console.log(2);
               $("#store_file_"+iImgCount).remove();
               iImgCount--;
             }
@@ -502,19 +500,27 @@ $(document).ready(function(){
                                            "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 83px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 16px;'>" + price + "원</p>" +
                                            "<p style='float: left; font-size: 11px; margin-bottom: 4px; margin-top: 0px; color: #707070; width: 85px; overflow: hidden; white-space: nowrap; text-overflow: ellipsis; box-sizing: border-box; padding: 1px 1px; border: 2px solid #c2c2c2; background-color: white; margin-left: 9px;'>" + iNumber + "개</p>" +
                                          "</div>" +
-                                         "<div class='round-del-button id='i_del_" + iCount + "'>del</div>");
+                                         "<div class='round-del-button' id='i_del_" + iCount + "'>del</div>");
           closeBox();
           
-//          console.log("sdfsdf  " + $("#i_del_" + iCount));
-  
-          //삭제 안돼.
           //수정아 어디니
+          console.log("iCount" + iCount);
           $("#i_del_" + iCount).click(function() {
             if(confirm("삭제할거니")) {
-              
+              console.log(itemsArray);
+              itemsArray.splice(itemsArray.indexOf2("i_count", $(this).attr("id").substring(6).trim()));
               //배열에서 삭제해주기
               
               $(this).parent().remove();
+              for(var i = 1; i <= 4; i++) {
+                var img = document.getElementsByName("sNum"+sNum+"iCount" + $(this).attr("id").substring(6).trim() +"imgCount" + i);
+                if(img[0]){
+                  console.log(img[0]);
+                  img[0].remove();
+                } else {
+                  break;
+                }
+              }
               //        var del_index = lessonArray.indexOf("l_count", $(this).attr("id").substring(6).trim());
               //        console.log(del_index);
               //        console.log(lessonArray[del_index]);
@@ -541,8 +547,7 @@ $(document).ready(function(){
     $(".lessonArea").css("display", "block");
     $(".backDrop, .box").animate({"opacity":"0"}, 500, function () {
       $(".backDrop, .box").css({"display":"none"});
-      $("html, body").css("overflow-y","auto");
-      $("body").css("overflow-y","auto");
+      $("html").css("overflow-y","auto");
     });
   }
   
@@ -578,6 +583,7 @@ $(document).ready(function(){
 });   //(document)ready
 
 var sCheck = -1;
+//sCheck 체크 필요
 Array.prototype.indexOf2 = function objectIndexOf(property, value) {
   if (sCheck == value) {
     return -1;
@@ -589,7 +595,6 @@ Array.prototype.indexOf2 = function objectIndexOf(property, value) {
   }
   return -1;
 }
-
 
 function selectImage(imgNum, currImgCount) {
   
