@@ -33,12 +33,12 @@
 		<a href="#">
 		<section class="grid-unit top-left">
 			<div class="swing-panel">
-				<span class="desc">&nbsp;&nbsp;${user.id}&nbsp;&nbsp;
-			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2" style="vertical-align: top;"></button>
+				<span class="desc">&nbsp;&nbsp;${user.id}<br/>
+			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2" style="vertical-align: top; margin: 22px;"></button>
 				</span>
 			<br/>
 			<form id="modifyDiv" style="display: none;">
-							<div class='modify col-xs-6 form-group' style='margin-left:16px; width:400px;margin-top:55px;'>
+							<div class='modify col-xs-6 form-group' style='margin-left:16px; width:400px;margin-top:92px;'>
 							<input id='pPass' type='password' class='form-control' size='20' placeholder="현재 비밀번호" style="margin-bottom: 10px; height: 40px;"/>
 							<input id='mPass' type='password' class='form-control' size='20' placeholder="새로운 비밀번호"style="margin-bottom: 10px;height: 40px;"/>
 							<input id='mPassChk' type='password' class='form-control' size='20'placeholder="새로운 비밀번호 확인"style="margin-bottom: 10px;height: 40px;"/>
