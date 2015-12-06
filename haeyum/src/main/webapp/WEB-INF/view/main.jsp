@@ -70,6 +70,7 @@
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/videoMain.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/lightbox.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mindMap.css" type="text/css" />
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/divStyle.css" type="text/css" />
 </head>
 <script>
 (function () {
@@ -335,7 +336,7 @@
 				<c:forEach var="best" items="${best}">
 					<a href="javascript:viewDetail(${best.bestNo})" > <!-- light박스 -->
 					<div class="chartItem">
-						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${best.fileName}"></div>
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/mainImg/${best.fileName}"></div>
 						<div class="lectureText">
 							<h3>${best.title}</h3> <br/>
 							<h4>${best.content}</h4></div>
@@ -352,7 +353,7 @@
 				<c:forEach var="latest" items="${latest}">
 					<a href="javascript:viewDetail(${latest.latestNo})"> <!-- light박스 -->
 					<div class="chartItem">
-						<div class="lectureImg"><img src="${pageContext.request.contextPath}/images/${latest.fileName}"></div>
+						<div class="lectureImg"><img src="${pageContext.request.contextPath}/mainImg/${latest.fileName}"></div>
 						<div class="lectureText">
 							<h3>${latest.title}</h3> <br/>
 							<h4>${latest.content}</h4></div>
