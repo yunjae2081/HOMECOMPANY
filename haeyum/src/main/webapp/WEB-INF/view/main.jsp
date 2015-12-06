@@ -395,6 +395,8 @@
 
 			</section>
 	</section>
+	<div style="margin-top: 613px;">
 <%@include file="include/footer.jsp" %>
+	</div>
 </body>
 </html>
