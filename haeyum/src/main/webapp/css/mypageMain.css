@@ -48,7 +48,7 @@ body,
   margin:0 auto;
   padding-top:200px;
  
-  width:1000px;
+  width:1100px;
   left: 0;
   top: 0;
   right: 0;
@@ -133,7 +133,8 @@ body,
 
 .top-left .label {
 	font-size:50px;
-	padding: 50px 100px 0 100px;
+	margin: 97px;
+	text-align: center;
   /*
   transform: rotate(45deg);
   */
@@ -142,8 +143,8 @@ body,
 
 .top-right .label {
   font-size:50px;
-  left:100px;
-  bottom: 100px;
+  left:25%;
+  bottom: 40%;
   /*
   transform: rotate(-45deg);
   */
@@ -151,8 +152,8 @@ body,
 
 .bottom-left .label {
   font-size:50px;
-  top: 100px;
-  right: 150px;
+  top: 40%;
+  right: 32%;
   /*
   transform: rotate(-45deg);
   */
@@ -160,8 +161,8 @@ body,
 
 .bottom-right .label {
   font-size:50px;
-  top: 100px;
-  left: 100px;
+  top: 40%;
+  left: 25%;
   /*
   transform: rotate(45deg);
   */
@@ -169,7 +170,7 @@ body,
 
 .top-left .desc {
   padding:3%;
-  top: 0;
+  top: 18px;
   left: 0;
 }
 
