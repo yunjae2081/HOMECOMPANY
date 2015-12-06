@@ -37,12 +37,13 @@ $(document).ready(function(){
 	$("#loginBtn").click(function(){
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#id").val()==""){
-			alert("이메일을 입력해주세요.");
+			$("#alertEmail").css("display","block");			
+			$("#alertEmail").fadeOut(2000);
 			return false;
 		}else{
 			if(!regEmail.test($("#id").val())){
-				
-			alert("이메일 형식이 맞지 않습니다.");
+				$("#EmailAlert").css("display","block");			
+				$("#EmailAlert").fadeOut(2000);
 			$("#id").focus();
 			return false;
 			
@@ -65,26 +66,30 @@ $(document).ready(function(){
 		
 		var regEmail = /([\w-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([\w-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$/;
 		if($("#jName").val()==""){
-			alert("이름을 입력해주세요.");
+			$("#jNameAlert").css("display","block");			
+			$("#jNameAlert").fadeOut(2000);
 			$("#jName").focus();
 			return false;
-		}else if($("#jPassword").val==""){
-			alert("패스워드 입력");
+		}else if($("#jPassword").val()==""){
+			$("#jPassAlert").css("display","block");			
+			$("#jPassAlert").fadeOut(2000);
 			$("#jPassword").focus();
 			return false;		
 		}else if($("#jPassword").val()!=$("#jPasswordChk").val()){
-			alert("비밀번호가 맞지않다.");
+			$("#jPassChkAlert").css("display","block");			
+			$("#jPassChkAlert").fadeOut(2000);
 			$("#jPasswordChk").focus();
 			return false;
 		}
 		if($("#jId").val()==""){
-			alert("이메일을 입력해주세요.");
+			$("#jIdAlert").css("display","block");			
+			$("#jIdAlert").fadeOut(2000);
 			$("jId").focus();
 			return false;
 		}else{
 			if(!regEmail.test($("#jId").val())){
-				
-			alert("이메일 형식이 맞지 않습니다.");
+				$("#EmailAlert").css("display","block");			
+				$("#EmailAlert").fadeOut(2000);
 			$("jId").focus();
 			return false;
 			
@@ -135,6 +140,38 @@ function nullCheck(){
 </script>
 
 <header class="header">
+<!-- alert -->
+<div id = 'alertEmail' data-title="EMAIL" class="alertDiv dialog-box_info" style="display: none;left: 64%">
+	<h3>이메일을 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<div id = 'EmailAlert' data-title="EMAIL" class="alertDiv dialog-box_info" style="display: none;left: 64%">
+	<h3>이메일을 올바르게 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<div id = 'jNameAlert' data-title="NAME" class="alertDiv dialog-box_info" style="display: none;left: 64%;padding-top: 3%;">
+	<h3>이름을 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<div id = 'jEmailAlert' data-title="EMAIL" class="alertDiv dialog-box_info" style="display: none;left: 64%;padding-top: 3%;">
+	<h3>이메일을 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<div id = 'jPassAlert' data-title="PASSWORD" class="alertDiv dialog-box_info" style="display: none;left: 64%;padding-top: 3%;">
+	<h3>비밀번호를 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<div id = 'jPassChkAlert' data-title="PASSWORD" class="alertDiv dialog-box_info" style="display: none;left: 64%;padding-top: 3%;">
+	<h3>비밀번호가 일치하지 않습니다.</h3>
+	<hr class="style15">
+</div>
+<div id = 'jIdAlert' data-title="NAME" class="alertDiv dialog-box_info" style="display: none;left: 64%;padding-top: 3%;">
+	<h3>이메일을 입력해주세요.</h3>
+	<hr class="style15">
+</div>
+<!--  -->
+
+</div>
 	<div class="container-fluid">
 		<nav>
 			<div class="container">
