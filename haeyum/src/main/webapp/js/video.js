@@ -358,7 +358,7 @@ $(document).ready(function(){
         var l_s_time = Math.floor(l_playTime/60) + ":" +  l_s_rest;
         
         
-        if(confirm("등록할거니")){
+//        if(confirm("등록할거니")){
           console.log("lCount" + lCount);
           lessonArray.push(new Lesson (sNum, lCount, l_playTime, l_text, l_left, l_top, l_color, l_sTime) );
 //          console.log("lessonLength : " + lessonArray.length + " / lCount  : " + lCount);
@@ -374,7 +374,7 @@ $(document).ready(function(){
                                                "<div id='l_del_" +  lCount + "' class='round-del-button'>del</div>");
           
           $("#l_del_"+ lCount).click(function(){
-             if(confirm("삭제할거니")) {
+//             if(confirm("삭제할거니")) {
                
                $(this).parent().remove();
                var del_index = lessonArray.indexOf2("l_count", $(this).attr("id").substring(6).trim());
@@ -383,7 +383,7 @@ $(document).ready(function(){
                lessonArray.splice(del_index, 1);  //삭제시 앞으로 index 이동
                totalLesson--;
                
-             }
+//             }
           });
           
           $("#l_ul").prepend("<li id='li_" + ++lCount + "'>" +
@@ -391,7 +391,7 @@ $(document).ready(function(){
                             "</li>");
           addBtn();
           
-        }
+//        }
       });  //saveBtn click
       
     });  //addBtn click
@@ -469,10 +469,10 @@ $(document).ready(function(){
     var strpac = pac.split('/');
     
     if(!strpac[0] || !strpac[1]){
-      alert("가격과 개수를 '/'로 구분해주세요  popup창으로 변경할 예정입니다.");
+//      alert("가격과 개수를 '/'로 구분해주세요  popup창으로 변경할 예정입니다.");
     } else {
     
-        if(confirm("등록할거니")) {
+//        if(confirm("등록할거니")) {
           
           popupOpen = false;
           var title = $("#v_store_title").val();
@@ -507,7 +507,7 @@ $(document).ready(function(){
           //수정아 어디니
           console.log("iCount" + iCount);
           $("#i_del_" + iCount).click(function() {
-            if(confirm("삭제할거니")) {
+//            if(confirm("삭제할거니")) {
               console.log(itemsArray);
               itemsArray.splice(itemsArray.indexOf2("i_count", $(this).attr("id").substring(6).trim()), 1);
               console.log(itemsArray);
@@ -528,7 +528,7 @@ $(document).ready(function(){
               //        console.log(del_index);
               //        console.log(lessonArray[del_index]);
               //        lessonArray.splice(del_index, 1);  //삭제시 앞으로 index 이동
-            }
+//            }
           });
           
           $("#i_ul").prepend("<li id='i_li_" + ++iCount + "'>" +
@@ -541,7 +541,7 @@ $(document).ready(function(){
           $("#v_store_content").val("");
           $("#v_store_pac").val("");
           
-        } //내부if조건 (확인을 눌렀을 경우)
+//        } //내부if조건 (확인을 눌렀을 경우)
       } //else 조건
     });  //스토어 저장 버튼
   
@@ -562,7 +562,7 @@ $(document).ready(function(){
   
   $("#v-regist").click(function() {
     
-    if(confirm("등록할거니")) {
+//    if(confirm("등록할거니")) {
       
       $(".vView").css("display", "none");
       $(".vTool").css("width", "737px");
@@ -579,7 +579,7 @@ $(document).ready(function(){
       //메인이미지 설정확인
       shoot();
       $("html, body").animate({scrollTop:$(".mView").offset().top - 200});
-    }
+//    }
     
   });
   
