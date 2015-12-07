@@ -30,6 +30,8 @@ public class StoreController {
 
 		System.out.println("물품번호 ㅣ " + no);
 		ModelAndView mav = new ModelAndView("/store/storeDetail");
+		
+		service.updateClick(no);
 
 		List<ProductImgVO> prdImg = service.selectStoreImg(no);
 		ProductVO pVo = service.selectStoreDetail(no);

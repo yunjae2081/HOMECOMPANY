@@ -81,4 +81,7 @@ public class StoreServiceImpl implements StoreService{
 		dao.insertSell(sVO);
 	}
 	
+	public void updateClick(int no) throws Exception {
+		dao.updateClick(no);
+	}
 }
