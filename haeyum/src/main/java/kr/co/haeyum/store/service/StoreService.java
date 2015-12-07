@@ -41,6 +41,8 @@ public interface StoreService {
 	public void insertBuy(BuyVO bVO) throws Exception;
 
 	public void insertSell(SellVO sVO) throws Exception;
+	
+	public void updateClick(int no) throws Exception;
 
 
 }
