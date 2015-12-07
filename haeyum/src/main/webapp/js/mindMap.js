@@ -1427,3 +1427,20 @@ $(document).on("mouseup", ".myCanvas", function () {
   $(".myCanvas").removeClass("move");
   allDrag = false;;
 })
+
+function confirm () {
+  $("#registBtn").css("display", "block");
+  return false;
+}
+
+$(document).on("click", "#registCancle", function () {
+  $("#registBtn").css("display", "none");
+})
+
+$(document).on("click", "#registEnter", function () {
+  $("#registBtn").css("display", "none");
+  var form = document.getElementById("mapForm");
+  upload();
+  form.submit();
+})
+
