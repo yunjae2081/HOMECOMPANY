@@ -43,6 +43,8 @@ public interface MypageService {
 	public List<FavoriteVO> selectFavoriteList(myPageVO pagevo)throws Exception;
 
 	public int selectFavoriteLastPage(String id)throws Exception;
+	
+	public FavoriteVO selectFavImg(FavoriteVO fav) throws Exception;
 
 
 

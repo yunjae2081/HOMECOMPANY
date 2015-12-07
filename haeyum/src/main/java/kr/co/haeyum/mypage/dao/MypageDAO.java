@@ -71,5 +71,9 @@ public class MypageDAO {
 	public int selectFavoriteLastPage(String id)throws Exception {
 		return session.selectOne("kr.co.mypage.selectFavoriteLastPage",id);
 	}
+	
+	public FavoriteVO selectFavImg(FavoriteVO fav) throws Exception {
+		return session.selectOne("kr.co.mypage.selectFavImg",fav);
+	}
 
 }
