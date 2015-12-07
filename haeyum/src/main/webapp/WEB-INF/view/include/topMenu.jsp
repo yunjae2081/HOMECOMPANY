@@ -171,7 +171,6 @@ function nullCheck(){
 </div>
 <!--  -->
 
-</div>
 	<div class="container-fluid">
 		<nav>
 			<div class="container">
@@ -232,9 +231,8 @@ function nullCheck(){
 							    
 							    <!-- 로그인 -->
 							    <div class="email-login">
-							    <div class="social-login">
+							    <div class="social-login" style="padding-top: 23px;">
 								
-							       <a href="" class="faceBtn">Login with Facebook</a>
 							      	
 							    </div>
 							      <div class="u-form-group">
