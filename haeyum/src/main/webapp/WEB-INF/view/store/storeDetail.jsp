@@ -7,12 +7,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
 <%@include file="../include/common_top.jsp"%>
+<%@include file="../include/storeSideMenu.jsp" %>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/storeDetail.css" type="text/css" />
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/purchase.css" type="text/css" />
 
 </head>
 <body>
-<%@include file="../include/storeSideMenu.jsp" %>
 	<%@include file="../include/topMenu.jsp" %>
 <script src="${pageContext.request.contextPath}/js/avgrund.js"></script>
 
