@@ -149,7 +149,8 @@ span {
 
 .detail {
   margin: 20px 0 0 0;
-  padding-left:100px;
+  padding-left:27px;
+  padding-right:35px;
   display: none;
   line-height: 22px;
 }
