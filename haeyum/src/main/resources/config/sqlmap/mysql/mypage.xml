@@ -115,12 +115,17 @@ and BUY_ID=#{id}
 
 <!-- 즐겨찾기 -->
 <select id="selectFavoriteList" parameterType="mypagevo" resultType="favoritevo">
-select l.l_NO lNo,l.L_TITLE lTitle,l.L_CONTENT lContent,l.L_CATEGORY lCategory,v.I_REAL_FILE_NAME lRealFileName
-from haeyum.tbl_fav_video f,haeyum.tbl_lecture l,haeyum.tbl_video v
-where l.L_NO=f.L_NO  
-and FAV_ID=#{id}
-having min(v_NO)	
-order by lNo desc
+<!-- select l.l_NO lNo,l.L_TITLE lTitle,l.L_CONTENT lContent,l.L_CATEGORY lCategory,v.I_REAL_FILE_NAME lRealFileName -->
+<!-- from haeyum.tbl_fav_video f,haeyum.tbl_lecture l,haeyum.tbl_video v -->
+<!-- where l.L_NO=f.L_NO   -->
+<!-- and FAV_ID=#{id} -->
+<!-- having min(v_NO)	 -->
+<!-- order by lNo desc -->
+<!-- limit #{reqIndex},10 -->
+
+select fav_no favNo, l_no lNo, fav_id favId
+from tbl_fav_video
+where fav_id = #{id}
 limit #{reqIndex},10
 
 </select>
@@ -131,7 +136,14 @@ select count(l.l_NO) lNo
 from haeyum.tbl_fav_video f,haeyum.tbl_lecture l
 where l.L_NO=f.L_NO  
 and FAV_ID=#{id}
+</select>
 
+<select id="selectFavImg" parameterType="favoritevo" resultType="favoritevo">
+	select l.l_title lTitle, l.l_content lContent, v.i_real_file_name iRealFileName
+	from tbl_video v, tbl_lecture l
+	where l.l_no = v.l_no and l.l_no = #{lNo}
+	group by v.l_no
+	having min(s_no)
 </select>
 
 
