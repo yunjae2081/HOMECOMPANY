@@ -94,6 +94,9 @@ public class MyPageServiceImpl implements MypageService {
 		return dao.selectFavoriteLastPage(id);
 	}
 	
+	public FavoriteVO selectFavImg(FavoriteVO fav) throws Exception {
+		return dao.selectFavImg(fav);
+	}
 	
 
 

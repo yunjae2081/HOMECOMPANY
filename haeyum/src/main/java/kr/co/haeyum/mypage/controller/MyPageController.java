@@ -139,6 +139,13 @@ public class MyPageController {
 		myPageVO pagevo = new myPageVO(reqPage, lastPage);
 		pagevo.setId(id);
 		List<FavoriteVO> flist = service.selectFavoriteList(pagevo);
+		for(FavoriteVO fav: flist) {
+			System.out.println(fav.getlNo());
+			FavoriteVO temp = service.selectFavImg(fav);
+			fav.setlRealFileName(temp.getlRealFileName());
+			fav.setlTitle(temp.getlTitle());
+			fav.setlContent(temp.getlContent());
+		}
 		map.put("flist", flist);
 		map.put("pagevo", pagevo);
 		
