@@ -12,6 +12,25 @@ public class ProductVO {
 	private int pCount;
 	private String pRegDate;
 	
+	private String pClick;
+	private String lCategory;
+	
+	public String getpClick() {
+		return pClick;
+	}
+
+	public void setpClick(String pClick) {
+		this.pClick = pClick;
+	}
+
+	public String getlCategory() {
+		return lCategory;
+	}
+
+	public void setlCategory(String lCategory) {
+		this.lCategory = lCategory;
+	}
+
 	//sell
 	private String sellNo;
 	private String sellId;
