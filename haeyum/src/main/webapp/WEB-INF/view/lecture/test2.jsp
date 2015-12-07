@@ -93,7 +93,7 @@
 	<div class="bookmark-box" id = "fDiv1">
 		<a class="boxclose" id="fDiv1" onclick="closeDiv(this)"></a>
 		<div class="bookmark-title" id = "fWrite1" >
-			<input type = "button" onclick="fNodeWriteForm(this)" id = "fNodeForm1" style="float: right;"/>
+			<input class = "modifyBtn" type = "button" onclick="fNodeWriteForm(this)" id = "fNodeForm1" style="float: right; background-image: url('${pageContext.request.contextPath}/images/pen.png');"/>
 			<input type = "hidden" id = "fTitle1" value = "STEP TITLE" style="color:black;" />
 			<h3>STEP TITLE</h3>
 		</div>

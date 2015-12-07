@@ -4,7 +4,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>혜;윰</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <%@ include file = "../include/common_top.jsp" %>
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/registLecture.css" />
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mindMap.css" />
