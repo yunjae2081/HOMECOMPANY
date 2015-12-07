@@ -29,7 +29,7 @@ $(document).ready(function(){
   	   location.href = "${pageContext.request.contextPath}/store/storeList.do";
   	  }
   	  else{
-  	   location.href = "${pageContext.request.contextPath}/side/video.do?category=" + category;
+  	   location.href = "${pageContext.request.contextPath}/side/category.do?category=" + category;
   	  }		
 	});
 });
