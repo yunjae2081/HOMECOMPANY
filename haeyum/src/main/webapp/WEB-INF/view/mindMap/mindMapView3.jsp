@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>혜;윰</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <%@ include file = "../include/common_top.jsp" %>
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mindMap.css" />
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/divStyle.css" />
@@ -504,6 +505,7 @@ function registBoard(){
     data:{bId:id, bContent:bContent, lNo:"${lVO.lNo}", bName:"${user.name}"},
     success: function (data, status) {
 			callBoard(1);
+			$("#bContent").val("");
     }
   })
 }
@@ -518,7 +520,7 @@ function viewList(data) {
 	  html += "<a class='expand' id = '" + bList[index].bNo + "' >";
 	  html += "<div class='right-arrow'>+</div>"
 	  html += "<div class='icon london'></div>";
-	  html += "<h2>" + bList[index].bName +"&nbsp;&nbsp;&nbsp;"+ bList[index].bRegDate + "</h2>";
+	  html += "<h2>" + bList[index].bId +"&nbsp;&nbsp;&nbsp;"+ bList[index].bRegDate + "</h2>";
 	  html += "<span class='spanView'>" + bList[index].bContent + "</span>";
 	  if(sessionId == bList[index].bId) {
 		  html += "<input type='button' value='삭제' onclick='delectBoard(" + bList[index].bNo + ")' class='btn btn-default' style='float:right'/>";
@@ -551,6 +553,7 @@ $(document).on("click", "input[id^='cRegist']", function () {
     data: {bNo:bNo, cId:cId, cContent:cContent},
     success: function (data, status) {
       viewComment(data, bNo);
+      $("#comment" + bNo).val("");
     }
   })
 })
