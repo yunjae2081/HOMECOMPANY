@@ -146,6 +146,16 @@ function openPop() {
   </fieldset>
   <div id = "dataDiv">
   </div>
+  
+  <div data-title="SHOW" class="alertDiv dialog-box_info" style="display: block;">
+ 	  <h3>등록하시겠습니까?</h3>
+	 	<hr class="style15">
+ 	  <div align="center">
+	  <button type="button" class="btn btn-success" style="margin-right: 34px;">확인</button>
+ 	  <button type="button" class="btn btn-danger">취소</button>
+  </div>
+  
+	</div>
 </form>
 </div>
 </section>
