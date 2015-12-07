@@ -28,6 +28,16 @@ function openPop() {
 <body style="background: #f1f1f1;">
 <%@ include file="../include/topMenu.jsp" %>
 
+<div data-title="REGIST" id = "registBtn" class="alertDiv dialog-box_info" style="display: none;; position:fixed; left:500px; top:20px; ">
+ 	  <h3>등록하시겠습니까?</h3>
+	 	<hr class="style15">
+ 	  <div align="center">
+	  <button type="button" id = "registEnter" class="btn btn-success" style="margin-right: 34px;">확인</button>
+ 	  <button type="button" id = "registCancle" class="btn btn-danger">취소</button>
+		</div>
+</div>
+
+
 <section class="stretch">
 <div style="padding-top: 150px;"></div>
 <div class="regForm" style="margin-bottom: 100px;">
@@ -48,7 +58,7 @@ function openPop() {
 	<div class="lectureMakeId"> LECTURE CREATED BY&nbsp;&nbsp;&nbsp;&nbsp;<strong>${user.id}</strong>
 </div>
 
-<form id = "mapForm" action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return upload();">
+<form id = "mapForm" action="${pageContext.request.contextPath}/lecture/regist.do" enctype="multipart/form-data" method="POST" onsubmit="return confirm();">
 <div class="redactor-div">
 	<div class="redactor-title">Let's Begin...</div>
 	<div class="redactor-inner">
@@ -146,16 +156,6 @@ function openPop() {
   </fieldset>
   <div id = "dataDiv">
   </div>
-  
-  <div data-title="SHOW" class="alertDiv dialog-box_info" style="display: block;">
- 	  <h3>등록하시겠습니까?</h3>
-	 	<hr class="style15">
- 	  <div align="center">
-	  <button type="button" class="btn btn-success" style="margin-right: 34px;">확인</button>
- 	  <button type="button" class="btn btn-danger">취소</button>
-  </div>
-  
-	</div>
 </form>
 </div>
 </section>
