@@ -3,9 +3,11 @@ package kr.co.haeyum.store.dao;
 import java.util.List;
 
 import kr.co.haeyum.lecture.vo.LectureVO;
+import kr.co.haeyum.store.vo.BuyVO;
 import kr.co.haeyum.store.vo.CategoryVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.SellVO;
 import kr.co.haeyum.store.vo.SideListVO;
 import kr.co.haeyum.store.vo.StoreListVO;
 
@@ -63,5 +65,13 @@ public class StoreDAO {
 	   public List<SideListVO> selectSideList(int no) {
 	      return session.selectList("store.dao.StoreDAO.selectSideList",no);
 	   }
+
+	public void insertBuy(BuyVO bVO) throws Exception{
+		session.insert("store.dao.StoreDAO.insertBuy", bVO);
+	}
+
+	public void insertSell(SellVO sVO) {
+		session.insert("store.dao.StoreDAO.insertSell", sVO);
+	}
 
 }

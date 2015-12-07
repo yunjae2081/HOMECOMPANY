@@ -3,9 +3,11 @@ package kr.co.haeyum.store.service;
 import java.util.List;
 
 import kr.co.haeyum.lecture.vo.LectureVO;
+import kr.co.haeyum.store.vo.BuyVO;
 import kr.co.haeyum.store.vo.CategoryVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.SellVO;
 import kr.co.haeyum.store.vo.SideListVO;
 import kr.co.haeyum.store.vo.StoreListVO;
 
@@ -35,6 +37,10 @@ public interface StoreService {
 	public List<StoreListVO> selectListExtend(int no) throws Exception;
 
 	public List<SideListVO> selectSideList(int no);
+
+	public void insertBuy(BuyVO bVO) throws Exception;
+
+	public void insertSell(SellVO sVO) throws Exception;
 
 
 }

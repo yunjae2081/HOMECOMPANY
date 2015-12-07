@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 
 import kr.co.haeyum.lecture.vo.LectureVO;
 import kr.co.haeyum.store.dao.StoreDAO;
+import kr.co.haeyum.store.vo.BuyVO;
 import kr.co.haeyum.store.vo.CategoryVO;
 import kr.co.haeyum.store.vo.ProductImgVO;
 import kr.co.haeyum.store.vo.ProductVO;
+import kr.co.haeyum.store.vo.SellVO;
 import kr.co.haeyum.store.vo.SideListVO;
 import kr.co.haeyum.store.vo.StoreListVO;
 
@@ -67,6 +69,16 @@ public class StoreServiceImpl implements StoreService{
 	@Override
 	public List<SideListVO> selectSideList(int no) {
 		return dao.selectSideList(no);
+	}
+
+	@Override
+	public void insertBuy(BuyVO bVO) throws Exception {
+		dao.insertBuy(bVO);
+	}
+
+	@Override
+	public void insertSell(SellVO sVO) throws Exception {
+		dao.insertSell(sVO);
 	}
 	
 }
