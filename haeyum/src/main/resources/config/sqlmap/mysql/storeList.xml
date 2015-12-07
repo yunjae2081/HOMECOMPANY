@@ -92,4 +92,11 @@ where p.p_NO = i.p_NO and p.L_NO = (select p.L_NO
              having min(i_NO)
    </select>
 	
+	<insert id="insertBuy" parameterType="buyvo">
+		insert into tbl_buy(p_no, buy_id, buy_count) values (#{pNo}, #{buyId}, #{buyCount})
+	</insert>
+	
+	<insert id="insertSell" parameterType="sellvo">
+		insert into tbl_sell(p_no, sell_id, sell_count) values (#{pNo}, #{sellId}, #{sellCount})
+	</insert>
 </mapper>

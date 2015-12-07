@@ -19,7 +19,36 @@
 
 <script>
 console.dir($.fn.avgrund);
+
+$(document).on("click", "#buyStore", function () {
+  var pNo = "${pVo.pNo}";
+  var buyId = "${user.id}";
+  var buyCount = $("#buyCount").val();
+  
+  var sellId = "${pVo.pId}";
+  var sellCount = $("#buyCount").val();
+  
+  
+  $.ajax({
+    url: "buyStore.json",
+    type: "POST",
+    datatype:"JSON",
+    data:{pNo:pNo, buyId:buyId, buyCount:buyCount, sellId:sellId, sellCount:sellCount},
+    success: function () {
+      $("#buyDIV").css("display", "block");
+      $("#buyDIV").animate({duration:5000}, function () {
+      	$("#buyDIV").fadeOut(2000);
+      })
+    }
+  })
+})
 </script>
+
+<div data-title="구매 완료" id="buyDIV"class="alertDiv dialog-box_info">
+	<h2>구매 완료</h2>
+	<hr class="style15">
+	<h1>${user.name}님</h1>
+</div>
 	
 	<div class="body" style="padding-top: 140px">
 		<div class="bodyWrap">    
@@ -70,7 +99,7 @@ console.dir($.fn.avgrund);
         <h3>${pVo.pPrice}&#8361;</h3>
         <br/><br/><br/>
 
-		<div class="prdCount">수량 : <input type="number" step="1" min="1" max="${pVo.pCount}" value="1" style="width: 40px"/> / ${pVo.pCount}</div>
+		<div class="prdCount">수량 : <input type="number" id = "buyCount" step="1" min="1" max="${pVo.pCount}" value="1" style="width: 40px"/> / ${pVo.pCount}</div>
         <div class="button add" id="show">상품 구매</div>
 	</div>
 	
