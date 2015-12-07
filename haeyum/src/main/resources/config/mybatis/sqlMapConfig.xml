@@ -9,7 +9,6 @@
 		<typeAlias alias="lecturevo" type="kr.co.haeyum.lecture.vo.LectureVO"/>
 		<typeAlias alias="mainVO" type="kr.co.haeyum.main.vo.MainVO"/>
 		<typeAlias alias="videobestlistvo" type="kr.co.haeyum.search.vo.VideoBestListVO" />
-		<typeAlias alias="searchvo" type="kr.co.haeyum.mypage.common.SearchVO"/>
     <typeAlias alias="watchvo" type="kr.co.haeyum.video.vo.WatchVO"/>
     <typeAlias alias="productvo" type="kr.co.haeyum.store.vo.ProductVO"/>
     <typeAlias alias="storevo" type="kr.co.haeyum.store.vo.StoreVO"/>
