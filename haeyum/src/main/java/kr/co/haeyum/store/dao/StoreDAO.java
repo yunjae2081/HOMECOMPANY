@@ -73,5 +73,9 @@ public class StoreDAO {
 	public void insertSell(SellVO sVO) {
 		session.insert("store.dao.StoreDAO.insertSell", sVO);
 	}
+	
+	public void updateClick(int no) throws Exception {
+		   session.update("store.dao.StoreDAO.updateClick",no);
+		}
 
 }
