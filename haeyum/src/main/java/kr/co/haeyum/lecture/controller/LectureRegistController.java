@@ -202,6 +202,7 @@ public class LectureRegistController {
 					productVO.setpContent(content);
 					productVO.setpPrice(price);
 					productVO.setpCount(count);
+					productVO.setlCategory(lVO.getlCategory());
 					int pNo = service.insertItem(productVO);
 					
 					for(int k = 1; k <= 4; k++){
