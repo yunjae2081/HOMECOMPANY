@@ -37,7 +37,7 @@ function fList(flist){
 		Html+="<div class='row'>"
 		Html+="<ul class='items'>"
 		Html+="<li>"
-		Html+="<a href='#'>"
+		Html+="<a href='../mindMap/view.do?lNo=" + flist[index].lNo + "'>"
 		Html+="<figure>"
 		Html+="<img style='height: 250px;' src='${pageContext.request.contextPath}/mainImg/" + flist[index].lRealFileName + "'/>"
 		Html+="<h1 class='title'>" + flist[index].lNo + "&nbsp;" + flist[index].lTitle + "</h1>"
