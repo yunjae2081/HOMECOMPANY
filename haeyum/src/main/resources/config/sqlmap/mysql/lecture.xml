@@ -225,7 +225,7 @@ select l_no as lNo,
 	<selectKey resultType="int" keyProperty="pNo" order="AFTER">
 		SELECT LAST_INSERT_ID() 
 	</selectKey>
-	insert into tbl_product(l_no, v_no, p_id, p_name, p_content, p_price, p_count)
+	insert into tbl_product(l_no, v_no, p_id, p_name, p_content, p_price, p_count, L_CATEGORY)
 	values (
 						#{lNo},
 						#{vNo},
@@ -233,7 +233,9 @@ select l_no as lNo,
 						#{pName},
 						#{pContent},
 						#{pPrice},
-						#{pCount}
+						#{pCount},
+						#{lCategory}
+						
 					)
 	 
 </insert>
