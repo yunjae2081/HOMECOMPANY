@@ -8,8 +8,70 @@
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/mypageMain.css" />
 <title>Mypage</title>
 <%@include file="../include/common_top.jsp"%>
-<script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
-<script src="${pageContext.request.contextPath}/js/mypage.js"></script>
+<script>
+
+
+
+function lectureList() {
+	location.href = "lectureList.do";
+}
+function storeList() {
+	location.href = "storeList.do";
+}
+function favoriteList(){
+	location.href = "favoriteList.do";
+}
+
+jQuery(function() {
+
+	$(window).load(function() {
+
+		$('.wrapper').removeClass('preload');
+
+	});
+
+});
+
+$(document).ready(function(){
+	
+	var mdfFlag = false;
+	
+	$("#mdfBtn").click(function(){
+		$("#modifyDiv").toggle("slow");
+		if(!mdfFlag){
+
+			$("#modifyDiv").css("display", "block");
+			mdfFlag = true;
+		} else {
+			$("#modifyDiv").css("display", "none");
+			mdfFlag = false;	
+		}
+	})
+	$("#chk").click(function(){
+		if($("#mPass").val() == $("#mPassChk").val()){
+		$.ajax({
+			url:"${pageContext.request.contextPath}/mypage/modify.json",
+			type:"POST",
+			datatype:"json",
+			data: {pPass: $("#pPass").val(),mPass:$("#mPass").val()}
+				
+		}).done(function(response){
+				alert("등록");
+				})
+		}else{
+			alert("안돼");
+		}
+		
+	})
+	
+		
+})
+
+
+
+
+
+</script>
 </head>
 <body style="background: #f1f1f1;">
 	<%@include file="../include/topMenu.jsp"%>
@@ -36,7 +98,7 @@
 			<button data-word='비밀번호 변경' id="mdfBtn" class="button btn-lg btn-step2" style="vertical-align: top; margin: 22px;"></button>
 				</span>
 			<br/>
-			<form id="modifyDiv" style="display: none;">
+			<div id="modifyDiv" style="display: none;">
 							<div class='modify col-xs-6 form-group' style='margin-left:16px; width:400px;margin-top:92px;'>
 							<input id='pPass' type='password' class='form-control' size='20' placeholder="현재 비밀번호" style="margin-bottom: 10px; height: 40px;"/>
 							<input id='mPass' type='password' class='form-control' size='20' placeholder="새로운 비밀번호"style="margin-bottom: 10px;height: 40px;"/>
@@ -45,7 +107,7 @@
 							<button type='reset' value='취소' class='btn btn-default btn-sm'>취소</button>
 							</div>
 			
-			</form>
+			</div>
 			
 			</div>
 			<div class="sphere"></div>
