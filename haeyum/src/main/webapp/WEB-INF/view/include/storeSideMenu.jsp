@@ -35,7 +35,7 @@ $(document).ready(function(){
 });
 </script>
 	<div id="cont">
-		<div id="menu-fixed" style="z-index: 999;">
+		<div id="menu-fixed">
 			<a href="#" class="cont"> 
 				<i class="material-icons back">
 					<div class="mLogo">
