@@ -36,6 +36,8 @@
     <typeAlias alias="boardvo" type="kr.co.haeyum.board.vo.BoardVO"/>
     <typeAlias alias="commentvo" type="kr.co.haeyum.board.vo.BoardCommentVO"/>
     <typeAlias alias="boardpagevo" type="kr.co.haeyum.board.vo.PageIndexVO"/>
+    <typeAlias alias="buyvo" type="kr.co.haeyum.store.vo.BuyVO"/>
+    <typeAlias alias="sellvo" type="kr.co.haeyum.store.vo.SellVO"/>
      
 	</typeAliases>
 </configuration>
