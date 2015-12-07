@@ -69,7 +69,7 @@ group by v.l_no) r
 <select id="selectSellList" parameterType="mypagevo" resultType="productvo">
 
 select p.L_NO lNo,p.V_NO vNo,p.P_ID pId,p.P_NAME pName,p.P_PRICE pPrice,p.P_COUNT pCount,p.P_CONTENT pContent,
-s.SELL_COUNT sellCount,s.SELL_NO sellNo,s.SELL_ID sellId,
+s.SELL_COUNT sellCount,s.SELL_NO sellNo,s.SELL_ID sellId, p.p_no pNo,
 DATE_FORMAT(P_REG_DATE,'%Y-%m-%d %H:%i')as pRegDate
 from haeyum.tbl_product p,haeyum.tbl_sell s
 where p.P_NO =s.P_NO 
@@ -89,7 +89,7 @@ and s.SELL_ID=#{id}
 <!-- 구매 물품 list -->
 <select id="selectBuyList" parameterType="mypagevo" resultType="productvo">
 
-select b.BUY_NO buyNo,b.BUY_COUNT buyCount,p.P_NAME pName,p.P_PRICE pPrice,p.P_CONTENT pContent,
+select b.BUY_NO buyNo,b.BUY_COUNT buyCount,p.P_NAME pName,p.P_PRICE pPrice,p.P_CONTENT pContent, p.p_no pNo,
 DATE_FORMAT(BUY_DATE,'%Y-%m-%d %H:%i')as buyDate
 from haeyum.tbl_product p,haeyum.tbl_buy b
 where p.P_NO=b.P_NO
