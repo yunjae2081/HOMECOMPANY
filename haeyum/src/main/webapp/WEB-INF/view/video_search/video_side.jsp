@@ -6,7 +6,8 @@
 <head>
 <meta charset='UTF-8'>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>혜;윰</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <%@include file="../include/common_top.jsp"%>
 <%@include file="../include/searchSideMenu.jsp"%>
 <link rel="stylesheet" href="${pageContext.request.contextPath}/css/mindMap.css" type="text/css" />
