@@ -91,6 +91,12 @@ where p.p_NO = i.p_NO and p.L_NO = (select p.L_NO
              group by i.P_NO
              having min(i_NO)
    </select>
+   
+   <update id="updateClick" parameterType="int">
+	 	update tbl_product
+		set p_click = p_click + 1
+		where p_no = #{no}
+   </update>
 	
 	<insert id="insertBuy" parameterType="buyvo">
 		insert into tbl_buy(p_no, buy_id, buy_count) values (#{pNo}, #{buyId}, #{buyCount})
