@@ -39,7 +39,7 @@ function fList(flist){
 		Html+="<li>"
 		Html+="<a href='#'>"
 		Html+="<figure>"
-		Html+="<img style='height: 250px;' src='${pageContext.request.contextPath}/images/" + flist[index].lRealFileName + "'/>"
+		Html+="<img style='height: 250px;' src='${pageContext.request.contextPath}/mainImg/" + flist[index].lRealFileName + "'/>"
 		Html+="<h1 class='title'>" + flist[index].lNo + "&nbsp;" + flist[index].lTitle + "</h1>"
 		Html+="<div class='description contentClass'>"+ flist[index].lContent + "</div>"
 		Html+="</figure>"
