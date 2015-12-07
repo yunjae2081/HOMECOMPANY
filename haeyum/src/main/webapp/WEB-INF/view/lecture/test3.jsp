@@ -33,7 +33,7 @@ function openPop() {
 <div class="regForm" style="margin-bottom: 100px;">
 <div class="topBanner">
 			
-				<div data-title="Create Yure Lecture" class="dialog-box_info">
+				<div data-title="Create Yure Lecture" class="dialog-box_info" style="font-size: 17px;padding-top: 52px;line-height: 32px;">
 				  <em></em>
 				  설명하는 글입니다. Customize this lesson by editing or excluding any section below. You can title your lesson, 
 				  provide context for the video, add or remove questions, start discussions, and end the lesson with additional 
