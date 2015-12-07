@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>혜;윰</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <style>
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 @import url(http://fonts.googleapis.com/css?family=Roboto);
