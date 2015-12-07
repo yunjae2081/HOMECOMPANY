@@ -5,7 +5,8 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>Insert title here</title>
+<title>혜;윰</title>
+<link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <link rel="styleSheet" href="${pageContext.request.contextPath}/css/storeList.css" />
 <%@include file="../include/common_top.jsp"%>
 <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
