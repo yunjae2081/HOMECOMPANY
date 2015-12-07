@@ -430,7 +430,16 @@ $(document).ready(function(){
           if(i == 1){
             display = "block";
           }
-          $("#item_input_file").append("<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + i + "' style='display: " + display + ";' onchange='selectImage(" + i + ", " + iImgCount + ")'/>");
+          
+//          "<p class='store_img_file'>"+
+//          "<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + i + "' style='display: " + display + ";' onchange='selectImage(" + i + ", " + iImgCount + ")'/>"+
+//            "<span>Upload your item</span>"+
+//          "</p>"+
+          
+          $("#item_input_file").append("<p class='store_img_file' id='store_input_" + iImgCount + "' style='display: " + display + "';>"+
+                                          "<input type='file'id = 'store_file_" + iImgCount + "' name='sNum" + sNum + "iCount" + iCount + "imgCount" + i + "' onchange='selectImage(" + i + ", " + iImgCount + ")'/>"+
+                                          "<span>Upload your item</span>"+
+                                       "</p>");
         }
       } //if 문 종료
     }); //AddBtn 종료
@@ -487,10 +496,11 @@ $(document).ready(function(){
           for(var i = 4 ; i > 0; i--) {
             var preview = document.getElementById("store_img_"+i);
             if(preview.src != "http://localhost/haeyum/images/png12.png") {
+              console.log("사진 삭제");
               preview.src = "/haeyum/images/png12.png";
             }
             else {
-              $("#store_file_"+iImgCount).remove();
+              $("#store_input_"+iImgCount).remove();
               iImgCount--;
             }
           }
@@ -615,10 +625,10 @@ function selectImage(imgNum, currImgCount) {
 //    console.log("성공");
     reader.readAsDataURL(file);
     if(imgNum < 4){
-      $("#store_file_"+currImgCount).css("display", "none");
-      $("#store_file_"+ ++currImgCount).css("display", "block");
+      $("#store_input_"+currImgCount).css("display", "none");
+      $("#store_input_"+ ++currImgCount).css("display", "block");
     } else {
-      $("#store_file_"+currImgCount).css("display", "none");
+      $("#store_input_"+currImgCount).css("display", "none");
     }
   } else {
 //    console.log("실패");
