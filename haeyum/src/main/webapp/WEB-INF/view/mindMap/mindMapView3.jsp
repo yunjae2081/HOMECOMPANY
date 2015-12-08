@@ -487,7 +487,11 @@ function callBoard(reqPage) {
     data: {reqPage:reqPage, lNo:"${lVO.lNo}"},
     success: function (data, status) {
       viewList(data);
-      viewPage(data.pageVO);
+      if(data.bList != 0) {
+	      viewPage(data.pageVO);
+      } else {
+        $(".boardPage").html("등록된 게시글이 없습니다");
+      }
     }
   })
 }
