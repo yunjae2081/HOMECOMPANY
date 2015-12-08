@@ -34,9 +34,9 @@ $(document).ready(function(){
 function fList(flist){
 	var Html="";
 	
-	$.each(flist,function(index,value){
 		Html+="<div class='row'>"
 		Html+="<ul class='items'>"
+	$.each(flist,function(index,value){
 		Html+="<li>"
 		Html+="<a href='../mindMap/view.do?lNo=" + flist[index].lNo + "'>"
 		Html+="<figure>"
@@ -46,9 +46,9 @@ function fList(flist){
 		Html+="</figure>"
 		Html+="</a>"
 		Html+="</li>"
+	})
 		Html+="</ul>"
 		Html+="</div>"
-	})
 		$("#favoriteBox").html(Html);
 }
 
