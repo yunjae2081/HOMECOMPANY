@@ -5,7 +5,7 @@
 <html lang="ko">
 <head>
 <meta charset='UTF-8'>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Content-Type" conrtent="text/html; charset=UTF-8">
 <title>혜;윰</title>
 <link rel="shortcut icon" href="${pageContext.request.contextPath}/images/favicon.ico" />
 <%@include file="../include/common_top.jsp"%>

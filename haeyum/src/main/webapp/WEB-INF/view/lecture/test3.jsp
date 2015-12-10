@@ -44,7 +44,7 @@ function openPop() {
 <div class="regForm" style="margin-bottom: 100px;">
 <div class="topBanner">
 			
-				<div data-title="Create Yure Lecture" class="mindBox_info" style="font-size: 17px;padding-top: 52px;line-height: 32px;">
+				<div data-title="Create Your Lecture" class="mindBox_info" style="font-size: 17px;padding-top: 52px;line-height: 32px;">
 				  <em></em>
 				  혜;윰은 체계화 된 커리큘럼을 제작할 수 있도록 마인드 맵을 제공합니다. 각각의 노드마다 정보를 담을 수 있으며, 가장 큰 노드에는 챕터의 제목과 내용, 두번째 노드에는 각 절에대한 동영상을 등록할 수 있습니다. 등록된 동영상은 OnePointLesson을 통하여 편집을 할 수 있고, 동영상 마다 원하는 제품을 등록하여 판매 할 수 있습니다. 사용자는 이렇게 체계화된 마인드 맵 커리큘럼으로 원하는 강좌를 들을 수 있고, 또한 강좌에 나오는 제품이나 관련된 링크, 과제 등을 받아서 사용할 수 있습니다.
 				<div class="helpBtn">

@@ -94,7 +94,7 @@ function bList(blist){
 		Html+="<br/>"
 		Html+="<span class='grid-only'>제품 내용 :<br/>" + blist[index].pCount + "</span>"
 		Html+="<div class='pull-right'>"
-		Html+="<span class='list-only'style='margin-right: 20px;font-size: 15px;'>구매수량 :" + blist[index].bCount + "</span>"
+		Html+="<span class='list-only'style='margin-right: 20px;font-size: 15px;'>구매수량 :" + blist[index].buyCount + "</span>"
 		Html+="<span class='list-only' style='margin-right: 20px;font-size: 15px;'>" + blist[index].buyDate + "</span>"
 		Html+="<span class='product-progress'>"
 		Html+="<span class='product-progress-labels'>"
