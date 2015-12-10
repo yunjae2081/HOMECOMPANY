@@ -139,7 +139,7 @@ and FAV_ID=#{id}
 </select>
 
 <select id="selectFavImg" parameterType="favoritevo" resultType="favoritevo">
-	select l.l_title lTitle, l.l_content lContent, v.i_real_file_name iRealFileName
+	select l.l_title lTitle, l.l_content lContent, v.i_real_file_name lRealFileName
 	from tbl_video v, tbl_lecture l
 	where l.l_no = v.l_no and l.l_no = #{lNo}
 	group by v.l_no
